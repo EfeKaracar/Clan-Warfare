@@ -50779,4 +50779,9 @@ scripts = [
     ]),
    #INVASION MODE END
      
+    ("mod_init", [
+    
+    (assign, "$advanced_ai_open", 1),
+    
+    ]),
 ]
