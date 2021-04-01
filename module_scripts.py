@@ -50775,13 +50775,30 @@ scripts = [
     (position_rotate_x, pos8, -90), #y axis aligned with camera now. z is up
     (position_rotate_z, pos8, 30),
     (position_rotate_x, pos8, -50),
-    (cur_tableau_add_sun_light, pos8, 175,150,125),
+    (cur_tableau_add_sun_light, pos8, 175, 150, 125),
     ]),
    #INVASION MODE END
      
     ("mod_init", [
     
     (assign, "$advanced_ai_open", 1),
+    (assign, "$mod_debug", 1),
+    
+    (call_script, "script_player_init"),
+    
+    ]),
+    
+    ("player_init", [
+    
+    (try_for_range, ":troops", heroes_begin, heroes_end),
+        (troop_set_slot, ":troops", player_knows_how_to_play, 1),
+        
+        (store_random_in_range, ":dice", 2, 6),
+        (troop_set_slot, ":troops", player_skill_level, ":dice"),
+        
+        (store_random_in_range, ":random", 50, 100),
+        (troop_set_slot, ":troops", player_hp, ":random"),
+    (try_end),
     
     ]),
 ]
