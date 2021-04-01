@@ -12,6 +12,15 @@ from ID_factions import *
 ##  ITEM SLOTS             #############################
 ########################################################
 
+
+# Efe
+
+player_knows_how_to_play = 1001
+player_skill_level = 1002   
+player_hp = 1000
+
+# Efe end
+
 slot_item_is_checked               = 0
 slot_item_food_bonus               = 1
 slot_item_book_reading_progress    = 2

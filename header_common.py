@@ -640,3 +640,26 @@ spf_team_0_walkers_spawn_at_high_points      = 0x00000200,
 spf_team_1_walkers_spawn_at_high_points      = 0x00000400,
 spf_try_to_spawn_close_to_at_least_one_enemy = 0x00000800,
 spf_care_agent_to_agent_distances_less       = 0x00001000,
+
+#Efe
+#human bones
+hb_abdomen = 0
+hb_thigh_l = 1
+hb_calf_l = 2
+hb_foot_l = 3
+hb_thigh_r = 4
+hb_calf_r = 5
+hb_foot_r = 6
+hb_spine = 7
+hb_thorax = 8
+hb_head = 9
+hb_shoulder_l = 10
+hb_upperarm_l = 11
+hb_forearm_l = 12
+hb_hand_l = 13
+hb_item_l = 14
+hb_shoulder_r = 15
+hb_upperarm_r = 16
+hb_forearm_r = 17
+hb_hand_r = 18
+hb_item_r = 19
