@@ -4339,4 +4339,10 @@ We apologize sincerely if you contributed your suggestions and feedback but were
   ("npc16_1","-Good with throwing and 1h^-Poor with 2h and crossbows"),
   #INVASION MODE END
   
+  
+  #Efe
+  ("cedric_bl", "a"),
+  ("eb_bl", "Im too busy roleplaying as a lord of Calradia to be asked meta questions by some random pubstar."),
+  ("bel_bl", "a"),
+  
 ]

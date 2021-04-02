@@ -11298,18 +11298,13 @@ dialogs = [
    "Is there anything else?", "lord_talk_ask_something_2",[]],   
    
    #Efe
-    [anyone|plyr,"lord_talk_ask_something_2",[
-					(is_between, "$g_talk_troop", kings_begin, kings_end),
-					(assign, reg(25), 1),															
-					(troop_get_slot, ":player_renown", "trp_player", slot_troop_renown),
-					(ge, ":player_renown", king_renown_for_duel),
+    [anyone|plyr,"lord_talk",[
+    
+                    (this_or_next|is_between, "$g_talk_troop", kings_begin, kings_end),
+					(is_between, "$g_talk_troop", lords_begin, lords_end),
+                    
 					], "My lord, I would like to challenge you to a friendly duel.", "lord_question_duel",[]],					
-  [anyone|plyr,"lord_talk_ask_something_2",[
-					(is_between, "$g_talk_troop", kings_begin, kings_end),
-					(troop_get_slot, ":player_renown", "trp_player", slot_troop_renown),
-					(lt, ":player_renown", king_renown_for_duel),
-					], "My lord, I would like to challenge you to a friendly duel.", "king_decline_duel",[]],
-   
+
   [anyone|plyr,"lord_talk_ask_something_2", [#(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
 			                                             (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
   ],
@@ -26298,7 +26293,16 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 #  [anyone,"free", [], "NO MATCHING SENTENCE!", "close_window",[]],
 
 
+# dialog for lords. Renown requirements can be set in the module_constants file.
 
+  [anyone|plyr,"lord_talk_ask_something_2",[
+					(is_between, "$g_talk_troop", lords_begin, lords_end),
+					(neq, reg(25), 1), #make sure lord is not a king
+					(troop_get_slot, ":player_renown", "trp_player", slot_troop_renown),
+					(ge, ":player_renown", lord_renown_for_duel),
+					], "I would like to challenge you to a friendly duel.", "lord_question_duel",[]],
+				
+	
 # next are the replies to the duel request by the lord, based on how many duels player won/lost against him.
 		
 [anyone, "lord_question_duel", [

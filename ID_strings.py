@@ -3397,5 +3397,8 @@ str_npc13_1 = 3395
 str_npc14_1 = 3396
 str_npc15_1 = 3397
 str_npc16_1 = 3398
+str_cedric_bl = 3399
+str_eb_bl = 3400
+str_bel_bl = 3401
 
 
