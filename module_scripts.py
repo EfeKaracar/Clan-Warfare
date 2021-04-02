@@ -50800,5 +50800,8 @@ scripts = [
         (troop_set_slot, ":troops", player_hp, ":random"),
     (try_end),
     
+    # (troop_set_slot, "trp_knight_3_3", this_guy_only_s, 1),
+    (troop_set_slot, "trp_knight_3_3", this_guy_only_hilt_spams, 1),
+    
     ]),
 ]
