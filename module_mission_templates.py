@@ -231,8 +231,6 @@ advanced_ai = (
         #Attacking
         (try_begin),
             (try_begin),
-                (troop_slot_eq, ":
-            (try_begin),
                 (le, ":dist", 300),
                 (store_random_in_range, ":random_dir", 0, 3),
                 (store_random_in_range, ":random_action", 0, 1),
