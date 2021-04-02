@@ -18,6 +18,21 @@ from ID_factions import *
 player_knows_how_to_play = 1001
 player_skill_level = 1002   
 player_hp = 1000
+player_thought_on_bl = 1003
+
+this_guy_only_s = 1004
+this_guy_only_hilt_spams = 1005
+this_guy_only_outreaches = 1006
+
+this_guy_doesnt_feint = 1007
+this_guy_does_jump_swing = 1008
+this_guy_does_holds = 1009
+this_guy_is_spastic = 1010
+
+
+
+# Efe end
+
 
 # Duel Mod Troop Slots
 
@@ -29,8 +44,6 @@ slot_troop_duel_started			  = 144		#duel mod - if player started dueling with th
 
 king_renown_for_duel = 150		# Minimum renown needed to challenge a king to a friendly duel
 lord_renown_for_duel = 50		# Minimum renown needed to challenge a king to a friendly duel
-
-# Efe end
 
 slot_item_is_checked               = 0
 slot_item_food_bonus               = 1

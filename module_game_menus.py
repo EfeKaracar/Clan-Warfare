@@ -55,6 +55,7 @@ game_menus = [
         [
             (change_screen_map),
             (troop_add_items, "trp_player", "itm_great_sword", 1),
+            (troop_raise_attribute, "trp_player", ca_strength, 10),
         ]
         ),
         

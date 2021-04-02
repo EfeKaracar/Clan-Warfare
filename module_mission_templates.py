@@ -37,6 +37,14 @@ af_castle_lord = af_override_horse | af_override_weapons| af_require_civilian
 
 
 #Efe
+display_agent_labels = (
+  0, 0, 0, [], [
+		(neg|is_presentation_active, "prsnt_display_agent_labels"),
+		(start_presentation, "prsnt_display_agent_labels"),
+    ])
+
+
+
 advanced_ai = (
 0, 0, 0, [(eq, "$advanced_ai_open", 1),], [
     
@@ -222,6 +230,8 @@ advanced_ai = (
         
         #Attacking
         (try_begin),
+            (try_begin),
+                (troop_slot_eq, ":
             (try_begin),
                 (le, ":dist", 300),
                 (store_random_in_range, ":random_dir", 0, 3),
@@ -2449,6 +2459,8 @@ mission_templates = [
     [
     #Efe
     advanced_ai,
+    display_agent_labels,
+    
       (ti_on_agent_spawn, 0, 0, [],
        [
          (store_trigger_param_1, ":agent_no"),
@@ -16275,7 +16287,9 @@ mission_templates = [
 
 ],   
 [      
-common_inventory_not_available,      
+    common_inventory_not_available,   
+    advanced_ai,   
+    display_agent_labels,
  
 	(ti_tab_pressed, 0, 0, [],
        [(question_box,"@Do you wish to give up the fight?")]),

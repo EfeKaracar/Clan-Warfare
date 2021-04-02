@@ -50791,7 +50791,7 @@ scripts = [
     ("player_init", [
     
     (try_for_range, ":troops", heroes_begin, heroes_end),
-        (troop_set_slot, ":troops", player_knows_how_to_play, 1),
+        (troop_set_slot, ":troops", player_knows_how_to_play, 1), 
         
         (store_random_in_range, ":dice", 2, 6),
         (troop_set_slot, ":troops", player_skill_level, ":dice"),
