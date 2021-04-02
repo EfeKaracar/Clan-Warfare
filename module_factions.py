@@ -43,17 +43,17 @@ factions = [
   ("player_supporters_faction","Player's Supporters",0, 0.9, 
   [("player_faction",1.00),("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xFF4433), #changed name so that can tell difference if shows up on map
   
-    ("kingdom_1",  "Kingdom of Rattonia", 0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xEE7744),
+    ("kingdom_1",  "The Kingdom of Rattonia", 0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xEE7744),
   
     ("kingdom_2",  "House Brightfyre",    0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xCCBB99),
   
-    ("kingdom_3",  "Roaming Cavalry Company", 0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xCC99FF),
+    ("kingdom_3",  "The Roaming Cavalry Company", 0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xCC99FF),
   
-    ("kingdom_4",  "West Knights",    0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0x33DDDD),
+    ("kingdom_4",  "The West Knights",    0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0x33DDDD),
   
-    ("kingdom_5",  "Turtle Knights",  0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0x33DD33),
+    ("kingdom_5",  "The Turtle Knights",  0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0x33DD33),
   
-    ("kingdom_6",  "Golden Kingdom",  0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xDDDD33),
+    ("kingdom_6",  "The Golden Kingdom",  0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xDDDD33),
     
     
 ##  ("kingdom_1_rebels",  "Swadian rebels", 0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xCC2211),
@@ -67,10 +67,10 @@ factions = [
   ("robber_knights",  "{!}robber_knights", 0, 0.1, [], []),
     
     #Minor factions
-    ("minor_kingdom_1",  "Kingdom of Avalon", 0, 0.1, [], []),
+    ("minor_kingdom_1",  "The Kingdom of Avalon", 0, 0.1, [], []),
     ("minor_kingdom_2",  "One Eyed", 0, 0.1, [], []),
     ("minor_kingdom_3",  "The Midnight Watchmen", 0, 0.1, [], []),
-    ("minor_kingdom_4",  "Defenders of Faith", 0, 0.1, [], []),
+    ("minor_kingdom_4",  "The Defenders of Faith", 0, 0.1, [], []),
 
     
   ("khergits","{!}Khergits", 0, 0.5,[("player_faction",0.0)], []),
