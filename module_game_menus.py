@@ -54,6 +54,7 @@ game_menus = [
         ("map",[(eq, "$mod_debug", 1),],"Map...",
         [
             (change_screen_map),
+            (troop_add_items, "trp_player", "itm_great_sword", 1),
         ]
         ),
         
@@ -14519,6 +14520,79 @@ game_menus = [
 
   
   
+############################### Duel Mod Start  ##############################
 
+
+("duel_menu",0,
+   "{s1}{s2}",
+   "none",
+   [
+ (str_clear, s2),  (str_clear, s3), (str_clear, s5), (str_clear, s6), (str_clear, s7),
+   (troop_get_slot, ":duel_wins", "$g_talk_troop", slot_troop_duel_won),
+   (assign, reg(6), ":duel_wins"),
+   (troop_get_slot, ":duel_losses", "$g_talk_troop", slot_troop_duel_lost),
+   (assign, reg(7), ":duel_losses"),
+   (store_add, ":duel_total", ":duel_wins", ":duel_losses"),
+   (assign, reg(5), ":duel_total"),
+   (str_store_troop_name, s3, "$g_talk_troop"),
+	(try_begin),
+		(eq, "$g_duel_result", -1),
+		(str_store_string, s1, "@You lost your duel against ^^{s3}"),
+	(else_try),
+		(eq, "$g_duel_result", 1),
+		(str_store_string, s1, "@You won your duel against ^^{s3}"),
+	(else_try),
+		(str_store_string, s1, "@You prepare to duel ^^{s3}"),
+	(try_end),
+    (try_begin),
+		(troop_is_hero, "$g_talk_troop"),
+		(str_store_string, s2, "@^^^^You have fought {s3} {reg5} times. ^^You've won {reg6} times. ^^You've lost {reg7} times"),
+	(else_try),
+		(str_store_string, s2, "@^^^^Dueling with your own troops will not count towards your dueling statistics."),
+	(try_end),
+
+    ],
+   
+   [
+      ("start_fight",[(eq, "$g_duel_result", 0)],"Start the duel.",
+       [(try_begin),      
+          (is_between, "$g_encountered_party", towns_begin, towns_end),      
+            (party_get_slot, ":arena_scene", "$g_encountered_party", slot_town_arena),    
+        (else_try),      
+            (assign, ":closest_dist", 100000),      
+            (assign, ":closest_town", -1),      
+            (try_for_range, ":cur_town", towns_begin, towns_end),        
+                (store_distance_to_party_from_party, ":dist", ":cur_town", "p_main_party"),        
+                (lt, ":dist", ":closest_dist"),        
+                (assign, ":closest_dist", ":dist"),        
+                (assign, ":closest_town", ":cur_town"),      
+            (try_end),      
+            (party_get_slot, ":arena_scene", ":closest_town", slot_town_arena),
+        (try_end),    
+        (modify_visitors_at_site, ":arena_scene"),    
+        (reset_visitors),
+    (set_visitor, "$g_duel_vis_point_opp", "$g_talk_troop"),
+    (set_visitor, "$g_duel_vis_point_plyr", "trp_player"),
+
+         (set_jump_mission, "mt_arena_duel_thing_std"),
+         (jump_to_scene, ":arena_scene"),
+         (change_screen_mission), 
+        ]
+       ),
+      ("duel_again",[(neq, "$g_duel_result", 0)],"Duel again.",
+       [
+           (assign, "$g_duel_result", 0),
+           (jump_to_menu, "mnu_duel_menu"),
+	]
+       ),
+      ("leave",[],"Leave.",
+       [(change_screen_map),
+        ]
+       ),
+      ]
+ ),
+
+
+############################### Duel Mod End  ##############################
   
  ]

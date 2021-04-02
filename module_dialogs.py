@@ -11297,6 +11297,18 @@ dialogs = [
   [anyone,"lord_talk_ask_something_again", [],
    "Is there anything else?", "lord_talk_ask_something_2",[]],   
    
+   #Efe
+    [anyone|plyr,"lord_talk_ask_something_2",[
+					(is_between, "$g_talk_troop", kings_begin, kings_end),
+					(assign, reg(25), 1),															
+					(troop_get_slot, ":player_renown", "trp_player", slot_troop_renown),
+					(ge, ":player_renown", king_renown_for_duel),
+					], "My lord, I would like to challenge you to a friendly duel.", "lord_question_duel",[]],					
+  [anyone|plyr,"lord_talk_ask_something_2",[
+					(is_between, "$g_talk_troop", kings_begin, kings_end),
+					(troop_get_slot, ":player_renown", "trp_player", slot_troop_renown),
+					(lt, ":player_renown", king_renown_for_duel),
+					], "My lord, I would like to challenge you to a friendly duel.", "king_decline_duel",[]],
    
   [anyone|plyr,"lord_talk_ask_something_2", [#(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
 			                                             (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
@@ -26284,4 +26296,115 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
   [anyone|plyr,"free", [[in_meta_mission]], " Good-bye.", "close_window",[]],
   [anyone|plyr,"free", [[neg|in_meta_mission]], " [Leave]", "close_window",[]],
 #  [anyone,"free", [], "NO MATCHING SENTENCE!", "close_window",[]],
+
+
+
+# next are the replies to the duel request by the lord, based on how many duels player won/lost against him.
+		
+[anyone, "lord_question_duel", [
+                          (troop_get_slot, ":duel_wins", "$g_talk_troop", slot_troop_duel_won),
+                          (troop_get_slot, ":duel_losses", "$g_talk_troop", slot_troop_duel_lost),
+						  (troop_get_slot, ":duel_started", "$g_talk_troop", slot_troop_duel_started),
+						  (try_begin),
+							(eq, ":duel_started", 0),
+							(str_store_string, s1, "@A duel, that sounds like an interesting idea. We could keep score and see who is the better fighter!"),
+							(troop_set_slot, "$g_talk_troop", slot_troop_duel_started, 1),
+						  (else_try),
+							(gt, ":duel_losses", ":duel_wins"),						  
+							(str_store_string, s1, "@Ah, so you wish to be beaten by me again, eh? I shall teach you another lesson in the art of dueling"),
+						  (else_try),
+							(gt, ":duel_wins", ":duel_losses"),						    
+							(str_store_string, s1, "@You may have won more of our duels than I, but that will change today!"),
+						  (else_try),
+							(eq, ":duel_losses", ":duel_wins"),
+							(str_store_string, s1, "@We seem to be evenly match so another duel should prove to be interesting."),
+						  (else_try),
+						    (str_store_string, s1, "@You should not be seeing this text."),
+						  (try_end),
+								], "{s1}", "duel_accept",[]],
+
+
+      
+# show different dialog options based on if you're challenging a mounted or unmounted unit.
+# note that there's no check if you are mounted yourself, so if you have no horse and challenge someone to a mounted duel, you won't get a horse.
+# the visitor numbers correlate with templates in the mission template. So which weapons to use and which items to override. Visitor nr 0 is template 1.
+  
+[anyone,"duel_accept", [
+        (assign, "$g_duel_result", 0),              
+        (assign, "$g_duel_vis_point_plyr", 0),      #this is the visitor nr for the player 
+        (assign, "$g_duel_vis_point_opp", 0),       #this is the visitor nr for the opponent
+        (assign, "$talk_troop_mounted",0),
+        (str_clear, s3),
+        (try_begin),
+           (this_or_next|troop_is_mounted, "$g_talk_troop"),
+           (troop_is_guarantee_horse, "$g_talk_troop"),
+           (str_store_string, s3, "@I accept your challenge.^Do you wish to fight on horseback or on foot?"),
+        (else_try),
+           (str_store_string, s3, "@I accept your challenge. ^Let us choose our weapons."),
+        (try_end),  
+    ],
+	"{s3}", "duel_choose_mount", []],
+
+ [anyone|plyr,"duel_choose_mount", [
+            (this_or_next|troop_is_mounted, "$g_talk_troop"),
+            (troop_is_guarantee_horse, "$g_talk_troop"),
+            (assign, "$talk_troop_mounted",1),
+            ],
+         "I would like to duel mounted", "duel_weap_mounted", [(str_clear, s4), (str_store_string, s4, "@horseback"),]],
+  
+ [anyone|plyr,"duel_choose_mount", [
+            (this_or_next|troop_is_mounted, "$g_talk_troop"),
+            (troop_is_guarantee_horse, "$g_talk_troop"),
+            ],
+         "I would like to duel on foot", "duel_weap_choose", [(str_clear, s4), (str_store_string, s4, "@foot"),]],
+  
+ [anyone|plyr,"duel_choose_mount", [
+            (neq, "$talk_troop_mounted", 1),
+            ],
+         "Very well.", "duel_weap_choose", [(str_clear, s4), (str_store_string, s4, "@foot"),]],
+
+ [anyone|plyr,"duel_choose_mount", [],
+         "Forget about it.", "close_window", []],
+
+#options for the mounted fights
+[anyone, "duel_weap_mounted", [], "What kind of weapons would you like to fight with?", "duel_weap_mounted", []],
+    [anyone|plyr,"duel_weap_mounted", [],
+         "We should use our own weapons.", "duel_start", [(str_clear, s5), (str_store_string, s5, "@our own weapons"),(
+             assign, "$g_duel_vis_point_plyr", 0), (assign, "$g_duel_vis_point_opp", 1),]],
+    [anyone|plyr,"duel_weap_mounted", [],
+         "Let us fight with sword and shield.", "duel_start", [(str_clear, s5), (str_store_string, s5, "@sword and shield"),
+            (assign, "$g_duel_vis_point_plyr", 4), (assign, "$g_duel_vis_point_opp", 5),]],
+    [anyone|plyr,"duel_weap_mounted", [],
+         "We should fight with two-handed weapons.", "duel_start", [(str_clear, s5), (str_store_string, s5, "@two handed weapons"),
+            (assign, "$g_duel_vis_point_plyr", 8), (assign, "$g_duel_vis_point_opp", 9),]],
+    [anyone|plyr,"duel_weap_mounted", [],
+         "A duel with light armor and ranged weapons would be my choice.", "duel_start", [(str_clear, s5), (str_store_string, s5, "@light armor and ranged weapons"),
+            (assign, "$g_duel_vis_point_plyr", 12), (assign, "$g_duel_vis_point_opp", 13),]],
+    [anyone|plyr,"duel_weap_mounted", [],
+         "What was your previous question again?.", "duel_accept", []],
+
+#options for the unmounted fights
+ [anyone, "duel_weap_choose", [], "What kind of weapons would you like to fight with?", "duel_weap_choose", []],
+    [anyone|plyr,"duel_weap_choose", [],
+         "We should use our own weapons.", "duel_start", [(str_clear, s5), (str_store_string, s5, "@our own weapons"),
+            (assign, "$g_duel_vis_point_plyr", 2), (assign, "$g_duel_vis_point_opp", 3),]],
+    [anyone|plyr,"duel_weap_choose", [],
+         "Let us fight with sword and shield.", "duel_start", [(str_clear, s5), (str_store_string, s5, "@sword and shield"),
+            (assign, "$g_duel_vis_point_plyr", 6), (assign, "$g_duel_vis_point_opp", 7),]],
+    [anyone|plyr,"duel_weap_choose", [],
+         "We should fight with two-handed weapons.", "duel_start", [(str_clear, s5), (str_store_string, s5, "@two handed weapons"),
+            (assign, "$g_duel_vis_point_plyr", 10), (assign, "$g_duel_vis_point_opp", 11),]],
+    [anyone|plyr,"duel_weap_choose", [],
+         "A duel with light armor and ranged weapons would be my choice.", "duel_start", [(str_clear, s5), (str_store_string, s5, "@light armor and ranged weapons"),
+            (assign, "$g_duel_vis_point_plyr", 14), (assign, "$g_duel_vis_point_opp", 15),]],
+    [anyone|plyr,"duel_weap_choose", [],
+         "What was your previous question again?.", "duel_accept", []],
+
+#final dialog
+[anyone, "duel_start", [], "Very well {playername}. ^^We will be duelling on {s4}, using {s5}.^^If this is all right, I will meet you down at the arena as soon as you finish preparing.", "duel_start", []],
+    [anyone|plyr, "duel_start", [], "That sound great. I'll meet you down there.", "close_window", [(assign, reg(0), "$g_talk_troop"),(jump_to_menu, "mnu_duel_menu"),]],
+    [anyone|plyr, "duel_start", [], "No, you've got it all wrong, let's try again.", "duel_accept", []],
+
+  
+################################################  # Duel Mod End  ################################################
 ]
