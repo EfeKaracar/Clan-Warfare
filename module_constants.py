@@ -19,6 +19,7 @@ player_knows_how_to_play = 1001
 player_skill_level = 1002   
 player_hp = 1000
 player_thought_on_bl = 1003
+player_death_music = 1004
 
 this_guy_only_s = 1004
 this_guy_only_hilt_spams = 1005

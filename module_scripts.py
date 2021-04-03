@@ -50798,6 +50798,9 @@ scripts = [
         
         (store_random_in_range, ":random", 50, 100),
         (troop_set_slot, ":troops", player_hp, ":random"),
+        
+        (store_random_in_range, ":hp", 100, 300),
+        (troop_set_slot, ":troops", player_hp, ":hp"),
     (try_end),
     
     # (troop_set_slot, "trp_knight_3_3", this_guy_only_s, 1),

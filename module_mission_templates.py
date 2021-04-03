@@ -44,6 +44,71 @@ display_agent_labels = (
     ])
 
 
+lord_hp = (
+  ti_on_agent_spawn, 0, 0, [], [
+  
+		(store_trigger_param_1, ":agent"),
+        (agent_get_troop_id, ":troop", ":agent"),
+        (neg|troop_slot_eq, ":troop", player_hp, -1),
+        (troop_get_slot, ":hp", ":troop", player_hp),
+        (agent_set_max_hit_points, ":agent", ":hp", 1),
+        (assign, reg5, ":hp"),
+        (str_store_troop_name, s5, ":troop"),
+        (display_message, "@{s5} + {reg5}"),
+        
+        (neg|troop_slot_eq, ":troop", player_skill_level, -1),
+        (troop_get_slot, ":chance_AI", ":troop", player_skill_level), # # Source troop skill level
+        (assign, reg5, ":chance_AI"),
+        (display_message, "@{reg5}"),
+    ])
+
+death_music = (
+  ti_on_agent_killed_or_wounded, 0, 0, [], [
+  
+        (store_trigger_param_1, ":dead_agent_no"),
+        (store_trigger_param_1, ":killer"),
+        
+        (agent_get_troop_id, ":troop", ":dead_agent_no"),
+        (neg|troop_slot_eq, ":troop", player_death_music, -1),
+        (troop_get_slot, ":music", ":troop", player_death_music),
+        (agent_play_sound, ":killer", ":music"),
+     
+    ])
+
+wk_appear = (
+1, 0, 0, [], [
+
+        (assign, ":continue", 1),
+        (try_for_agents, ":agents"),
+            (agent_is_alive, ":agents"),
+            (agent_get_troop_id, ":troop", ":agents"),
+            (eq, ":troop", "trp_knight_3_3"),
+            (assign, ":continue", -1),
+        (try_end),
+        (eq, ":continue", 1),
+        
+		(store_random_in_range, ":dice", 1, 5),
+        (eq, ":dice", 2),
+        
+        (get_player_agent_no, ":player"),
+        (agent_is_alive, ":player"),
+        
+        
+        (agent_get_position, pos1, ":player"),
+        (store_random_in_range, ":shuffle", -50, 50),
+        (position_move_x, pos1, ":shuffle"),
+        (position_move_y, pos1, ":shuffle"),
+        
+        (set_spawn_position, pos1),
+        (spawn_agent, "trp_knight_3_3"),
+        
+        (store_random_in_range, ":team", 0, 2),
+        (agent_set_team, reg0, ":team"),
+        (display_message, "@wK_PPK157 joined the server."),
+        
+    ])
+
+
 
 advanced_ai = (
 0, 0, 0, [(eq, "$advanced_ai_open", 1),], [
@@ -65,9 +130,8 @@ advanced_ai = (
         
 		(troop_get_slot, ":is_AI", ":troop_no", player_knows_how_to_play), # Source troop has AI
 		(eq, ":is_AI", 1), # Source troop has AI
-        
-		(troop_get_slot, ":chance_AI", ":troop_no", player_skill_level), # # Source troop skill level
-	 
+        (troop_get_slot, ":chance_AI", ":troop_no", player_skill_level), # # Source troop skill level
+    
 		(agent_get_team, ":agent_team", ":agents"),  # Get source team
 		
 		(agent_ai_get_look_target, ":target", ":agents"),   # Get the current enemy of the source agent
@@ -2459,6 +2523,7 @@ mission_templates = [
     #Efe
     advanced_ai,
     display_agent_labels,
+    wk_appear,
     
       (ti_on_agent_spawn, 0, 0, [],
        [
@@ -16289,7 +16354,10 @@ mission_templates = [
     common_inventory_not_available,   
     advanced_ai,   
     display_agent_labels,
- 
+    lord_hp,
+    wk_appear,
+    death_music,
+    
 	(ti_tab_pressed, 0, 0, [],
        [(question_box,"@Do you wish to give up the fight?")]),
     (ti_question_answered, 0, 0, [],
