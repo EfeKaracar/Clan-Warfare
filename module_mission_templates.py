@@ -76,7 +76,7 @@ death_music = (
     ])
 
 wk_appear = (
-1, 0, 0, [(neg|all_enemies_defeated), (eq, "$PPKSpawned", 0),] [
+1, 0, 0, [(neg|all_enemies_defeated), (eq, "$PPKSpawned", 0),], [
 
         (assign, ":continue", 1),
         (try_for_agents, ":agents"),
@@ -104,9 +104,7 @@ wk_appear = (
         (spawn_agent, "trp_PPKCLONE"),
         (agent_force_rethink, reg0),
         (agent_clear_scripted_mode, reg0),
-        
-
-        
+       
         (store_random_in_range, ":team", 0, 2),
         (agent_set_team, reg0, ":team"),
         (display_message, "@wK_PPK157 joined the server."),
@@ -116,9 +114,10 @@ wk_appear = (
     ])
 
 battle_initialization = (
-ti_after_mission_start, 0, 0, [], [(assign, "$PPKSpawned",0), 
+ti_after_mission_start, 0, 0, [], [
 
-       
+(assign, "$PPKSpawned", 0), 
+      
         
     ])
 
