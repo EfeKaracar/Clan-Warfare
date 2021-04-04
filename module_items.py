@@ -1277,4 +1277,56 @@ items = [
 ["ccoop_new_items_end", "Items End", [("shield_round_a",0)], 0, 0, 1, 0, 0],
 #INVASION MODE END
 
+
+["roxhard_horse","Wappaw Roxhard's Rocket", [("courser",0),
+("courser",imodbits_horse_good)],
+ itp_type_horse, 0, 
+ 810,abundance(60)|hit_points(50)|body_armor(18)|
+ difficulty(0)|horse_speed(75)|horse_maneuver(15)|
+    horse_charge(50)|horse_scale(108),imodbits_horse_basic|imodbit_champion],
+
+["marquis_hammer",   "Marquis' Demolisher", [("maul_d",0)], 
+itp_crush_through|itp_type_two_handed_wpn|itp_can_knock_down|itp_primary|itp_two_handed|itp_wooden_parry|itp_wooden_attack|itp_unbalanced, itc_nodachi|itcf_carry_spear, 
+290 , weight(7)|difficulty(0)|spd_rtng(90) | 
+weapon_length(75)|swing_damage(45 , blunt) |
+ thrust_damage(0 ,  pierce),imodbits_mace ],
+
+["kradle_smash", "GK Kr8dle's Smash", [("military_hammer",0)],
+ itp_type_one_handed_wpn|itp_can_knock_down| 
+ itp_primary|itp_wooden_parry, itc_scimitar|itcf_carry_mace_left_hip, 
+317 , weight(50)|difficulty(0)|spd_rtng(95) | 
+weapon_length(70)|swing_damage(31 , blunt) | 
+thrust_damage(0 ,  pierce),imodbits_mace ],
+
+
+["thunder_lawl",  "tK Thunderbeu's Mauler", [("awl_pike_a",0)], 
+itp_type_two_handed_wpn|itp_offset_lance| 
+itp_primary|itp_penalty_with_shield|itp_wooden_parry, 
+itc_cutting_spear|itcf_carry_spear,
+ 385 , weight(2.25)|difficulty(0)|spd_rtng(89) | 
+ weapon_length(185)|swing_damage(20 , blunt) | 
+ thrust_damage(32 ,  pierce),imodbits_polearm ],
+
+["sigi_sword", "tK Sigi's Slasher", [("sword_medieval_d_long",0),("sword_medieval_d_long_scabbard", ixmesh_carry)], itp_type_one_handed_wpn|itp_merchandise|itp_primary, itc_longsword|itcf_carry_sword_left_hip|itcf_show_holster_when_drawn,
+ 550 , weight(1.8)|difficulty(0)|spd_rtng(96) | weapon_length(105)|swing_damage(33 , cut) | thrust_damage(28 ,  pierce),imodbits_sword ],
+ 
+["ebdanian_sword", "RCC Ebdanian's Toothpick", 
+[("sword_viking_a_small",0),("sword_viking_a_small_scabbard",
+ ixmesh_carry)], itp_type_one_handed_wpn|itp_primary, 
+ itc_longsword|itcf_carry_sword_left_hip|itcf_show_holster_when_drawn,
+ 280 , weight(1.25)|difficulty(0)|spd_rtng(113) | 
+ weapon_length(86)|swing_damage(32 , cut) | thrust_damage(24 , 
+ pierce),imodbits_sword_high ],
+
+["achilles_boots",  "wK Achilles' Footshot Counter", 
+[("light_leather_boots",0)], itp_type_foot_armor
+ | itp_attach_armature,0, 91 , weight(1)|abundance(100)|head_armor(0)|
+ body_armor(0)|leg_armor(42)|difficulty(0) ,imodbits_cloth ],
+
+["nickdean_shield", "Wappaw nickdean's Defender",   [("tableau_shield_kite_4" ,0)], itp_merchandise|itp_type_shield, itcf_carry_kite_shield,  
+360 , weight(2.5)|hit_points(900)|body_armor(23)|spd_rtng(100)|
+shield_width(30)|shield_height(50),imodbits_shield,
+ [(ti_on_init_item, 
+ [(store_trigger_param_1, ":agent_no"),(store_trigger_param_2, ":troop_no"),(call_script, "script_shield_item_set_banner", "tableau_kite_shield_4", ":agent_no", ":troop_no")])]],
+
 ]

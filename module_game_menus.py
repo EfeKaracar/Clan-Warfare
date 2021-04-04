@@ -55,6 +55,11 @@ game_menus = [
         [
             (change_screen_map),
             (troop_add_items, "trp_player", "itm_great_sword", 1),
+            (troop_add_items, "trp_player", "itm_leather_boots", 1),
+            (troop_add_items, "trp_player", "itm_leather_jerkin", 1),
+            (troop_add_items, "trp_player", "itm_roxhard_horse", 1),
+            (troop_add_items, "trp_player", "itm_marquis_hammer", 1),
+            (troop_equip_items, "trp_player"),
             (troop_raise_attribute, "trp_player", ca_strength, 10),
         ]
         ),

@@ -96,7 +96,7 @@ wk_appear = (
         
         
         (agent_get_position, pos1, ":player"),
-        (store_random_in_range, ":shuffle", -50, 50),
+        (store_random_in_range, ":shuffle", -250, 250),
         (position_move_x, pos1, ":shuffle"),
         (position_move_y, pos1, ":shuffle"),
         
@@ -112,6 +112,27 @@ wk_appear = (
         (assign, "$PPKSpawned", 1),
         
     ])
+
+looting_artifacts = (
+ti_on_agent_killed_or_wounded, 0, 0, [], [
+
+(store_trigger_param_1, ":dead"),
+(store_trigger_param_2, ":killer"),
+
+(agent_get_troop_id, ":troop", ":dead"),
+(neg|troop_slot_eq, ":troop", player_special_loot, -1),
+(troop_get_slot, ":item", ":troop", player_special_loot),
+(store_random_in_range, ":chance", 0, 10),
+(eq, ":chance", 8),
+(troop_add_items, "trp_player", ":item", 1),
+(str_store_item_name, s5, ":item"),
+(str_store_troop_name, s6, ":troop"),
+(display_message, "@You looted {s5} from {s6}"),
+(troop_set_slot, ":troop", player_special_loot, -1),
+
+
+],
+),
 
 battle_initialization = (
 ti_after_mission_start, 0, 0, [], [

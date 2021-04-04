@@ -21,6 +21,8 @@ player_hp = 1000
 player_thought_on_bl = 1003
 player_death_music = 1004
 
+player_special_loot = 1100
+
 this_guy_only_s = 1004
 this_guy_only_hilt_spams = 1005
 this_guy_only_outreaches = 1006
