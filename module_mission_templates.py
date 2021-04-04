@@ -76,13 +76,14 @@ death_music = (
     ])
 
 wk_appear = (
-1, 0, 0, [], [
+1, 0, 0, [(neg|all_enemies_defeated), (eq, "$PPKSpawned", 0),] [
 
         (assign, ":continue", 1),
         (try_for_agents, ":agents"),
             (agent_is_alive, ":agents"),
             (agent_get_troop_id, ":troop", ":agents"),
-            (eq, ":troop", "trp_knight_3_3"),
+            (this_or_next|eq, ":troop", "trp_knight_4_2"),
+            (eq, ":troop", "trp_PPKCLONE"),
             (assign, ":continue", -1),
         (try_end),
         (eq, ":continue", 1),
@@ -100,14 +101,26 @@ wk_appear = (
         (position_move_y, pos1, ":shuffle"),
         
         (set_spawn_position, pos1),
-        (spawn_agent, "trp_knight_3_3"),
+        (spawn_agent, "trp_PPKCLONE"),
+        (agent_force_rethink, reg0),
+        (agent_clear_scripted_mode, reg0),
+        
+
         
         (store_random_in_range, ":team", 0, 2),
         (agent_set_team, reg0, ":team"),
         (display_message, "@wK_PPK157 joined the server."),
         
+        (assign, "$PPKSpawned", 1),
+        
     ])
 
+battle_initialization = (
+ti_after_mission_start, 0, 0, [], [(assign, "$PPKSpawned",0), 
+
+       
+        
+    ])
 
 
 advanced_ai = (
@@ -16357,6 +16370,7 @@ mission_templates = [
     lord_hp,
     wk_appear,
     death_music,
+    battle_initialization,
     
 	(ti_tab_pressed, 0, 0, [],
        [(question_box,"@Do you wish to give up the fight?")]),

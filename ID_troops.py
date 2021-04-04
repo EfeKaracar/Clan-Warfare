@@ -1070,3 +1070,4 @@ trp_coop_companion_equipment_ui_0_f = 1068
 trp_coop_companion_equipment_ui_1 = 1069
 trp_coop_companion_equipment_ui_1_f = 1070
 trp_coop_companion_equipment_sets_end = 1071
+trp_ppkclone = 1072
