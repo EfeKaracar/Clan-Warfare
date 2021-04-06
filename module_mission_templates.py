@@ -72,12 +72,76 @@ death_music = (
         (neg|troop_slot_eq, ":troop", player_death_music, -1),
         (troop_get_slot, ":music", ":troop", player_death_music),
         (agent_play_sound, ":killer", ":music"),
-     
     ])
+    
+new_players = (
+ti_after_mission_start, 0, 0, [], [
+
+(get_player_agent_no, ":player"),
+(agent_get_position, pos2, ":player"),
+(set_spawn_position, pos2),
+(store_random_in_range, ":number", 1, 1),
+(try_for_range, ":loop", 0, ":number"),
+    (store_random_in_range, ":dice", -50, 50),
+    (position_move_x, pos2, ":dice"),
+    (position_move_y, pos2, ":dice"),
+    (spawn_agent, "trp_bandit"),
+(try_end),
+
+
+]
+)
+
+new_players_ask_dumb_questions = (
+5, 0, 0, [], [
+
+(assign, ":continue", 0),
+(try_for_agents, ":newplayers"),
+    (agent_is_alive, ":newplayers"),
+    (agent_get_troop_id, ":troop", ":newplayers"),
+    (eq, ":troop", "trp_bandit"),
+    (assign, ":continue", 1),
+(try_end),
+(eq, ":continue", 1),
+(store_random_in_range, ":dialog", 0, 5),
+(try_begin),
+    (eq, ":dialog", 0),
+    (display_message, "@[New_Player] ez"),
+(else_try),
+    (eq, ":dialog", 1),
+    (display_message, "@[New_Player] how do I change my items ?"),
+(else_try),
+    (eq, ":dialog", 2),
+    (display_message, "@[New_Player] wow u so good"),
+(else_try),
+    (eq, ":dialog", 3), 
+    (display_message, "@[New_Player] i cant throw my sword ??"),
+(else_try),
+    (eq, ":dialog", 4),
+    (display_message, "@[New_Player] Hi"),
+(try_end),
+]
+)
+
+new_player_follow_player = (
+5, 0, 0, [], [
+(try_for_agents, ":newplayers"),
+    (agent_is_alive, ":newplayers"),
+    (agent_get_troop_id, ":troop", ":newplayers"),
+    (eq, ":troop", "trp_bandit"),
+    (get_player_agent_no, ":player"),
+    (agent_get_position, pos1, ":player"),
+    (agent_set_scripted_destination, ":newplayers", pos1, 0, 1),
+(try_end),
+]
+)
 
 wk_appear = (
 1, 0, 0, [(neg|all_enemies_defeated), (eq, "$PPKSpawned", 0),], [
 
+        (store_mission_timer_a, ":timer"),
+        (ge, ":timer", 30),
+        
         (assign, ":continue", 1),
         (try_for_agents, ":agents"),
             (agent_is_alive, ":agents"),
@@ -1641,6 +1705,17 @@ mission_templates = [
      (31,mtef_visitor_source,af_override_horse,0,1,[]),
      ],     
      [
+           #Efe
+          advanced_ai,   
+    display_agent_labels,
+    lord_hp,
+    wk_appear,
+    death_music,
+    battle_initialization,
+    new_player_follow_player,
+    new_players_ask_dumb_questions,
+    new_players,
+    
       (1, 0, ti_once, [], 
       [
         (store_current_scene, ":cur_scene"),
@@ -1921,6 +1996,18 @@ mission_templates = [
 	 (47,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
      ],
     [
+    
+          #Efe
+          advanced_ai,   
+    display_agent_labels,
+    lord_hp,
+    wk_appear,
+    death_music,
+    battle_initialization,
+    new_player_follow_player,
+    new_players_ask_dumb_questions,
+    new_players,
+    
       (ti_on_agent_spawn, 0, 0, [],
       [
         (store_trigger_param_1, ":agent_no"),
@@ -2180,6 +2267,17 @@ mission_templates = [
      (40,mtef_visitor_source,af_override_horse,0,1,[]),(41,mtef_visitor_source,af_override_horse,0,1,[]),(42,mtef_visitor_source,af_override_horse,0,1,[]),(43,mtef_visitor_source,af_override_horse,0,1,[]),(44,mtef_visitor_source,af_override_horse,0,1,[]),(45,mtef_visitor_source,af_override_horse,0,1,[]),(46,mtef_visitor_source,af_override_horse,0,1,[]),(47,mtef_visitor_source,af_override_horse,0,1,[]),
      ],
     [
+          #Efe
+          advanced_ai,   
+    display_agent_labels,
+    lord_hp,
+    wk_appear,
+    death_music,
+    battle_initialization,
+    new_player_follow_player,
+    new_players_ask_dumb_questions,
+    new_players,
+    
       (1, 0, ti_once, [], [
           (store_current_scene, ":cur_scene"),
           (scene_set_slot, ":cur_scene", slot_scene_visited, 1),
@@ -2256,6 +2354,17 @@ mission_templates = [
      (44,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),(45,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),(46,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),(47,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
      ],
     [
+          #Efe
+          advanced_ai,   
+    display_agent_labels,
+    lord_hp,
+    wk_appear,
+    death_music,
+    battle_initialization,
+    new_player_follow_player,
+    new_players_ask_dumb_questions,
+    new_players,
+    
       (ti_on_agent_spawn, 0, 0, [],
        [
          (store_trigger_param_1, ":agent_no"),
@@ -2315,6 +2424,18 @@ mission_templates = [
      (4,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_staff, itm_practice_boots]),
      ],
     [
+    
+          #Efe
+          advanced_ai,   
+    display_agent_labels,
+    lord_hp,
+    wk_appear,
+    death_music,
+    battle_initialization,
+    new_player_follow_player,
+    new_players_ask_dumb_questions,
+    new_players,
+    
       (ti_before_mission_start, 0, 0, [],
        [
          (assign, "$g_train_peasants_against_bandits_training_succeeded", 0),
@@ -2384,6 +2505,18 @@ mission_templates = [
      (31,mtef_visitor_source,af_castle_lord,0,1,[])
      ],
     [
+    
+          #Efe
+          advanced_ai,   
+    display_agent_labels,
+    lord_hp,
+    wk_appear,
+    death_music,
+    battle_initialization,
+    new_player_follow_player,
+    new_players_ask_dumb_questions,
+    new_players,
+    
       (ti_on_agent_spawn, 0, 0, [],
       [
         (store_trigger_param_1, ":agent_no"),
@@ -2444,6 +2577,17 @@ mission_templates = [
     ],
     [
       common_inventory_not_available,
+      #Efe
+          advanced_ai,   
+    display_agent_labels,
+    lord_hp,
+    wk_appear,
+    death_music,
+    battle_initialization,
+    new_player_follow_player,
+    new_players_ask_dumb_questions,
+    new_players,
+    
       (ti_tab_pressed, 0, 0, [(display_message,"str_cannot_leave_now")], []),
       (ti_before_mission_start, 0, 0, [], [(call_script, "script_change_banners_and_chest")]),
 
@@ -2512,6 +2656,16 @@ mission_templates = [
       common_inventory_not_available,
 
       common_battle_init_banner,
+            #Efe
+          advanced_ai,   
+    display_agent_labels,
+    lord_hp,
+    wk_appear,
+    death_music,
+    battle_initialization,
+    new_player_follow_player,
+    new_players_ask_dumb_questions,
+    new_players,
 
       (ti_tab_pressed, 0, 0, [],
        [(question_box,"str_do_you_want_to_retreat"),
@@ -2554,9 +2708,15 @@ mission_templates = [
      ],
     [
     #Efe
-    advanced_ai,
+    advanced_ai,   
     display_agent_labels,
+    lord_hp,
     wk_appear,
+    death_music,
+    battle_initialization,
+    new_player_follow_player,
+    new_players_ask_dumb_questions,
+    new_players,
     
       (ti_on_agent_spawn, 0, 0, [],
        [
@@ -3744,6 +3904,16 @@ mission_templates = [
       (20, mtef_visitor_source,0,0,1,[]),
     ],
     [
+          #Efe
+          advanced_ai,   
+    display_agent_labels,
+    lord_hp,
+    wk_appear,
+    death_music,
+    battle_initialization,
+    new_player_follow_player,
+    new_players_ask_dumb_questions,
+    new_players,
       (ti_before_mission_start, 0, 0, [], [(call_script, "script_change_banners_and_chest")]),
       
       common_arena_fight_tab_press,
@@ -3805,6 +3975,16 @@ mission_templates = [
       (15,mtef_visitor_source,af_override_weapons|af_override_horse|af_override_head,0,1,[]),
     ],
     [
+          #Efe
+          advanced_ai,   
+    display_agent_labels,
+    lord_hp,
+    wk_appear,
+    death_music,
+    battle_initialization,
+    new_player_follow_player,
+    new_players_ask_dumb_questions,
+    new_players,
       (ti_before_mission_start, 0, 0, [],
        [
          (assign, "$g_last_destroyed_gourds", 0),
@@ -15440,6 +15620,16 @@ mission_templates = [
       (3,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,20,[]),
     ],    
     [
+          #Efe
+          advanced_ai,   
+    display_agent_labels,
+    lord_hp,
+    wk_appear,
+    death_music,
+    battle_initialization,
+    new_player_follow_player,
+    new_players_ask_dumb_questions,
+    new_players,
       common_battle_init_banner,
     
       common_inventory_not_available,
@@ -15786,6 +15976,17 @@ mission_templates = [
 	  (47,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
     ],
     [
+    
+          #Efe
+          advanced_ai,   
+    display_agent_labels,
+    lord_hp,
+    wk_appear,
+    death_music,
+    battle_initialization,
+    new_player_follow_player,
+    new_players_ask_dumb_questions,
+    new_players,
       common_battle_init_banner,
     
       (ti_on_agent_spawn, 0, 0, [],
@@ -16385,12 +16586,16 @@ mission_templates = [
 ],   
 [      
     common_inventory_not_available,   
+    
     advanced_ai,   
     display_agent_labels,
     lord_hp,
     wk_appear,
     death_music,
     battle_initialization,
+    new_player_follow_player,
+    new_players_ask_dumb_questions,
+    new_players,
     
 	(ti_tab_pressed, 0, 0, [],
        [(question_box,"@Do you wish to give up the fight?")]),

@@ -47869,7 +47869,8 @@ scripts = [
      #(try_end),  
                
      #(set_visitor, 3, ":bandit_troop"),
-     (set_visitor, 3, "trp_bandit"),
+     # Efe
+     (set_visitor, 3, "trp_knight_1_20"),
 
      (assign, "$talked_with_merchant", 0),
      (set_jump_mission, "mt_alley_fight"),

@@ -1329,4 +1329,114 @@ shield_width(30)|shield_height(50),imodbits_shield,
  [(ti_on_init_item, 
  [(store_trigger_param_1, ":agent_no"),(store_trigger_param_2, ":troop_no"),(call_script, "script_shield_item_set_banner", "tableau_kite_shield_4", ":agent_no", ":troop_no")])]],
 
+["throwing_axes", "Balion KissMyAxe's AxeKissers", [("throwing_axe_a",0)],
+ itp_type_thrown |itp_merchandise|itp_primary|itp_next_item_as_melee,
+ itcf_throw_axe,
+490, weight(5)|difficulty(3)|spd_rtng(78) | shoot_speed(18) | 
+thrust_damage(39,cut)|max_ammo(8)|weapon_length(53),
+imodbits_thrown_minus_heavy ],
+
+["great_helmet", "OE Danate's Legacy of Akaria", [("great_helmet_new",0)], 
+itp_merchandise| itp_type_head_armor|itp_covers_head,0, 980 , 
+weight(2.75)|abundance(100)|head_armor(63)|body_armor(0)|leg_armor(0)
+|difficulty(10) ,imodbits_plate ],
+
+
+["leather_boots", "GK Leonidas' Backsteppers", [("leather_boots_a",0)],
+ itp_merchandise| itp_type_foot_armor  |itp_civilian | 
+ itp_attach_armature,0,
+ 174 , weight(1.25)|abundance(100)|head_armor(0)|body_armor(0)|
+ leg_armor(16)|difficulty(0) ,imodbits_cloth ],
+
+["warhorse","Scott Ray's Warhorse", [("warhorse_chain",0)], itp_merchandise|itp_type_horse, 0, 1224,abundance(50)|hit_points(165)|body_armor(40)|difficulty(4)|horse_speed(40)|horse_maneuver(41)|horse_charge(28)|horse_scale(110),imodbits_horse_basic|imodbit_champion],
+
+["one_handed_war_axe_a", "OE Oodle's Mayhem", [("one_handed_war_axe_a",0)], itp_type_one_handed_wpn|itp_merchandise| itp_primary|itp_secondary|itp_bonus_against_shield|itp_wooden_parry, itc_scimitar|itcf_carry_axe_left_hip,
+ 87 , weight(1.5)|difficulty(9)|spd_rtng(98) | weapon_length(71)|swing_damage(32 , cut) | thrust_damage(0 ,  pierce),imodbits_axe ],
+
+["long_axe_b", "GK Derpy Hoove's Carver", [("long_axe_b",0)], 
+itp_type_polearm| itp_two_handed|itp_primary|itp_bonus_against_shield|
+itp_wooden_parry|itp_next_item_as_melee|itp_unbalanced|itp_merchandise, 
+itc_staff|itcf_carry_axe_back,
+ 510 , weight(5.0)|difficulty(12)|spd_rtng(102) | weapon_length(125)|
+ swing_damage(60 , cut) | thrust_damage(28 ,  blunt),imodbits_axe ],
+
+["pike", "Wappaw Pierce's Piercer", [("spear_a_3m",0)], 
+itp_type_polearm|itp_merchandise| 
+itp_cant_use_on_horseback|itp_primary|itp_penalty_with_shield|itp_wooden_parry|
+itp_two_handed, itc_cutting_spear,
+125 , weight(3.0)|difficulty(0)|spd_rtng(95) | weapon_length(245)
+|swing_damage(16 , blunt) | thrust_damage(36 ,  pierce),imodbits_polearm ],
+
+["polehammer", "GK Deaf Blind Dave's Banhammer", 
+[("pole_hammer",0)], itp_type_polearm|itp_offset_lance|
+ itp_primary|itp_two_handed|itp_wooden_parry, itc_staff,
+ 169 , weight(7)|difficulty(18)|spd_rtng(50) | 
+ weapon_length(126)|swing_damage(50 , blunt) | 
+ thrust_damage(35 ,  blunt),imodbits_polearm ],
+
+["crossbow", "tK Jeffrey's Equalizer",  [("crossbow_a",0)], 
+itp_type_crossbow |itp_merchandise|itp_primary|itp_two_handed|
+itp_cant_reload_on_horseback ,itcf_shoot_crossbow|itcf_carry_crossbow_back, 
+182 , weight(3)|difficulty(8)|spd_rtng(43) | shoot_speed(66) |
+ thrust_damage(49,pierce)|max_ammo(1),imodbits_crossbow ],
+
+["plate_armor", "OE Magerick's Cuirass ", [("full_plate_armor",0)],
+ itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0,
+ 6553 , weight(27)|abundance(100)|head_armor(0)|body_armor(55)|
+ leg_armor(17)|difficulty(9) ,imodbits_plate ],
+
+["sword_two_handed_a", "No Feint Fred's Feinter", [("sword_two_handed_a",0)], 
+itp_type_two_handed_wpn|itp_merchandise|itp_two_handed|itp_primary, 
+itc_greatsword|itcf_carry_sword_back,
+ 1123 , weight(2.75)|difficulty(10)|spd_rtng(96) | 
+ weapon_length(120)|swing_damage(42 , cut) | thrust_damage(29 ,  
+ pierce),imodbits_sword_high ],
+
+["javelin", "KoA Fisherman's Parthian Javelins", [("javelin",0),
+("javelins_quiver_new", ixmesh_carry)], itp_type_thrown |
+itp_merchandise|itp_primary|itp_next_item_as_melee ,
+itcf_throw_javelin|itcf_carry_quiver_back|itcf_show_holster_when_drawn, 
+300, weight(4)|difficulty(1)|spd_rtng(91) | shoot_speed(25) |
+ thrust_damage(34 ,  pierce)|max_ammo(5)|weapon_length(75),imodbits_thrown ],
+
+["great_lance", "tK Aporta's Patience", [("heavy_lance",0)], 
+itp_couchable|itp_type_polearm|itp_merchandise| itp_primary|
+itp_penalty_with_shield|itp_wooden_parry, itc_greatlance, 
+ 410 , weight(5)|difficulty(11)|spd_rtng(55) | weapon_length(240)
+ |swing_damage(0 , cut) | thrust_damage(21 ,  pierce),imodbits_polearm ],
+
+["sword_two_handed_a", "OE Ordyn's Chisel", [("sword_two_handed_a",0)], 
+itp_type_two_handed_wpn|itp_merchandise|itp_two_handed|itp_primary, 
+itc_greatsword|itcf_carry_sword_back,
+ 1123 , weight(2.75)|difficulty(10)|spd_rtng(96) | 
+ weapon_length(120)|swing_damage(42 , cut) | thrust_damage(29 ,  
+ pierce),imodbits_sword_high ],
+
+["hide_armor", "RaTs Roberta's Rat Hide", [("nobleman_outf",0)], 
+itp_type_body_armor|itp_covers_legs|itp_civilian,0, 348 , 
+weight(4)|abundance(100)|head_armor(0)|body_armor(14)|
+leg_armor(10)|difficulty(0) ,imodbits_cloth ],
+
+
+["long_bow","wK Lagstro's Longbow", [("long_bow",0),("long_bow_carry",ixmesh_carry)], itp_type_bow |itp_merchandise|itp_primary|itp_two_handed ,itcf_shoot_bow|itcf_carry_bow_back, 
+145 , weight(1.75)|difficulty(3)|spd_rtng(79) | shoot_speed(56) | thrust_damage(22 ,  pierce),imodbits_bow ],
+
+ ["arrows","GK Delion's Quiver", [("arrow",0),("flying_missile",ixmesh_flying_ammo),("quiver", ixmesh_carry)], itp_type_arrows|itp_merchandise|itp_default_ammo, itcf_carry_quiver_back, 
+ 72,weight(3)|abundance(160)|weapon_length(95)|thrust_damage(1,pierce)|max_ammo(30),imodbits_missile],
+ 
+ ["arrows","GK Sparhawk's Quiver", [("arrow",0),("flying_missile",ixmesh_flying_ammo),("quiver", ixmesh_carry)], itp_type_arrows|itp_merchandise|itp_default_ammo, itcf_carry_quiver_back, 
+ 72,weight(3)|abundance(160)|weapon_length(95)|thrust_damage(1,pierce)|max_ammo(30),imodbits_missile],
+
+ ["bolts","Wappaw Zacty's Shield-Splitters", [("bolt",0),("flying_missile",ixmesh_flying_ammo),("bolt_bag", ixmesh_carry),("bolt_bag_b", ixmesh_carry|imodbit_large_bag)], itp_type_bolts|itp_merchandise|itp_default_ammo|itp_can_penetrate_shield, itcf_carry_quiver_right_vertical, 
+ 64,weight(2.25)|abundance(90)|weapon_length(63)|thrust_damage(1,pierce)|max_ammo(29),imodbits_missile],
+
+
+["great_lance", "wK Calamity's The Godfather", [("heavy_lance",0)], 
+itp_couchable|itp_type_polearm|itp_merchandise| itp_primary|
+itp_penalty_with_shield|itp_wooden_parry, itc_greatlance, 
+ 410 , weight(5)|difficulty(11)|spd_rtng(55) | weapon_length(240)
+ |swing_damage(0 , cut) | thrust_damage(21 ,  pierce),imodbits_polearm ],
+
+["hunter","tK Heat's Heiffer", [("hunting_horse",0),("hunting_horse",imodbits_horse_good)], itp_merchandise|itp_type_horse, 0, 810,abundance(60)|hit_points(160)|body_armor(18)|difficulty(3)|horse_speed(43)|horse_maneuver(44)|horse_charge(24)|horse_scale(108),imodbits_horse_basic|imodbit_champion],
+ 
 ]
