@@ -134,6 +134,19 @@ scripts = [
       (faction_set_slot, "fac_culture_6", slot_faction_tier_3_troop, "trp_sarranid_archer"),
       (faction_set_slot, "fac_culture_6", slot_faction_tier_4_troop, "trp_sarranid_horseman"),
       (faction_set_slot, "fac_culture_6", slot_faction_tier_5_troop, "trp_sarranid_mamluke"),
+        #Efe
+        
+      (faction_set_slot, "fac_culture_7", slot_faction_tier_1_troop, "trp_sarranid_recruit"),
+      (faction_set_slot, "fac_culture_7", slot_faction_tier_2_troop, "trp_sarranid_footman"),
+      (faction_set_slot, "fac_culture_7", slot_faction_tier_3_troop, "trp_sarranid_archer"),
+      (faction_set_slot, "fac_culture_7", slot_faction_tier_4_troop, "trp_sarranid_horseman"),
+      (faction_set_slot, "fac_culture_7", slot_faction_tier_5_troop, "trp_sarranid_mamluke"),
+
+      (faction_set_slot, "fac_culture_8", slot_faction_tier_1_troop, "trp_sarranid_recruit"),
+      (faction_set_slot, "fac_culture_8", slot_faction_tier_2_troop, "trp_sarranid_footman"),
+      (faction_set_slot, "fac_culture_8", slot_faction_tier_3_troop, "trp_sarranid_archer"),
+      (faction_set_slot, "fac_culture_8", slot_faction_tier_4_troop, "trp_sarranid_horseman"),
+      (faction_set_slot, "fac_culture_8", slot_faction_tier_5_troop, "trp_sarranid_mamluke"),
 
       (faction_set_slot, "fac_culture_1", slot_faction_town_walker_male_troop, "trp_town_walker_1"),
       (faction_set_slot, "fac_culture_1", slot_faction_town_walker_female_troop, "trp_town_walker_2"),
@@ -177,6 +190,20 @@ scripts = [
       (faction_set_slot, "fac_culture_6", slot_faction_town_spy_male_troop, "trp_spy_walker_1"),
       (faction_set_slot, "fac_culture_6", slot_faction_town_spy_female_troop, "trp_spy_walker_2"),
 
+      (faction_set_slot, "fac_culture_7", slot_faction_town_walker_male_troop, "trp_sarranid_townsman"),
+      (faction_set_slot, "fac_culture_7", slot_faction_town_walker_female_troop, "trp_sarranid_townswoman"),
+      (faction_set_slot, "fac_culture_7", slot_faction_village_walker_male_troop, "trp_sarranid_townsman"),
+      (faction_set_slot, "fac_culture_7", slot_faction_village_walker_female_troop, "trp_sarranid_townswoman"),
+      (faction_set_slot, "fac_culture_7", slot_faction_town_spy_male_troop, "trp_spy_walker_1"),
+      (faction_set_slot, "fac_culture_7", slot_faction_town_spy_female_troop, "trp_spy_walker_2"),
+
+      (faction_set_slot, "fac_culture_8", slot_faction_town_walker_male_troop, "trp_sarranid_townsman"),
+      (faction_set_slot, "fac_culture_8", slot_faction_town_walker_female_troop, "trp_sarranid_townswoman"),
+      (faction_set_slot, "fac_culture_8", slot_faction_village_walker_male_troop, "trp_sarranid_townsman"),
+      (faction_set_slot, "fac_culture_8", slot_faction_village_walker_female_troop, "trp_sarranid_townswoman"),
+      (faction_set_slot, "fac_culture_8", slot_faction_town_spy_male_troop, "trp_spy_walker_1"),
+      (faction_set_slot, "fac_culture_8", slot_faction_town_spy_female_troop, "trp_spy_walker_2"),
+
       (try_begin),
         (eq, "$cheat_mode", 1),
         (assign, reg3, "$cheat_mode"),
@@ -184,29 +211,38 @@ scripts = [
       (try_end),
       
 # Factions:
-      (faction_set_slot, "fac_kingdom_1",  slot_faction_culture, "fac_culture_1"),
-      (faction_set_slot, "fac_kingdom_1",  slot_faction_leader, "trp_kingdom_1_lord"),
-	  (troop_set_slot, "trp_kingdom_1_lord", slot_troop_renown, 1200),
+        (faction_set_slot, "fac_kingdom_1",  slot_faction_culture, "fac_culture_1"),
+        (faction_set_slot, "fac_kingdom_1",  slot_faction_leader, "trp_kingdom_1_lord"),
+        (troop_set_slot, "trp_kingdom_1_lord", slot_troop_renown, 1200),
+        
+        (faction_set_slot, "fac_kingdom_2",  slot_faction_culture, "fac_culture_2"),
+        (faction_set_slot, "fac_kingdom_2",  slot_faction_leader, "trp_kingdom_2_lord"),
+        (troop_set_slot, "trp_kingdom_2_lord", slot_troop_renown, 1200),
+        
+        (faction_set_slot, "fac_kingdom_3",  slot_faction_culture, "fac_culture_3"),
+        (faction_set_slot, "fac_kingdom_3",  slot_faction_leader, "trp_kingdom_3_lord"),
+        (troop_set_slot, "trp_kingdom_3_lord", slot_troop_renown, 1200),
+        
+        (faction_set_slot, "fac_kingdom_4",  slot_faction_culture, "fac_culture_4"),
+        (faction_set_slot, "fac_kingdom_4",  slot_faction_leader, "trp_kingdom_4_lord"),
+        (troop_set_slot, "trp_kingdom_4_lord", slot_troop_renown, 1200),
+        
+        (faction_set_slot, "fac_kingdom_5",  slot_faction_culture, "fac_culture_5"),
+        (faction_set_slot, "fac_kingdom_5",  slot_faction_leader, "trp_kingdom_5_lord"),
+        (troop_set_slot, "trp_kingdom_5_lord", slot_troop_renown, 1200),
+        
+        (faction_set_slot, "fac_kingdom_6",  slot_faction_culture, "fac_culture_6"),
+        (faction_set_slot, "fac_kingdom_6",  slot_faction_leader, "trp_kingdom_6_lord"),
+        (troop_set_slot, "trp_kingdom_6_lord", slot_troop_renown, 1200),
+        
+        #Efe
+        (faction_set_slot, "fac_kingdom_7",  slot_faction_culture, "fac_culture_7"),
+        (faction_set_slot, "fac_kingdom_7",  slot_faction_leader, "trp_kingdom_7_lord"),
+        (troop_set_slot, "trp_kingdom_7_lord", slot_troop_renown, 1200),
 	  
-      (faction_set_slot, "fac_kingdom_2",  slot_faction_culture, "fac_culture_2"),
-      (faction_set_slot, "fac_kingdom_2",  slot_faction_leader, "trp_kingdom_2_lord"),
-	  (troop_set_slot, "trp_kingdom_2_lord", slot_troop_renown, 1200),
-
-      (faction_set_slot, "fac_kingdom_3",  slot_faction_culture, "fac_culture_3"),
-      (faction_set_slot, "fac_kingdom_3",  slot_faction_leader, "trp_kingdom_3_lord"),
-	  (troop_set_slot, "trp_kingdom_3_lord", slot_troop_renown, 1200),
-
-      (faction_set_slot, "fac_kingdom_4",  slot_faction_culture, "fac_culture_4"),
-      (faction_set_slot, "fac_kingdom_4",  slot_faction_leader, "trp_kingdom_4_lord"),
-	  (troop_set_slot, "trp_kingdom_4_lord", slot_troop_renown, 1200),
-
-      (faction_set_slot, "fac_kingdom_5",  slot_faction_culture, "fac_culture_5"),
-      (faction_set_slot, "fac_kingdom_5",  slot_faction_leader, "trp_kingdom_5_lord"),
-	  (troop_set_slot, "trp_kingdom_5_lord", slot_troop_renown, 1200),
-
-      (faction_set_slot, "fac_kingdom_6",  slot_faction_culture, "fac_culture_6"),
-      (faction_set_slot, "fac_kingdom_6",  slot_faction_leader, "trp_kingdom_6_lord"),
-	  (troop_set_slot, "trp_kingdom_6_lord", slot_troop_renown, 1200),
+        (faction_set_slot, "fac_kingdom_8",  slot_faction_culture, "fac_culture_8"),
+        (faction_set_slot, "fac_kingdom_8",  slot_faction_leader, "trp_kingdom_8_lord"),
+        (troop_set_slot, "trp_kingdom_8_lord", slot_troop_renown, 1200),
 	  
       (assign, ":player_faction_culture", "fac_culture_1"),
       (faction_set_slot, "fac_player_supporters_faction",  slot_faction_culture, ":player_faction_culture"),
@@ -47872,7 +47908,7 @@ scripts = [
                
      #(set_visitor, 3, ":bandit_troop"),
      # Efe
-     (set_visitor, 3, "trp_knight_1_20"),
+     (set_visitor, 3, "trp_daemonClone"),
 
      (assign, "$talked_with_merchant", 0),
      (set_jump_mission, "mt_alley_fight"),

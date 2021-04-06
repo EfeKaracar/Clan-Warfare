@@ -77,6 +77,9 @@ death_music = (
 new_players = (
 ti_after_mission_start, 0, 0, [], [
 
+(store_mission_timer_a, ":timer"),
+(ge, ":timer", 5),
+
 (get_player_agent_no, ":player"),
 (agent_get_position, pos2, ":player"),
 (set_spawn_position, pos2),
@@ -136,6 +139,71 @@ new_player_follow_player = (
 ]
 )
 
+corpsekicking_enable = (
+ti_on_agent_killed_or_wounded,0,0, [], [
+
+(store_trigger_param_1, ":dead"),
+
+(agent_get_troop_id, ":troop", ":dead"),
+(troop_is_hero, ":troop"),
+
+(assign, "$corpseTarget", ":troop"),
+
+])
+
+corpsekicking = (
+0,0,0, [(ge, "$corpseTarget", 0),], [
+
+(get_player_agent_no, ":player"),
+(agent_get_animation, ":cur_animation", ":player"),
+(this_or_next|eq, ":cur_animation", "anim_kick_left_leg"),
+(eq, ":cur_animation", "anim_kick_right_leg"),
+(str_store_troop_name, s5, "$corpseTarget"),
+(call_script, "script_change_player_honor", -5),
+(call_script, "script_change_player_relation_with_troop", "$corpseTarget", -10),
+(add_xp_as_reward, 250),
+(assign, "$corpseTarget", -1),
+(display_message, "@You corpsekicked {s5}!"),
+
+])
+
+rempica = (
+5, 0, 0, [(neg|all_enemies_defeated), (eq, "$RempicaSpawned", 0),], [
+
+        (store_mission_timer_a, ":timer"),
+        (ge, ":timer", 5),
+        
+        (store_normalized_team_count, ":count", 0),
+        (ge, ":count", 20),
+        
+        (assign, ":continue", 1),
+        (try_for_agents, ":agents"),
+            (agent_is_alive, ":agents"),
+            (agent_get_troop_id, ":troop", ":agents"),
+            (this_or_next|eq, ":troop", "trp_knight_4_2"),
+            (eq, ":troop", "trp_rempicaClone"),
+            (assign, ":continue", -1),
+        (try_end),
+        (eq, ":continue", 1),
+        
+		# (store_random_in_range, ":dice", 1, 20),
+        # (eq, ":dice", 15),
+        
+        (get_player_agent_no, ":player"),
+        (agent_is_alive, ":player"),
+        
+        (set_spawn_position, "$player_initial_position"),
+        (spawn_agent, "trp_rempicaClone"),
+        (agent_force_rethink, reg0),
+        (agent_clear_scripted_mode, reg0),
+       
+        (agent_set_team, reg0, 1),
+        (display_message, "@Rempica joined the server. He is teamkilling!"),
+        
+        (assign, "$RempicaSpawned", 1),
+        
+    ])
+
 wk_appear = (
 1, 0, 0, [(neg|all_enemies_defeated), (eq, "$PPKSpawned", 0),], [
 
@@ -158,13 +226,7 @@ wk_appear = (
         (get_player_agent_no, ":player"),
         (agent_is_alive, ":player"),
         
-        
-        (agent_get_position, pos1, ":player"),
-        (store_random_in_range, ":shuffle", -250, 250),
-        (position_move_x, pos1, ":shuffle"),
-        (position_move_y, pos1, ":shuffle"),
-        
-        (set_spawn_position, pos1),
+        (set_spawn_position, "$player_initial_position"),
         (spawn_agent, "trp_PPKCLONE"),
         (agent_force_rethink, reg0),
         (agent_clear_scripted_mode, reg0),
@@ -202,7 +264,10 @@ battle_initialization = (
 ti_after_mission_start, 0, 0, [], [
 
 (assign, "$PPKSpawned", 0), 
-      
+(assign, "$RempicaSpawned", 0),
+(get_player_agent_no, ":player"),
+(agent_get_position, pos1, ":player"),
+(assign, "$player_initial_position", pos1),
         
     ])
 
@@ -2717,6 +2782,9 @@ mission_templates = [
     new_player_follow_player,
     new_players_ask_dumb_questions,
     new_players,
+    rempica,
+    corpsekicking,
+    corpsekicking_enable,
     
       (ti_on_agent_spawn, 0, 0, [],
        [
@@ -16586,7 +16654,7 @@ mission_templates = [
 ],   
 [      
     common_inventory_not_available,   
-    
+    #Efe
     advanced_ai,   
     display_agent_labels,
     lord_hp,
@@ -16596,6 +16664,9 @@ mission_templates = [
     new_player_follow_player,
     new_players_ask_dumb_questions,
     new_players,
+    rempica,
+    corpsekicking,
+    corpsekicking_enable,
     
 	(ti_tab_pressed, 0, 0, [],
        [(question_box,"@Do you wish to give up the fight?")]),

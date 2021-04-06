@@ -29,12 +29,14 @@ factions = [
 
   ("dark_knights","{!}Dark Knights", 0, 0.5,[("innocents",-0.9),("player_faction",-0.4)], []),
 
-  ("culture_1",  "{!}culture_1", 0, 0.9, [], []),
-  ("culture_2",  "{!}culture_2", 0, 0.9, [], []),
-  ("culture_3",  "{!}culture_3", 0, 0.9, [], []),
-  ("culture_4",  "{!}culture_4", 0, 0.9, [], []),
-  ("culture_5",  "{!}culture_5", 0, 0.9, [], []),
-  ("culture_6",  "{!}culture_6", 0, 0.9, [], []),
+    ("culture_1",  "{!}culture_1", 0, 0.9, [], []),
+    ("culture_2",  "{!}culture_2", 0, 0.9, [], []),
+    ("culture_3",  "{!}culture_3", 0, 0.9, [], []),
+    ("culture_4",  "{!}culture_4", 0, 0.9, [], []),
+    ("culture_5",  "{!}culture_5", 0, 0.9, [], []),
+    ("culture_6",  "{!}culture_6", 0, 0.9, [], []),
+    ("culture_7",  "{!}culture_6", 0, 0.9, [], []),
+    ("culture_8",  "{!}culture_6", 0, 0.9, [], []),
 
 #  ("swadian_caravans","Swadian Caravans", 0, 0.5,[("outlaws",-0.8), ("dark_knights",-0.2)], []),
 #  ("vaegir_caravans","Vaegir Caravans", 0, 0.5,[("outlaws",-0.8), ("dark_knights",-0.2)], []),
