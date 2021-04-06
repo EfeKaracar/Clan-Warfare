@@ -43,18 +43,37 @@ factions = [
   ("player_supporters_faction","Player's Supporters",0, 0.9, 
   [("player_faction",1.00),("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xFF4433), #changed name so that can tell difference if shows up on map
   
-    ("kingdom_1",  "The Kingdom of Rattonia", 0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xEE7744),
+    ("kingdom_1",  "The Kingdom of Rattonia", 0, 0.9, 
+    [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),
+    ("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xfa690f),
   
-    ("kingdom_2",  "House Brightfyre",    0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xCCBB99),
+    ("kingdom_2",  "House Brightfyre",    0, 0.9, [("outlaws",-0.05),
+    ("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),
+    ("forest_bandits", -0.05)], [], 0x2394fc),
   
-    ("kingdom_3",  "The Roaming Cavalry Company", 0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xCC99FF),
+    ("kingdom_3",  "The Roaming Cavalry Company", 0, 0.9, 
+    [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),
+    ("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0x177a49),
   
-    ("kingdom_4",  "The West Knights",    0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0x33DDDD),
+    ("kingdom_4",  "The West Knights",    0, 0.9, [("outlaws",-0.05),
+    ("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),
+    ("forest_bandits", -0.05)], [], 0xFFFFFF),
   
-    ("kingdom_5",  "The Turtle Knights",  0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0x33DD33),
+    ("kingdom_5",  "The Turtle Knights Coalition",  0, 0.9, [("outlaws",-0.05),
+    ("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),
+    ("forest_bandits", -0.05)], [], 0x1eff00),
   
-    ("kingdom_6",  "The Golden Kingdom",  0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xDDDD33),
+    ("kingdom_6",  "The Golden Kingdom",  0, 0.9, [("outlaws",-0.05),
+    ("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),
+    ("forest_bandits", -0.05)], [], 0xdecd18),
     
+    ("kingdom_7",  "Avalonian Alliance",  0, 0.9, [("outlaws",-0.05),
+    ("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),
+    ("forest_bandits", -0.05)], [], 0xdecd18),
+    
+    ("kingdom_8",  "Defenders of Faith",  0, 0.9, [("outlaws",-0.05),
+    ("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),
+    ("forest_bandits", -0.05)], [], 0xdecd18),
     
 ##  ("kingdom_1_rebels",  "Swadian rebels", 0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xCC2211),
 ##  ("kingdom_2_rebels",  "Vaegir rebels",    0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xCC2211),
@@ -65,13 +84,7 @@ factions = [
   ("kingdoms_end","{!}kingdoms_end", 0, 0,[], []),
 
   ("robber_knights",  "{!}robber_knights", 0, 0.1, [], []),
-    
-    #Minor factions
-    ("minor_kingdom_1",  "The Kingdom of Avalon", 0, 0.1, [], []),
-    ("minor_kingdom_2",  "One Eyed", 0, 0.1, [], []),
-    ("minor_kingdom_3",  "The Midnight Watchmen", 0, 0.1, [], []),
-    ("minor_kingdom_4",  "The Defenders of Faith", 0, 0.1, [], []),
-
+   
     
   ("khergits","{!}Khergits", 0, 0.5,[("player_faction",0.0)], []),
   ("black_khergits","{!}Black Khergits", 0, 0.5,[("player_faction",-0.3),("kingdom_1",-0.02),("kingdom_2",-0.02)], []),

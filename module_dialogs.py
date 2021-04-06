@@ -11306,17 +11306,15 @@ dialogs = [
 					], "My lord, I would like to challenge you to a friendly duel.", "lord_question_duel",[]],					
  [anyone|plyr,"lord_talk",[
     
-                    (this_or_next|is_between, "$g_talk_troop", kings_begin, kings_end),
-					(is_between, "$g_talk_troop", lords_begin, lords_end),
+                    (neg|troop_slot_eq, "$g_talk_troop", player_thought_on_bl, -1),
                     
 					], 
                     "What do you think of bannerlord?", "lord_bl_answer",[]],					
  
  [anyone,"lord_bl_answer",[
         
-        (str_store_string, s5, "@-"),
+        
         (try_begin),
-            (neg|troop_slot_eq, "$g_talk_troop", player_thought_on_bl, -1),
             (troop_get_slot, ":thought", "$g_talk_troop", player_thought_on_bl),
             (str_store_string, s5, ":thought"),
         (try_end),

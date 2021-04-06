@@ -3032,6 +3032,14 @@ game_menus = [
        [(jump_to_menu, "mnu_camp_action"),
         ]
        ),
+       
+       ## CC
+      ("action_view_troop_trees",[],"View troop trees.",
+      [
+        (start_presentation, "prsnt_faction_troop_trees"),
+        ]
+      ),
+      
       ("camp_wait_here",[],"Wait here for some time.",
        [
            (assign,"$g_camp_mode", 1),
@@ -14599,6 +14607,4 @@ game_menus = [
  ),
 
 
-############################### Duel Mod End  ##############################
-  
  ]

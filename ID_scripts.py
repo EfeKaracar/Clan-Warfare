@@ -610,5 +610,9 @@ script_add_player_to_cur_tableau_for_coop = 608
 script_add_troop_to_cur_tableau_for_coop = 609
 script_mod_init = 610
 script_player_init = 611
+script_troop_tree_recursive_backtracking = 612
+script_troop_tree_recursive_detect_max_tier = 613
+script_prsnt_line = 614
+script_get_page_no_of_troop_tree_for_troop_on = 615
 
 

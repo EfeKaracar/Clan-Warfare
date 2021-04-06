@@ -4343,6 +4343,6 @@ We apologize sincerely if you contributed your suggestions and feedback but were
   #Efe
   ("cedric_bl", "a"),
   ("eb_bl", "Im too busy roleplaying as a lord of Calradia to be asked meta questions by some random pubstar."),
-  ("bel_bl", "a"),
+  ("bel_bl", "Better than war of roses"),
   
 ]
