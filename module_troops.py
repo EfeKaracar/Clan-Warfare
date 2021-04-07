@@ -391,7 +391,7 @@ troops = [
     itm_haubergeon,itm_arena_armor_red,itm_leather_boots,itm_mail_chausses,itm_kettle_hat,itm_helmet_with_neckguard,itm_leather_gloves],
    str_14 | agi_10 | int_4 | cha_4|level(24),wp_one_handed (100) | wp_two_handed (100) | wp_polearm (100) | wp_archery (100) | wp_crossbow (120) | wp_throwing (100),knows_common|knows_power_draw_3|knows_ironflesh_1|knows_power_strike_1|knows_athletics_2,swadian_face_middle_1, swadian_face_older_2],
   
-  ["swadian_man_at_arms","Swadian Man at Arms","Swadian Men at Arms",tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_shield,0,0,fac_kingdom_1,
+  ["swadian_man_at_arms","Emperor's Hand","Emperor's Hands",tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_shield,0,0,fac_kingdom_1,
    [itm_lance,itm_fighting_pick,itm_bastard_sword_b,itm_sword_medieval_b,itm_sword_medieval_c_small,itm_tab_shield_heater_cav_a,
     itm_haubergeon,itm_mail_with_surcoat,itm_mail_chausses,itm_norman_helmet,itm_mail_coif,itm_flat_topped_helmet,itm_helmet_with_neckguard,itm_warhorse,itm_warhorse,itm_hunter],
    def_attrib|level(21),wp_melee(100),knows_common|knows_riding_4|knows_ironflesh_2|knows_shield_2|knows_power_strike_3,swadian_face_young_1, swadian_face_old_2],
@@ -412,6 +412,11 @@ troops = [
   ["swadian_castle_guard","Castle Guard","Castle Guards",tf_guarantee_shield|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet,0,0,fac_kingdom_1,
    [itm_awlpike,itm_pike,itm_great_sword,itm_morningstar,itm_sword_medieval_b,itm_tab_shield_heater_c,itm_tab_shield_heater_d,itm_coat_of_plates,itm_plate_armor,itm_plate_boots,itm_guard_helmet,itm_helmet_with_neckguard,itm_bascinet,itm_guard_helmet,itm_leather_gloves],
    def_attrib|level(25),wp(130),knows_common|knows_shield_3|knows_ironflesh_3|knows_power_strike_3,swadian_face_young_1, swadian_face_old_2],
+
+
+
+
+
 
 # Vaegir watchman?
   ["vaegir_recruit","Levy","Levies",tf_guarantee_boots|tf_guarantee_armor,0,0,fac_kingdom_2,
@@ -464,6 +469,9 @@ troops = [
   ["vaegir_castle_guard","Castle Guard","Castle Guards", tf_guarantee_shield|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet,0,0,fac_kingdom_2,
    [itm_ashwood_pike,itm_battle_fork,itm_bardiche,itm_battle_axe,itm_fighting_axe,itm_tab_shield_kite_d,itm_studded_leather_coat,itm_lamellar_armor,itm_mail_chausses,itm_iron_greaves,itm_nordic_helmet,itm_nordic_helmet,itm_nordic_helmet,itm_spiked_helmet,itm_leather_gloves],
    def_attrib|level(24),wp(130),knows_athletics_3|knows_shield_2|knows_ironflesh_3,vaegir_face_middle_1, vaegir_face_older_2],
+
+
+
 
 
   ["khergit_tribesman","The Dismounted","The Dismounted",tf_guarantee_boots|tf_guarantee_armor,0,0,fac_kingdom_3,
@@ -519,10 +527,7 @@ troops = [
    [itm_arrows,itm_club,itm_spear,itm_hunting_bow,
     itm_steppe_cap,itm_nomad_cap_b,itm_leather_vest,itm_steppe_armor,itm_nomad_boots,itm_khergit_leather_boots],
    def_attrib|level(5),wp(50),knows_common|knows_riding_3|knows_power_draw_2|knows_horse_archery_2,khergit_face_younger_1, khergit_face_old_2],
-   
-
-   
-   
+  
 
   ["khergit_messenger","Khergit Messenger","Khergit Messengers",tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_gloves|tf_guarantee_horse|tf_guarantee_ranged,0,0,fac_kingdom_3,
    [itm_sword_khergit_2,itm_leather_jerkin,itm_leather_boots,itm_courser,itm_leather_gloves,itm_short_bow,itm_arrows],
@@ -577,7 +582,13 @@ troops = [
    [itm_bodkin_arrows,itm_sword_viking_2,itm_fighting_axe,itm_two_handed_axe,itm_long_bow,itm_mail_shirt,itm_mail_shirt,itm_byrnie,itm_leather_boots,itm_nordic_archer_helmet,itm_nordic_veteran_archer_helmet],
    str_12 | agi_5 | int_4 | cha_4|level(19),wp_one_handed (95) | wp_two_handed (95) | wp_polearm (95) | wp_archery (120) | wp_crossbow (95) | wp_throwing (95),knows_power_strike_3|knows_ironflesh_4|knows_power_draw_5|knows_athletics_7,nord_face_middle_1, nord_face_older_2],
   
-  ["nord_messenger","Nord Messenger","Nord Messengers",tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_gloves|tf_guarantee_horse|tf_guarantee_ranged,0,0,fac_kingdom_4,
+
+
+
+
+
+
+ ["nord_messenger","Nord Messenger","Nord Messengers",tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_gloves|tf_guarantee_horse|tf_guarantee_ranged,0,0,fac_kingdom_4,
    [itm_sword_viking_2,itm_leather_jerkin,itm_leather_boots,itm_courser,itm_leather_gloves,itm_short_bow,itm_arrows],
    str_7 | agi_21 | int_4 | cha_4|level(25),wp(130),knows_common|knows_riding_7|knows_horse_archery_5|knows_power_draw_5,nord_face_young_1, nord_face_older_2],
   ["nord_deserter","Nord Deserter","Nord Deserters",tf_guarantee_ranged|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_deserters,
@@ -756,6 +767,10 @@ troops = [
    [itm_sword_medieval_b,itm_military_pick,itm_military_hammer,itm_tab_shield_pavise_c,itm_sniper_crossbow,itm_steel_bolts,
     itm_kettle_hat,itm_mail_coif,itm_mail_with_tunic_green,itm_leather_boots,itm_splinted_leather_greaves],
    str_14 | agi_5 | int_4 | cha_4|level(25),wp_one_handed (110) | wp_two_handed (110) | wp_polearm (110) | wp_archery (100) | wp_crossbow (140) | wp_throwing (100),knows_common|knows_ironflesh_3|knows_shield_4|knows_power_strike_4|knows_athletics_6,rhodok_face_middle_1, rhodok_face_older_2],
+
+
+
+
 
  ["loyal_noob","Loyal Noob","Loyal Noobs",tf_guarantee_boots|tf_guarantee_armor,0,0,fac_kingdom_6,
    [itm_scythe,itm_hatchet,itm_pickaxe,itm_club,itm_stones,itm_tab_shield_heater_a,itm_sarranid_felt_hat,itm_turban,itm_sarranid_boots_a,
@@ -1289,9 +1304,9 @@ troops = [
   ["knight_6_19", "Girlie", "Girlie", tf_female| tf_hero, 0, reserved,  fac_kingdom_6, [itm_warhorse_sarranid,     itm_sarranid_mail_shirt,        itm_sarranid_boots_c,    itm_sarranid_boots_c,       itm_sarranid_mail_coif, itm_lamellar_gauntlets,   itm_fighting_pick,  itm_sword_two_handed_a, itm_tab_shield_small_round_c],   knight_attrib_4,wp(210),knight_skills_4|knows_trainer_5, 0x000000018a08618016ac36bc8b6e4a9900000000001dd45d0000000000000000, rhodok_face_older_2],
   ["knight_6_20", "Leonidas", "Leonidas",tf_hero, 0, reserved,  fac_kingdom_6, [itm_warhorse_sarranid,     itm_sarranid_cavalry_robe,       itm_sarranid_boots_c,  itm_sarranid_boots_c,       itm_sarranid_veiled_helmet,   itm_lance,      itm_sarranid_cavalry_sword,   itm_tab_shield_small_round_c],  knight_attrib_5,wp(240),knight_skills_5|knows_trainer_6, 0x00000001bd0040c0281a899ac956b94b00000000001ec8910000000000000000, rhodok_face_older_2],
   
-  ["knight_7_1", "Leonidas", "Leonidas",tf_hero, 0, reserved,  fac_kingdom_6, [itm_warhorse_sarranid,     itm_sarranid_cavalry_robe,       itm_sarranid_boots_c,  itm_sarranid_boots_c,       itm_sarranid_veiled_helmet,   itm_lance,      itm_sarranid_cavalry_sword,   itm_tab_shield_small_round_c],  knight_attrib_5,wp(240),knight_skills_5|knows_trainer_6, 0x00000001bd0040c0281a899ac956b94b00000000001ec8910000000000000000, rhodok_face_older_2],
+  ["knight_7_1", "Leonidas", "Leonidas",tf_hero, 0, reserved,  fac_kingdom_7, [itm_warhorse_sarranid,     itm_sarranid_cavalry_robe,       itm_sarranid_boots_c,  itm_sarranid_boots_c,       itm_sarranid_veiled_helmet,   itm_lance,      itm_sarranid_cavalry_sword,   itm_tab_shield_small_round_c],  knight_attrib_5,wp(240),knight_skills_5|knows_trainer_6, 0x00000001bd0040c0281a899ac956b94b00000000001ec8910000000000000000, rhodok_face_older_2],
   
-  ["knight_8_1", "Leonidas", "Leonidas",tf_hero, 0, reserved,  fac_kingdom_6, [itm_warhorse_sarranid,     itm_sarranid_cavalry_robe,       itm_sarranid_boots_c,  itm_sarranid_boots_c,       itm_sarranid_veiled_helmet,   itm_lance,      itm_sarranid_cavalry_sword,   itm_tab_shield_small_round_c],  knight_attrib_5,wp(240),knight_skills_5|knows_trainer_6, 0x00000001bd0040c0281a899ac956b94b00000000001ec8910000000000000000, rhodok_face_older_2],
+  ["knight_8_1", "Leonidas", "Leonidas",tf_hero, 0, reserved,  fac_kingdom_8, [itm_warhorse_sarranid,     itm_sarranid_cavalry_robe,       itm_sarranid_boots_c,  itm_sarranid_boots_c,       itm_sarranid_veiled_helmet,   itm_lance,      itm_sarranid_cavalry_sword,   itm_tab_shield_small_round_c],  knight_attrib_5,wp(240),knight_skills_5|knows_trainer_6, 0x00000001bd0040c0281a899ac956b94b00000000001ec8910000000000000000, rhodok_face_older_2],
   
   
   ["kingdom_1_pretender",  "Lady Isolla of Suno",       "Isolla",  tf_hero|tf_female|tf_unmoveable_in_party_window, 0,reserved,  fac_kingdom_1,[itm_charger,   itm_rich_outfit,  itm_blue_hose,      itm_iron_greaves,         itm_mail_shirt,      itm_sword_medieval_c_small,      itm_tab_shield_small_round_c,       itm_bascinet],          lord_attrib,wp(220),knight_skills_5, 0x00000000ef00000237dc71b90c31631200000000001e371b0000000000000000],
@@ -2911,6 +2926,39 @@ upgrade(troops,"rhodok_sharpshooter","bunga_elite")
 upgrade(troops,"khergit_horseman","khergit_lancer")
 upgrade(troops,"rhodok_veteran_spearman","rhodok_sergeant")
 
+#KoA/Wappaw upgrade declarations
+upgrade2(troops,"alliance_recruit","boar_spearman","avalonian_infantry")
+upgrade2(troops,"boar_spearman","boar_hoplite","roxhardian")
+upgrade(troops,"roxhardian","awlpiker")
+upgrade2(troops,"avalonian_infantry","avalonian_swordsman", "avalonian_crossbowman")
+upgrade(troops,"avalonian_swordsman","taco_knight")
+upgrade(troops,"avalonian_crossbowman","tacoss_bowman")
+
+#wK upgrade declarations
+upgrade2(troops,"nord_recruit","PPKCLONE","nord_footman")
+upgrade2(troops,"PPKCLONE","nord_archer","nord_trained_footman")
+upgrade(troops,"nord_archer","nord_veteran")
+upgrade(troops,"nord_trained_footman","nord_warrior")
+upgrade2(troops,"nord_footman","nord_trained_footman", "nord_veteran")
+upgrade2(troops,"nord_veteran","nord_champion", "nord_huntsman")
+
+
+#House Brightfyre upgrade declarations
+upgrade2(troops,"vaegir_recruit","vaegir_footman","vaegir_guard")
+upgrade2(troops,"vaegir_footman","vaegir_skirmisher","vaegir_veteran")
+upgrade(troops,"vaegir_guard","vaegir_horseman")
+upgrade(troops,"vaegir_skirmisher","vaegir_archer")
+upgrade(troops,"vaegir_archer","vaegir_marksman")
+upgrade(troops,"vaegir_veteran","vaegir_infantry")
+
+
+#Rattonia upgrade declarations
+upgrade2(troops,"swadian_recruit","swadian_militia","swadian_skirmisher")
+upgrade2(troops,"swadian_militia","swadian_infantry","swadian_footman")
+upgrade(troops,"swadian_infantry","swadian_sergeant")
+upgrade2(troops,"swadian_footman","swadian_man_at_arms","swadian_knight")
+upgrade2(troops,"swadian_skirmisher","swadian_crossbowman","swadian_sharpshooter")
+upgrade(troops,"vaegir_veteran","vaegir_infantry")
 
 
 #new tree connections
