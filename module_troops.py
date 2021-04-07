@@ -2871,62 +2871,7 @@ upgrade2(troops,"caravan_guard","mercenary_swordsman","mercenary_horseman")
 upgrade(troops,"mercenary_swordsman","hired_blade")
 upgrade(troops,"mercenary_horseman","mercenary_cavalry")
 
-upgrade(troops,"swadian_recruit","swadian_militia")
 
-upgrade2(troops,"swadian_militia","swadian_footman","swadian_skirmisher")
-upgrade2(troops,"swadian_footman","swadian_man_at_arms","swadian_infantry")
-upgrade(troops,"swadian_infantry","swadian_sergeant")
-upgrade(troops,"swadian_skirmisher","swadian_crossbowman")
-
-upgrade(troops,"swadian_crossbowman","swadian_sharpshooter")
-
-upgrade(troops,"swadian_man_at_arms","swadian_knight")
-
-upgrade(troops,"vaegir_recruit","vaegir_footman")
-upgrade2(troops,"vaegir_footman","vaegir_veteran","vaegir_skirmisher")
-
-upgrade(troops,"vaegir_skirmisher","vaegir_archer")
-
-upgrade(troops,"vaegir_archer","vaegir_marksman")
-
-upgrade2(troops,"vaegir_veteran","vaegir_horseman","vaegir_infantry")
-
-upgrade(troops,"vaegir_infantry","vaegir_guard")
-upgrade(troops,"vaegir_horseman","vaegir_knight")
-
-upgrade(troops,"khergit_tribesman","khergit_skirmisher")
-upgrade(troops,"khergit_skirmisher","khergit_horseman")
-upgrade2(troops,"khergit_horseman","khergit_lancer","khergit_horse_archer")
-upgrade(troops,"khergit_horse_archer","khergit_veteran_horse_archer")
-
-upgrade2(troops,"nord_recruit","nord_footman","nord_huntsman")
-upgrade(troops,"nord_footman","nord_trained_footman")
-upgrade(troops,"nord_trained_footman","nord_warrior")
-upgrade(troops,"nord_warrior","nord_veteran")
-upgrade(troops,"nord_veteran","nord_champion")
-upgrade(troops,"nord_huntsman","nord_archer")
-upgrade(troops,"nord_archer","nord_veteran_archer")
-
-upgrade2(troops,"rhodok_tribesman","rhodok_spearman","rhodok_crossbowman")
-upgrade(troops,"rhodok_spearman","rhodok_trained_spearman")
-upgrade(troops,"rhodok_trained_spearman","rhodok_veteran_spearman")
-upgrade(troops,"rhodok_veteran_spearman","rhodok_sergeant")
-
-upgrade(troops,"rhodok_crossbowman","rhodok_trained_crossbowman")
-upgrade(troops,"rhodok_trained_crossbowman","rhodok_veteran_crossbowman") #new 1.126
-upgrade(troops,"rhodok_veteran_crossbowman","rhodok_sharpshooter")
-
-
-upgrade(troops,"sarranid_recruit","sarranid_footman")
-
-upgrade2(troops,"sarranid_footman","sarranid_veteran_footman","sarranid_skirmisher")
-upgrade2(troops,"sarranid_veteran_footman","sarranid_horseman","sarranid_infantry")
-upgrade(troops,"sarranid_infantry","sarranid_guard")
-upgrade(troops,"sarranid_skirmisher","sarranid_archer")
-
-upgrade(troops,"sarranid_archer","sarranid_master_archer")
-
-upgrade(troops,"sarranid_horseman","sarranid_mamluke")
 
 
 upgrade2(troops,"looter","mountain_bandit", "forest_bandit")
