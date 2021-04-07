@@ -633,15 +633,8 @@ troops = [
    str_14 | agi_5 | int_4 | cha_4|level(25),wp_one_handed (110) | wp_two_handed (110) | wp_polearm (110) | wp_archery (100) | wp_crossbow (140) | wp_throwing (100),knows_common|knows_ironflesh_3|knows_shield_4|knows_power_strike_4|knows_athletics_6,rhodok_face_middle_1, rhodok_face_older_2],
 
   
-upgrade(troops,"rhodok_tribesman","rhodok_spearman","rhodok_veteran_spearman")
-upgrade(troops,"rhodok_spearman","rhodok_trained_spearman","rhodok_crossbowman")
-upgrade(troops,"rhodok_crossbowman","rhodok_trained_crossbowman", "rhodok_veteran_crossbowman")
-upgrade(troops,"khergit_skirmisher","khergit_horse_archer")
-upgrade(troops,"khergit_horse_archer","khergit_veteran_horse_archer", "rooftopper")
-upgrade(troops,"khergit_horseman","khergit_lancer")
-upgrade(troops,"khergit_lancer","battle_brother","bowling_ball")
-upgrade(troops,"battle_brother","tin_can")
-upgrade(troops,"bowling_ball","tin_can")
+
+
   
   
   
@@ -786,6 +779,9 @@ upgrade(troops,"bowling_ball","tin_can")
    [itm_turban,itm_desert_turban,itm_skirmisher_armor,itm_jarid,itm_jarid,itm_arabian_sword_a,itm_spiked_club,itm_tab_shield_small_round_a,itm_sarranid_warrior_cap,itm_sarranid_boots_a],
    def_attrib|level(14),wp(80),knows_common|knows_riding_2|knows_power_throw_2|knows_ironflesh_1|knows_athletics_3,swadian_face_young_1, swadian_face_middle_2],
  ["javby_defender","Javby Defender","Javby Defenders",tf_guarantee_ranged|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_kingdom_6,
+   [itm_arrows,itm_arrows,itm_nomad_bow,itm_arabian_sword_a,itm_archers_vest,itm_sarranid_boots_b,itm_sarranid_helmet1,itm_sarranid_warrior_cap,itm_turban,itm_desert_turban],
+   def_attrib|level(19),wp_one_handed (90) | wp_two_handed (90) | wp_polearm (90) | wp_archery (100) | wp_crossbow (90) | wp_throwing (100),knows_common|knows_power_draw_3|knows_ironflesh_2|knows_power_throw_3|knows_athletics_4,swadian_face_young_1, swadian_face_old_2],
+ ["javby_offender","Javby Offender","Javby Offenders",tf_guarantee_ranged|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_kingdom_6,
    [itm_arrows,itm_arrows,itm_nomad_bow,itm_arabian_sword_a,itm_archers_vest,itm_sarranid_boots_b,itm_sarranid_helmet1,itm_sarranid_warrior_cap,itm_turban,itm_desert_turban],
    def_attrib|level(19),wp_one_handed (90) | wp_two_handed (90) | wp_polearm (90) | wp_archery (100) | wp_crossbow (90) | wp_throwing (100),knows_common|knows_power_draw_3|knows_ironflesh_2|knows_power_throw_3|knows_athletics_4,swadian_face_young_1, swadian_face_old_2],
  ["eu_archer_recruit","EU Archer Recruit","EU Archer Recruits",tf_guarantee_ranged|tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet,0,0,fac_kingdom_6,
@@ -2877,34 +2873,43 @@ upgrade(troops,"sarranid_horseman","sarranid_mamluke")
 upgrade2(troops,"looter","mountain_bandit", "forest_bandit")
 
 #Defender of Faith troop upgrade declarations
-upgrade(troops,"loyal_noob","defender","javby_defender")
-upgrade(troops,"defender","veteran_defender","allied_gk_spammer")
+upgrade2(troops,"loyal_noob","defender","javby_defender")
+upgrade2(troops,"defender","veteran_defender","allied_gk_spammer")
 upgrade(troops,"allied_gk_spammer","allied_smashmas_champion")
-upgrade(troops,"veteran_defender","open_mapper","open_mapper_degenerate")
+upgrade2(troops,"veteran_defender","open_mapper","open_mapper_degenerate")
 upgrade(troops,"open_mapper","alejanbro_in_arms")
-upgrade(troops,"javby_defender","javby_offender","eu_archer_recruit")
+upgrade2(troops,"javby_defender","javby_offender","eu_archer_recruit")
 upgrade(troops,"eu_archer_recruit","eu_archer")
 upgrade(troops,"eu_archer","eu_sniper")
 
 #Golden Kingdom troop upgrade declarations
-upgrade(troops,"sarranid_recruit","sarranid_footman","sarranid_horseman")
-upgrade(troops,"sarranid_footman","sarranid_infantry","sarranid_skirmisher")
-upgrade(troops,"sarranid_infantry","sarranid_guard","sarranid_veteran_footman")
-upgrade(troops,"sarranid_skirmisher","sarranid_archer","pubstar")
+upgrade2(troops,"sarranid_recruit","sarranid_footman","sarranid_horseman")
+upgrade2(troops,"sarranid_footman","sarranid_infantry","sarranid_skirmisher")
+upgrade2(troops,"sarranid_infantry","sarranid_guard","sarranid_veteran_footman")
+upgrade2(troops,"sarranid_skirmisher","sarranid_archer","pubstar")
 upgrade(troops,"sarranid_archer","sarranid_master_archer")
 upgrade(troops,"pubstar","godlike_pubstar")
 upgrade(troops,"sarranid_horseman","sarranid_mamluke")
  
 #RCC Troop upgrade declarations
-upgrade(troops,"khergit_tribesman","khergit_horseman","abu_inf")
-upgrade(troops,"abu_inf","dog_inf","khergit_skirmisher")
+upgrade2(troops,"khergit_tribesman","khergit_horseman","abu_inf")
+upgrade2(troops,"abu_inf","dog_inf","khergit_skirmisher")
 upgrade(troops,"dog_inf","eliteDog_inf")
 upgrade(troops,"khergit_skirmisher","khergit_horse_archer")
-upgrade(troops,"khergit_horse_archer","khergit_veteran_horse_archer", "rooftopper")
+upgrade2(troops,"khergit_horse_archer","khergit_veteran_horse_archer", "rooftopper")
 upgrade(troops,"khergit_horseman","khergit_lancer")
-upgrade(troops,"khergit_lancer","battle_brother","bowling_ball")
+upgrade2(troops,"khergit_lancer","battle_brother","bowling_ball")
 upgrade(troops,"battle_brother","tin_can")
 upgrade(troops,"bowling_ball","tin_can")
+
+#tk/OE upgrade declarations
+upgrade2(troops,"rhodok_tribesman","rhodok_spearman","rhodok_veteran_spearman")
+upgrade2(troops,"rhodok_spearman","rhodok_trained_spearman","rhodok_crossbowman")
+upgrade2(troops,"rhodok_crossbowman","rhodok_trained_crossbowman", "rhodok_veteran_crossbowman")
+upgrade(troops,"rhodok_veteran_crossbowman","rhodok_sharpshooter")
+upgrade(troops,"rhodok_sharpshooter","bunga_elite")
+upgrade(troops,"khergit_horseman","khergit_lancer")
+upgrade(troops,"rhodok_veteran_spearman","rhodok_sergeant")
 
 
 
