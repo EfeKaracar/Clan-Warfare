@@ -13643,10 +13643,10 @@ presentations = [
           (agent_get_team, ":agent_team", ":agent_id"),
           (try_begin),
             (eq, ":agent_team", ":my_team"),
-            (assign, ":agent_sq_distance", 2500),  # TODO: use fog distance here
+            (assign, ":agent_sq_distance", 5000),  # TODO: use fog distance here
             (assign, ":color", 0x77DD77),
           (else_try),
-            (assign, ":agent_sq_distance", 1200),  # enemy sq distance
+            (assign, ":agent_sq_distance", 5000),  # enemy sq distance
             (assign, ":color", 0xDE6360),
           (try_end),
           # --

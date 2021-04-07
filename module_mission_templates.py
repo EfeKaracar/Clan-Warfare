@@ -63,7 +63,7 @@ lord_hp = (
     ])
 
 death_music = (
-  ti_on_agent_killed_or_wounded, 0, 0, [], [
+ti_on_agent_killed_or_wounded, 0, 0, [], [
   
         (store_trigger_param_1, ":dead_agent_no"),
         (store_trigger_param_1, ":killer"),
@@ -75,19 +75,31 @@ death_music = (
     ])
     
 new_players = (
-ti_after_mission_start, 0, 0, [], [
+0, 0, 0, [(eq, "$newplayerSpawned", 0),], [
 
+(store_mission_timer_a, ":timer"),
+(ge, ":timer", 5),
+(assign, ":continue", 1),
+(try_for_agents, ":agents"),
+    (agent_is_alive, ":agents"),
+    (agent_get_troop_id, ":troop", ":agents"),
+    (this_or_next|eq, ":troop", "trp_knight_4_2"),
+    (eq, ":troop", "trp_new_player"),
+    (assign, ":continue", -1),
+(try_end),
+(eq, ":continue", 1),
+        
 (get_player_agent_no, ":player"),
 (agent_get_position, pos2, ":player"),
 (set_spawn_position, pos2),
-(store_random_in_range, ":number", 1, 1),
+(store_random_in_range, ":number", 1, 3),
 (try_for_range, ":loop", 0, ":number"),
     (store_random_in_range, ":dice", -250, 250),
     (position_move_x, pos2, ":dice"),
     (position_move_y, pos2, ":dice"),
-    (spawn_agent, "trp_bandit"),
+    (spawn_agent, "trp_new_player"),
 (try_end),
-
+(assign, "$newplayerSpawned", 1),
 
 ]
 )
@@ -99,7 +111,7 @@ new_players_ask_dumb_questions = (
 (try_for_agents, ":newplayers"),
     (agent_is_alive, ":newplayers"),
     (agent_get_troop_id, ":troop", ":newplayers"),
-    (eq, ":troop", "trp_bandit"),
+    (eq, ":troop", "trp_new_player"),
     (assign, ":continue", 1),
 (try_end),
 (eq, ":continue", 1),
@@ -165,13 +177,18 @@ corpsekicking = (
 ])
 
 rempica = (
-5, 0, 0, [(neg|all_enemies_defeated), (eq, "$RempicaSpawned", 0),], [
+0, 0, 0, [(neg|all_enemies_defeated), (eq, "$RempicaSpawned", 0),], [
 
         (store_mission_timer_a, ":timer"),
         (ge, ":timer", 5),
         
-        (store_normalized_team_count, ":count", 0),
-        (ge, ":count", 20),
+        (assign, ":val", 0),
+        (try_for_agents, ":agents"),
+            (agent_is_alive, ":agents"),
+            (agent_is_ally, ":agents"),
+            (val_add, ":val", 1),
+        (try_end),
+        (ge, ":val", 5),
         
         (assign, ":continue", 1),
         (try_for_agents, ":agents"),
@@ -197,7 +214,9 @@ rempica = (
         (agent_force_rethink, reg0),
         (agent_clear_scripted_mode, reg0),
        
-        (agent_set_team, reg0, 1),
+        (agent_set_team, reg0, 5),
+        (team_set_relation, 5, 0, -1),
+        (team_set_relation, 5, 1, -1),
         (display_message, "@Rempica joined the server. He is teamkilling!"),
         
         (assign, "$RempicaSpawned", 1),
@@ -269,6 +288,7 @@ ti_after_mission_start, 0, 0, [], [
 
 (assign, "$PPKSpawned", 0), 
 (assign, "$RempicaSpawned", 0),
+(assign, "$newplayerSpawned", 0),
         
     ])
 

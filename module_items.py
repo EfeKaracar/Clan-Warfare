@@ -1336,13 +1336,13 @@ shield_width(30)|shield_height(50),imodbits_shield,
 thrust_damage(39,cut)|max_ammo(8)|weapon_length(53),
 imodbits_thrown_minus_heavy ],
 
-["great_helmet", "OE Danate's Legacy of Akaria", [("great_helmet_new",0)], 
+["danate_helmet", "OE Danate's Legacy of Akaria", [("great_helmet_new",0)], 
 itp_merchandise| itp_type_head_armor|itp_covers_head,0, 980 , 
 weight(2.75)|abundance(100)|head_armor(63)|body_armor(0)|leg_armor(0)
 |difficulty(10) ,imodbits_plate ],
 
 
-["leather_boots", "GK Leonidas' Backsteppers", [("leather_boots_a",0)],
+["leonidas_boots", "GK Leonidas' Backsteppers", [("leather_boots_a",0)],
  itp_merchandise| itp_type_foot_armor  |itp_civilian | 
  itp_attach_armature,0,
  174 , weight(1.25)|abundance(100)|head_armor(0)|body_armor(0)|
@@ -1437,6 +1437,10 @@ itp_penalty_with_shield|itp_wooden_parry, itc_greatlance,
  410 , weight(5)|difficulty(11)|spd_rtng(55) | weapon_length(240)
  |swing_damage(0 , cut) | thrust_damage(21 ,  pierce),imodbits_polearm ],
 
-["hunter","tK Heat's Heiffer", [("hunting_horse",0),("hunting_horse",imodbits_horse_good)], itp_merchandise|itp_type_horse, 0, 810,abundance(60)|hit_points(160)|body_armor(18)|difficulty(3)|horse_speed(43)|horse_maneuver(44)|horse_charge(24)|horse_scale(108),imodbits_horse_basic|imodbit_champion],
+    ["hunter","tK Heat's Heiffer", [("hunting_horse",0),("hunting_horse",imodbits_horse_good)], itp_merchandise|itp_type_horse, 0, 810,abundance(60)|hit_points(160)|body_armor(18)|difficulty(3)|horse_speed(43)|horse_maneuver(44)|horse_charge(24)|horse_scale(108),imodbits_horse_basic|imodbit_champion],
  
+  ["gwaebloom_item","GK Gwaebloom's Mapmaking Guild Membership", 
+  [("book_c",0)], itp_type_book, 0, 3500,weight(2)|abundance(100),
+  imodbits_none],
+
 ]
