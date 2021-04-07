@@ -3411,5 +3411,9 @@ str_john_bl = 3409
 str_aporta_bl = 3410
 str_thunder_bl = 3411
 str_mav_bl = 3412
+str_ppk_bl = 3413
+str_marquis_bl = 3414
+str_brave_bl = 3415
+str_arni_bl = 3416
 
 

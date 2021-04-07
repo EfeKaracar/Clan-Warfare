@@ -51070,6 +51070,7 @@ scripts = [
     
     (call_script, "script_player_init"),
     
+    
     ]),
     
     ("player_init", [
@@ -51103,6 +51104,7 @@ scripts = [
         (set_relation, "fac_black_shields", ":factions", -100),
     (try_end),
     
+    (call_script, "script_wear_lords"),
     
     (try_for_range, ":lords", lords_begin, lords_end),
         (neg|troop_slot_eq, ":lords", exclude_from_auto_gear, 1),
@@ -51333,6 +51335,14 @@ scripts = [
             (try_end),            
         (try_end),
     (try_end),
+    
+    ]),
+    
+    ("wear_lords", [
+    
+    (troop_set_slot, "trp_knight_1_1", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_1_1", troop_faction, "fac_kingdom_1"),
+    
     
     ]),
     
