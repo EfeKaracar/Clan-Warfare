@@ -51340,9 +51340,663 @@ scripts = [
     
     ("wear_lords", [
     
+    (try_for_range, ":lords", lords_begin, lords_end),
+        (troop_set_slot, ":lords", troop_class, class_inf),
+        (troop_set_slot, ":lords", troop_faction, "fac_kingdom_1"),
+    (try_end),
+    
     (troop_set_slot, "trp_knight_1_1", troop_class, class_arc),
     (troop_set_slot, "trp_knight_1_1", troop_faction, "fac_kingdom_1"),
     
+    (troop_set_slot, "trp_knight_1_2", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_1_2", troop_faction, "fac_kingdom_1"),
+
+    (troop_set_slot, "trp_knight_1_3", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_1_3", troop_faction, "fac_kingdom_1"),
+    
+    (troop_set_slot, "trp_knight_1_4", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_1_4", troop_faction, "fac_kingdom_1"),
+    
+    (troop_set_slot, "trp_knight_1_5", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_1_5", troop_faction, "fac_kingdom_1"),
+
+    (troop_set_slot, "trp_knight_1_6", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_1_6", troop_faction, "fac_kingdom_1"),
+    
+    (troop_set_slot, "trp_knight_1_7", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_1_7", troop_faction, "fac_kingdom_1"),
+    
+    (troop_set_slot, "trp_knight_1_8", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_1_8", troop_faction, "fac_kingdom_1"),
+    
+    (troop_set_slot, "trp_knight_1_9", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_1_9", troop_faction, "fac_kingdom_1"),
+    
+    (troop_set_slot, "trp_knight_1_10", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_1_10", troop_faction, "fac_kingdom_1"),
+
+    (troop_set_slot, "trp_knight_1_11", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_1_11", troop_faction, "fac_kingdom_1"),
+    
+    (troop_set_slot, "trp_knight_1_12", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_1_12", troop_faction, "fac_kingdom_1"),
+    
+    (troop_set_slot, "trp_knight_1_13", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_1_13", troop_faction, "fac_kingdom_1"),
+    
+    (troop_set_slot, "trp_knight_1_14", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_1_14", troop_faction, "fac_kingdom_1"),
+    
+    (troop_set_slot, "trp_knight_1_15", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_1_15", troop_faction, "fac_kingdom_1"),
+    
+    (troop_set_slot, "trp_knight_1_16", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_1_16", troop_faction, "fac_kingdom_1"),
+    
+    (troop_set_slot, "trp_knight_1_17", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_1_17", troop_faction, "fac_kingdom_1"),
+    
+    (troop_set_slot, "trp_knight_1_18", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_1_18", troop_faction, "fac_kingdom_1"),
+    
+    (troop_set_slot, "trp_knight_1_19", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_1_19", troop_faction, "fac_kingdom_1"),
+    
+    (troop_set_slot, "trp_knight_2_1", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_2_1", troop_faction, "fac_kingdom_2"),
+    
+    (troop_set_slot, "trp_knight_2_1", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_2_1", troop_faction, "fac_kingdom_2"),
+    
+    (troop_set_slot, "trp_knight_2_2", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_2_2", troop_faction, "fac_kingdom_2"),
+    
+    (troop_set_slot, "trp_knight_2_3", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_2_3", troop_faction, "fac_kingdom_2"),
+
+    (troop_set_slot, "trp_knight_2_4", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_2_4", troop_faction, "fac_kingdom_2"),
+    
+    (troop_set_slot, "trp_knight_2_5", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_2_5", troop_faction, "fac_kingdom_2"),
+
+    (troop_set_slot, "trp_knight_2_6", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_2_6", troop_faction, "fac_kingdom_2"),
+    
+    (troop_set_slot, "trp_knight_2_7", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_2_7", troop_faction, "fac_kingdom_2"),
+    
+    (troop_set_slot, "trp_knight_2_8", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_2_8", troop_faction, "fac_kingdom_2"),
+    
+    (troop_set_slot, "trp_knight_2_9", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_2_9", troop_faction, "fac_kingdom_2"),
+    
+    (troop_set_slot, "trp_knight_2_10", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_2_10", troop_faction, "fac_kingdom_2"),
+    
+    (troop_set_slot, "trp_knight_2_11", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_2_11", troop_faction, "fac_kingdom_2"),
+    
+    (troop_set_slot, "trp_knight_2_12", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_2_12", troop_faction, "fac_kingdom_2"),
+    
+    (troop_set_slot, "trp_knight_2_13", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_2_13", troop_faction, "fac_kingdom_2"),
+    
+    (troop_set_slot, "trp_knight_2_14", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_2_14", troop_faction, "fac_kingdom_2"),
+    
+    (troop_set_slot, "trp_knight_2_15", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_2_15", troop_faction, "fac_kingdom_2"),
+    
+    (troop_set_slot, "trp_knight_2_16", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_2_16", troop_faction, "fac_kingdom_2"),
+    
+    (troop_set_slot, "trp_knight_2_17", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_2_17", troop_faction, "fac_kingdom_2"),
+    
+    (troop_set_slot, "trp_knight_2_18", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_2_18", troop_faction, "fac_kingdom_2"),
+    
+    (troop_set_slot, "trp_knight_2_19", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_2_19", troop_faction, "fac_kingdom_2"),
+    
+    (troop_set_slot, "trp_knight_2_20", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_2_20", troop_faction, "fac_kingdom_2"),
+    
+    (troop_set_slot, "trp_knight_3_1", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_3_1", troop_faction, "fac_kingdom_3"),
+    
+    (troop_set_slot, "trp_knight_3_2", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_3_2", troop_faction, "fac_kingdom_3"),
+    
+    (troop_set_slot, "trp_knight_3_3", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_3_3", troop_faction, "fac_kingdom_3"),
+    
+    (troop_set_slot, "trp_knight_3_4", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_3_4", troop_faction, "fac_kingdom_3"),
+    
+    (troop_set_slot, "trp_knight_3_5", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_3_5", troop_faction, "fac_kingdom_3"),
+    
+    (troop_set_slot, "trp_knight_3_6", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_3_6", troop_faction, "fac_kingdom_3"),
+    
+    (troop_set_slot, "trp_knight_3_7", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_3_7", troop_faction, "fac_kingdom_3"),
+    
+    (troop_set_slot, "trp_knight_3_8", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_3_8", troop_faction, "fac_kingdom_3"),
+    
+    (troop_set_slot, "trp_knight_3_9", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_3_9", troop_faction, "fac_kingdom_3"),
+    
+    (troop_set_slot, "trp_knight_3_10", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_3_10", troop_faction, "fac_kingdom_3"),
+    
+    (troop_set_slot, "trp_knight_3_11", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_3_11", troop_faction, "fac_kingdom_3"),
+    
+    (troop_set_slot, "trp_knight_3_12", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_3_12", troop_faction, "fac_kingdom_3"),
+    
+    (troop_set_slot, "trp_knight_3_13", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_3_13", troop_faction, "fac_kingdom_3"),
+    
+    (troop_set_slot, "trp_knight_3_14", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_3_14", troop_faction, "fac_kingdom_3"),
+    
+    (troop_set_slot, "trp_knight_3_15", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_3_15", troop_faction, "fac_kingdom_3"),
+    
+    (troop_set_slot, "trp_knight_3_16", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_3_16", troop_faction, "fac_kingdom_3"),
+    
+    (troop_set_slot, "trp_knight_3_17", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_3_17", troop_faction, "fac_kingdom_3"),
+    
+    (troop_set_slot, "trp_knight_3_18", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_3_18", troop_faction, "fac_kingdom_3"),
+    
+    (troop_set_slot, "trp_knight_3_19", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_3_19", troop_faction, "fac_kingdom_3"),
+    
+    (troop_set_slot, "trp_knight_3_20", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_3_20", troop_faction, "fac_kingdom_3"),
+    
+    (troop_set_slot, "trp_knight_4_1", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_4_1", troop_faction, "fac_kingdom_4"),
+    
+    (troop_set_slot, "trp_knight_4_2", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_4_2", troop_faction, "fac_kingdom_4"),
+    
+    (troop_set_slot, "trp_knight_4_3", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_4_3", troop_faction, "fac_kingdom_4"),
+    
+    (troop_set_slot, "trp_knight_4_4", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_4_4", troop_faction, "fac_kingdom_4"),
+    
+    (troop_set_slot, "trp_knight_4_5", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_4_5", troop_faction, "fac_kingdom_4"),
+    
+    (troop_set_slot, "trp_knight_4_6", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_4_6", troop_faction, "fac_kingdom_4"),
+    
+    (troop_set_slot, "trp_knight_4_7", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_4_7", troop_faction, "fac_kingdom_4"),
+    
+    (troop_set_slot, "trp_knight_4_8", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_4_8", troop_faction, "fac_kingdom_4"),
+    
+    (troop_set_slot, "trp_knight_4_9", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_4_9", troop_faction, "fac_kingdom_4"),
+    
+    (troop_set_slot, "trp_knight_4_10", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_4_10", troop_faction, "fac_kingdom_4"),
+    
+    (troop_set_slot, "trp_knight_4_11", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_4_11", troop_faction, "fac_kingdom_4"),
+    
+    (troop_set_slot, "trp_knight_4_12", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_4_12", troop_faction, "fac_kingdom_4"),
+    
+    (troop_set_slot, "trp_knight_4_13", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_4_13", troop_faction, "fac_kingdom_4"),
+    
+    (troop_set_slot, "trp_knight_4_14", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_4_14", troop_faction, "fac_kingdom_4"),
+    
+    (troop_set_slot, "trp_knight_4_15", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_4_15", troop_faction, "fac_kingdom_4"),
+    
+    (troop_set_slot, "trp_knight_4_16", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_4_16", troop_faction, "fac_kingdom_4"),
+    
+    (troop_set_slot, "trp_knight_4_17", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_4_17", troop_faction, "fac_kingdom_4"),
+    
+    (troop_set_slot, "trp_knight_4_18", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_4_18", troop_faction, "fac_kingdom_4"),
+    
+    (troop_set_slot, "trp_knight_5_1", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_5_1", troop_faction, "fac_kingdom_5"),
+    
+    (troop_set_slot, "trp_knight_5_2", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_5_2", troop_faction, "fac_kingdom_5"),
+    
+    (troop_set_slot, "trp_knight_5_3", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_5_3", troop_faction, "fac_kingdom_5"),
+    
+    (troop_set_slot, "trp_knight_5_4", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_5_4", troop_faction, "fac_kingdom_5"),
+    
+    (troop_set_slot, "trp_knight_5_5", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_5_5", troop_faction, "fac_kingdom_5"),
+    
+    (troop_set_slot, "trp_knight_5_6", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_5_6", troop_faction, "fac_kingdom_5"),
+    
+    (troop_set_slot, "trp_knight_5_7", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_5_7", troop_faction, "fac_kingdom_5"),
+    
+    (troop_set_slot, "trp_knight_5_8", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_5_8", troop_faction, "fac_kingdom_5"),
+    
+    (troop_set_slot, "trp_knight_5_9", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_5_9", troop_faction, "fac_kingdom_5"),
+    
+    (troop_set_slot, "trp_knight_5_10", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_5_10", troop_faction, "fac_kingdom_5"),
+    
+    (troop_set_slot, "trp_knight_5_11", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_5_11", troop_faction, "fac_kingdom_5"),
+    
+    (troop_set_slot, "trp_knight_5_12", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_5_12", troop_faction, "fac_kingdom_5"),
+    
+    (troop_set_slot, "trp_knight_5_13", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_5_13", troop_faction, "fac_kingdom_5"),
+    
+    (troop_set_slot, "trp_knight_5_14", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_5_14", troop_faction, "fac_kingdom_5"),
+    
+    (troop_set_slot, "trp_knight_5_15", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_5_15", troop_faction, "fac_kingdom_5"),
+    
+    (troop_set_slot, "trp_knight_5_16", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_5_16", troop_faction, "fac_kingdom_5"),
+    
+    (troop_set_slot, "trp_knight_5_17", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_5_17", troop_faction, "fac_kingdom_5"),
+    
+    (troop_set_slot, "trp_knight_5_18", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_5_18", troop_faction, "fac_kingdom_5"),
+    
+    (troop_set_slot, "trp_knight_5_19", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_5_19", troop_faction, "fac_kingdom_5"),
+    
+    (troop_set_slot, "trp_knight_5_20", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_5_20", troop_faction, "fac_kingdom_5"),
+    
+    (troop_set_slot, "trp_knight_5_21", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_5_21", troop_faction, "fac_kingdom_5"),
+    
+    (troop_set_slot, "trp_knight_6_1", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_6_1", troop_faction, "fac_kingdom_6"),
+
+    (troop_set_slot, "trp_knight_6_2", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_6_2", troop_faction, "fac_kingdom_6"),
+    
+    (troop_set_slot, "trp_knight_6_3", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_6_3", troop_faction, "fac_kingdom_6"),
+    
+    (troop_set_slot, "trp_knight_6_4", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_6_4", troop_faction, "fac_kingdom_6"),
+    
+    (troop_set_slot, "trp_knight_6_5", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_6_5", troop_faction, "fac_kingdom_6"),
+    
+    (troop_set_slot, "trp_knight_6_6", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_6_6", troop_faction, "fac_kingdom_6"),
+    
+    (troop_set_slot, "trp_knight_6_7", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_6_7", troop_faction, "fac_kingdom_6"),
+    
+    (troop_set_slot, "trp_knight_6_8", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_6_8", troop_faction, "fac_kingdom_6"),
+    
+    (troop_set_slot, "trp_knight_6_9", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_6_9", troop_faction, "fac_kingdom_6"),
+    
+    (troop_set_slot, "trp_knight_6_10", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_6_10", troop_faction, "fac_kingdom_6"),
+    
+    (troop_set_slot, "trp_knight_6_11", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_6_11", troop_faction, "fac_kingdom_6"),
+    
+    (troop_set_slot, "trp_knight_6_12", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_6_12", troop_faction, "fac_kingdom_6"),
+    
+    (troop_set_slot, "trp_knight_6_13", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_6_13", troop_faction, "fac_kingdom_6"),
+    
+    (troop_set_slot, "trp_knight_6_14", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_6_14", troop_faction, "fac_kingdom_6"),
+    
+    (troop_set_slot, "trp_knight_6_15", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_6_15", troop_faction, "fac_kingdom_6"),
+    
+    (troop_set_slot, "trp_knight_6_16", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_6_16", troop_faction, "fac_kingdom_6"),
+    
+    (troop_set_slot, "trp_knight_6_17", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_6_17", troop_faction, "fac_kingdom_6"),
+    
+    (troop_set_slot, "trp_knight_6_18", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_6_18", troop_faction, "fac_kingdom_6"),
+    
+    (troop_set_slot, "trp_knight_6_19", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_6_19", troop_faction, "fac_kingdom_6"),
+    
+    (troop_set_slot, "trp_knight_6_20", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_6_20", troop_faction, "fac_kingdom_6"),
+    
+    (troop_set_slot, "trp_knight_7_1", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_7_1", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_2", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_7_2", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_3", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_7_3", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_4", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_7_4", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_5", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_7_5", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_6", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_7_6", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_7", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_7_7", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_8", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_7_8", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_9", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_7_9", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_10", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_7_10", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_11", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_7_11", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_12", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_7_12", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_13", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_7_13", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_14", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_7_14", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_15", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_7_15", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_16", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_7_16", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_17", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_7_17", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_18", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_7_18", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_19", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_7_19", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_20", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_7_20", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_21", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_7_21", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_22", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_7_22", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_23", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_7_23", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_24", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_7_24", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_25", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_7_25", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_26", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_7_26", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_7_27", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_7_27", troop_faction, "fac_kingdom_7"),
+    
+    (troop_set_slot, "trp_knight_8_1", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_8_1", troop_faction, "fac_kingdom_8"),
+    
+    (troop_set_slot, "trp_knight_8_2", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_8_2", troop_faction, "fac_kingdom_8"),
+    
+    (troop_set_slot, "trp_knight_8_3", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_8_3", troop_faction, "fac_kingdom_8"),
+    
+    (troop_set_slot, "trp_knight_8_4", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_8_4", troop_faction, "fac_kingdom_8"),
+    
+    (troop_set_slot, "trp_knight_8_5", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_8_5", troop_faction, "fac_kingdom_8"),
+    
+    (troop_set_slot, "trp_knight_8_6", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_8_6", troop_faction, "fac_kingdom_8"),
+    
+    (troop_set_slot, "trp_knight_8_7", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_8_7", troop_faction, "fac_kingdom_8"),
+    
+    (troop_set_slot, "trp_knight_8_8", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_8_8", troop_faction, "fac_kingdom_8"),
+    
+    (troop_set_slot, "trp_knight_8_9", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_8_9", troop_faction, "fac_kingdom_8"),
+    
+    (troop_set_slot, "trp_knight_8_10", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_8_10", troop_faction, "fac_kingdom_8"),
+    
+    (troop_set_slot, "trp_knight_8_11", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_8_11", troop_faction, "fac_kingdom_8"),
+    
+    (troop_set_slot, "trp_knight_8_12", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_8_12", troop_faction, "fac_kingdom_8"),
+    
+    (troop_set_slot, "trp_knight_8_13", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_8_13", troop_faction, "fac_kingdom_8"),
+    
+    (troop_set_slot, "trp_knight_8_14", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_8_14", troop_faction, "fac_kingdom_8"),
+    
+    (troop_set_slot, "trp_knight_8_15", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_8_15", troop_faction, "fac_kingdom_8"),
+    
+    (troop_set_slot, "trp_knight_8_16", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_8_16", troop_faction, "fac_kingdom_8"),
+    
+    (troop_set_slot, "trp_knight_8_17", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_8_17", troop_faction, "fac_kingdom_8"),
+    
+    (troop_set_slot, "trp_knight_8_18", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_8_18", troop_faction, "fac_kingdom_8"),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+ 
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
     
     ]),
     
