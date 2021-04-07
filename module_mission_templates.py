@@ -48,18 +48,29 @@ lord_hp = (
   ti_on_agent_spawn, 0, 0, [], [
   
 		(store_trigger_param_1, ":agent"),
-        (agent_get_troop_id, ":troop", ":agent"),
-        (neg|troop_slot_eq, ":troop", player_hp, -1),
-        (troop_get_slot, ":hp", ":troop", player_hp),
-        (agent_set_max_hit_points, ":agent", ":hp", 1),
-        (assign, reg5, ":hp"),
-        (str_store_troop_name, s5, ":troop"),
-        (display_message, "@{s5} + {reg5}"),
         
-        (neg|troop_slot_eq, ":troop", player_skill_level, -1),
-        (troop_get_slot, ":chance_AI", ":troop", player_skill_level), # # Source troop skill level
-        (assign, reg5, ":chance_AI"),
-        (display_message, "@{reg5}"),
+        (agent_get_troop_id, ":troop", ":agent"),
+        (try_begin),
+            (troop_slot_ge, ":troop", player_hp, 1),
+            (troop_get_slot, ":hp", ":troop", player_hp),
+        (else_try),
+            (store_troop_health, ":hp", ":troop", 1),
+        (try_end),
+        
+        (agent_set_max_hit_points, ":agent", ":hp", 1),
+        (agent_set_hit_points, ":agent", 100, 0),
+        
+        (assign, reg25, ":hp"),
+        (str_store_troop_name, s5, ":troop"),
+        (display_message, "@{s5} has HP of {reg25}"),
+        
+        (try_begin),
+            (neg|troop_slot_eq, ":troop", player_skill_level, -1),
+            (troop_get_slot, ":chance_AI", ":troop", player_skill_level), # # Source troop skill level
+            (assign, reg15, ":chance_AI"),
+            (str_store_troop_name, s35, ":troop"),
+            (display_message, "@{s35} has AI level of {reg15}."),
+        (try_end),
     ])
 
 death_music = (
@@ -78,7 +89,8 @@ new_players = (
 0, 0, 0, [(eq, "$newplayerSpawned", 0),], [
 
 (store_mission_timer_a, ":timer"),
-(ge, ":timer", 5),
+(eq, ":timer", 5),
+
 (assign, ":continue", 1),
 (try_for_agents, ":agents"),
     (agent_is_alive, ":agents"),
@@ -172,7 +184,7 @@ corpsekicking = (
 (call_script, "script_change_player_relation_with_troop", "$corpseTarget", -10),
 (add_xp_as_reward, 250),
 (assign, "$corpseTarget", -1),
-(display_message, "@You corpsekicked {s5}!"),
+(display_message, "@You corpsekicked {s5}!", 0x00FFFF),
 
 ])
 
@@ -180,7 +192,10 @@ rempica = (
 0, 0, 0, [(neg|all_enemies_defeated), (eq, "$RempicaSpawned", 0),], [
 
         (store_mission_timer_a, ":timer"),
-        (ge, ":timer", 5),
+        (eq, ":timer", 5),
+        
+        (store_random_in_range, ":dice", 1, 20),
+        (eq, ":dice", 15),
         
         (assign, ":val", 0),
         (try_for_agents, ":agents"),
@@ -200,8 +215,7 @@ rempica = (
         (try_end),
         (eq, ":continue", 1),
         
-		# (store_random_in_range, ":dice", 1, 20),
-        # (eq, ":dice", 15),
+
         
         (get_player_agent_no, ":player"),
         (agent_is_alive, ":player"),
@@ -227,7 +241,10 @@ wk_appear = (
 1, 0, 0, [(neg|all_enemies_defeated), (eq, "$PPKSpawned", 0),], [
 
         (store_mission_timer_a, ":timer"),
-        (ge, ":timer", 30),
+        (eq, ":timer", 30),
+        
+        (store_random_in_range, ":dice", 1, 5),
+        (eq, ":dice", 2),
         
         (assign, ":continue", 1),
         (try_for_agents, ":agents"),
@@ -239,8 +256,7 @@ wk_appear = (
         (try_end),
         (eq, ":continue", 1),
         
-		(store_random_in_range, ":dice", 1, 5),
-        (eq, ":dice", 2),
+
         
         (get_player_agent_no, ":player"),
         (agent_is_alive, ":player"),
@@ -276,12 +292,12 @@ ti_on_agent_killed_or_wounded, 0, 0, [], [
 (troop_add_items, "trp_player", ":item", 1),
 (str_store_item_name, s5, ":item"),
 (str_store_troop_name, s6, ":troop"),
-(display_message, "@You looted {s5} from {s6}"),
+(display_message, "@You looted {s5} from {s6}.", 0x00FF00),
 (troop_set_slot, ":troop", player_special_loot, -1),
 
 
-],
-),
+]
+)
 
 battle_initialization = (
 ti_after_mission_start, 0, 0, [], [
@@ -2806,6 +2822,7 @@ mission_templates = [
     rempica,
     corpsekicking,
     corpsekicking_enable,
+    looting_artifacts,
     
       (ti_on_agent_spawn, 0, 0, [],
        [
@@ -16688,6 +16705,7 @@ mission_templates = [
     rempica,
     corpsekicking,
     corpsekicking_enable,
+    looting_artifacts,
     
     
 	(ti_tab_pressed, 0, 0, [],

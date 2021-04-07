@@ -35307,6 +35307,7 @@ scripts = [
      (try_end),
 
      (assign, ":begin_slot", ":cur_slot"),
+     #Efe
      (try_for_range, ":cur_slot", ":begin_slot", 64),
        (store_random_in_range, ":random_no", 0, 6),
        (try_begin),
@@ -50896,36 +50897,7 @@ scripts = [
     ]),
    #INVASION MODE END
      
-    ("mod_init", [
     
-    (assign, "$advanced_ai_open", 1),
-    (assign, "$mod_debug", 1),
-    
-    (call_script, "script_player_init"),
-    
-    ]),
-    
-    ("player_init", [
-    
-    (try_for_range, ":troops", heroes_begin, heroes_end),
-        (troop_set_slot, ":troops", player_knows_how_to_play, 1), 
-        
-        (store_random_in_range, ":dice", 2, 6),
-        (troop_set_slot, ":troops", player_skill_level, ":dice"),
-        
-        (store_random_in_range, ":random", 50, 100),
-        (troop_set_slot, ":troops", player_hp, ":random"),
-        
-        (store_random_in_range, ":hp", 70, 120),
-        (troop_set_slot, ":troops", player_hp, ":hp"),
-    (try_end),
-    
-    # (troop_set_slot, "trp_knight_3_3", this_guy_only_s, 1),
-    (troop_set_slot, "trp_knight_3_3", this_guy_only_hilt_spams, 1),
-    
-    (troop_set_slot, "trp_knight_3_3", player_thought_on_bl, "str_eb_bl"),
-    
-    ]),
     
       ("troop_tree_recursive_backtracking", 
     [
@@ -51081,4 +51053,42 @@ scripts = [
       (try_end),
       (assign, reg0, ":page_no"),
   ]),
+    
+    ("mod_init", [
+    
+    (assign, "$advanced_ai_open", 1),
+    (assign, "$mod_debug", 1),
+    
+    (call_script, "script_player_init"),
+    
+    ]),
+    
+    ("player_init", [
+    
+    (try_for_range, ":troops", heroes_begin, heroes_end),
+        (troop_set_slot, ":troops", player_knows_how_to_play, 1), 
+        
+        (store_random_in_range, ":dice", 2, 6),
+        (troop_set_slot, ":troops", player_skill_level, ":dice"),
+        
+        (store_random_in_range, ":random", 50, 100),
+        (troop_set_slot, ":troops", player_hp, ":random"),
+        
+        (store_random_in_range, ":hp", 70, 120),
+        (troop_set_slot, ":troops", player_hp, ":hp"),
+    (try_end),
+    
+    # (troop_set_slot, "trp_knight_3_3", this_guy_only_s, 1),
+    (troop_set_slot, "trp_knight_3_3", this_guy_only_hilt_spams, 1),
+    
+    (troop_set_slot, "trp_knight_3_3", player_thought_on_bl, "str_eb_bl"),
+    
+    
+    # LOOTS
+    (troop_set_slot, "trp_knight_6_20", player_special_loot, "itm_leonidas_boots"),
+    (troop_set_slot, "trp_knight_4_1", player_special_loot, "itm_lagstro_bow"),
+
+    
+    ]),
+
 ]
