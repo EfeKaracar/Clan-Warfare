@@ -1333,7 +1333,7 @@ items = [
     [(ti_on_init_item, 
     [(store_trigger_param_1, ":agent_no"),(store_trigger_param_2, ":troop_no"),(call_script, "script_shield_item_set_banner", "tableau_kite_shield_4", ":agent_no", ":troop_no")])]],
 
-    ["throwing_axes", "Balion KissMyAxe's AxeKissers", [("throwing_axe_a",0)],
+    ["kiss_axe", "Balion KissMyAxe's AxeKissers", [("throwing_axe_a",0)],
     itp_type_thrown |itp_merchandise|itp_primary|itp_next_item_as_melee,
     itcf_throw_axe,
     490, weight(5)|difficulty(3)|spd_rtng(78) | shoot_speed(18) | 
@@ -1425,19 +1425,20 @@ items = [
     145 , weight(1.75)|difficulty(3)|spd_rtng(79) | shoot_speed(56) | 
     thrust_damage(22 ,  pierce),imodbits_bow ],
 
-    ["arrows","GK Delion's Quiver", [("arrow",0),("flying_missile",
+    ["delion_quiver","GK Delion's Quiver", [("arrow",0),("flying_missile",
     ixmesh_flying_ammo),("quiver", ixmesh_carry)], itp_type_arrows|
     itp_default_ammo, itcf_carry_quiver_back, 
     72,weight(3)|abundance(160)|weapon_length(95)|
     thrust_damage(1,pierce)|max_ammo(30),imodbits_missile],
  
-    ["arrows","GK Sparhawk's Quiver", [("arrow",0),("flying_missile",
+    ["sparhawk_quiver","GK Sparhawk's Quiver", [("arrow",0),("flying_missile",
     ixmesh_flying_ammo),("quiver", ixmesh_carry)], itp_type_arrows
     |itp_default_ammo, itcf_carry_quiver_back, 
     72,weight(3)|abundance(160)|weapon_length(95)|
     thrust_damage(1,pierce)|max_ammo(30),imodbits_missile],
 
-    ["bolts","Wappaw Zacty's Shield-Splitters", [("bolt",0),("flying_missile",
+    ["zacty_boots","Wappaw Zacty's Shield-Splitters", 
+    [("bolt",0),("flying_missile",
     ixmesh_flying_ammo),("bolt_bag", ixmesh_carry),
     ("bolt_bag_b", ixmesh_carry|imodbit_large_bag)], 
     itp_type_bolts|itp_default_ammo|
@@ -1446,20 +1447,20 @@ items = [
     |thrust_damage(1,pierce)|max_ammo(29),imodbits_missile],
 
 
-    ["great_lance", "wK Calamity's The Godfather", [("heavy_lance",0)], 
+    ["calamity_lance", "wK Calamity's The Godfather", [("heavy_lance",0)], 
     itp_couchable|itp_type_polearm| itp_primary|
     itp_penalty_with_shield|itp_wooden_parry, itc_greatlance, 
     410 , weight(5)|difficulty(11)|spd_rtng(55) | weapon_length(240)
     |swing_damage(0 , cut) | thrust_damage(21 ,  pierce),imodbits_polearm ],
 
-    ["hunter","tK Heat's Heiffer", [("hunting_horse",0),("hunting_horse",
+    ["heat_horse","tK Heat's Heiffer", [("hunting_horse",0),("hunting_horse",
     imodbits_horse_good)], itp_type_horse, 0, 
     810,abundance(60)|hit_points(160)|body_armor(18)|difficulty(3)
     |horse_speed(43)|horse_maneuver(44)|horse_charge(24)|horse_scale(108)
     ,imodbits_horse_basic|imodbit_champion],
  
-  ["gwaebloom_item","GK Gwaebloom's Mapmaking Guild Membership", 
-  [("book_c",0)], itp_type_book, 0, 3500,weight(2)|abundance(100),
-  imodbits_none],
+    ["gwaebloom_item","GK Gwaebloom's Mapmaking Guild Membership", 
+    [("book_c",0)], itp_type_book, 0, 3500,weight(2)|abundance(100),
+    imodbits_none],
 
 ]

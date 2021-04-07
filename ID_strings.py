@@ -3406,5 +3406,10 @@ str_npc16_1 = 3404
 str_cedric_bl = 3405
 str_eb_bl = 3406
 str_bel_bl = 3407
+str_chow_bl = 3408
+str_john_bl = 3409
+str_aporta_bl = 3410
+str_thunder_bl = 3411
+str_mav_bl = 3412
 
 

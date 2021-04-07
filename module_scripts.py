@@ -51099,67 +51099,240 @@ scripts = [
     
     (troop_set_slot, "trp_temp_troop", bks_invasion_phase, 0),
     
-    ]),
-
-    ("start_bks_invasion", [], [
+    (try_for_range, ":factions", "fac_kingdom_1", "fac_kingdoms_end"),
+        (set_relation, "fac_black_shields", ":factions", -100),
+    (try_end),
     
-        (display_message, "@a"),
-        (store_current_day, ":cur_day"),
-        (ge, ":cur_day", 1),
-        (display_message, "@b"),
-        (neg|troop_slot_ge, "trp_temp_trp", bks_invasion_phase, 4),
-        (display_message, "@c"),
-        (store_random_party_in_range, ":random_spawn", "p_invasion_spawn_1", "p_invasion_spawn_end"),
-        
+    
+    (try_for_range, ":lords", lords_begin, lords_end),
+        (neg|troop_slot_eq, ":lords", exclude_from_auto_gear, 1),
+        (troop_get_slot, ":class", ":lords", troop_class),
+        (troop_get_slot, ":faction", ":lords", troop_faction),
+        (troop_clear_inventory, ":lords"),
         (try_begin),
-            (troop_slot_eq, "trp_temp_troop", bks_invasion_phase, 0),
-            (assign, ":max_raider_amount", 10),
-            (display_message, "@d"),
+            #SWADIA
+            (eq, ":faction", "fac_kingdom_1"),
+            (try_begin),
+                (eq, ":class", class_cav),
+                (troop_add_items, ":lords", "itm_ ", 1), # chest
+                (troop_add_items, ":lords", "itm_ ", 1), # gloves
+                (troop_add_items, ":lords", "itm_ ", 1), # boots
+                (troop_add_items, ":lords", "itm_ ", 1), # helmet
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon1
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon2
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon3
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon4
+                (troop_add_items, ":lords", "itm_ ", 1), # horse
+            (else_try),
+                (eq, ":class", class_arc),
+                (troop_add_items, ":lords", "itm_ ", 1), # chest
+                (troop_add_items, ":lords", "itm_ ", 1), # gloves
+                (troop_add_items, ":lords", "itm_ ", 1), # boots
+                (troop_add_items, ":lords", "itm_ ", 1), # helmet
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon1
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon2
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon3
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon4
+                (troop_add_items, ":lords", "itm_ ", 1), # horse
+            (else_try),
+                (eq, ":class", class_inf),
+                (troop_add_items, ":lords", "itm_ ", 1), # chest
+                (troop_add_items, ":lords", "itm_ ", 1), # gloves
+                (troop_add_items, ":lords", "itm_ ", 1), # boots
+                (troop_add_items, ":lords", "itm_ ", 1), # helmet
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon1
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon2
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon3
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon4
+                (troop_add_items, ":lords", "itm_ ", 1), # horse
+            (try_end),
         (else_try),
-            (troop_slot_eq, "trp_temp_troop", bks_invasion_phase, 1),
-            (assign, ":max_raider_amount", 15),
-            (display_message, "@e"),
+            #VAEGIR
+            (eq, ":faction", "fac_kingdom_2"),
+            (try_begin),
+                (eq, ":class", class_cav),
+                (troop_add_items, ":lords", "itm_ ", 1), # chest
+                (troop_add_items, ":lords", "itm_ ", 1), # gloves
+                (troop_add_items, ":lords", "itm_ ", 1), # boots
+                (troop_add_items, ":lords", "itm_ ", 1), # helmet
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon1
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon2
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon3
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon4
+                (troop_add_items, ":lords", "itm_ ", 1), # horse
+            (else_try),
+                (eq, ":class", class_arc),
+                (troop_add_items, ":lords", "itm_ ", 1), # chest
+                (troop_add_items, ":lords", "itm_ ", 1), # gloves
+                (troop_add_items, ":lords", "itm_ ", 1), # boots
+                (troop_add_items, ":lords", "itm_ ", 1), # helmet
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon1
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon2
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon3
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon4
+                (troop_add_items, ":lords", "itm_ ", 1), # horse
+            (else_try),
+                (eq, ":class", class_inf),
+                (troop_add_items, ":lords", "itm_ ", 1), # chest
+                (troop_add_items, ":lords", "itm_ ", 1), # gloves
+                (troop_add_items, ":lords", "itm_ ", 1), # boots
+                (troop_add_items, ":lords", "itm_ ", 1), # helmet
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon1
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon2
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon3
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon4
+                (troop_add_items, ":lords", "itm_ ", 1), # horse
+            (try_end),
         (else_try),
-            (troop_slot_eq, "trp_temp_troop", bks_invasion_phase, 2),
-            (assign, ":max_raider_amount", 20),
-            (display_message, "@f"),
+            #NORD
+            (eq, ":faction", "fac_kingdom_3"),
+            (try_begin),
+                (eq, ":class", class_cav),
+                (troop_add_items, ":lords", "itm_ ", 1), # chest
+                (troop_add_items, ":lords", "itm_ ", 1), # gloves
+                (troop_add_items, ":lords", "itm_ ", 1), # boots
+                (troop_add_items, ":lords", "itm_ ", 1), # helmet
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon1
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon2
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon3
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon4
+                (troop_add_items, ":lords", "itm_ ", 1), # horse
+            (else_try),
+                (eq, ":class", class_arc),
+                (troop_add_items, ":lords", "itm_ ", 1), # chest
+                (troop_add_items, ":lords", "itm_ ", 1), # gloves
+                (troop_add_items, ":lords", "itm_ ", 1), # boots
+                (troop_add_items, ":lords", "itm_ ", 1), # helmet
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon1
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon2
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon3
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon4
+                (troop_add_items, ":lords", "itm_ ", 1), # horse
+            (else_try),
+                (eq, ":class", class_inf),
+                (troop_add_items, ":lords", "itm_ ", 1), # chest
+                (troop_add_items, ":lords", "itm_ ", 1), # gloves
+                (troop_add_items, ":lords", "itm_ ", 1), # boots
+                (troop_add_items, ":lords", "itm_ ", 1), # helmet
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon1
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon2
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon3
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon4
+                (troop_add_items, ":lords", "itm_ ", 1), # horse
+            (try_end),
         (else_try),
-            (troop_slot_eq, "trp_temp_troop", bks_invasion_phase, 3),
-            (assign, ":max_raider_amount", 25),
-            (assign, ":spawn_lords", 1),
-            (display_message, "@g"),
+            #KHERGIT
+            (eq, ":faction", "fac_kingdom_4"),
+            (try_begin),
+                (eq, ":class", class_cav),
+                (troop_add_items, ":lords", "itm_ ", 1), # chest
+                (troop_add_items, ":lords", "itm_ ", 1), # gloves
+                (troop_add_items, ":lords", "itm_ ", 1), # boots
+                (troop_add_items, ":lords", "itm_ ", 1), # helmet
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon1
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon2
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon3
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon4
+                (troop_add_items, ":lords", "itm_ ", 1), # horse
+            (else_try),
+                (eq, ":class", class_arc),
+                (troop_add_items, ":lords", "itm_ ", 1), # chest
+                (troop_add_items, ":lords", "itm_ ", 1), # gloves
+                (troop_add_items, ":lords", "itm_ ", 1), # boots
+                (troop_add_items, ":lords", "itm_ ", 1), # helmet
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon1
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon2
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon3
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon4
+                (troop_add_items, ":lords", "itm_ ", 1), # horse
+            (else_try),
+                (eq, ":class", class_inf),
+                (troop_add_items, ":lords", "itm_ ", 1), # chest
+                (troop_add_items, ":lords", "itm_ ", 1), # gloves
+                (troop_add_items, ":lords", "itm_ ", 1), # boots
+                (troop_add_items, ":lords", "itm_ ", 1), # helmet
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon1
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon2
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon3
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon4
+                (troop_add_items, ":lords", "itm_ ", 1), # horse
+            (try_end),
+        (else_try),
+            #RHODOK
+            (eq, ":faction", "fac_kingdom_5"),
+            (try_begin),
+                (eq, ":class", class_cav),
+                (troop_add_items, ":lords", "itm_ ", 1), # chest
+                (troop_add_items, ":lords", "itm_ ", 1), # gloves
+                (troop_add_items, ":lords", "itm_ ", 1), # boots
+                (troop_add_items, ":lords", "itm_ ", 1), # helmet
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon1
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon2
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon3
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon4
+                (troop_add_items, ":lords", "itm_ ", 1), # horse
+            (else_try),
+                (eq, ":class", class_arc),
+                (troop_add_items, ":lords", "itm_ ", 1), # chest
+                (troop_add_items, ":lords", "itm_ ", 1), # gloves
+                (troop_add_items, ":lords", "itm_ ", 1), # boots
+                (troop_add_items, ":lords", "itm_ ", 1), # helmet
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon1
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon2
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon3
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon4
+                (troop_add_items, ":lords", "itm_ ", 1), # horse
+            (else_try),
+                (eq, ":class", class_inf),
+                (troop_add_items, ":lords", "itm_ ", 1), # chest
+                (troop_add_items, ":lords", "itm_ ", 1), # gloves
+                (troop_add_items, ":lords", "itm_ ", 1), # boots
+                (troop_add_items, ":lords", "itm_ ", 1), # helmet
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon1
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon2
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon3
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon4
+                (troop_add_items, ":lords", "itm_ ", 1), # horse
+            (try_end),
+        #SARRANID
+        (else_try),
+            (eq, ":faction", "fac_kingdom_6"), 
+            (try_begin),
+                (eq, ":class", class_cav),
+                (troop_add_items, ":lords", "itm_ ", 1), # chest
+                (troop_add_items, ":lords", "itm_ ", 1), # gloves
+                (troop_add_items, ":lords", "itm_ ", 1), # boots
+                (troop_add_items, ":lords", "itm_ ", 1), # helmet
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon1
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon2
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon3
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon4
+                (troop_add_items, ":lords", "itm_ ", 1), # horse
+            (else_try),
+                (eq, ":class", class_arc),
+                (troop_add_items, ":lords", "itm_ ", 1), # chest
+                (troop_add_items, ":lords", "itm_ ", 1), # gloves
+                (troop_add_items, ":lords", "itm_ ", 1), # boots
+                (troop_add_items, ":lords", "itm_ ", 1), # helmet
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon1
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon2
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon3
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon4
+                (troop_add_items, ":lords", "itm_ ", 1), # horse
+            (else_try),
+                (eq, ":class", class_inf),
+                (troop_add_items, ":lords", "itm_ ", 1), # chest
+                (troop_add_items, ":lords", "itm_ ", 1), # gloves
+                (troop_add_items, ":lords", "itm_ ", 1), # boots
+                (troop_add_items, ":lords", "itm_ ", 1), # helmet
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon1
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon2
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon3
+                (troop_add_items, ":lords", "itm_ ", 1), # weapon4
+                (troop_add_items, ":lords", "itm_ ", 1), # horse
+            (try_end),            
         (try_end),
-        
-        (try_end),
-            (eq, ":random_spawn", "p_invasion_spawn_1_ne"),
-            (tutorial_box, "@Black shields started their invasion. They are riding to Calradia from North East!", "@BLACK SHIELDS INVASION"),
-            (display_message, "@BKS INVASION!"),
-       (else_try),
-            (eq, ":random_spawn", "invasion_spawn_2_e"),
-            (tutorial_box, "@Black shields started their invasion. They are riding to Calradia from East!", "@BLACK SHIELDS INVASION"),
-            (display_message, "@BKS INVASION!"),
-       (else_try),
-            (eq, ":random_spawn", "invasion_spawn_3_nw"),
-            (tutorial_box, "@Black shields started their invasion. They are riding to Calradia from North West!", "@BLACK SHIELDS INVASION"),
-            (display_message, "@BKS INVASION!"),
-       (else_try),
-            (eq, ":random_spawn", "invasion_spawn_4_s"),
-            (tutorial_box, "@Black shields started their invasion. They are riding to Calradia from South!", "@BLACK SHIELDS INVASION"),     
-            (display_message, "@BKS INVASION!"),
-       (try_end),
-        
-        (try_for_range, ":amount", 0, ":max_raider_amount"),
-            (spawn_around_party, ":random_spawn", "pt_bks_raider"),
-        (try_end),
-        
-        # (try_begin),
-            # (eq, ":spawn_lords", 1),
-        # (try_end),
-        
-        (set_camera_follow_party, ":random_spawn"),
-        (troop_get_slot, ":val", "trp_temp_troop", bks_invasion_phase),
-        (val_add, ":val", 1),
-        (troop_set_slot, "trp_temp_troop", bks_invasion_phase, ":val"),
+    (try_end),
     
     ]),
     

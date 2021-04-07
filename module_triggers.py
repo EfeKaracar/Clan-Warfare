@@ -1503,7 +1503,57 @@ triggers = [
 #Efe
 (24, 0, 0, [], [
 
-(call_script, "script_start_bks_invasion"),
+        (store_current_day, ":cur_day"),
+        (ge, ":cur_day", 1),
+
+        (neg|troop_slot_ge, "trp_temp_troop", bks_invasion_phase, 4),
+        (store_random_party_in_range, ":random_spawn", "p_invasion_spawn_1_ne", "p_invasion_spawn_end"),
+        
+        (try_begin),
+            (troop_slot_eq, "trp_temp_troop", bks_invasion_phase, 0),
+            (assign, ":max_raider_amount", 10),
+        (else_try),
+            (troop_slot_eq, "trp_temp_troop", bks_invasion_phase, 1),
+            (assign, ":max_raider_amount", 15),
+        (else_try),
+            (troop_slot_eq, "trp_temp_troop", bks_invasion_phase, 2),
+            (assign, ":max_raider_amount", 20),
+        (else_try),
+            (troop_slot_eq, "trp_temp_troop", bks_invasion_phase, 3),
+            (assign, ":max_raider_amount", 25),
+            (assign, ":spawn_lords", 1),
+        (try_end),
+        
+        (try_begin),
+            (eq, ":random_spawn", "p_invasion_spawn_1_ne"),
+            (tutorial_box, "@Black shields started their invasion. They are riding to Calradia from North East!", "@BLACK SHIELDS INVASION"),
+            (display_message, "@BKS INVASION!"),
+       (else_try),
+            (eq, ":random_spawn", "p_invasion_spawn_2_e"),
+            (tutorial_box, "@Black shields started their invasion. They are riding to Calradia from East!", "@BLACK SHIELDS INVASION"),
+            (display_message, "@BKS INVASION!"),
+       (else_try),
+            (eq, ":random_spawn", "p_invasion_spawn_3_nw"),
+            (tutorial_box, "@Black shields started their invasion. They are riding to Calradia from North West!", "@BLACK SHIELDS INVASION"),
+            (display_message, "@BKS INVASION!"),
+       (else_try),
+            (eq, ":random_spawn", "p_invasion_spawn_4_s"),
+            (tutorial_box, "@Black shields started their invasion. They are riding to Calradia from South!", "@BLACK SHIELDS INVASION"),     
+            (display_message, "@BKS INVASION!"),
+       (try_end),
+        
+        (try_for_range, ":amount", 0, ":max_raider_amount"),
+            (spawn_around_party, ":random_spawn", "pt_bks_raider"),
+        (try_end),
+        
+        # (try_begin),
+            # (eq, ":spawn_lords", 1),
+        # (try_end),
+        
+        (set_camera_follow_party, ":random_spawn"),
+        (troop_get_slot, ":val", "trp_temp_troop", bks_invasion_phase),
+        (val_add, ":val", 1),
+        (troop_set_slot, "trp_temp_troop", bks_invasion_phase, ":val"),
 ]),
 
  
