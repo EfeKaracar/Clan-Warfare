@@ -77,15 +77,12 @@ death_music = (
 new_players = (
 ti_after_mission_start, 0, 0, [], [
 
-(store_mission_timer_a, ":timer"),
-(ge, ":timer", 5),
-
 (get_player_agent_no, ":player"),
 (agent_get_position, pos2, ":player"),
 (set_spawn_position, pos2),
 (store_random_in_range, ":number", 1, 1),
 (try_for_range, ":loop", 0, ":number"),
-    (store_random_in_range, ":dice", -50, 50),
+    (store_random_in_range, ":dice", -250, 250),
     (position_move_x, pos2, ":dice"),
     (position_move_y, pos2, ":dice"),
     (spawn_agent, "trp_bandit"),
@@ -127,7 +124,7 @@ new_players_ask_dumb_questions = (
 )
 
 new_player_follow_player = (
-5, 0, 0, [], [
+0, 0, 0, [], [
 (try_for_agents, ":newplayers"),
     (agent_is_alive, ":newplayers"),
     (agent_get_troop_id, ":troop", ":newplayers"),
@@ -191,8 +188,11 @@ rempica = (
         
         (get_player_agent_no, ":player"),
         (agent_is_alive, ":player"),
+        (agent_get_position, pos1, ":player"),
+        (store_random_in_range, ":dice", -250, 250),
+        (position_move_x, pos2, ":dice"),
+        (position_move_y, pos2, ":dice"),
         
-        (set_spawn_position, "$player_initial_position"),
         (spawn_agent, "trp_rempicaClone"),
         (agent_force_rethink, reg0),
         (agent_clear_scripted_mode, reg0),
@@ -225,8 +225,12 @@ wk_appear = (
         
         (get_player_agent_no, ":player"),
         (agent_is_alive, ":player"),
+        (agent_get_position, pos1, ":player"),
+        (store_random_in_range, ":dice", -250, 250),
+        (position_move_x, pos2, ":dice"),
+        (position_move_y, pos2, ":dice"),
         
-        (set_spawn_position, "$player_initial_position"),
+        (set_spawn_position, pos1),
         (spawn_agent, "trp_PPKCLONE"),
         (agent_force_rethink, reg0),
         (agent_clear_scripted_mode, reg0),
@@ -265,9 +269,6 @@ ti_after_mission_start, 0, 0, [], [
 
 (assign, "$PPKSpawned", 0), 
 (assign, "$RempicaSpawned", 0),
-(get_player_agent_no, ":player"),
-(agent_get_position, pos1, ":player"),
-(assign, "$player_initial_position", pos1),
         
     ])
 
@@ -16667,6 +16668,7 @@ mission_templates = [
     rempica,
     corpsekicking,
     corpsekicking_enable,
+    
     
 	(ti_tab_pressed, 0, 0, [],
        [(question_box,"@Do you wish to give up the fight?")]),

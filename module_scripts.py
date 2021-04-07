@@ -896,7 +896,10 @@ scripts = [
 	  (faction_set_slot, "fac_kingdom_4", slot_faction_adjective, "str_kingdom_4_adjective"),
 	  (faction_set_slot, "fac_kingdom_5", slot_faction_adjective, "str_kingdom_5_adjective"),
 	  (faction_set_slot, "fac_kingdom_6", slot_faction_adjective, "str_kingdom_6_adjective"),
-	  
+	  #Efe
+      (faction_set_slot, "fac_kingdom_7", slot_faction_adjective, "str_kingdom_6_adjective"),
+	  (faction_set_slot, "fac_kingdom_8", slot_faction_adjective, "str_kingdom_6_adjective"),
+	 
 ##      (assign, "$players_kingdom", "fac_kingdom_1"),
 ##      (call_script, "script_give_center_to_lord", "p_town_7", "trp_player", 0),
 ##      (call_script, "script_give_center_to_lord", "p_town_16", "trp_player", 0),
@@ -1135,6 +1138,9 @@ scripts = [
       (faction_set_slot, "fac_kingdom_4", slot_faction_banner, "mesh_banner_kingdom_a"),
       (faction_set_slot, "fac_kingdom_5", slot_faction_banner, "mesh_banner_kingdom_d"),
       (faction_set_slot, "fac_kingdom_6", slot_faction_banner, "mesh_banner_kingdom_e"),
+    #Efe
+      (faction_set_slot, "fac_kingdom_7", slot_faction_banner, "mesh_banner_kingdom_e"),
+      (faction_set_slot, "fac_kingdom_8", slot_faction_banner, "mesh_banner_kingdom_e"),
 
       (try_for_range, ":cur_item", all_items_begin, all_items_end),
         (try_for_range, ":cur_faction", npc_kingdoms_begin, npc_kingdoms_end),
@@ -5837,6 +5843,16 @@ scripts = [
 			(is_between, ":cur_troop", "trp_knight_6_1", "trp_kingdom_1_pretender"),
 			(store_sub, ":npc_seed", ":cur_troop", "trp_knight_6_1"),
 			(assign, ":ancestor_seed", 31),
+        #Efe
+        (else_try),
+			(is_between, ":cur_troop", "trp_knight_7_1", "trp_kingdom_1_pretender"),
+			(store_sub, ":npc_seed", ":cur_troop", "trp_knight_7_1"),
+			(assign, ":ancestor_seed", 31),
+            
+        (else_try),
+			(is_between, ":cur_troop", "trp_knight_8_1", "trp_kingdom_1_pretender"),
+			(store_sub, ":npc_seed", ":cur_troop", "trp_knight_8_1"),
+			(assign, ":ancestor_seed", 31),
 			
 		(try_end),
 		
@@ -6225,7 +6241,31 @@ scripts = [
           (faction_set_slot, ":faction_no",  slot_faction_reinforcements_a, "pt_kingdom_6_reinforcements_a"),
           (faction_set_slot, ":faction_no",  slot_faction_reinforcements_b, "pt_kingdom_6_reinforcements_b"),
           (faction_set_slot, ":faction_no",  slot_faction_reinforcements_c, "pt_kingdom_6_reinforcements_c"),
-        (try_end),
+        #Efe
+         (else_try),
+          (faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_7"),
+      
+          (faction_set_slot, ":faction_no", slot_faction_deserter_troop, "trp_sarranid_deserter"),
+          (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_sarranid_castle_guard"),
+          (faction_set_slot, ":faction_no", slot_faction_messenger_troop, "trp_sarranid_messenger"),
+          (faction_set_slot, ":faction_no", slot_faction_prison_guard_troop, "trp_sarranid_prison_guard"),
+          (faction_set_slot, ":faction_no", slot_faction_castle_guard_troop, "trp_sarranid_castle_guard"),
+          (faction_set_slot, ":faction_no",  slot_faction_reinforcements_a, "pt_kingdom_6_reinforcements_a"),
+          (faction_set_slot, ":faction_no",  slot_faction_reinforcements_b, "pt_kingdom_6_reinforcements_b"),
+          (faction_set_slot, ":faction_no",  slot_faction_reinforcements_c, "pt_kingdom_6_reinforcements_c"),
+        (else_try),
+          (faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_8"),
+      
+          (faction_set_slot, ":faction_no", slot_faction_deserter_troop, "trp_sarranid_deserter"),
+          (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_sarranid_castle_guard"),
+          (faction_set_slot, ":faction_no", slot_faction_messenger_troop, "trp_sarranid_messenger"),
+          (faction_set_slot, ":faction_no", slot_faction_prison_guard_troop, "trp_sarranid_prison_guard"),
+          (faction_set_slot, ":faction_no", slot_faction_castle_guard_troop, "trp_sarranid_castle_guard"),
+          (faction_set_slot, ":faction_no",  slot_faction_reinforcements_a, "pt_kingdom_6_reinforcements_a"),
+          (faction_set_slot, ":faction_no",  slot_faction_reinforcements_b, "pt_kingdom_6_reinforcements_b"),
+          (faction_set_slot, ":faction_no",  slot_faction_reinforcements_c, "pt_kingdom_6_reinforcements_c"),
+ 
+      (try_end),
       (try_end),
 	]),
 	 
@@ -50838,7 +50878,7 @@ scripts = [
         (store_random_in_range, ":random", 50, 100),
         (troop_set_slot, ":troops", player_hp, ":random"),
         
-        (store_random_in_range, ":hp", 100, 300),
+        (store_random_in_range, ":hp", 70, 120),
         (troop_set_slot, ":troops", player_hp, ":hp"),
     (try_end),
     
