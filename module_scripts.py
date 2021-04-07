@@ -425,12 +425,15 @@ scripts = [
 # We assume there are enough banners for all kingdom heroes.
 
       #faction banners
-      (faction_set_slot, "fac_kingdom_1", slot_faction_banner, "mesh_banner_kingdom_f"),
-      (faction_set_slot, "fac_kingdom_2", slot_faction_banner, "mesh_banner_kingdom_b"),
-      (faction_set_slot, "fac_kingdom_3", slot_faction_banner, "mesh_banner_kingdom_c"),
-      (faction_set_slot, "fac_kingdom_4", slot_faction_banner, "mesh_banner_kingdom_a"),
-      (faction_set_slot, "fac_kingdom_5", slot_faction_banner, "mesh_banner_kingdom_d"),
-      (faction_set_slot, "fac_kingdom_6", slot_faction_banner, "mesh_banner_kingdom_e"),
+        (faction_set_slot, "fac_kingdom_1", slot_faction_banner, "mesh_banner_kingdom_f"),
+        (faction_set_slot, "fac_kingdom_2", slot_faction_banner, "mesh_banner_kingdom_b"),
+        (faction_set_slot, "fac_kingdom_3", slot_faction_banner, "mesh_banner_kingdom_c"),
+        (faction_set_slot, "fac_kingdom_4", slot_faction_banner, "mesh_banner_kingdom_a"),
+        (faction_set_slot, "fac_kingdom_5", slot_faction_banner, "mesh_banner_kingdom_d"),
+        (faction_set_slot, "fac_kingdom_6", slot_faction_banner, "mesh_banner_kingdom_e"),
+        #EFE
+        (faction_set_slot, "fac_kingdom_7", slot_faction_banner, "mesh_banner_kingdom_e"),
+        (faction_set_slot, "fac_kingdom_8", slot_faction_banner, "mesh_banner_kingdom_e"),
 
       (try_for_range, ":cur_faction", npc_kingdoms_begin, npc_kingdoms_end),
         (faction_get_slot, ":cur_faction_king", ":cur_faction", slot_faction_leader),
@@ -478,9 +481,10 @@ scripts = [
           (val_add, ":num_other_lords_assigned", 1),
         (try_end),
         (try_begin),
-          (this_or_next|lt, ":banner_id", banner_scene_props_begin),
-          (gt, ":banner_id", banner_scene_props_end_minus_one),
-          (display_message, "@{!}ERROR: Not enough banners for heroes!"),
+            (this_or_next|lt, ":banner_id", banner_scene_props_begin),
+            (gt, ":banner_id", banner_scene_props_end_minus_one),
+            (troop_set_slot, ":kingdom_hero", slot_troop_banner_scene_prop, ":banner_id"),
+          # (display_message, "@{!}ERROR: Not enough banners for heroes!"),
         (try_end),
 
         (store_character_level, ":level", ":kingdom_hero"),
@@ -602,36 +606,36 @@ scripts = [
       
 
 	  #Now give towns to great lords
-      # (call_script, "script_give_center_to_lord", "p_town_1",  "trp_kingdom_4_lord", 0),
-      # (call_script, "script_give_center_to_lord", "p_town_2",  "trp_knight_4_1", 0),
-      # (call_script, "script_give_center_to_lord", "p_town_3",  "trp_knight_5_1", 0),
-      # (call_script, "script_give_center_to_lord", "p_town_4",  "trp_knight_1_1", 0),
-      # (call_script, "script_give_center_to_lord", "p_town_5",  "trp_kingdom_5_lord", 0),
-      # (call_script, "script_give_center_to_lord", "p_town_6",  "trp_kingdom_1_lord", 0),
-      # (call_script, "script_give_center_to_lord", "p_town_7",  "trp_knight_1_2", 0),
+      (call_script, "script_give_center_to_lord", "p_town_1",  "trp_knight_7_1", 0), #sargoth
+      (call_script, "script_give_center_to_lord", "p_town_2",  "trp_knight_4_1", 0), #tihr
+      (call_script, "script_give_center_to_lord", "p_town_3",  "trp_knight_5_1", 0), #veluca
+      (call_script, "script_give_center_to_lord", "p_town_4",  "trp_knight_4_1", 0), #suno
+      (call_script, "script_give_center_to_lord", "p_town_5",  "trp_knight_8_7", 0), #jelkala
+      (call_script, "script_give_center_to_lord", "p_town_6",  "trp_kingdom_4_lord", 0), #praven
+      (call_script, "script_give_center_to_lord", "p_town_7",  "trp_knight_1_2", 0), #uxhal
       
-      # (call_script, "script_give_center_to_lord", "p_town_8",  "trp_kingdom_2_lord", 0),
-      # (call_script, "script_give_center_to_lord", "p_town_9",  "trp_knight_2_1", 0),
-      # (call_script, "script_give_center_to_lord", "p_town_10", "trp_kingdom_3_lord", 0),
-      # (call_script, "script_give_center_to_lord", "p_town_11", "trp_knight_2_2", 0),
-      # (call_script, "script_give_center_to_lord", "p_town_12", "trp_knight_4_2", 0),
-      # (call_script, "script_give_center_to_lord", "p_town_13", "trp_knight_2_3", 0),
-      # (call_script, "script_give_center_to_lord", "p_town_14", "trp_knight_3_1", 0),
-
-      # (call_script, "script_give_center_to_lord", "p_town_15", "trp_knight_5_2", 0),
-      # (call_script, "script_give_center_to_lord", "p_town_16", "trp_knight_1_4", 0), #changed from 1_3
-      # (call_script, "script_give_center_to_lord", "p_town_17", "trp_knight_3_2", 0),
-      # (call_script, "script_give_center_to_lord", "p_town_18", "trp_knight_3_3", 0),	  
-	  
-      # (call_script, "script_give_center_to_lord", "p_town_19", "trp_kingdom_6_lord", 0),
-      # (call_script, "script_give_center_to_lord", "p_town_20", "trp_knight_6_1", 0), 
-      # (call_script, "script_give_center_to_lord", "p_town_21", "trp_knight_6_2", 0),
-      # (call_script, "script_give_center_to_lord", "p_town_22", "trp_knight_6_3", 0),	  
-
-      # # Give family castles to certain nobles.
-      # (call_script, "script_give_center_to_lord", "p_castle_29", "trp_knight_2_10", 0), #Nelag_Castle
-      # (call_script, "script_give_center_to_lord", "p_castle_30", "trp_knight_3_4", 0), #Asugan_Castle
-      # (call_script, "script_give_center_to_lord", "p_castle_35", "trp_knight_1_3", 0), #Haringoth_Castle
+      (call_script, "script_give_center_to_lord", "p_town_8",  "trp_kingdom_2_lord", 0), #reyvadin
+      (call_script, "script_give_center_to_lord", "p_town_9",  "trp_knight_2_1", 0), #khudan
+      (call_script, "script_give_center_to_lord", "p_town_10", "trp_kingdom_3_lord", 0), #tulga
+      (call_script, "script_give_center_to_lord", "p_town_11", "trp_knight_2_2", 0), #curaw
+      (call_script, "script_give_center_to_lord", "p_town_12", "trp_kingdom_7_lord", 0), #avalon
+      (call_script, "script_give_center_to_lord", "p_town_13", "trp_knight_7_5", 0), #rivac
+      (call_script, "script_give_center_to_lord", "p_town_14", "trp_knight_8_8", 0), # halmar
+      
+      (call_script, "script_give_center_to_lord", "p_town_15", "trp_knight_5_2", 0), #yalen
+      (call_script, "script_give_center_to_lord", "p_town_16", "trp_knight_1_4", 0), # dhirim changed from 1_3
+      (call_script, "script_give_center_to_lord", "p_town_17", "trp_knight_3_2", 0),    #ichamur
+      (call_script, "script_give_center_to_lord", "p_town_18", "trp_knight_3_3", 0),	  #narra
+      
+      (call_script, "script_give_center_to_lord", "p_town_19", "trp_kingdom_8_lord", 0), #shariz
+      (call_script, "script_give_center_to_lord", "p_town_20", "trp_knight_6_1", 0),    #durquba
+      (call_script, "script_give_center_to_lord", "p_town_21", "trp_knight_6_2", 0),    #ahmerrad
+      (call_script, "script_give_center_to_lord", "p_town_22", "trp_knight_6_3", 0),	#bariyye  
+      
+      # Give family castles to certain nobles.
+      (call_script, "script_give_center_to_lord", "p_castle_29", "trp_knight_2_10", 0), #Nelag_Castle
+      (call_script, "script_give_center_to_lord", "p_castle_30", "trp_knight_3_4", 0), #Asugan_Castle
+      (call_script, "script_give_center_to_lord", "p_castle_35", "trp_knight_1_3", 0), #Haringoth_Castle
 	  
       (call_script, "script_assign_lords_to_empty_centers"),
 	  	  
@@ -13949,37 +13953,40 @@ scripts = [
         (try_end),
       (else_try),
       #Efe
-        # (is_between, ":item_no", reference_books_begin, reference_books_end),
+        (eq, ":extra_text_id", 0),
         (try_begin),
-          (eq, ":extra_text_id", 0),
-          (try_begin),
-            (eq, ":item_no", "itm_book_wound_treatment_reference"),
-            (str_store_string, s1, "@wound treament"),
-          (else_try),
-            (eq, ":item_no", "itm_book_training_reference"),
-            (str_store_string, s1, "@trainer"),
-          (else_try),
-            (eq, ":item_no", "itm_book_surgery_reference"),
-            (str_store_string, s1, "@surgery"),
-          (try_end),
-          (set_result_string, "@+1 to {s1} while in inventory"),
-          
+            (is_between, ":item_no", reference_books_begin, reference_books_end),
+            (try_begin),
+                (eq, ":item_no", "itm_book_wound_treatment_reference"),
+                (str_store_string, s1, "@wound treament"),
+            (else_try),
+                (eq, ":item_no", "itm_book_training_reference"),
+                (str_store_string, s1, "@trainer"),
+            (else_try),
+                (eq, ":item_no", "itm_book_surgery_reference"),
+                (str_store_string, s1, "@surgery"),
+            (try_end),
+            (set_result_string, "@+1 to {s1} while in inventory"),
+            (set_trigger_result, 0xFFEEDD),
+        (else_try),
           #Efe
             (try_begin),
                 (eq, ":item_no", "itm_throwing_axes"),
                 (set_result_string, "@Perfect for massive dicks who wants to be an annoying twat"),
+                (set_trigger_result, 0xFFEEDD),
             (else_try),
                 (eq, ":item_no", "itm_awlpike_long"),
                 (set_result_string, "@It is not a good cav weapon."),
+                (set_trigger_result, 0xFFEEDD),
             (else_try),
                 (eq, ":item_no", "itm_danate_helmet"),
                 (set_result_string, "@+1 to leadership"),
+                (set_trigger_result, 0xFFEEDD),
             (else_try),
                 (eq, ":item_no", "itm_leonidas_boots"),
                 (set_result_string, "@+2 to athletics"),
+                (set_trigger_result, 0xFFEEDD),
             (try_end),
-          
-          (set_trigger_result, 0xFFEEDD),
         (try_end),
       (try_end),
   ]),
@@ -21822,6 +21829,8 @@ scripts = [
       #normal_banner_begin
       (troop_get_slot, ":cur_banner", ":troop_no", slot_troop_banner_scene_prop),
       (try_begin),
+        #Efe
+        (is_between, ":troop_faction_no", "fac_kingdom_1", "fac_kingdom_6"),
         (gt, ":cur_banner", 0),
         (val_sub, ":cur_banner", banner_scene_props_begin),
         (val_add, ":cur_banner", banner_map_icons_begin),
@@ -21895,18 +21904,18 @@ scripts = [
       (faction_get_slot, ":num_towns", ":faction_no", slot_faction_num_towns),
 
       (try_begin),
-##        (eq, ":party_type", spt_forager),
-##        (assign, ":party_count_limit", 1),
-##      (else_try),
-##        (eq, ":party_type", spt_scout),
-##        (assign, ":party_count_limit", 1),
-##      (else_try),
-##        (eq, ":party_type", spt_patrol),
-##        (assign, ":party_count_limit", 1),
-##      (else_try),
-##        (eq, ":party_type", spt_messenger),
-##        (assign, ":party_count_limit", 1),
-##      (else_try),
+        (eq, ":party_type", spt_forager),
+        (assign, ":party_count_limit", 2),
+      (else_try),
+        (eq, ":party_type", spt_scout),
+        (assign, ":party_count_limit", 5),
+      (else_try),
+        (eq, ":party_type", spt_patrol),
+        (assign, ":party_count_limit", 2),
+      (else_try),
+        (eq, ":party_type", spt_messenger),
+        (assign, ":party_count_limit", 1),
+      (else_try),
         (eq, ":party_type", spt_kingdom_caravan),
         (try_begin),
           (eq, ":num_towns", 0),
@@ -21920,9 +21929,9 @@ scripts = [
         (else_try),
           (assign, ":party_count_limit", 5),
         (try_end),
-##      (else_try),
-##        (eq, ":party_type", spt_prisoner_train),
-##        (assign, ":party_count_limit", 1),
+      (else_try),
+        (eq, ":party_type", spt_prisoner_train),
+        (assign, ":party_count_limit", 2),
       (try_end),
       
       (assign, reg0, -1),
@@ -21944,38 +21953,38 @@ scripts = [
       (str_store_faction_name, s7, ":faction_no"),
       (assign, ":party_name_str", "str_no_string"),
       
-##      (faction_get_slot, ":reinforcements_a", ":faction_no", slot_faction_reinforcements_a),
+      (faction_get_slot, ":reinforcements_a", ":faction_no", slot_faction_reinforcements_a),
       (faction_get_slot, ":reinforcements_b", ":faction_no", slot_faction_reinforcements_b),
-##      (faction_get_slot, ":reinforcements_c", ":faction_no", slot_faction_reinforcements_c),
+      (faction_get_slot, ":reinforcements_c", ":faction_no", slot_faction_reinforcements_c),
       
       (try_begin),
-##        (eq, ":party_type", spt_forager),
-##        (assign, ":party_template", "pt_forager_party"),
-#        (assign, ":party_name_str", "str_s7_foragers"),
-##      (else_try),
-##        (eq, ":party_type", spt_scout),
-##        (assign, ":party_template", "pt_scout_party"),
-#        (assign, ":party_name_str", "str_s7_scouts"),
-##      (else_try),
-##        (eq, ":party_type", spt_patrol),
-##        (assign, ":party_template", "pt_patrol_party"),
-#        (assign, ":party_name_str", "str_s7_patrol"),
-##      (else_try),
+        (eq, ":party_type", spt_forager),
+        (assign, ":party_template", "pt_forager_party"),
+       (assign, ":party_name_str", "str_s7_foragers"),
+      (else_try),
+        (eq, ":party_type", spt_scout),
+        (assign, ":party_template", "pt_scout_party"),
+       (assign, ":party_name_str", "str_s7_scouts"),
+      (else_try),
+        (eq, ":party_type", spt_patrol),
+        (assign, ":party_template", "pt_patrol_party"),
+       (assign, ":party_name_str", "str_s7_patrol"),
+      (else_try),
         (eq, ":party_type", spt_kingdom_caravan),
         (assign, ":party_template", "pt_kingdom_caravan_party"),
-#        (assign, ":party_name_str", "str_s7_caravan"),
-##      (else_try),
-##        (eq, ":party_type", spt_messenger),
-##        (assign, ":party_template", "pt_messenger_party"),
-#        (assign, ":party_name_str", "str_s7_messenger"),
-##      (else_try),
-##        (eq, ":party_type", spt_raider),
-##        (assign, ":party_template", "pt_raider_party"),
-##        (assign, ":party_name_str", "str_s7_raiders"),
-##      (else_try),
-##        (eq, ":party_type", spt_prisoner_train),
-##        (assign, ":party_template", "pt_prisoner_train_party"),
-#        (assign, ":party_name_str", "str_s7_prisoner_train"),
+       (assign, ":party_name_str", "str_s7_caravan"),
+      (else_try),
+        (eq, ":party_type", spt_messenger),
+        (assign, ":party_template", "pt_messenger_party"),
+       (assign, ":party_name_str", "str_s7_messenger"),
+      (else_try),
+        (eq, ":party_type", spt_raider),
+        (assign, ":party_template", "pt_raider_party"),
+        (assign, ":party_name_str", "str_s7_raiders"),
+      (else_try),
+        (eq, ":party_type", spt_prisoner_train),
+        (assign, ":party_template", "pt_prisoner_train_party"),
+       (assign, ":party_name_str", "str_s7_prisoner_train"),
       (try_end),
       
       (assign, ":result", -1),
@@ -22006,16 +22015,16 @@ scripts = [
         (try_end),
         
         (try_begin),
-##          (eq, ":party_type", spt_forager),
-##          (party_add_template, ":result", ":reinforcements_a"),
-##        (else_try),
-##          (eq, ":party_type", spt_scout),
-##          (party_add_template, ":result", ":reinforcements_c"),
-##        (else_try),
-##          (eq, ":party_type", spt_patrol),
-##          (party_add_template, ":result", ":reinforcements_a"),
-##          (party_add_template, ":result", ":reinforcements_b"),
-##        (else_try),
+          (eq, ":party_type", spt_forager),
+          (party_add_template, ":result", ":reinforcements_a"),
+        (else_try),
+          (eq, ":party_type", spt_scout),
+          (party_add_template, ":result", ":reinforcements_c"),
+        (else_try),
+          (eq, ":party_type", spt_patrol),
+          (party_add_template, ":result", ":reinforcements_a"),
+          (party_add_template, ":result", ":reinforcements_b"),
+        (else_try),
           (eq, ":party_type", spt_kingdom_caravan),
           (try_begin),
             (eq, ":faction_no", "fac_player_supporters_faction"),
@@ -22032,35 +22041,35 @@ scripts = [
             (store_add, ":cur_goods_price_slot", ":cur_goods", ":item_to_price_slot"),
             (party_set_slot, ":result", ":cur_goods_price_slot", average_price_factor),
           (try_end),
-##        (else_try),
-##          (eq, ":party_type", spt_messenger),
-##          (faction_get_slot, ":messenger_troop", ":faction_no", slot_faction_messenger_troop),
-##          (party_add_leader, ":result", ":messenger_troop"),
-##          (party_set_ai_behavior,":result",ai_bhvr_travel_to_party),
-##          (party_set_ai_object,":result",":spawn_center"),
-##          (party_set_flags, ":result", pf_default_behavior, 0),
-##        (else_try),
-##          (eq, ":party_type", spt_raider),
-##          (party_add_template, ":result", ":reinforcements_c"),
-##          (party_add_template, ":result", ":reinforcements_b"),
-##          (party_add_template, ":result", "pt_raider_captives"),
-##        (else_try),
-##          (eq, ":party_type", spt_prisoner_train),
-##          (party_add_template, ":result", ":reinforcements_b"),
-##          (party_add_template, ":result", ":reinforcements_a"),
-##          (try_begin),
-##            (call_script,"script_cf_faction_get_random_enemy_faction",":faction_no"),
-##            (store_random_in_range,":r",0,3),
-##            (try_begin),
-##              (lt, ":r", 1),
-##              (faction_get_slot, ":captive_reinforcements", reg0, slot_faction_reinforcements_b),
-##            (else_try),
-##              (faction_get_slot, ":captive_reinforcements", reg0, slot_faction_reinforcements_a),
-##            (try_end),
-##            (party_add_template, ":result", ":captive_reinforcements",1),
-##          (else_try),
-##            (party_add_template, ":result", "pt_default_prisoners"),
-##          (try_end),
+        (else_try),
+          (eq, ":party_type", spt_messenger),
+          (faction_get_slot, ":messenger_troop", ":faction_no", slot_faction_messenger_troop),
+          (party_add_leader, ":result", ":messenger_troop"),
+          (party_set_ai_behavior,":result",ai_bhvr_travel_to_party),
+          (party_set_ai_object,":result",":spawn_center"),
+          (party_set_flags, ":result", pf_default_behavior, 0),
+        (else_try),
+          (eq, ":party_type", spt_raider),
+          (party_add_template, ":result", ":reinforcements_c"),
+          (party_add_template, ":result", ":reinforcements_b"),
+          (party_add_template, ":result", "pt_raider_captives"),
+        (else_try),
+          (eq, ":party_type", spt_prisoner_train),
+          (party_add_template, ":result", ":reinforcements_b"),
+          (party_add_template, ":result", ":reinforcements_a"),
+          (try_begin),
+            (call_script,"script_cf_faction_get_random_enemy_faction",":faction_no"),
+            (store_random_in_range,":r",0,3),
+            (try_begin),
+              (lt, ":r", 1),
+              (faction_get_slot, ":captive_reinforcements", reg0, slot_faction_reinforcements_b),
+            (else_try),
+              (faction_get_slot, ":captive_reinforcements", reg0, slot_faction_reinforcements_a),
+            (try_end),
+            (party_add_template, ":result", ":captive_reinforcements",1),
+          (else_try),
+            (party_add_template, ":result", "pt_default_prisoners"),
+          (try_end),
         (try_end),
       (try_end),
       (ge, ":result", 0),
@@ -51087,8 +51096,72 @@ scripts = [
     # LOOTS
     (troop_set_slot, "trp_knight_6_20", player_special_loot, "itm_leonidas_boots"),
     (troop_set_slot, "trp_knight_4_1", player_special_loot, "itm_lagstro_bow"),
-
+    
+    (troop_set_slot, "trp_temp_troop", bks_invasion_phase, 0),
     
     ]),
 
+    ("start_bks_invasion", [], [
+    
+        (display_message, "@a"),
+        (store_current_day, ":cur_day"),
+        (ge, ":cur_day", 1),
+        (display_message, "@b"),
+        (neg|troop_slot_ge, "trp_temp_trp", bks_invasion_phase, 4),
+        (display_message, "@c"),
+        (store_random_party_in_range, ":random_spawn", "p_invasion_spawn_1", "p_invasion_spawn_end"),
+        
+        (try_begin),
+            (troop_slot_eq, "trp_temp_troop", bks_invasion_phase, 0),
+            (assign, ":max_raider_amount", 10),
+            (display_message, "@d"),
+        (else_try),
+            (troop_slot_eq, "trp_temp_troop", bks_invasion_phase, 1),
+            (assign, ":max_raider_amount", 15),
+            (display_message, "@e"),
+        (else_try),
+            (troop_slot_eq, "trp_temp_troop", bks_invasion_phase, 2),
+            (assign, ":max_raider_amount", 20),
+            (display_message, "@f"),
+        (else_try),
+            (troop_slot_eq, "trp_temp_troop", bks_invasion_phase, 3),
+            (assign, ":max_raider_amount", 25),
+            (assign, ":spawn_lords", 1),
+            (display_message, "@g"),
+        (try_end),
+        
+        (try_end),
+            (eq, ":random_spawn", "p_invasion_spawn_1_ne"),
+            (tutorial_box, "@Black shields started their invasion. They are riding to Calradia from North East!", "@BLACK SHIELDS INVASION"),
+            (display_message, "@BKS INVASION!"),
+       (else_try),
+            (eq, ":random_spawn", "invasion_spawn_2_e"),
+            (tutorial_box, "@Black shields started their invasion. They are riding to Calradia from East!", "@BLACK SHIELDS INVASION"),
+            (display_message, "@BKS INVASION!"),
+       (else_try),
+            (eq, ":random_spawn", "invasion_spawn_3_nw"),
+            (tutorial_box, "@Black shields started their invasion. They are riding to Calradia from North West!", "@BLACK SHIELDS INVASION"),
+            (display_message, "@BKS INVASION!"),
+       (else_try),
+            (eq, ":random_spawn", "invasion_spawn_4_s"),
+            (tutorial_box, "@Black shields started their invasion. They are riding to Calradia from South!", "@BLACK SHIELDS INVASION"),     
+            (display_message, "@BKS INVASION!"),
+       (try_end),
+        
+        (try_for_range, ":amount", 0, ":max_raider_amount"),
+            (spawn_around_party, ":random_spawn", "pt_bks_raider"),
+        (try_end),
+        
+        # (try_begin),
+            # (eq, ":spawn_lords", 1),
+        # (try_end),
+        
+        (set_camera_follow_party, ":random_spawn"),
+        (troop_get_slot, ":val", "trp_temp_troop", bks_invasion_phase),
+        (val_add, ":val", 1),
+        (troop_set_slot, "trp_temp_troop", bks_invasion_phase, ":val"),
+    
+    ]),
+    
+    
 ]

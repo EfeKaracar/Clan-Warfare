@@ -85,7 +85,8 @@ factions = [
 
   ("kingdoms_end","{!}kingdoms_end", 0, 0,[], []),
 
-  ("robber_knights",  "{!}robber_knights", 0, 0.1, [], []),
+   ("robber_knights",  "{!}robber_knights", 0, 0.1, [], []),
+   ("black_shields",  "Black Shields", 0, 0.1, [], []),
    
     
   ("khergits","{!}Khergits", 0, 0.5,[("player_faction",0.0)], []),

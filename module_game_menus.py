@@ -3023,26 +3023,33 @@ game_menus = [
      (set_background_mesh, "mesh_pic_camp"),
     ],
     [
-      ("camp_action_1",[(eq,"$cheat_mode",1)],"{!}Cheat: Walk around.",
-       [(set_jump_mission,"mt_ai_training"),
+        ("camp_action_1",[(eq,"$cheat_mode",1)],"{!}Cheat: Walk around.",
+        [(set_jump_mission,"mt_ai_training"),
         (call_script, "script_setup_random_scene"),
         (change_screen_mission),
         ]
-       ),
-      ("camp_action",[],"Take an action.",
-       [(jump_to_menu, "mnu_camp_action"),
+        ),
+        
+        ("camp_action",[],"Take an action.",
+        [(jump_to_menu, "mnu_camp_action"),
         ]
-       ),
+        ),
        
-       ## CC
-      ("action_view_troop_trees",[],"View troop trees.",
-      [
+        ## CC
+        ("action_view_troop_trees",[],"View troop trees.",
+        [
         (start_presentation, "prsnt_faction_troop_trees"),
         ]
-      ),
+        ),
       
-      ("camp_wait_here",[],"Wait here for some time.",
-       [
+        ("camp_cheat_find_item",[], "Find an item...",
+        [
+         (jump_to_menu, "mnu_cheat_find_item"),
+        ]
+        ),	   
+      
+        ("camp_wait_here",[],"Wait here for some time.",
+        [
            (assign,"$g_camp_mode", 1),
            (assign, "$g_infinite_camping", 0),
            (assign, "$g_player_icon_state", pis_camping),

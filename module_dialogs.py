@@ -18694,23 +18694,23 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 ## But you must leave your weapons with me. Noone's allowed into the court with weapons.", "close_window",[]],
 
 #Kingdom Parties
-#  [anyone,"start", [(this_or_next|eq,"$g_encountered_party_template","pt_swadian_foragers"),
-#                    (eq,"$g_encountered_party_template","pt_vaegir_foragers"),
-##  [anyone,"start", [(this_or_next|party_slot_eq,"$g_encountered_party",slot_party_type, spt_forager),
-##                    (this_or_next|party_slot_eq,"$g_encountered_party",slot_party_type, spt_scout),
-##                    (party_slot_eq,"$g_encountered_party",slot_party_type, spt_patrol),
-##                    (str_store_faction_name,5,"$g_encountered_party_faction")],
-##   "In the name of the {s5}.", "kingdom_party_encounter",[]],
-##  
-##  [anyone,"kingdom_party_encounter", [(le,"$g_encountered_party_relation",-10)],
-##   "Surrender now, and save yourself the indignity of defeat!", "kingdom_party_encounter_war",[]],
-##  [anyone|plyr,"kingdom_party_encounter_war", [],  "[Go to Battle]", "close_window",[(encounter_attack)]],
-##
-##  [anyone,"kingdom_party_encounter", [(ge,"$g_encountered_party_relation",10)],
-##   "Greetings, fellow warrior.", "close_window",[(eq,"$talk_context",tc_party_encounter),(assign, "$g_leave_encounter", 1)]],
-##
-##  [anyone,"kingdom_party_encounter", [],
-##   "You can go.", "close_window",[]],
+
+    [anyone,"start", [(this_or_next|party_slot_eq,"$g_encountered_party",slot_party_type, spt_forager),
+                    (this_or_next|party_slot_eq,"$g_encountered_party",slot_party_type, spt_scout),
+                    (party_slot_eq,"$g_encountered_party",slot_party_type, spt_patrol),
+                    (str_store_faction_name,5,"$g_encountered_party_faction")],
+    "In the name of the {s5}.", "kingdom_party_encounter",[
+    ]],
+  
+    [anyone,"kingdom_party_encounter", [(le,"$g_encountered_party_relation",-10)],
+    "Surrender now, and save yourself the indignity of defeat!", "kingdom_party_encounter_war",[]],
+    [anyone|plyr,"kingdom_party_encounter_war", [],  "[Go to Battle]", "close_window",[(encounter_attack)]],
+
+    [anyone,"kingdom_party_encounter", [(ge,"$g_encountered_party_relation",10)],
+    "Greetings, fellow warrior.", "close_window",[(eq,"$talk_context",tc_party_encounter),(assign, "$g_leave_encounter", 1)]],
+
+    [anyone,"kingdom_party_encounter", [],
+   "You can go.", "close_window",[]],
 
 
 

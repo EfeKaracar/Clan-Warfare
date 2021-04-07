@@ -329,4 +329,15 @@ parties = [
   ("reserved_4"                  ,"{!}last_spawn_point",    pf_disabled|pf_is_static, no_menu, pt_none, fac_commoners,0,ai_bhvr_hold,0,(0., 0),[(trp_looter,15,0)]),
   ("reserved_5"                  ,"{!}last_spawn_point",    pf_disabled|pf_is_static, no_menu, pt_none, fac_commoners,0,ai_bhvr_hold,0,(0., 0),[(trp_looter,15,0)]),
   
+  #Efe
+    ("invasion_spawn_1_ne","{!}collective_ally",pf_is_static, 
+    no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(131,115),[]),
+    ("invasion_spawn_2_e","{!}collective_ally",pf_is_static, 
+    no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(173,-12),[]),
+    ("invasion_spawn_3_nw","{!}collective_ally",pf_is_static, 
+    no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-125,109),[]),
+    ("invasion_spawn_4_s","{!}collective_ally",pf_is_static, 
+    no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(37,-132),[]),
+   ("invasion_spawn_end","{!}collective_ally",pf_is_static, 
+    no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-127,111),[]),
 ]

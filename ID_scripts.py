@@ -614,5 +614,6 @@ script_prsnt_line = 612
 script_get_page_no_of_troop_tree_for_troop_on = 613
 script_mod_init = 614
 script_player_init = 615
+script_start_bks_invasion = 616
 
 

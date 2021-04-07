@@ -1307,8 +1307,12 @@ items = [
     weapon_length(185)|swing_damage(20 , blunt) | 
     thrust_damage(32 ,  pierce),imodbits_polearm ],
 
-    ["sigi_sword", "tK Sigi's Slasher", [("sword_medieval_d_long",0),("sword_medieval_d_long_scabbard", ixmesh_carry)], itp_type_one_handed_wpn|itp_merchandise|itp_primary, itc_longsword|itcf_carry_sword_left_hip|itcf_show_holster_when_drawn,
-    550 , weight(1.8)|difficulty(0)|spd_rtng(96) | weapon_length(105)|swing_damage(33 , cut) | thrust_damage(28 ,  pierce),imodbits_sword ],
+    ["sigi_sword", "tK Sigi's Slasher", [("sword_medieval_d_long",0),
+    ("sword_medieval_d_long_scabbard", ixmesh_carry)],
+    itp_type_one_handed_wpn|itp_primary, itc_longsword|
+    itcf_carry_sword_left_hip|itcf_show_holster_when_drawn,
+    550 , weight(1.8)|difficulty(0)|spd_rtng(96) | weapon_length(105)|
+    swing_damage(33 , cut) | thrust_damage(28 ,  pierce),imodbits_sword ],
  
     ["ebdanian_sword", "RCC Ebdanian's Toothpick", 
     [("sword_viking_a_small",0),("sword_viking_a_small_scabbard",

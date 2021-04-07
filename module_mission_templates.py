@@ -77,7 +77,7 @@ death_music = (
 ti_on_agent_killed_or_wounded, 0, 0, [], [
   
         (store_trigger_param_1, ":dead_agent_no"),
-        (store_trigger_param_1, ":killer"),
+        (store_trigger_param_2, ":killer"),
         
         (agent_get_troop_id, ":troop", ":dead_agent_no"),
         (neg|troop_slot_eq, ":troop", player_death_music, -1),
@@ -86,10 +86,16 @@ ti_on_agent_killed_or_wounded, 0, 0, [], [
     ])
     
 new_players = (
-0, 0, 0, [(eq, "$newplayerSpawned", 0),], [
+0, 0, 0, [
+(eq, "$newplayerSpawned", 0),
+(eq, "$PPKSpawned", 0),
+(eq, "$RempicaSpawned", 0),], [
 
 (store_mission_timer_a, ":timer"),
 (eq, ":timer", 5),
+
+(store_random_in_range, ":dice", 0, 5),
+(eq, ":dice", 0),
 
 (assign, ":continue", 1),
 (try_for_agents, ":agents"),
@@ -110,6 +116,8 @@ new_players = (
     (position_move_x, pos2, ":dice"),
     (position_move_y, pos2, ":dice"),
     (spawn_agent, "trp_new_player"),
+    (eq, ":loop", ":number"),
+    (assign, ":loop", -1),
 (try_end),
 (assign, "$newplayerSpawned", 1),
 
@@ -189,7 +197,10 @@ corpsekicking = (
 ])
 
 rempica = (
-0, 0, 0, [(neg|all_enemies_defeated), (eq, "$RempicaSpawned", 0),], [
+0, 0, 0, [(neg|all_enemies_defeated), 
+(eq, "$newplayerSpawned", 0),
+(eq, "$PPKSpawned", 0),
+(eq, "$RempicaSpawned", 0),], [
 
         (store_mission_timer_a, ":timer"),
         (eq, ":timer", 5),
@@ -238,13 +249,16 @@ rempica = (
     ])
 
 wk_appear = (
-1, 0, 0, [(neg|all_enemies_defeated), (eq, "$PPKSpawned", 0),], [
+1, 0, 0, [(neg|all_enemies_defeated), 
+(eq, "$newplayerSpawned", 0),
+(eq, "$PPKSpawned", 0),
+(eq, "$RempicaSpawned", 0),], [
 
         (store_mission_timer_a, ":timer"),
-        (eq, ":timer", 30),
+        (eq, ":timer", 10),
         
-        (store_random_in_range, ":dice", 1, 5),
-        (eq, ":dice", 2),
+        # (store_random_in_range, ":dice", 1, 5),
+        # (eq, ":dice", 2),
         
         (assign, ":continue", 1),
         (try_for_agents, ":agents"),
@@ -255,8 +269,6 @@ wk_appear = (
             (assign, ":continue", -1),
         (try_end),
         (eq, ":continue", 1),
-        
-
         
         (get_player_agent_no, ":player"),
         (agent_is_alive, ":player"),
@@ -283,6 +295,9 @@ ti_on_agent_killed_or_wounded, 0, 0, [], [
 
 (store_trigger_param_1, ":dead"),
 (store_trigger_param_2, ":killer"),
+
+(get_player_agent_no, ":player"),
+(eq, ":killer", ":player"),
 
 (agent_get_troop_id, ":troop", ":dead"),
 (neg|troop_slot_eq, ":troop", player_special_loot, -1),
@@ -2839,7 +2854,9 @@ mission_templates = [
          (store_random_in_range, ":randomized_addition_courage", 0, 3000), #average : 1500
          (val_add, ":initial_courage_score", ":randomized_addition_courage"), 
                    
-         (agent_get_party_id, ":agent_party", ":agent_no"),         
+         (agent_get_party_id, ":agent_party", ":agent_no"),  
+         #Efe - fix
+         (ge, ":agent_party", 0),
          (party_get_morale, ":cur_morale", ":agent_party"),
          
          (store_sub, ":morale_effect_on_courage", ":cur_morale", 70),
@@ -16699,10 +16716,10 @@ mission_templates = [
     wk_appear,
     death_music,
     battle_initialization,
-    new_player_follow_player,
-    new_players_ask_dumb_questions,
-    new_players,
-    rempica,
+    # new_player_follow_player,
+    # new_players_ask_dumb_questions,
+    # new_players,
+    # rempica,
     corpsekicking,
     corpsekicking_enable,
     looting_artifacts,

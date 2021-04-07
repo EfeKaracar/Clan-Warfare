@@ -67,3 +67,5 @@ pt_sea_raider_lair = 65
 pt_looter_lair = 66
 pt_bandit_lair_templates_end = 67
 pt_leaded_looters = 68
+pt_bks_raider = 69
+pt_bks_lord = 70

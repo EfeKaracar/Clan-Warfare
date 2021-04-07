@@ -32,7 +32,7 @@ this_guy_does_jump_swing = 1008
 this_guy_does_holds = 1009
 this_guy_is_spastic = 1010
 
-
+bks_invasion_phase = 1200
 
 # Efe end
 
@@ -587,14 +587,14 @@ slot_center_last_reconnoitered_by_faction_time 				= 350
 spt_castle             = 2
 spt_town               = 3
 spt_village            = 4
-##spt_forager            = 5
-##spt_war_party          = 6
-##spt_patrol             = 7
-##spt_messenger          = 8
-##spt_raider             = 9
-##spt_scout              = 10
+spt_forager            = 5
+spt_war_party          = 6
+spt_patrol             = 7
+spt_messenger          = 8
+spt_raider             = 9
+spt_scout              = 10
 spt_kingdom_caravan    = 11
-##spt_prisoner_train     = 12
+spt_prisoner_train     = 12
 spt_kingdom_hero_party = 13
 ##spt_merchant_caravan   = 14
 spt_village_farmer     = 15

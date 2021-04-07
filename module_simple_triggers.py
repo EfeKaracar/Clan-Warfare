@@ -32,7 +32,9 @@ simple_triggers = [
    [
     ]),
 
+    
 
+    
   (1,
    [
       (try_begin),
@@ -55,6 +57,7 @@ simple_triggers = [
     ]),
 
 
+    
   (0,
    [
       (try_begin),
