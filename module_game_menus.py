@@ -61,6 +61,7 @@ game_menus = [
             (troop_add_items, "trp_player", "itm_marquis_hammer", 1),
             (troop_equip_items, "trp_player"),
             (troop_raise_attribute, "trp_player", ca_strength, 10),
+            (party_add_members, "p_main_party", "trp_bandit", 10),
         ]
         ),
         

@@ -896,7 +896,10 @@ scripts = [
 	  (faction_set_slot, "fac_kingdom_4", slot_faction_adjective, "str_kingdom_4_adjective"),
 	  (faction_set_slot, "fac_kingdom_5", slot_faction_adjective, "str_kingdom_5_adjective"),
 	  (faction_set_slot, "fac_kingdom_6", slot_faction_adjective, "str_kingdom_6_adjective"),
-	  
+	  #Efe
+      (faction_set_slot, "fac_kingdom_7", slot_faction_adjective, "str_kingdom_6_adjective"),
+	  (faction_set_slot, "fac_kingdom_8", slot_faction_adjective, "str_kingdom_6_adjective"),
+	 
 ##      (assign, "$players_kingdom", "fac_kingdom_1"),
 ##      (call_script, "script_give_center_to_lord", "p_town_7", "trp_player", 0),
 ##      (call_script, "script_give_center_to_lord", "p_town_16", "trp_player", 0),
@@ -1135,6 +1138,9 @@ scripts = [
       (faction_set_slot, "fac_kingdom_4", slot_faction_banner, "mesh_banner_kingdom_a"),
       (faction_set_slot, "fac_kingdom_5", slot_faction_banner, "mesh_banner_kingdom_d"),
       (faction_set_slot, "fac_kingdom_6", slot_faction_banner, "mesh_banner_kingdom_e"),
+    #Efe
+      (faction_set_slot, "fac_kingdom_7", slot_faction_banner, "mesh_banner_kingdom_e"),
+      (faction_set_slot, "fac_kingdom_8", slot_faction_banner, "mesh_banner_kingdom_e"),
 
       (try_for_range, ":cur_item", all_items_begin, all_items_end),
         (try_for_range, ":cur_faction", npc_kingdoms_begin, npc_kingdoms_end),
@@ -5837,6 +5843,16 @@ scripts = [
 			(is_between, ":cur_troop", "trp_knight_6_1", "trp_kingdom_1_pretender"),
 			(store_sub, ":npc_seed", ":cur_troop", "trp_knight_6_1"),
 			(assign, ":ancestor_seed", 31),
+        #Efe
+        (else_try),
+			(is_between, ":cur_troop", "trp_knight_7_1", "trp_kingdom_1_pretender"),
+			(store_sub, ":npc_seed", ":cur_troop", "trp_knight_7_1"),
+			(assign, ":ancestor_seed", 31),
+            
+        (else_try),
+			(is_between, ":cur_troop", "trp_knight_8_1", "trp_kingdom_1_pretender"),
+			(store_sub, ":npc_seed", ":cur_troop", "trp_knight_8_1"),
+			(assign, ":ancestor_seed", 31),
 			
 		(try_end),
 		
@@ -6225,7 +6241,31 @@ scripts = [
           (faction_set_slot, ":faction_no",  slot_faction_reinforcements_a, "pt_kingdom_6_reinforcements_a"),
           (faction_set_slot, ":faction_no",  slot_faction_reinforcements_b, "pt_kingdom_6_reinforcements_b"),
           (faction_set_slot, ":faction_no",  slot_faction_reinforcements_c, "pt_kingdom_6_reinforcements_c"),
-        (try_end),
+        #Efe
+         (else_try),
+          (faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_7"),
+      
+          (faction_set_slot, ":faction_no", slot_faction_deserter_troop, "trp_sarranid_deserter"),
+          (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_sarranid_castle_guard"),
+          (faction_set_slot, ":faction_no", slot_faction_messenger_troop, "trp_sarranid_messenger"),
+          (faction_set_slot, ":faction_no", slot_faction_prison_guard_troop, "trp_sarranid_prison_guard"),
+          (faction_set_slot, ":faction_no", slot_faction_castle_guard_troop, "trp_sarranid_castle_guard"),
+          (faction_set_slot, ":faction_no",  slot_faction_reinforcements_a, "pt_kingdom_6_reinforcements_a"),
+          (faction_set_slot, ":faction_no",  slot_faction_reinforcements_b, "pt_kingdom_6_reinforcements_b"),
+          (faction_set_slot, ":faction_no",  slot_faction_reinforcements_c, "pt_kingdom_6_reinforcements_c"),
+        (else_try),
+          (faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_8"),
+      
+          (faction_set_slot, ":faction_no", slot_faction_deserter_troop, "trp_sarranid_deserter"),
+          (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_sarranid_castle_guard"),
+          (faction_set_slot, ":faction_no", slot_faction_messenger_troop, "trp_sarranid_messenger"),
+          (faction_set_slot, ":faction_no", slot_faction_prison_guard_troop, "trp_sarranid_prison_guard"),
+          (faction_set_slot, ":faction_no", slot_faction_castle_guard_troop, "trp_sarranid_castle_guard"),
+          (faction_set_slot, ":faction_no",  slot_faction_reinforcements_a, "pt_kingdom_6_reinforcements_a"),
+          (faction_set_slot, ":faction_no",  slot_faction_reinforcements_b, "pt_kingdom_6_reinforcements_b"),
+          (faction_set_slot, ":faction_no",  slot_faction_reinforcements_c, "pt_kingdom_6_reinforcements_c"),
+ 
+      (try_end),
       (try_end),
 	]),
 	 
@@ -13908,7 +13948,8 @@ scripts = [
           (set_trigger_result, 0xFFEEDD),
         (try_end),
       (else_try),
-        (is_between, ":item_no", reference_books_begin, reference_books_end),
+      #Efe
+        # (is_between, ":item_no", reference_books_begin, reference_books_end),
         (try_begin),
           (eq, ":extra_text_id", 0),
           (try_begin),
@@ -13922,6 +13963,22 @@ scripts = [
             (str_store_string, s1, "@surgery"),
           (try_end),
           (set_result_string, "@+1 to {s1} while in inventory"),
+          
+          #Efe
+            (try_begin),
+                (eq, ":item_no", "itm_throwing_axes"),
+                (set_result_string, "@Perfect for massive dicks who wants to be an annoying twat"),
+            (else_try),
+                (eq, ":item_no", "itm_awlpike_long"),
+                (set_result_string, "@It is not a good cav weapon."),
+            (else_try),
+                (eq, ":item_no", "itm_danate_helmet"),
+                (set_result_string, "@+1 to leadership"),
+            (else_try),
+                (eq, ":item_no", "itm_leonidas_boots"),
+                (set_result_string, "@+2 to athletics"),
+            (try_end),
+          
           (set_trigger_result, 0xFFEEDD),
         (try_end),
       (try_end),
@@ -13997,24 +14054,44 @@ scripts = [
   ("game_get_skill_modifier_for_troop",
    [(store_script_param, ":troop_no", 1),
     (store_script_param, ":skill_no", 2),
+    
     (assign, ":modifier_value", 0),
+    
     (try_begin),
-      (eq, ":skill_no", "skl_wound_treatment"),
-      (call_script, "script_get_troop_item_amount", ":troop_no", "itm_book_wound_treatment_reference"),
-      (gt, reg0, 0),
-      (val_add, ":modifier_value", 1),
+        (eq, ":skill_no", "skl_wound_treatment"),
+        (call_script, "script_get_troop_item_amount", ":troop_no", "itm_book_wound_treatment_reference"),
+        (gt, reg0, 0),
+        (val_add, ":modifier_value", 1),
     (else_try),
-      (eq, ":skill_no", "skl_trainer"),
-      (call_script, "script_get_troop_item_amount", ":troop_no", "itm_book_training_reference"),
-      (gt, reg0, 0),
-      (val_add, ":modifier_value", 1),
+        (eq, ":skill_no", "skl_trainer"),
+        (call_script, "script_get_troop_item_amount", ":troop_no", "itm_book_training_reference"),
+        (gt, reg0, 0),
+        (val_add, ":modifier_value", 1),
     (else_try),
-      (eq, ":skill_no", "skl_surgery"),
-      (call_script, "script_get_troop_item_amount", ":troop_no", "itm_book_surgery_reference"),
-      (gt, reg0, 0),
-      (val_add, ":modifier_value", 1),
+        (eq, ":skill_no", "skl_surgery"),
+        (call_script, "script_get_troop_item_amount", ":troop_no", "itm_book_surgery_reference"),
+        (gt, reg0, 0),
+        (val_add, ":modifier_value", 1),
+     #Efe
+    (else_try),
+        (eq, ":skill_no", "skl_leadership"),
+        (call_script, "script_get_troop_item_amount", ":troop_no", "itm_danate_helmet"),
+        (gt, reg0, 0),
+        (val_add, ":modifier_value", 1),
+    (else_try),
+        (eq, ":skill_no", "skl_athletics"),
+        (call_script, "script_get_troop_item_amount", ":troop_no", "itm_leonidas_boots"),
+        (gt, reg0, 0),
+        (val_add, ":modifier_value", 2),
+    (else_try),
+        (eq, ":skill_no", "skl_engineer"),
+        (call_script, "script_get_troop_item_amount", ":troop_no", "itm_gwaebloom_item"),
+        (gt, reg0, 0),
+        (val_add, ":modifier_value", 2),
     (try_end),
+    
     (set_trigger_result, ":modifier_value"),
+    
     ]),
 
 # Note to modders: Uncomment these if you'd like to use the following.
@@ -33598,7 +33675,8 @@ scripts = [
      (try_end),
      (try_begin),
        (store_num_parties_of_template, ":num_parties", "pt_looters"),
-       (lt,":num_parties",42), #was 33 at mount&blade, 50 in warband, 42 last decision
+       #Efe
+       (lt,":num_parties", 142), #was 33 at mount&blade, 50 in warband, 42 last decision
        (store_random_in_range,":spawn_point",villages_begin,villages_end), #spawn looters twice to have lots of them at the beginning       
        (set_spawn_radius, 25),
        (spawn_around_party,":spawn_point","pt_looters"),
@@ -50838,7 +50916,7 @@ scripts = [
         (store_random_in_range, ":random", 50, 100),
         (troop_set_slot, ":troops", player_hp, ":random"),
         
-        (store_random_in_range, ":hp", 100, 300),
+        (store_random_in_range, ":hp", 70, 120),
         (troop_set_slot, ":troops", player_hp, ":hp"),
     (try_end),
     
