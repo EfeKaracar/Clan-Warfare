@@ -34,6 +34,13 @@ this_guy_is_spastic = 1010
 
 bks_invasion_phase = 1200
 
+troop_class = 2000
+troop_faction = 3000
+class_cav = 2001
+class_inf = 2002
+class_arc = 2003
+exclude_from_auto_gear = 2000;
+
 # Efe end
 
 

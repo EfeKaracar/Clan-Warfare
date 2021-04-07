@@ -95,7 +95,7 @@ new_players = (
 (eq, ":timer", 5),
 
 (store_random_in_range, ":dice", 0, 5),
-(eq, ":dice", 0),
+(eq, ":dice", 3),
 
 (assign, ":continue", 1),
 (try_for_agents, ":agents"),
@@ -255,10 +255,10 @@ wk_appear = (
 (eq, "$RempicaSpawned", 0),], [
 
         (store_mission_timer_a, ":timer"),
-        (eq, ":timer", 10),
+        (eq, ":timer", 30),
         
-        # (store_random_in_range, ":dice", 1, 5),
-        # (eq, ":dice", 2),
+        (store_random_in_range, ":dice", 1, 5),
+        (eq, ":dice", 2),
         
         (assign, ":continue", 1),
         (try_for_agents, ":agents"),
@@ -416,32 +416,6 @@ advanced_ai = (
                 (agent_set_attack_action, ":agents", 3, 0),
             (try_end),
             
-        (try_end),
-        
-        #Chamber disarming
-        (try_begin),
-            (eq, ":pos_def", 1),
-            (neq, ":pos_def", 2),
-            (eq, ":pos_atkdir", 1),
-            (eq, ":pos_atkdir", 2),
-            (neq, ":pos_atk", 1),
-            (eq, ":pos_atk", 2),
-            (agent_is_in_parried_animation, ":target"),
-            (agent_get_wielded_item, ":weapon", ":agents", 0),
-            (agent_unequip_item, ":agents", ":weapon"),
-            (agent_get_bone_position, pos2, ":agents", hb_hand_r, 1),
-            (store_random_in_range, ":z_rotation", 0, 360),
-            (store_random_in_range, ":y_rotation", -60, 60),
-            (store_random_in_range, ":x_pos", -90, 90),
-            (store_random_in_range, ":y_pos", -90, 90),
-            (position_rotate_z, pos2,":z_rotation"),
-            (position_rotate_y, pos2,":y_rotation"),
-            (position_move_x, pos2, ":x_pos"),
-            (position_move_y, pos2, ":y_pos"),
-            (position_set_z_to_ground_level, pos2),
-            (position_move_z, pos2, 5),
-            (set_spawn_position, pos2),
-            (spawn_item, ":weapon"),
         (try_end),
         
         #Feinting
@@ -16716,10 +16690,10 @@ mission_templates = [
     wk_appear,
     death_music,
     battle_initialization,
-    # new_player_follow_player,
-    # new_players_ask_dumb_questions,
-    # new_players,
-    # rempica,
+    new_player_follow_player,
+    new_players_ask_dumb_questions,
+    new_players,
+    rempica,
     corpsekicking,
     corpsekicking_enable,
     looting_artifacts,
