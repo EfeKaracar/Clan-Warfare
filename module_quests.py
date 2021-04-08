@@ -45,7 +45,7 @@ quests = [
  ("collect_taxes", "Collect Taxes from {s3}", qf_random_quest,
   "{!}{s9} asked you to collect taxes from {s3}. He offered to leave you one-fifth of all the money you collect there."
   ),
- ("hunt_down_fugitive", "Hunt Down {s4}", qf_random_quest,
+ ("hunt_down_fugitive", "Hunt Down Duckie", qf_random_quest,
   "{!}{s9} asked you to hunt down the fugitive named {s4}. He is currently believed to be at {s3}."
   ),
 ## ("capture_messenger", "Capture {s3}", qf_random_quest,
@@ -412,4 +412,7 @@ quests = [
   ),   
   
  ("quests_end", "Quests End", 0, "{!}."),
+ 
+    #Efe
+    ("kill_everyone", "Beat Every Lord", 0, "{!}."),
 ]

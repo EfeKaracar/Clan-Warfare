@@ -340,4 +340,7 @@ parties = [
     no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(37,-132),[]),
    ("invasion_spawn_end","{!}collective_ally",pf_disabled, 
     no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-127,111),[]),
+    
+    ("beaten_lords","beatenLords",pf_disabled, 
+    no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(-127,111),[]),
 ]

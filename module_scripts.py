@@ -51097,6 +51097,29 @@ scripts = [
     # LOOTS
     (troop_set_slot, "trp_knight_6_20", player_special_loot, "itm_leonidas_boots"),
     (troop_set_slot, "trp_knight_4_1", player_special_loot, "itm_lagstro_bow"),
+    (troop_set_slot, "trp_knight_3_3", player_special_loot, "itm_ebdanian_sword"),
+    (troop_set_slot, "trp_knight_3_4", player_special_loot, "itm_marquis_hammer"),
+    (troop_set_slot, "trp_knight_7_19", player_special_loot, "itm_roxhard_horse"),
+    (troop_set_slot, "trp_knight_6_7", player_special_loot, "itm_kradle_smash"),
+    (troop_set_slot, "trp_knight_4_3", player_special_loot, "itm_achilles_boots"),
+    (troop_set_slot, "trp_knight_7_22", player_special_loot, "itm_nickdean_shield"),
+    # (troop_set_slot, "trp_knight_4_1", player_special_loot, "itm_kiss_axe"),
+    (troop_set_slot, "trp_knight_6_20", player_special_loot, "itm_leonidas_boots"),
+    # (troop_set_slot, "trp_knight_4_1", player_special_loot, "itm_scott_ray_warhorse"),
+    (troop_set_slot, "trp_knight_5_17", player_special_loot, "itm_oddle_axe"),
+    (troop_set_slot, "trp_knight_6_5", player_special_loot, "itm_derpy_carver"),
+    (troop_set_slot, "trp_knight_7_13", player_special_loot, "itm_pierce_spear"),
+    (troop_set_slot, "trp_knight_6_1", player_special_loot, "itm_dave_hammer"),
+    (troop_set_slot, "trp_knight_5_14", player_special_loot, "itm_magerick_armor"),
+    # (troop_set_slot, "trp_knight_4_1", player_special_loot, "itm_fred_sword"),
+    (troop_set_slot, "trp_kingdom_1_lord", player_special_loot, "itm_rob_armor"),
+    (troop_set_slot, "trp_knight_6_17", player_special_loot, "itm_delion_quiver"),
+    (troop_set_slot, "trp_knight_6_9", player_special_loot, "itm_sparhawk_quiver"),
+    (troop_set_slot, "trp_knight_7_12", player_special_loot, "itm_zacty_boots"),
+    (troop_set_slot, "trp_knight_4_5", player_special_loot, "itm_calamity_lance"),
+    # (troop_set_slot, "trp_knight_4_1", player_special_loot, "itm_gwaebloom_item"),
+    
+    
     
     (troop_set_slot, "trp_temp_troop", bks_invasion_phase, 0),
     
@@ -51836,169 +51859,48 @@ scripts = [
     
     (troop_set_slot, "trp_knight_8_18", troop_class, class_inf),
     (troop_set_slot, "trp_knight_8_18", troop_faction, "fac_kingdom_1"),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
- 
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
+    #Ladies as zealots
+    (try_for_range, ":ladies", kingdom_ladies_begin, kingdom_ladies_end),
+        (troop_clear_inventory, ":ladies"),
+        (troop_add_items, ":ladies", "itm_bride_dress", 1),
+        (troop_add_items, ":ladies", "itm_bride_crown", 1),
+        (troop_add_items, ":ladies", "itm_bride_shoes", 1),
+        (troop_add_items, ":ladies", "itm_crossbow", 1),
+        (troop_equip_items, ":ladies"),
+    (try_end),
     
     ]),
     
+    ("duel_quest_process", [
     
+    (assign, ":number", 0),
+    (try_for_range, ":lords", lords_begin, lords_end),
+        (val_add, ":number", 1),
+    (try_end),
+    (assign, reg55, ":number"),
+    
+    (assign, ":number_0", 0),
+    (try_for_range, ":lords_0", lords_begin, lords_end),
+        (troop_slot_ge, ":lords_0", slot_troop_duel_won, 1),
+        (val_add, ":number_0", 1),
+    (try_end),
+    (assign, reg56, ":number_0"),
+    (str_store_string, s2, "@Beat every player lord in a duel.^^{reg56}/{reg55}^Check duel report for details."),            
+    
+    (try_begin),
+        # if quest is NOT active
+        (neg|check_quest_active, "qst_kill_everyone"),
+        # start 
+        (call_script, "script_start_quest", "qst_kill_everyone", "trp_player"),
+    (else_try),
+        # if quest is already active
+        # finish then start again
+        (call_script, "script_finish_quest", "qst_kill_everyone"),
+        (call_script, "script_start_quest", "qst_kill_everyone", "trp_player"),
+    (try_end),
+   
+    
+    ]),
 ]
