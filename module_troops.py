@@ -371,12 +371,12 @@ troops = [
    def_attrib|level(22),wp_melee(160),knows_common|knows_riding_3|knows_ironflesh_4|knows_power_strike_4|knows_shield_3|knows_athletics_5,swadian_face_middle_1, swadian_face_old_2],
   
   ["swadian_sergeant","Blood Rat Executioner","Blood Rat Executioners",tf_mounted|tf_guarantee_shield|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet,0,0,fac_kingdom_1,
-   [itm_two_handed_cleaverm
+   [itm_two_handed_cleaver,
     itm_coat_of_plates,itm_mail_boots,itm_iron_greaves,itm_great_helmet,itm_guard_helmet,itm_gauntlets],
    def_attrib|level(26),wp_melee(220),knows_common|knows_shield_4|knows_ironflesh_6|knows_power_strike_6|knows_athletics_7,swadian_face_middle_1, swadian_face_older_2],
   
   ["swadian_skirmisher","Neglected Bowman","Neglected Bowmen",tf_guarantee_ranged|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_kingdom_1,
-   [itm_short_bow, itm_arrows, itm_sword_medieval_b_small
+   [itm_short_bow, itm_arrows, itm_sword_medieval_b_small,
     itm_red_gambeson,itm_padded_cloth,itm_ankle_boots,itm_arming_cap,itm_arming_cap],
    def_attrib|level(14),wp(80),knows_common|knows_riding_2|knows_power_draw_2|knows_ironflesh_1,swadian_face_young_1, swadian_face_middle_2],
   
