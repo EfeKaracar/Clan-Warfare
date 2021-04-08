@@ -357,12 +357,12 @@ troops = [
    def_attrib|level(4),wp(60),knows_common,swadian_face_younger_1, swadian_face_middle_2],
   
   ["swadian_militia","Sword of Discord","Swords of Discord",tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield,0,0,fac_kingdom_1,
-   [itm_sword,itm_tab_shield_heater_a,itm_boar_spear,itm_padded_cloth,itm_red_gambeson,itm_arming_cap,itm_arming_cap,itm_ankle_boots,itm_wrapping_boots],
+   [itm_sword_medieval_a, itm_tab_shield_heater_a, itm_boar_spear, itm_padded_cloth, itm_red_gambeson, itm_arming_cap, itm_ankle_boots, itm_wrapping_boots],
    def_attrib|level(9),wp(75),knows_common,swadian_face_young_1, swadian_face_old_2],
   
   ["swadian_footman","Rat Nobility","Rat Nobility",tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield,0,0,fac_kingdom_1,
    [itm_war_spear,itm_warhammer,itm_sword_medieval_b_small,itm_sword_medieval_a,itm_tab_shield_heater_b,
-    itm_mail_with_tunic_red,itm_leather_boots_boots,itm_mail_coif,itm_norman_helmet, itm_mail_mittens],
+    itm_mail_with_tunic_red,itm_leather_boots,itm_mail_coif,itm_norman_helmet, itm_mail_mittens],
    def_attrib|level(16),wp_melee(115),knows_common|knows_ironflesh_3|knows_shield_3|knows_athletics_3|knows_power_strike_3,swadian_face_young_1, swadian_face_old_2],
   
   ["swadian_infantry","Blood Rat","Blood Rats",tf_guarantee_shield|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet,0,0,fac_kingdom_1,
