@@ -51069,6 +51069,7 @@ scripts = [
     (assign, "$mod_debug", 1),
     
     (call_script, "script_player_init"),
+    (call_script, "script_wear_lords"),
     
     
     ]),
@@ -51134,237 +51135,8 @@ scripts = [
     
     (call_script, "script_wear_lords"),
     
-    (try_for_range, ":lords", kings_begin, lords_end),
-        (neg|troop_slot_eq, ":lords", exclude_from_auto_gear, 1),
-        (troop_get_slot, ":class", ":lords", troop_class),
-        (troop_get_slot, ":faction", ":lords", troop_faction),
-        (troop_clear_inventory, ":lords"),
-        (try_begin),
-            #SWADIA
-            (eq, ":faction", "fac_kingdom_1"),
-            (try_begin),
-                (eq, ":class", class_cav),
-                (troop_add_items, ":lords", "itm_leather_armor", 1), # chest
-                # (troop_add_items, ":lords", "itm_ ", 1), # gloves
-                (troop_add_items, ":lords", "itm_ankle_boots", 1), # boots
-                (troop_add_items, ":lords", "itm_helmet_with_neckguard", 1), # helmet
-                (troop_add_items, ":lords", "itm_awlpike_long", 1), # weapon1
-                (troop_add_items, ":lords", "itm_tab_shield_heater_c", 1), # weapon2
-                (troop_add_items, ":lords", "itm_sword_medieval_a", 1), # weapon3
-                # (troop_add_items, ":lords", "itm_ ", 1), # weapon4
-                (troop_add_items, ":lords", "itm_hunter", 1), # horse
-            (else_try),
-                (eq, ":class", class_arc),
-                (troop_add_items, ":lords", "itm_padded_cloth", 1), # chest
-                # (troop_add_items, ":lords", "itm_ ", 1), # gloves
-                (troop_add_items, ":lords", "itm_ankle_boots", 1), # boots
-                (troop_add_items, ":lords", "itm_helmet_with_neckguard", 1), # helmet
-                (troop_add_items, ":lords", "itm_heavy_crossbow", 1), # weapon1
-                (troop_add_items, ":lords", "itm_bolts", 1), # weapon2
-                (troop_add_items, ":lords", "itm_sword_medieval_a", 1), # weapon3
-                (troop_add_items, ":lords", "itm_tab_shield_heater_b", 1), # weapon4
-                # (troop_add_items, ":lords", "itm_ ", 1), # horse
-            (else_try),
-                (eq, ":class", class_inf),
-                (troop_add_items, ":lords", "itm_red_gambeson", 1), # chest
-                # (troop_add_items, ":lords", "itm_ ", 1), # gloves
-                (troop_add_items, ":lords", "itm_ankle_boots", 1), # boots
-                (troop_add_items, ":lords", "itm_guard_helmet", 1), # helmet
-                # (troop_add_items, ":lords", "itm_awlpike_long ", 1), # weapon1
-                (troop_add_items, ":lords", "itm_tab_shield_heater_c", 1), # weapon2
-                (troop_add_items, ":lords", "itm_sword_medieval_a", 1), # weapon3
-                # (troop_add_items, ":lords", "itm_ ", 1), # weapon4
-                # (troop_add_items, ":lords", "itm_ ", 1), # horse
-            (try_end),
-        (else_try),
-            #VAEGIR
-            (eq, ":faction", "fac_kingdom_2"),
-            (try_begin),
-                (eq, ":class", class_cav),
-                (troop_add_items, ":lords", "itm_leather_vest", 1), # chest
-                # (troop_add_items, ":lords", "itm_ ", 1), # gloves
-                (troop_add_items, ":lords", "itm_hide_boots", 1), # boots
-                # (troop_add_items, ":lords", "itm_ ", 1), # helmet
-                (troop_add_items, ":lords", "itm_tab_shield_kite_cav_a", 1), # weapon1
-                (troop_add_items, ":lords", "itm_lance", 1), # weapon2
-                (troop_add_items, ":lords", "itm_scimitar", 1), # weapon3
-                # (troop_add_items, ":lords", "itm_ ", 1), # weapon4
-                (troop_add_items, ":lords", "itm_hunter", 1), # horse
-            (else_try),
-                (eq, ":class", class_arc),
-                (troop_add_items, ":lords", "itm_leather_jerkin", 1), # chest
-                # (troop_add_items, ":lords", "itm_ ", 1), # gloves
-                (troop_add_items, ":lords", "itm_hide_boots", 1), # boots
-                (troop_add_items, ":lords", "itm_vaegir_fur_helmet", 1), # helmet
-                (troop_add_items, ":lords", "itm_strong_bow", 1), # weapon1
-                (troop_add_items, ":lords", "itm_arrows", 1), # weapon2
-                (troop_add_items, ":lords", "itm_arrows", 1), # weapon3
-                (troop_add_items, ":lords", "itm_mace_2", 1), # weapon4
-                # (troop_add_items, ":lords", "itm_ ", 1), # horse
-            (else_try),
-                (eq, ":class", class_inf),
-                (troop_add_items, ":lords", "itm_leather_jerkin", 1), # chest
-                # (troop_add_items, ":lords", "itm_ ", 1), # gloves
-                (troop_add_items, ":lords", "itm_hide_boots", 1), # boots
-                (troop_add_items, ":lords", "itm_vaegir_spiked_helmet", 1), # helmet
-                (troop_add_items, ":lords", "itm_scimitar", 1), # weapon1
-                (troop_add_items, ":lords", "itm_tab_shield_kite_b", 1), # weapon2
-                (troop_add_items, ":lords", "itm_spear", 1), # weapon3
-                # (troop_add_items, ":lords", "itm_ ", 1), # weapon4
-                # (troop_add_items, ":lords", "itm_ ", 1), # horse
-            (try_end),
-        (else_try),
-            #NORD
-            (eq, ":faction", "fac_kingdom_3"),
-            (try_begin),
-                (eq, ":class", class_cav),
-                (troop_add_items, ":lords", "itm_blue_tunic", 1), # chest
-                # (troop_add_items, ":lords", "itm_ ", 1), # gloves
-                (troop_add_items, ":lords", "itm_leather_boots", 1), # boots
-                # (troop_add_items, ":lords", "itm_ ", 1), # helmet
-                (troop_add_items, ":lords", "itm_sword_viking_1", 1), # weapon1
-                (troop_add_items, ":lords", "itm_light_lance", 1), # weapon2
-                (troop_add_items, ":lords", "itm_tab_shield_small_round_a", 1), # weapon3
-                (troop_add_items, ":lords", "itm_javelin", 1), # weapon4
-                (troop_add_items, ":lords", "itm_hunter", 1), # horse
-            (else_try),
-                (eq, ":class", class_arc),
-                (troop_add_items, ":lords", "itm_leather_jerkin", 1), # chest
-                # (troop_add_items, ":lords", "itm_ ", 1), # gloves
-                (troop_add_items, ":lords", "itm_leather_boots", 1), # boots
-                (troop_add_items, ":lords", "itm_nordic_fighter_helmet", 1), # helmet
-                (troop_add_items, ":lords", "itm_short_bow", 1), # weapon1
-                (troop_add_items, ":lords", "itm_arrows", 1), # weapon2
-                (troop_add_items, ":lords", "itm_one_handed_war_axe_b", 1), # weapon3
-                # (troop_add_items, ":lords", "itm_ ", 1), # weapon4
-                # (troop_add_items, ":lords", "itm_ ", 1), # horse
-            (else_try),
-                (eq, ":class", class_inf),
-                (troop_add_items, ":lords", "itm_leather_jerkin", 1), # chest
-                # (troop_add_items, ":lords", "itm_ ", 1), # gloves
-                (troop_add_items, ":lords", "itm_leather_boots", 1), # boots
-                (troop_add_items, ":lords", "itm_nordic_huscarl_helmet", 1), # helmet
-                (troop_add_items, ":lords", "itm_one_handed_war_axe_a", 1), # weapon1
-                (troop_add_items, ":lords", "itm_tab_shield_round_d", 1), # weapon2
-                # (troop_add_items, ":lords", "itm_ ", 1), # weapon3
-                # (troop_add_items, ":lords", "itm_ ", 1), # weapon4
-                # (troop_add_items, ":lords", "itm_ ", 1), # horse
-            (try_end),
-        (else_try),
-            #KHERGIT
-            (eq, ":faction", "fac_kingdom_4"),
-            (try_begin),
-                (eq, ":class", class_cav),
-                (troop_add_items, ":lords", "itm_steppe_armor", 1), # chest
-                # (troop_add_items, ":lords", "itm_ ", 1), # gloves
-                (troop_add_items, ":lords", "itm_hide_boots", 1), # boots
-                (troop_add_items, ":lords", "itm_steppe_cap", 1), # helmet
-                (troop_add_items, ":lords", "itm_sword_khergit_1", 1), # weapon1
-                (troop_add_items, ":lords", "itm_tab_shield_small_round_a", 1), # weapon2
-                (troop_add_items, ":lords", "itm_lance", 1), # weapon3
-                # (troop_add_items, ":lords", "itm_ ", 1), # weapon4
-                (troop_add_items, ":lords", "itm_hunter", 1), # horse
-            (else_try),
-                (eq, ":class", class_arc),
-                (troop_add_items, ":lords", "itm_tribal_warrior_outfit", 1), # chest
-                # (troop_add_items, ":lords", "itm_ ", 1), # gloves
-                (troop_add_items, ":lords", "itm_hide_boots", 1), # boots
-                (troop_add_items, ":lords", "itm_steppe_cap", 1), # helmet
-                (troop_add_items, ":lords", "itm_sword_khergit_1", 1), # weapon1
-                (troop_add_items, ":lords", "itm_nomad_bow", 1), # weapon2
-                (troop_add_items, ":lords", "itm_arrows", 1), # weapon3
-                (troop_add_items, ":lords", "itm_arrows", 1), # weapon4
-                (troop_add_items, ":lords", "itm_steppe_horse", 1), # horse
-            (else_try),
-                (eq, ":class", class_inf),
-                (troop_add_items, ":lords", "itm_steppe_armor", 1), # chest
-                (troop_add_items, ":lords", "itm_leather_gloves", 1), # gloves
-                (troop_add_items, ":lords", "itm_hide_boots", 1), # boots
-                (troop_add_items, ":lords", "itm_khergit_guard_helmet", 1), # helmet
-                (troop_add_items, ":lords", "itm_sword_khergit_1", 1), # weapon1
-                (troop_add_items, ":lords", "itm_tab_shield_small_round_b", 1), # weapon2
-                (troop_add_items, ":lords", "itm_spear", 1), # weapon3
-                # (troop_add_items, ":lords", "itm_ ", 1), # weapon4
-                # (troop_add_items, ":lords", "itm_ ", 1), # horse
-            (try_end),
-        (else_try),
-            #RHODOK
-            (eq, ":faction", "fac_kingdom_5"),
-            (try_begin),
-                (eq, ":class", class_cav),
-                (troop_add_items, ":lords", "itm_leather_armor", 1), # chest
-                # (troop_add_items, ":lords", "itm_ ", 1), # gloves
-                (troop_add_items, ":lords", "itm_ankle_boots", 1), # boots
-                (troop_add_items, ":lords", "itm_footman_helmet", 1), # helmet
-                (troop_add_items, ":lords", "itm_lance", 1), # weapon1
-                (troop_add_items, ":lords", "itm_tab_shield_heater_cav_a", 1), # weapon2
-                (troop_add_items, ":lords", "itm_sword_medieval_a", 1), # weapon3
-                # (troop_add_items, ":lords", "itm_ ", 1), # weapon4
-                (troop_add_items, ":lords", "itm_hunter", 1), # horse
-            (else_try),
-                (eq, ":class", class_arc),
-                (troop_add_items, ":lords", "itm_aketon_green", 1), # chest
-                # (troop_add_items, ":lords", "itm_ ", 1), # gloves
-                (troop_add_items, ":lords", "itm_ankle_boots", 1), # boots
-                (troop_add_items, ":lords", "itm_kettle_hat", 1), # helmet
-                (troop_add_items, ":lords", "itm_sword_medieval_a", 1), # weapon1
-                (troop_add_items, ":lords", "itm_bolts", 1), # weapon2
-                (troop_add_items, ":lords", "itm_crossbow", 1), # weapon3
-                (troop_add_items, ":lords", "itm_tab_shield_pavise_c", 1), # weapon4
-                # (troop_add_items, ":lords", "itm_ ", 1), # horse
-            (else_try),
-                (eq, ":class", class_inf),
-                (troop_add_items, ":lords", "itm_ragged_outfit", 1), # chest
-                # (troop_add_items, ":lords", "itm_ ", 1), # gloves
-                (troop_add_items, ":lords", "itm_ankle_boots", 1), # boots
-                (troop_add_items, ":lords", "itm_footman_helmet", 1), # helmet
-                (troop_add_items, ":lords", "itm_military_cleaver_b", 1), # weapon1
-                (troop_add_items, ":lords", "itm_tab_shield_pavise_d", 1), # weapon2
-                (troop_add_items, ":lords", "itm_spear", 1), # weapon3
-                # (troop_add_items, ":lords", "itm_ ", 1), # weapon4
-                # (troop_add_items, ":lords", "itm_ ", 1), # horse
-            (try_end),
-            #SARRANID
-        (else_try),
-            (eq, ":faction", "fac_kingdom_6"), 
-            (try_begin),
-                (eq, ":class", class_cav),
-                (troop_add_items, ":lords", "itm_archers_vest", 1), # chest
-                # (troop_add_items, ":lords", "itm_ ", 1), # gloves
-                (troop_add_items, ":lords", "itm_sarranid_boots_b", 1), # boots
-                (troop_add_items, ":lords", "itm_desert_turban", 1), # helmet
-                (troop_add_items, ":lords", "itm_lance", 1), # weapon1
-                (troop_add_items, ":lords", "itm_tab_shield_small_round_a", 1), # weapon2
-                (troop_add_items, ":lords", "itm_arabian_sword_a", 1), # weapon3
-                # (troop_add_items, ":lords", "itm_ ", 1), # weapon4
-                (troop_add_items, ":lords", "itm_arabian_horse_b", 1), # horse
-            (else_try),
-                (eq, ":class", class_arc),
-                (troop_add_items, ":lords", "itm_archers_vest", 1), # chest
-                # (troop_add_items, ":lords", "itm_ ", 1), # gloves
-                (troop_add_items, ":lords", "itm_sarranid_boots_b", 1), # boots
-                (troop_add_items, ":lords", "itm_sarranid_mail_coif", 1), # helmet
-                (troop_add_items, ":lords", "itm_nomad_bow", 1), # weapon1
-                (troop_add_items, ":lords", "itm_arrows", 1), # weapon2
-                (troop_add_items, ":lords", "itm_arrows", 1), # weapon3
-                (troop_add_items, ":lords", "itm_scimitar", 1), # weapon4
-                # (troop_add_items, ":lords", "itm_ ", 1), # horse
-            (else_try),
-                (eq, ":class", class_inf),
-                (troop_add_items, ":lords", "itm_archers_vest", 1), # chest
-                # (troop_add_items, ":lords", "itm_ ", 1), # gloves
-                (troop_add_items, ":lords", "itm_sarranid_boots_b", 1), # boots
-                (troop_add_items, ":lords", "itm_sarranid_mail_coif", 1), # helmet
-                (troop_add_items, ":lords", "itm_sarranid_axe_a", 1), # weapon1
-                (troop_add_items, ":lords", "itm_tab_shield_kite_b", 1), # weapon2
-                (troop_add_items, ":lords", "itm_bamboo_spear", 1), # weapon3
-                # (troop_add_items, ":lords", "itm_ ", 1), # weapon4
-                # (troop_add_items, ":lords", "itm_ ", 1), # horse
-            (try_end),            
-        (try_end),
-        (troop_equip_items, ":lords"),
-        (troop_set_auto_equip, ":lords", 1),
-    (try_end),
+    
+    
     
     ]),
     
@@ -51878,6 +51650,8 @@ scripts = [
         (troop_add_items, ":ladies", "itm_crossbow", 1),
         (troop_equip_items, ":ladies"),
     (try_end),
+    
+    
     
     ]),
     

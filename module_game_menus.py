@@ -64,6 +64,7 @@ game_menus = [
             (party_add_members, "p_main_party", "trp_bandit", 10),
             
             (call_script, "script_duel_quest_process"),
+            
 
         ]
         ),
