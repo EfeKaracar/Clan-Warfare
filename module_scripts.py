@@ -51370,7 +51370,7 @@ scripts = [
     
     ("wear_lords", [
     
-    (try_for_range, ":lords", lords_begin, lords_end),
+    (try_for_range, ":lords", kings_begin, lords_end),
         (troop_set_slot, ":lords", troop_class, class_inf),
         (troop_set_slot, ":lords", exclude_from_auto_gear, -1),
         (troop_set_slot, ":lords", troop_faction, "fac_kingdom_1"),
