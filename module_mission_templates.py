@@ -87,6 +87,8 @@ ti_on_agent_killed_or_wounded, 0, 0, [], [
     
 new_players = (
 0, 0, 0, [
+
+(neg|main_hero_fallen),
 (eq, "$newplayerSpawned", 0),
 (eq, "$PPKSpawned", 0),
 (eq, "$RempicaSpawned", 0),], [
@@ -125,7 +127,7 @@ new_players = (
 )
 
 new_players_ask_dumb_questions = (
-5, 0, 0, [], [
+5, 0, 0, [(neg|main_hero_fallen),], [
 
 (assign, ":continue", 0),
 (try_for_agents, ":newplayers"),
@@ -156,7 +158,7 @@ new_players_ask_dumb_questions = (
 )
 
 new_player_follow_player = (
-0, 0, 0, [], [
+0, 0, 0, [(neg|main_hero_fallen),], [
 (try_for_agents, ":newplayers"),
     (agent_is_alive, ":newplayers"),
     (agent_get_troop_id, ":troop", ":newplayers"),
@@ -169,7 +171,7 @@ new_player_follow_player = (
 )
 
 corpsekicking_enable = (
-ti_on_agent_killed_or_wounded,0,0, [], [
+ti_on_agent_killed_or_wounded,0,0, [(neg|main_hero_fallen),], [
 
 (store_trigger_param_1, ":dead"),
 
@@ -181,7 +183,7 @@ ti_on_agent_killed_or_wounded,0,0, [], [
 ])
 
 corpsekicking = (
-0,0,0, [(ge, "$corpseTarget", 0),], [
+0,0,0, [(neg|main_hero_fallen),(ge, "$corpseTarget", 0),], [
 
 (get_player_agent_no, ":player"),
 (agent_get_animation, ":cur_animation", ":player"),
@@ -197,7 +199,9 @@ corpsekicking = (
 ])
 
 rempica = (
-0, 0, 0, [(neg|all_enemies_defeated), 
+0, 0, 0, [
+(neg|main_hero_fallen),
+(neg|all_enemies_defeated), 
 (eq, "$newplayerSpawned", 0),
 (eq, "$PPKSpawned", 0),
 (eq, "$RempicaSpawned", 0),], [
@@ -249,7 +253,8 @@ rempica = (
     ])
 
 wk_appear = (
-1, 0, 0, [(neg|all_enemies_defeated), 
+1, 0, 0, [(neg|main_hero_fallen),
+(neg|all_enemies_defeated), 
 (eq, "$newplayerSpawned", 0),
 (eq, "$PPKSpawned", 0),
 (eq, "$RempicaSpawned", 0),], [
@@ -300,10 +305,10 @@ ti_on_agent_killed_or_wounded, 0, 0, [], [
 (eq, ":killer", ":player"),
 
 (agent_get_troop_id, ":troop", ":dead"),
-(neg|troop_slot_eq, ":troop", player_special_loot, -1),
+(troop_slot_ge, ":troop", player_special_loot, 0),
 (troop_get_slot, ":item", ":troop", player_special_loot),
-(store_random_in_range, ":chance", 0, 10),
-(eq, ":chance", 8),
+# (store_random_in_range, ":chance", 0, 10),
+# (eq, ":chance", 8),
 (troop_add_items, "trp_player", ":item", 1),
 (str_store_item_name, s5, ":item"),
 (str_store_troop_name, s6, ":troop"),
