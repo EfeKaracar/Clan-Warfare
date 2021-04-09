@@ -1462,5 +1462,37 @@ items = [
     ["gwaebloom_item","GK Gwaebloom's Mapmaking Guild Membership", 
     [("book_c",0)], itp_type_book, 0, 3500,weight(2)|abundance(100),
     imodbits_none],
+    
+    ["john_taco","KoA John's Specialty Tacos", 
+    [("book_c",0)], itp_type_book, 0, 3500,weight(2)|abundance(100),
+    imodbits_none],
+    
+    ["gorlock_system","OE Gorlock's Tree-Avoidance System", 
+    [("book_c",0)], itp_type_book, 0, 3500,weight(2)|abundance(100),
+    imodbits_none],
+    
+    ["mar_walls","tK Mar's Scoop on Walls", 
+    [("book_c",0)], itp_type_book, 0, 3500,weight(2)|abundance(100),
+    imodbits_none], 
+    
+    ["red_dict","tK Red's Dictionary", 
+    [("book_c",0)], itp_type_book, 0, 3500,weight(2)|abundance(100),
+    imodbits_none], 
+    
+    ["pest_insult","GK Pest's Insults", 
+    [("book_c",0)], itp_type_book, 0, 3500,weight(2)|abundance(100),
+    imodbits_none], 
+    
+    ["edward_carrot","RCC Edward's Carrot", 
+    [("book_c",0)], itp_type_book, 0, 3500,weight(2)|abundance(100),
+    imodbits_none], 
+    
+    ["grimsight_matchmaker","OE Grimsight's Matchmaker", 
+    [("book_c",0)], itp_type_book, 0, 3500,weight(2)|abundance(100),
+    imodbits_none], 
+    
+    ["vahaemar_horn","Brightfyre Vahaemar's Horn", 
+    [("book_c",0)], itp_type_book, 0, 3500,weight(2)|abundance(100),
+    imodbits_none], 
 
 ]
