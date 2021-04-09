@@ -14593,8 +14593,8 @@ game_menus = [
         (try_end),    
         (modify_visitors_at_site, ":arena_scene"),    
         (reset_visitors),
-    (set_visitor, "$g_duel_vis_point_opp", "$g_talk_troop"),
-    (set_visitor, "$g_duel_vis_point_plyr", "trp_player"),
+        (set_visitor, "$g_duel_vis_point_opp", "$g_talk_troop"),
+        (set_visitor, "$g_duel_vis_point_plyr", "trp_player"),
 
          (set_jump_mission, "mt_arena_duel_thing_std"),
          (jump_to_scene, ":arena_scene"),

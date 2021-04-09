@@ -16667,11 +16667,11 @@ mission_templates = [
 (56, mtef_visitor_source|mtef_team_0, af_override_weapons|af_override_horse, aif_start_alarmed, 1, [itm_sword_viking_2, itm_tab_shield_heater_c]),      
 (58, mtef_visitor_source|mtef_team_2,af_override_weapons|af_override_horse, aif_start_alarmed, 1, [itm_sword_viking_2, itm_tab_shield_heater_c]),
 #vistiors 8 and 9 are 2-H standard
-(0, mtef_visitor_source|mtef_team_0, af_override_weapons, aif_start_alarmed, 1, [itm_sword_of_war, itm_great_axe, itm_warhammer]),      
-(8, mtef_visitor_source|mtef_team_2,af_override_weapons, aif_start_alarmed, 1, [itm_sword_of_war, itm_great_axe, itm_warhammer]),
+(0, mtef_visitor_source|mtef_team_0, af_override_weapons, aif_start_alarmed, 1, [itm_sword_of_war, itm_great_axe]),      
+(8, mtef_visitor_source|mtef_team_2,af_override_weapons, aif_start_alarmed, 1, [itm_sword_of_war, itm_great_axe]),
 #visitors 10 and 11 are 2-H no horse
-(56, mtef_visitor_source|mtef_team_0, af_override_weapons|af_override_horse, aif_start_alarmed, 1, [itm_sword_of_war, itm_great_axe, itm_warhammer]),      
-(58, mtef_visitor_source|mtef_team_2,af_override_weapons|af_override_horse, aif_start_alarmed, 1, [itm_sword_of_war, itm_great_axe, itm_warhammer]),
+(56, mtef_visitor_source|mtef_team_0, af_override_weapons|af_override_horse, aif_start_alarmed, 1, [itm_sword_of_war, itm_great_axe]),      
+(58, mtef_visitor_source|mtef_team_2,af_override_weapons|af_override_horse, aif_start_alarmed, 1, [itm_sword_of_war, itm_great_axe]),
 #vistiors 12 and 13 are ranged standard - note that armor is also changed to light leather stuff
 (0, mtef_visitor_source|mtef_team_0, af_override_all_but_horse|af_override_foot, aif_start_alarmed, 1, [itm_hunting_bow, itm_bodkin_arrows, itm_nobleman_outfit, itm_skullcap, itm_light_leather_boots, itm_leather_gloves]),      
 (8, mtef_visitor_source|mtef_team_2, af_override_all_but_horse|af_override_foot, aif_start_alarmed, 1, [itm_hunting_bow, itm_bodkin_arrows, itm_nobleman_outfit, itm_skullcap, itm_light_leather_boots, itm_leather_gloves]),
