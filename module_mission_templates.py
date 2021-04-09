@@ -16704,7 +16704,7 @@ mission_templates = [
     (ti_question_answered, 0, 0, [],
        [(store_trigger_param_1,":answer"),
 	    (eq,":answer",0),
- #add 1 to the slot for amount of duels the player lost against this troop if it is a tf_hero
+    #add 1 to the slot for amount of duels the player lost against this troop if it is a tf_hero
 		(try_begin),
 			(troop_is_hero, "$g_talk_troop"),
 			(assign, "$g_duel_result", -1),
@@ -16712,7 +16712,7 @@ mission_templates = [
 			(val_add, ":duel_losses", 1),
 			(troop_set_slot, "$g_talk_troop", slot_troop_duel_lost, ":duel_losses"), 
 		(try_end),
- #add 1 to the total amount of duels player lost if it is a tf_hero
+    #add 1 to the total amount of duels player lost if it is a tf_hero
 		(try_begin),
 			(troop_is_hero, "$g_talk_troop"),
 			(troop_get_slot, ":duel_losses_player", "trp_player", slot_troop_duel_lost),
@@ -16725,12 +16725,12 @@ mission_templates = [
 		(finish_mission),
 	   ]),
 
-(1,3, ti_once, [
+    (1,3, ti_once, [
     (all_enemies_defeated, 1),
     (neg|main_hero_fallen, 0)
     ],
- [
-#add 1 to the slot for amount of duels the player won against this troop if it is a tf_hero
+    [
+    #add 1 to the slot for amount of duels the player won against this troop if it is a tf_hero
 	(assign, "$g_duel_result", 1),
 	(try_begin),
 		(troop_is_hero, "$g_talk_troop"),
@@ -16738,23 +16738,25 @@ mission_templates = [
 		(val_add, ":duel_wins", 1),
 		(troop_set_slot, "$g_talk_troop", slot_troop_duel_won, ":duel_wins"),
 
-	
-#add 1 to the total amount of duels player won if it is a tf_hero
-
+        #add 1 to the total amount of duels player won if it is a tf_hero
 		(troop_get_slot, ":duel_wins_player", "trp_player", slot_troop_duel_won),
 		(val_add, ":duel_wins_player", 1),
 		(troop_set_slot, "trp_player", slot_troop_duel_won, ":duel_wins_player"),
 		(assign, reg(2), ":duel_wins_player"),
 		(display_message, "@You've won a total number of {reg2} duels"),
+
+        #Efe
+        (call_script, "script_duel_quest_process"),
+        
 	(try_end),
     (finish_mission),
    ]),
 
-(2, 3, ti_once, [
+    (2, 3, ti_once, [
     (main_hero_fallen),
     ],       
    [
-#add 1 to the slot for amount of duels the player lost against this troop if it is a tf_hero
+    #add 1 to the slot for amount of duels the player lost against this troop if it is a tf_hero
     (assign, "$g_duel_result", -1),
 	(try_begin),
 		(troop_is_hero, "$g_talk_troop"),
@@ -16763,7 +16765,7 @@ mission_templates = [
 		(troop_set_slot, "$g_talk_troop", slot_troop_duel_lost, ":duel_losses"), 
 		(assign, reg(1), ":duel_losses"),
 
-#add 1 to the total amount of duels player lost if it is a tf_hero
+    #add 1 to the total amount of duels player lost if it is a tf_hero
 		(troop_get_slot, ":duel_losses_player", "trp_player", slot_troop_duel_lost),
 		(val_add, ":duel_losses_player", 1),
 		(troop_set_slot, "trp_player", slot_troop_duel_lost, ":duel_losses_player"), 
@@ -16771,9 +16773,10 @@ mission_templates = [
 		(display_message, "@You've lost a total number of {reg2} duels."),
 	(try_end),
     (finish_mission),
+    
     ]),    
- ],
-),    
+    ],
+    ),    
 
 ########################## Duel Mod End ##############################
 

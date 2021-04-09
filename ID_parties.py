@@ -243,3 +243,4 @@ p_invasion_spawn_2_e = 241
 p_invasion_spawn_3_nw = 242
 p_invasion_spawn_4_s = 243
 p_invasion_spawn_end = 244
+p_beaten_lords = 245

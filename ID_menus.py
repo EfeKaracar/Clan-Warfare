@@ -216,3 +216,4 @@ menu_lost_tavern_duel = 214
 menu_establish_court = 215
 menu_notification_relieved_as_marshal = 216
 menu_duel_menu = 217
+menu_duel_report = 218

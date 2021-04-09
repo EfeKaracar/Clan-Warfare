@@ -50,7 +50,7 @@ game_menus = [
         ]
         ),
         
-       #Efe
+        #Efe
         ("map",[(eq, "$mod_debug", 1),],"Map...",
         [
             (change_screen_map),
@@ -62,6 +62,9 @@ game_menus = [
             (troop_equip_items, "trp_player"),
             (troop_raise_attribute, "trp_player", ca_strength, 10),
             (party_add_members, "p_main_party", "trp_bandit", 10),
+            
+            (call_script, "script_duel_quest_process"),
+
         ]
         ),
         
@@ -570,6 +573,12 @@ game_menus = [
        [(jump_to_menu, "mnu_character_report"),
         ]
        ),
+       #Efe
+         ("view_beaten_lords",[],"View duel report.",
+        [(jump_to_menu, "mnu_duel_report"),
+        ]
+        ),
+        
       ("view_party_size_report",[],"View party size report.",
        [(jump_to_menu, "mnu_party_size_report"),
         ]
@@ -14545,11 +14554,11 @@ game_menus = [
 ############################### Duel Mod Start  ##############################
 
 
-("duel_menu",0,
+    ("duel_menu",0,
    "{s1}{s2}",
    "none",
    [
- (str_clear, s2),  (str_clear, s3), (str_clear, s5), (str_clear, s6), (str_clear, s7),
+    (str_clear, s2),  (str_clear, s3), (str_clear, s5), (str_clear, s6), (str_clear, s7),
    (troop_get_slot, ":duel_wins", "$g_talk_troop", slot_troop_duel_won),
    (assign, reg(6), ":duel_wins"),
    (troop_get_slot, ":duel_losses", "$g_talk_troop", slot_troop_duel_lost),
@@ -14574,10 +14583,9 @@ game_menus = [
 	(try_end),
 
     ],
-   
-   [
-      ("start_fight",[(eq, "$g_duel_result", 0)],"Start the duel.",
-       [(try_begin),      
+    [
+        ("start_fight",[(eq, "$g_duel_result", 0)],"Start the duel.",
+        [(try_begin),      
           (is_between, "$g_encountered_party", towns_begin, towns_end),      
             (party_get_slot, ":arena_scene", "$g_encountered_party", slot_town_arena),    
         (else_try),      
@@ -14600,19 +14608,46 @@ game_menus = [
          (jump_to_scene, ":arena_scene"),
          (change_screen_mission), 
         ]
-       ),
-      ("duel_again",[(neq, "$g_duel_result", 0)],"Duel again.",
-       [
+        ),
+        
+        ("duel_again",[(neq, "$g_duel_result", 0)],"Duel again.",
+        [
            (assign, "$g_duel_result", 0),
            (jump_to_menu, "mnu_duel_menu"),
-	]
-       ),
-      ("leave",[],"Leave.",
-       [(change_screen_map),
         ]
-       ),
-      ]
- ),
+        ),
+       
+        ("leave",[],"Leave.",
+        [(change_screen_map),
+        ]
+        ),
+        ]
+    ),
 
 
+    ("duel_report",0,
+    "Beaten Lords:^ {s18}",
+    "none",
+    [
+        (str_clear, s17),
+        (str_clear, s18),
+        (assign, ":any_lords_beaten", 0),
+        (try_for_range, ":lords", lords_begin, lords_end),
+            (troop_slot_ge, ":lords", slot_troop_duel_won, 1),
+            (str_store_troop_name, s17, ":lords"),
+            (str_store_string, s18, "@{s18}^{s17}"),
+            (assign, ":any_lords_beaten", 1),
+        (try_end),
+        (try_begin),
+            (eq, ":any_lords_beaten", 1),
+            (display_message, "@You haven't beaten any lords, pleb."),
+        (try_end),
+    ],
+   
+    [   ("leave",[],"Back.",
+        [(jump_to_menu, "mnu_reports"),
+        ]
+        ),
+    ] 
+    ),
  ]

@@ -269,7 +269,14 @@ dialogs = [
      ],
    "{!}{s5}", "award_fief_to_vassal", 
    []],
-
+    
+    
+    #Efe
+   [trp_new_player, "start",
+   [],
+   "Hi", "close_window",
+   []],
+    
   [anyone|plyr, "award_fief_to_vassal",
    [
    (is_between, "$g_player_court", centers_begin, centers_end), 
@@ -13907,7 +13914,7 @@ Hand over my {reg19} denars, if you please, and end our business together.", "lo
                                          (quest_get_slot, ":quest_target_dna", "qst_hunt_down_fugitive", slot_quest_target_dna),
                                          (call_script, "script_get_name_from_dna_to_s50", ":quest_target_dna"),
                                          (str_store_string, s4, s50),],
-   "I found {s4} hiding at {s3} and gave him his punishment.", "lord_hunt_down_fugitive_success",
+   "I found Duckie hiding at {s3} and gave him his punishment.", "lord_hunt_down_fugitive_success",
    []],
 
   [anyone|plyr,"lord_active_mission_2", [
