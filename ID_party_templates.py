@@ -69,3 +69,4 @@ pt_bandit_lair_templates_end = 67
 pt_leaded_looters = 68
 pt_bks_raider = 69
 pt_bks_lord = 70
+pt_eu_party = 71

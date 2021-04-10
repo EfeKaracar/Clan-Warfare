@@ -51145,6 +51145,7 @@ scripts = [
     
     
     (troop_set_slot, "trp_temp_troop", bks_invasion_phase, 0),
+    (troop_set_slot, "trp_temp_troop", eu_invasion_done, 0),
     
     (try_for_range, ":factions", "fac_kingdom_1", "fac_kingdoms_end"),
         (set_relation, "fac_black_shields", ":factions", -100),

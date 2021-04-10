@@ -655,3 +655,4 @@ itm_pest_insult = 653
 itm_edward_carrot = 654
 itm_grimsight_matchmaker = 655
 itm_vahaemar_horn = 656
+itm_artifacts_end = 657

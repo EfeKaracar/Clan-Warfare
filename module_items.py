@@ -1493,6 +1493,10 @@ items = [
     
     ["vahaemar_horn","Brightfyre Vahaemar's Horn", 
     [("book_c",0)], itp_type_book, 0, 3500,weight(2)|abundance(100),
-    imodbits_none], 
+    imodbits_none],
+
+    ["artifacts_end","Brightfyre Vahaemar's Horn", 
+    [("book_c",0)], itp_type_book, 0, 3500,weight(2)|abundance(100),
+    imodbits_none],    
 
 ]

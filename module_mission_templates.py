@@ -313,6 +313,7 @@ ti_on_agent_killed_or_wounded, 0, 0, [], [
 (store_trigger_param_2, ":killer"),
 
 (agent_get_troop_id, ":troop", ":dead"),
+(troop_is_hero, ":troop"),
 (troop_slot_ge, ":troop", player_special_loot, 0),
 
 (get_player_agent_no, ":player"),
@@ -355,7 +356,6 @@ debug_big_battle = (
              (store_random_in_range, ":team", 0, 2),
              (agent_set_team, reg0, ":team"),
          (try_end),
-
 ]
 )
 
@@ -1768,6 +1768,20 @@ common_siege_assign_men_to_belfry = (
 
 
 tournament_triggers = [
+
+    
+        #Efe
+    advanced_ai,   
+    display_agent_labels,
+    lord_hp,
+    death_music,
+    battle_initialization,
+    corpsekicking,
+    corpsekicking_enable,
+    looting_artifacts,
+    debug_big_battle,
+    check_game_difficulty,
+
   (ti_before_mission_start, 0, 0, [], [(call_script, "script_change_banners_and_chest"),
                                        (assign, "$g_arena_training_num_agents_spawned", 0)]),
   (ti_inventory_key_pressed, 0, 0, [(display_message,"str_cant_use_inventory_arena")], []),
@@ -4876,6 +4890,7 @@ mission_templates = [
       (57, mtef_visitor_source|mtef_team_0, af_override_all, aif_start_alarmed, 1, [itm_practice_sword, itm_practice_shield, itm_padded_cloth, itm_segmented_helmet]),
     ],
     tournament_triggers
+
   ),
 
   (

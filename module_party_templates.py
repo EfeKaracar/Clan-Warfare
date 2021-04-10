@@ -165,6 +165,8 @@ party_templates = [
     #Efe
     ("bks_raider","Black Shield Raiders", icon_khergit|carries_goods(2),0,fac_black_shields,bandit_personality,[(trp_steppe_bandit,4,58)]),
     ("bks_lord", "Black Shield Lords", icon_vaegir_knight|carries_goods(52),0,fac_black_shields,bandit_personality,[(trp_steppe_bandit,4,58)]),
+    
+    ("eu_party", "EU Party", icon_vaegir_knight|carries_goods(2),0,fac_black_shields,bandit_personality,[(trp_steppe_bandit,4,58)]),
   
 
 ]
