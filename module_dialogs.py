@@ -26373,18 +26373,18 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
     ],
 	"{s3}", "duel_choose_mount", []],
 
- [anyone|plyr,"duel_choose_mount", [
-            (this_or_next|troop_is_mounted, "$g_talk_troop"),
-            (troop_is_guarantee_horse, "$g_talk_troop"),
-            (assign, "$talk_troop_mounted",1),
-            ],
-         "I would like to duel mounted", "duel_weap_mounted", [(str_clear, s4), (str_store_string, s4, "@horseback"),]],
+ # [anyone|plyr,"duel_choose_mount", [
+            # (this_or_next|troop_is_mounted, "$g_talk_troop"),
+            # (troop_is_guarantee_horse, "$g_talk_troop"),
+            # (assign, "$talk_troop_mounted",1),
+            # ],
+         # "I would like to duel mounted", "duel_weap_mounted", [(str_clear, s4), (str_store_string, s4, "@horseback"),]],
   
  [anyone|plyr,"duel_choose_mount", [
             (this_or_next|troop_is_mounted, "$g_talk_troop"),
             (troop_is_guarantee_horse, "$g_talk_troop"),
             ],
-         "I would like to duel on foot", "duel_weap_choose", [(str_clear, s4), (str_store_string, s4, "@foot"),]],
+         "I would like to duel on foot.", "duel_weap_choose", [(str_clear, s4), (str_store_string, s4, "@foot"),]],
   
  [anyone|plyr,"duel_choose_mount", [
             (neq, "$talk_troop_mounted", 1),
@@ -26416,21 +26416,21 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
     [anyone|plyr,"duel_weap_choose", [],
          "We should use our own weapons.", "duel_start", [(str_clear, s5), (str_store_string, s5, "@our own weapons"),
             (assign, "$g_duel_vis_point_plyr", 2), (assign, "$g_duel_vis_point_opp", 3),]],
-    [anyone|plyr,"duel_weap_choose", [],
-         "Let us fight with sword and shield.", "duel_start", [(str_clear, s5), (str_store_string, s5, "@sword and shield"),
-            (assign, "$g_duel_vis_point_plyr", 6), (assign, "$g_duel_vis_point_opp", 7),]],
-    [anyone|plyr,"duel_weap_choose", [],
-         "We should fight with two-handed weapons.", "duel_start", [(str_clear, s5), (str_store_string, s5, "@two handed weapons"),
-            (assign, "$g_duel_vis_point_plyr", 10), (assign, "$g_duel_vis_point_opp", 11),]],
-    [anyone|plyr,"duel_weap_choose", [],
-         "A duel with light armor and ranged weapons would be my choice.", "duel_start", [(str_clear, s5), (str_store_string, s5, "@light armor and ranged weapons"),
-            (assign, "$g_duel_vis_point_plyr", 14), (assign, "$g_duel_vis_point_opp", 15),]],
-    [anyone|plyr,"duel_weap_choose", [],
+    # [anyone|plyr,"duel_weap_choose", [],
+         # "Let us fight with sword and shield.", "duel_start", [(str_clear, s5), (str_store_string, s5, "@sword and shield"),
+            # (assign, "$g_duel_vis_point_plyr", 6), (assign, "$g_duel_vis_point_opp", 7),]],
+    # [anyone|plyr,"duel_weap_choose", [],
+         # "We should fight with two-handed weapons.", "duel_start", [(str_clear, s5), (str_store_string, s5, "@two handed weapons"),
+            # (assign, "$g_duel_vis_point_plyr", 10), (assign, "$g_duel_vis_point_opp", 11),]],
+    # [anyone|plyr,"duel_weap_choose", [],
+         # "A duel with light armor and ranged weapons would be my choice.", "duel_start", [(str_clear, s5), (str_store_string, s5, "@light armor and ranged weapons"),
+            # (assign, "$g_duel_vis_point_plyr", 14), (assign, "$g_duel_vis_point_opp", 15),]],
+     [anyone|plyr,"duel_weap_choose", [],
          "What was your previous question again?.", "duel_accept", []],
 
 #final dialog
 [anyone, "duel_start", [], "Very well {playername}. ^^We will be duelling on {s4}, using {s5}.^^If this is all right, I will meet you down at the arena as soon as you finish preparing.", "duel_start", []],
-    [anyone|plyr, "duel_start", [], "That sound great. I'll meet you down there.", "close_window", [(assign, reg(0), "$g_talk_troop"),(jump_to_menu, "mnu_duel_menu"),]],
+    [anyone|plyr, "duel_start", [], "That sound great. I'll meet you down there.", "close_window", [(assign, reg(0), "$g_talk_troop"),(finish_mission),(jump_to_menu, "mnu_duel_menu"),]],
     [anyone|plyr, "duel_start", [], "No, you've got it all wrong, let's try again.", "duel_accept", []],
 
   

@@ -481,10 +481,11 @@ scripts = [
           (val_add, ":num_other_lords_assigned", 1),
         (try_end),
         (try_begin),
+            #Efe
             (this_or_next|lt, ":banner_id", banner_scene_props_begin),
             (gt, ":banner_id", banner_scene_props_end_minus_one),
             (troop_set_slot, ":kingdom_hero", slot_troop_banner_scene_prop, ":banner_id"),
-          # (display_message, "@{!}ERROR: Not enough banners for heroes!"),
+            # (display_message, "@{!}ERROR: Not enough banners for heroes!"),
         (try_end),
 
         (store_character_level, ":level", ":kingdom_hero"),
@@ -20959,9 +20960,10 @@ scripts = [
 
     (try_begin),
         (this_or_next|party_slot_eq, ":center_no", slot_party_type, spt_town),
-			(party_slot_eq, ":center_no", slot_party_type, spt_castle),
+        (party_slot_eq, ":center_no", slot_party_type, spt_castle),
 		(gt, ":lord_troop_id", -1),
-		
+        # #Efe
+        (is_between, ":center_faction", "fac_kingdom_1", "fac_kingdom_6"),
 #normal_banner_begin
         (troop_get_slot, ":cur_banner", ":lord_troop_id", slot_troop_banner_scene_prop),
         (gt, ":cur_banner", 0),
@@ -21827,21 +21829,22 @@ scripts = [
 
       #Setting the flag icon
       #normal_banner_begin
-      (troop_get_slot, ":cur_banner", ":troop_no", slot_troop_banner_scene_prop),
-      (try_begin),
-        #Efe
-        (is_between, ":troop_faction_no", "fac_kingdom_1", "fac_kingdom_6"),
-        (gt, ":cur_banner", 0),
-        (val_sub, ":cur_banner", banner_scene_props_begin),
-        (val_add, ":cur_banner", banner_map_icons_begin),
-        (party_set_banner_icon, "$pout_party", ":cur_banner"),
-      #custom_banner_begin
-      #(troop_get_slot, ":flag_icon", ":troop_no", slot_troop_custom_banner_map_flag_type),
-      #(try_begin),
-      #  (ge, ":flag_icon", 0),
-      #  (val_add, ":flag_icon", custom_banner_map_icons_begin),
-      #  (party_set_banner_icon, "$pout_party", ":flag_icon"),
-      (try_end),
+        (troop_get_slot, ":cur_banner", ":troop_no", slot_troop_banner_scene_prop),
+        (try_begin),
+        # #Efe
+            (is_between, ":troop_faction_no", "fac_kingdom_1", "fac_kingdom_6"),
+            (gt, ":cur_banner", 0),
+            (val_sub, ":cur_banner", banner_scene_props_begin),
+            (val_add, ":cur_banner", banner_map_icons_begin),
+            (party_set_banner_icon, "$pout_party", ":cur_banner"),
+        (try_end),
+      # #custom_banner_begin
+      # #(troop_get_slot, ":flag_icon", ":troop_no", slot_troop_custom_banner_map_flag_type),
+      # #(try_begin),
+      # #  (ge, ":flag_icon", 0),
+      # #  (val_add, ":flag_icon", custom_banner_map_icons_begin),
+      # #  (party_set_banner_icon, "$pout_party", ":flag_icon"),
+       
 
       (try_begin),
         #because of below two lines, lords can only hire more than one party_template(stack) at game start once a time during all game.
@@ -51069,7 +51072,7 @@ scripts = [
     (assign, "$mod_debug", 1),
     
     (call_script, "script_player_init"),
-    # (call_script, "script_wear_lords"),
+    (call_script, "script_wear_lords"),
     (display_message, "@mod_init"),
     
     ]),
@@ -51100,6 +51103,13 @@ scripts = [
     (troop_set_slot, "trp_knight_1_1", player_thought_on_bl, "str_chow_bl"),
     (troop_set_slot, "trp_kingdom_7_lord", player_thought_on_bl, "str_john_bl"),
     
+    (try_for_range, ":kings", kings_begin, kings_end),
+        (troop_set_slot, ":kings", player_special_loot, -1),
+    (try_end),
+    
+    (try_for_range, ":lords", lords_begin, lords_end),
+        (troop_set_slot, ":lords", player_special_loot, -1),
+    (try_end),
     # LOOTS
     (troop_set_slot, "trp_knight_6_20", player_special_loot, "itm_leonidas_boots"),
     (troop_set_slot, "trp_knight_4_1", player_special_loot, "itm_lagstro_bow"),
@@ -51140,14 +51150,44 @@ scripts = [
     
     ]),
     
-    # wear lords
+
     ("wear_lords", [
     
-    (try_for_range, ":lords", kings_begin, lords_end),
+   (try_for_range, ":kings", kings_begin, kings_end),
+        (troop_set_slot, ":kings", troop_class, class_inf),
+        (troop_set_slot, ":kings", exclude_from_auto_gear, -1),
+        (troop_set_slot, ":kings", troop_faction, "fac_kingdom_1"),
+    (try_end),
+    
+    (try_for_range, ":lords", lords_begin, lords_end),
         (troop_set_slot, ":lords", troop_class, class_inf),
         (troop_set_slot, ":lords", exclude_from_auto_gear, -1),
         (troop_set_slot, ":lords", troop_faction, "fac_kingdom_1"),
     (try_end),
+    
+    (troop_set_slot, "trp_kingdom_1_lord", troop_class, class_arc),
+    (troop_set_slot, "trp_kingdom_1_lord", troop_faction, "fac_kingdom_1"),
+    
+    (troop_set_slot, "trp_kingdom_2_lord", troop_class, class_arc),
+    (troop_set_slot, "trp_kingdom_2_lord", troop_faction, "fac_kingdom_1"),
+    
+    (troop_set_slot, "trp_kingdom_3_lord", troop_class, class_arc),
+    (troop_set_slot, "trp_kingdom_3_lord", troop_faction, "fac_kingdom_1"),
+    
+    (troop_set_slot, "trp_kingdom_4_lord", troop_class, class_arc),
+    (troop_set_slot, "trp_kingdom_4_lord", troop_faction, "fac_kingdom_1"),
+    
+    (troop_set_slot, "trp_kingdom_5_lord", troop_class, class_arc),
+    (troop_set_slot, "trp_kingdom_5_lord", troop_faction, "fac_kingdom_1"),
+    
+    (troop_set_slot, "trp_kingdom_6_lord", troop_class, class_arc),
+    (troop_set_slot, "trp_kingdom_6_lord", troop_faction, "fac_kingdom_1"),
+
+    (troop_set_slot, "trp_kingdom_7_lord", troop_class, class_arc),
+    (troop_set_slot, "trp_kingdom_7_lord", troop_faction, "fac_kingdom_1"),
+    
+    (troop_set_slot, "trp_kingdom_8_lord", troop_class, class_arc),
+    (troop_set_slot, "trp_kingdom_8_lord", troop_faction, "fac_kingdom_1"), 
     
     (troop_set_slot, "trp_knight_1_1", troop_class, class_arc),
     (troop_set_slot, "trp_knight_1_1", troop_faction, "fac_kingdom_1"),
@@ -51652,14 +51692,27 @@ scripts = [
         (troop_equip_items, ":ladies"),
     (try_end),
     
+    
+        # wear lords
      (try_for_range, ":lords", kings_begin, lords_end),
-        
-        (troop_add_items, ":lords", "itm_wool_coat", 1),
         
         (neg|troop_slot_eq, ":lords", exclude_from_auto_gear, 1),
         (troop_get_slot, ":class", ":lords", troop_class),
         (troop_get_slot, ":faction", ":lords", troop_faction),
+        
+        (try_for_range, ":equipment_slots", 0, 10),
+            (neq, ":equipment_slots", -1),
+            (troop_get_inventory_slot, ":slot", ":lords", ":equipment_slots"),
+            (troop_remove_item, ":lords", ":slot"),
+        (try_end),
         (troop_clear_inventory, ":lords"),
+        
+        # (troop_add_items, ":lords", "itm_rich_outfit", 1),
+        # (troop_add_items, ":lords", "itm_nomad_robe", 1),
+        # (troop_add_items, ":lords", "itm_nobleman_outfit", 1),
+        # (troop_add_items, ":lords", "itm_courtly_outfit", 1),
+        # (troop_add_items, ":lords", "itm_tabard", 1),
+        # (troop_add_items, ":lords", "itm_courtly_outfit", 1),
         (try_begin),
             #SWADIA
             (eq, ":faction", "fac_kingdom_1"),

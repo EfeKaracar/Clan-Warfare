@@ -110,13 +110,13 @@ new_players = (
 (eq, ":continue", 1),
         
 (get_player_agent_no, ":player"),
-(agent_get_position, pos2, ":player"),
-(set_spawn_position, pos2),
+(agent_get_position, pos27, ":player"),
 (store_random_in_range, ":number", 1, 3),
 (try_for_range, ":loop", 0, ":number"),
-    (store_random_in_range, ":dice", -250, 250),
-    (position_move_x, pos2, ":dice"),
-    (position_move_y, pos2, ":dice"),
+    (store_random_in_range, ":dice", -1050, 1050),
+    (position_move_x, pos27, ":dice"),
+    (position_move_y, pos27, ":dice"),
+    (set_spawn_position, pos27),
     (spawn_agent, "trp_new_player"),
     (eq, ":loop", ":number"),
     (assign, ":loop", -1),
@@ -158,7 +158,7 @@ new_players_ask_dumb_questions = (
 )
 
 new_player_follow_player = (
-0, 0, 0, [(neg|main_hero_fallen),], [
+3, 0, 0, [(neg|main_hero_fallen),], [
 (try_for_agents, ":newplayers"),
     (agent_is_alive, ":newplayers"),
     (agent_get_troop_id, ":troop", ":newplayers"),
@@ -209,8 +209,8 @@ rempica = (
         (store_mission_timer_a, ":timer"),
         (eq, ":timer", 5),
         
-        (store_random_in_range, ":dice", 1, 20),
-        (eq, ":dice", 15),
+        (store_random_in_range, ":dice", 1, 30),
+        (eq, ":dice", 12),
         
         (assign, ":val", 0),
         (try_for_agents, ":agents"),
@@ -234,11 +234,11 @@ rempica = (
         
         (get_player_agent_no, ":player"),
         (agent_is_alive, ":player"),
-        (agent_get_position, pos1, ":player"),
-        (store_random_in_range, ":dice", -250, 250),
-        (position_move_x, pos2, ":dice"),
-        (position_move_y, pos2, ":dice"),
-        
+        (agent_get_position, pos22, ":player"),
+        (store_random_in_range, ":dice", -550, 550),
+        (position_move_x, pos22, ":dice"),
+        (position_move_y, pos22, ":dice"),
+        (set_spawn_position, pos22),
         (spawn_agent, "trp_rempicaClone"),
         (agent_force_rethink, reg0),
         (agent_clear_scripted_mode, reg0),
@@ -253,7 +253,8 @@ rempica = (
     ])
 
 wk_appear = (
-1, 0, 0, [(neg|main_hero_fallen),
+1, 0, 0, [
+(neg|main_hero_fallen),
 (neg|all_enemies_defeated), 
 (eq, "$newplayerSpawned", 0),
 (eq, "$PPKSpawned", 0),
@@ -262,8 +263,8 @@ wk_appear = (
         (store_mission_timer_a, ":timer"),
         (eq, ":timer", 30),
         
-        (store_random_in_range, ":dice", 1, 5),
-        (eq, ":dice", 2),
+        (store_random_in_range, ":dice", 1, 15),
+        (eq, ":dice", 12),
         
         (assign, ":continue", 1),
         (try_for_agents, ":agents"),
@@ -277,12 +278,12 @@ wk_appear = (
         
         (get_player_agent_no, ":player"),
         (agent_is_alive, ":player"),
-        (agent_get_position, pos1, ":player"),
-        (store_random_in_range, ":dice", -250, 250),
-        (position_move_x, pos2, ":dice"),
-        (position_move_y, pos2, ":dice"),
+        (agent_get_position, pos13, ":player"),
+        (store_random_in_range, ":dice", -550, 550),
+        (position_move_x, pos13, ":dice"),
+        (position_move_y, pos13, ":dice"),
         
-        (set_spawn_position, pos1),
+        (set_spawn_position, pos13),
         (spawn_agent, "trp_PPKCLONE"),
         (agent_force_rethink, reg0),
         (agent_clear_scripted_mode, reg0),
@@ -301,14 +302,15 @@ ti_on_agent_killed_or_wounded, 0, 0, [], [
 (store_trigger_param_1, ":dead"),
 (store_trigger_param_2, ":killer"),
 
+(agent_get_troop_id, ":troop", ":dead"),
+(troop_slot_ge, ":troop", player_special_loot, 0),
+
 (get_player_agent_no, ":player"),
 (eq, ":killer", ":player"),
 
-(agent_get_troop_id, ":troop", ":dead"),
-(troop_slot_ge, ":troop", player_special_loot, 0),
 (troop_get_slot, ":item", ":troop", player_special_loot),
-# (store_random_in_range, ":chance", 0, 10),
-# (eq, ":chance", 8),
+(store_random_in_range, ":chance", 0, 10),
+(eq, ":chance", 8),
 (troop_add_items, "trp_player", ":item", 1),
 (str_store_item_name, s5, ":item"),
 (str_store_troop_name, s6, ":troop"),

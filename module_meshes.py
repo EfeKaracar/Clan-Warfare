@@ -379,7 +379,7 @@ meshes = [
   ("banner_g08", 0, "banner_f08", 0, 0, 0, -90, 0, 0, 1, 1, 1),
   ("banner_g09", 0, "banner_f09", 0, 0, 0, -90, 0, 0, 1, 1, 1),
   ("banner_g10", 0, "banner_f10", 0, 0, 0, -90, 0, 0, 1, 1, 1),
-
+    #Efe
   ("banner_kingdom_a", 0, "banner_kingdom_a", 0, 0, 0, -90, 0, 0, 1, 1, 1),
   ("banner_kingdom_b", 0, "banner_kingdom_b", 0, 0, 0, -90, 0, 0, 1, 1, 1),
   ("banner_kingdom_c", 0, "banner_kingdom_c", 0, 0, 0, -90, 0, 0, 1, 1, 1),
