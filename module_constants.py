@@ -33,6 +33,7 @@ this_guy_does_holds = 1009
 this_guy_is_spastic = 1010
 
 bks_invasion_phase = 1200
+eu_invasion_done = 1201
 
 troop_class = 2000
 troop_faction = 3000
