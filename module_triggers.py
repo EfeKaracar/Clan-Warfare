@@ -1505,10 +1505,10 @@ triggers = [
 
         (store_current_day, ":cur_day"),
         (ge, ":cur_day", 1),
-
-        (neg|troop_slot_ge, "trp_temp_troop", bks_invasion_phase, 4),
-        (store_random_party_in_range, ":random_spawn", "p_invasion_spawn_1_ne", "p_invasion_spawn_end"),
         
+        (neg|troop_slot_ge, "trp_temp_troop", bks_invasion_phase, 5),
+        (store_random_party_in_range, ":random_spawn", "p_invasion_spawn_1_ne", "p_invasion_spawn_end"),
+        (assign, ":spawn_lords", 0),
         (try_begin),
             (troop_slot_eq, "trp_temp_troop", bks_invasion_phase, 0),
             (assign, ":max_raider_amount", 10),
@@ -1520,6 +1520,7 @@ triggers = [
             (assign, ":max_raider_amount", 20),
         (else_try),
             (troop_slot_eq, "trp_temp_troop", bks_invasion_phase, 3),
+            (display_message, "@Lords of Black Shields have arrived with a horde!"),
             (assign, ":max_raider_amount", 25),
             (assign, ":spawn_lords", 1),
         (try_end),
@@ -1541,6 +1542,7 @@ triggers = [
             (tutorial_box, "@Black shields started their invasion. They are riding to Calradia from South!", "@BLACK SHIELDS INVASION"),     
             (display_message, "@BKS INVASION!"),
        (try_end),
+       
         
         (try_for_range, ":amount", 0, ":max_raider_amount"),
             (spawn_around_party, ":random_spawn", "pt_bks_raider"),
@@ -1549,12 +1551,14 @@ triggers = [
         (try_begin),
             (eq, ":spawn_lords", 1),
             (assign, reg60, "trp_bks_12"),
-            (try_for_range, ":bks_lords", "trp_bks_1", reg60 + 1),
+            (try_for_range, ":bks_lords", "trp_bks_1", "trp_bks_12"),
                 (spawn_around_party, ":random_spawn", "pt_bks_lord"),
                 (str_store_troop_name, s5, ":bks_lords"),
-                (party_set_name, reg0, "{s5}`s Party"),
+                (party_set_name, reg0, "@{s5}`s Party"),
                 (store_random_in_range, ":add", 200, 500),
-                (party_add_members, reg0, "trp_temp_troop", ":add"),
+                (party_clear, reg0),
+                (party_add_leader, reg0, ":bks_lords"),
+                (party_add_members, reg0, "trp_bandit", ":add"),
             (try_end),
         (try_end),
         

@@ -163,8 +163,8 @@ party_templates = [
   ("leaded_looters","Band of robbers",icon_axeman|carries_goods(8)|pf_quest_party,0,fac_neutral,bandit_personality,[(trp_looter_leader,1,1),(trp_looter,3,3)]),
     
     #Efe
-    ("bks_raider","Black Shield Raiders",icon_khergit|carries_goods(2),0,fac_black_shields,bandit_personality,[(trp_steppe_bandit,4,58)]),
-    ("bks_lord","Black Shield Raiders",icon_khergit|carries_goods(2),0,fac_black_shields,bandit_personality,[(trp_steppe_bandit,4,58)]),
+    ("bks_raider","Black Shield Raiders", icon_khergit|carries_goods(2),0,fac_black_shields,bandit_personality,[(trp_steppe_bandit,4,58)]),
+    ("bks_lord", "Black Shield Lords", icon_vaegir_knight|carries_goods(52),0,fac_black_shields,bandit_personality,[(trp_steppe_bandit,4,58)]),
   
 
 ]
