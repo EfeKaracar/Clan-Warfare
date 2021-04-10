@@ -332,6 +332,98 @@ troops = [
     ["arena_training_fighter_12","EarsOfCorn","EarsOfCorn",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
     [itm_hide_boots],
     str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+    
+    ["arena_training_fighter_13","Jamhalo","Jamhalo",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+
+    ["arena_training_fighter_14","Herp","Herp",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+
+    ["arena_training_fighter_15","Khirsan","Khirsan",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+
+    ["arena_training_fighter_16","Squirrelfart","Squirrelfart",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+
+    ["arena_training_fighter_17","Mudhawk","Mudhawk",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+
+    ["arena_training_fighter_18","Delicious_Derek","Delicious_Derek",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+
+    ["arena_training_fighter_19","Wida","Wida",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+
+    ["arena_training_fighter_20","Dorothy_Mantooth","Dorothy_Mantooth",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+
+    ["arena_training_fighter_21","evil_nakor","evil_nakor",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+    
+    ["arena_training_fighter_22","Kairos","Kairos",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+
+    ["arena_training_fighter_23","Johannes","Johannes",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+    
+    ["arena_training_fighter_24","cudeburro","cudeburro",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+
+    ["arena_training_fighter_25","BluFish_HorSeSLaYr","BluFish_HorSeSLaYr",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+    
+    ["arena_training_fighter_26","Kingsoultaker","Kingsoultaker",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+    
+     ["arena_training_fighter_27","OoOoO","OoOoO",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+
+    ["arena_training_fighter_28","Cecil","Cecil",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+
+    ["arena_training_fighter_29","Pest","Pest",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+
+    ["arena_training_fighter_30","Ghostrider7811","Ghostrider7811",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+
+    ["arena_training_fighter_31","Glorfindel","Glorfindel",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+
+    ["arena_training_fighter_32","Bronze Rivers","Bronze Rivers",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+
+    ["arena_training_fighter_33","Mattboi","Mattboi",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+
+    ["arena_training_fighter_34","Attias","Attias",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+
+
+
+
 
     ["cattle","Cattle","Cattle",0,no_scene,reserved,fac_neutral, [], def_attrib|level(1),wp(60),0,mercenary_face_1, mercenary_face_2],
 
