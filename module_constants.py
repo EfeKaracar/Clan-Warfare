@@ -12,7 +12,6 @@ from ID_factions import *
 ##  ITEM SLOTS             #############################
 ########################################################
 
-
 # Efe
 
 player_knows_how_to_play = 1001
