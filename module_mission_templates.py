@@ -198,6 +198,16 @@ corpsekicking = (
 
 ])
 
+
+check_game_difficulty = (
+0,0,0, [], [
+
+(get_average_game_difficulty, ":difficulty"),
+(le, ":difficulty", 69),
+(display_message, "@You are playing with autoblocking or easy settings."),
+
+])
+
 rempica = (
 0, 0, 0, [
 (neg|main_hero_fallen),
@@ -327,6 +337,7 @@ ti_after_mission_start, 0, 0, [], [
 (assign, "$PPKSpawned", 0), 
 (assign, "$RempicaSpawned", 0),
 (assign, "$newplayerSpawned", 0),
+(assign, "$corpseTarget", -1),
 
     ])
 
@@ -394,9 +405,9 @@ advanced_ai = (
 		(agent_get_action_dir, ":pos_atkdir", ":target"),
 	    (agent_get_attack_action, ":pos_atk", ":target"), #attack action
         
-        (agent_get_defend_action, ":source_defend_action", ":agents"), #attack action
+        # (agent_get_defend_action, ":source_defend_action", ":agents"), #attack action
 		(agent_get_action_dir, ":source_attack_dir", ":agents"),
-	    (agent_get_attack_action, ":source_attack_action", ":agents"), #attack action
+	    # (agent_get_attack_action, ":source_attack_action", ":agents"), #attack action
         
         
 		(store_random_in_range, ":chance_strength", 1, ":chance_AI"), #chance is based on troop
@@ -449,7 +460,7 @@ advanced_ai = (
                 (try_end),
                 (eq, ":continue", 1),
                 
-                (display_message, "@Feinting."),
+                # (display_message, "@Feinting."),
                 (store_random_in_range, ":feint_times", 2, 10),
                 # Feint to different directions
                 (try_for_range, ":feinting_amount", 0, ":feint_times"),
@@ -1385,6 +1396,7 @@ multiplayer_battle_window_opened = (
   ti_battle_window_opened, 0, 0, [], [
     (start_presentation, "prsnt_multiplayer_team_score_display"),
     ])
+
 
 
 common_battle_mission_start = (
@@ -16957,29 +16969,30 @@ mission_templates = [
     corpsekicking_enable,
     looting_artifacts,
     debug_big_battle,
+    check_game_difficulty,
     
-    #Efe
-    (ti_on_agent_spawn, 0, 0, [], [
+    # #Efe
+    # (ti_on_agent_spawn, 0, 0, [], [
     
-    (store_trigger_param_1, ":agent"),
+    # (store_trigger_param_1, ":agent"),
     
-    (try_begin),
-        (agent_get_troop_id, ":troop", ":agent"),
-        (neg|troop_slot_eq, ":troop", this_guy_fights_with_shield, 1),
-        (troop_get_slot, ":player_dueling_weapon", ":troop", player_dueling_weapon),
-        (ge, ":player_dueling_weapon", 0),
-        (agent_equip_item, ":agent", ":player_dueling_weapon"),
-    (try_end),
+    # (try_begin),
+        # (agent_get_troop_id, ":troop", ":agent"),
+        # (neg|troop_slot_eq, ":troop", this_guy_fights_with_shield, 1),
+        # (troop_get_slot, ":player_dueling_weapon", ":troop", player_dueling_weapon),
+        # (ge, ":player_dueling_weapon", 0),
+        # (agent_equip_item, ":agent", ":player_dueling_weapon"),
+    # (try_end),
     
-    (try_begin),
-        (agent_get_wielded_item, ":bow", ":agent", 1),
-        (item_get_type, ":type", ":bow"),
-        (this_or_next|eq, ":type", itp_type_crossbow),
-        (eq, ":type", itp_type_bow),
-        (agent_unequip_item, ":agent", ":bow"),
-    (try_end),
+    # (try_begin),
+        # (agent_get_wielded_item, ":bow", ":agent"),
+        # (item_get_type, ":type", ":bow"),
+        # (this_or_next|eq, ":type", itp_type_crossbow),
+        # (eq, ":type", itp_type_bow),
+        # (agent_unequip_item, ":agent", ":bow"),
+    # (try_end),
 
-    ]),
+    # ]),
     
 	(ti_tab_pressed, 0, 0, [],
        [(question_box,"@Do you wish to give up the fight?")]),

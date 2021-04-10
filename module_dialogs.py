@@ -11313,7 +11313,7 @@ dialogs = [
 					], "My lord, I would like to challenge you to a friendly duel.", "lord_question_duel",[]],					
  [anyone|plyr,"lord_talk",[
     
-                    (neg|troop_slot_eq, "$g_talk_troop", player_thought_on_bl, -1),
+                    (troop_slot_ge, "$g_talk_troop", player_thought_on_bl, 0),
                     
 					], 
                     "What do you think of bannerlord?", "lord_bl_answer",[]],					
