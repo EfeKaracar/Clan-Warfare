@@ -283,38 +283,57 @@ troops = [
    [itm_hide_boots],
    str_12|agi_11|level(22),wp(140),knows_common|knows_ironflesh_4|knows_power_strike_3|knows_athletics_3|knows_riding_3|knows_shield_4,mercenary_face_1, mercenary_face_2],
 
-  ["arena_training_fighter_1","Novice Fighter","Novice Fighters",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
-   [itm_hide_boots],
-   str_6|agi_6|level(5),wp(60),knows_common,mercenary_face_1, mercenary_face_2],
-  ["arena_training_fighter_2","Novice Fighter","Novice Fighters",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
-   [itm_hide_boots],
-   str_7|agi_6|level(7),wp(70),knows_common,mercenary_face_1, mercenary_face_2],
-  ["arena_training_fighter_3","Regular Fighter","Regular Fighters",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
-   [itm_hide_boots],
-   str_8|agi_7|level(9),wp(80),knows_common,mercenary_face_1, mercenary_face_2],
-  ["arena_training_fighter_4","Regular Fighter","Regular Fighters",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
-   [itm_hide_boots],
-   str_8|agi_8|level(11),wp(90),knows_common,mercenary_face_1, mercenary_face_2],
-  ["arena_training_fighter_5","Regular Fighter","Regular Fighters",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
-   [itm_hide_boots],
-   str_9|agi_8|level(13),wp(100),knows_common,mercenary_face_1, mercenary_face_2],
-  ["arena_training_fighter_6","Veteran Fighter","Veteran Fighters",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
-   [itm_hide_boots],
-   str_10|agi_9|level(15),wp(110),knows_common,mercenary_face_1, mercenary_face_2],
-  ["arena_training_fighter_7","Veteran Fighter","Veteran Fighters",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
-   [itm_hide_boots],
-   str_10|agi_10|level(17),wp(120),knows_common,mercenary_face_1, mercenary_face_2],
-  ["arena_training_fighter_8","Veteran Fighter","Veteran Fighters",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
-   [itm_hide_boots],
-   str_11|agi_10|level(19),wp(130),knows_common,mercenary_face_1, mercenary_face_2],
-  ["arena_training_fighter_9","Champion Fighter","Champion Fighters",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
-   [itm_hide_boots],
-   str_12|agi_11|level(21),wp(140),knows_common,mercenary_face_1, mercenary_face_2],
-  ["arena_training_fighter_10","Champion Fighter","Champion Fighters",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
-   [itm_hide_boots],
-   str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+    #Efe
+    ["arena_training_fighter_1","Asheram","Asheram",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_6|agi_6|level(5),wp(60),knows_common,mercenary_face_1, mercenary_face_2],
+    
+    ["arena_training_fighter_2","Cherry_Switchblade","Cherry_Switchblade",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_7|agi_6|level(7),wp(70),knows_common,mercenary_face_1, mercenary_face_2],
+    
+    ["arena_training_fighter_3","Cheesy_Lesbian_Thara","Cheesy_Lesbian_Thara",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_8|agi_7|level(9),wp(80),knows_common,mercenary_face_1, mercenary_face_2],
+    
+    ["arena_training_fighter_4","GK_THEONGREYJOY","GK_THEONGREYJOY",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_8|agi_8|level(11),wp(90),knows_common,mercenary_face_1, mercenary_face_2],
+    
+    ["arena_training_fighter_5","Thurin","Thurin",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_9|agi_8|level(13),wp(100),knows_common,mercenary_face_1, mercenary_face_2],
+    
+    ["arena_training_fighter_6","Gunny","Gunny",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_10|agi_9|level(15),wp(110),knows_common,mercenary_face_1, mercenary_face_2],
+    
+    ["arena_training_fighter_7","Equestrian_Enthusiast","Equestrian_Enthusiast",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_10|agi_10|level(17),wp(120),knows_common,mercenary_face_1, mercenary_face_2],
+    
+    ["arena_training_fighter_8","Knight_David","Knight_David",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_11|agi_10|level(19),wp(130),knows_common,mercenary_face_1, mercenary_face_2],
+    
+    ["arena_training_fighter_9","Dont_hurt_riderless_horses","Dont_hurt_riderless_horses",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_11|level(21),wp(140),knows_common,mercenary_face_1, mercenary_face_2],
+    
+    ["arena_training_fighter_10","Chroniss","Chroniss",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+    #Efe
+    
+    ["arena_training_fighter_11","Fancy Unicorn","Fancy Unicorn",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
+    
+    ["arena_training_fighter_12","EarsOfCorn","EarsOfCorn",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_commoners,
+    [itm_hide_boots],
+    str_12|agi_12|level(23),wp(150),knows_common,mercenary_face_1, mercenary_face_2],
 
-  ["cattle","Cattle","Cattle",0,no_scene,reserved,fac_neutral, [], def_attrib|level(1),wp(60),0,mercenary_face_1, mercenary_face_2],
+    ["cattle","Cattle","Cattle",0,no_scene,reserved,fac_neutral, [], def_attrib|level(1),wp(60),0,mercenary_face_1, mercenary_face_2],
 
 
 #soldiers:
