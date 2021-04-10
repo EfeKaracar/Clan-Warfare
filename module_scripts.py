@@ -51079,10 +51079,12 @@ scripts = [
     
     ("player_init", [
     
+    
+    
     (try_for_range, ":troops", heroes_begin, heroes_end),
         (troop_set_slot, ":troops", player_knows_how_to_play, 1), 
         
-        (store_random_in_range, ":dice", 2, 6),
+        (store_random_in_range, ":dice", 1, 6),
         (troop_set_slot, ":troops", player_skill_level, ":dice"),
         
         (store_random_in_range, ":random", 50, 100),
@@ -51102,6 +51104,10 @@ scripts = [
     (troop_set_slot, "trp_knight_3_2", player_thought_on_bl, "str_bel_bl"),
     (troop_set_slot, "trp_knight_1_1", player_thought_on_bl, "str_chow_bl"),
     (troop_set_slot, "trp_kingdom_7_lord", player_thought_on_bl, "str_john_bl"),
+    
+    # Dueling weapons
+    (troop_set_slot, "trp_knight_3_3", player_dueling_weapon, "itm_great_sword"),
+    (troop_set_slot, "trp_knight_3_2", player_dueling_weapon, "itm_battle_axe"),
     
     (try_for_range, ":kings", kings_begin, kings_end),
         (troop_set_slot, ":kings", player_special_loot, -1),

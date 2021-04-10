@@ -41,6 +41,9 @@ class_inf = 2002
 class_arc = 2003
 exclude_from_auto_gear = 2000;
 
+this_guy_fights_with_shield = 5000;
+player_dueling_weapon = 5001;
+
 # Efe end
 
 

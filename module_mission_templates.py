@@ -327,9 +327,26 @@ ti_after_mission_start, 0, 0, [], [
 (assign, "$PPKSpawned", 0), 
 (assign, "$RempicaSpawned", 0),
 (assign, "$newplayerSpawned", 0),
-        
+
     ])
 
+debug_big_battle = (
+0, 0, 0, [(key_clicked, key_b),], [
+
+         (try_for_range, ":lords", lords_begin, "trp_knight_1_19"),
+             (get_player_agent_no, ":player"),  
+             (agent_get_position, pos22, ":player"),
+             (store_random_in_range, ":dice", -200, 200),
+             (position_move_x, pos22, ":dice"),
+             (position_move_y, pos22, ":dice"),
+             (set_spawn_position, pos22),
+             (spawn_agent, ":lords"),
+             (store_random_in_range, ":team", 0, 2),
+             (agent_set_team, reg0, ":team"),
+         (try_end),
+
+]
+)
 
 advanced_ai = (
 0, 0, 0, [(eq, "$advanced_ai_open", 1),], [
@@ -377,30 +394,14 @@ advanced_ai = (
 		(agent_get_action_dir, ":pos_atkdir", ":target"),
 	    (agent_get_attack_action, ":pos_atk", ":target"), #attack action
         
+        (agent_get_defend_action, ":source_defend_action", ":agents"), #attack action
+		(agent_get_action_dir, ":source_attack_dir", ":agents"),
+	    (agent_get_attack_action, ":source_attack_action", ":agents"), #attack action
+        
+        
 		(store_random_in_range, ":chance_strength", 1, ":chance_AI"), #chance is based on troop
 		(eq, ":chance_strength", 1),
         
-        # Footwork
-        (try_begin),
-            (try_begin),
-                (le, ":dist", 500),
-                (agent_force_rethink, ":agents"),
-                (agent_set_scripted_destination, ":agents", pos11, 0, 1),
-            (else_try),
-                (is_between, ":dist", 0, 300),
-                (agent_force_rethink, ":agents"),
-                (store_random_in_range, ":dice_for_footwork", 0, 5),
-                (eq, ":dice_for_footwork", 1),
-                (store_random_in_range, ":random", -60, 60),
-                (position_move_x, pos11, ":random", 0),
-                (position_move_y, pos11, ":random", 0),
-                (position_rotate_x, pos11, ":random", 0),
-                (position_rotate_y, pos11, ":random", 0),
-                (agent_set_scripted_destination, ":agents", pos11, 0, 1),
-            (try_end),
-            
-        (try_end),
-    
         # Chambering
         (try_begin),
             (le, ":dist", 200),
@@ -427,55 +428,92 @@ advanced_ai = (
         
         #Feinting
         (try_begin),
+                # dice
                 (store_random_in_range, ":dice", 1, 60),
-                (store_random_in_range, ":style", 1, 5),
-                (store_random_in_range, ":random_dir", 0, 3),
-                (store_random_in_range, ":random_action", 0, 1),
+                # if distance is close enough
                 (le, ":dist", 200),
                 (eq, ":dice", 1),
-                (eq, ":pos_def", 2),
-                (assign, ":continue", 0),
-                (eq, ":continue", 0),
                 
+                # may attack even if you are not blocking
+                (assign, ":continue", 0),
+                (store_random_in_range, ":dice", 0, 12),
+                # Feint when blocking
+                (try_begin),
+                    (eq, ":dice", 2),
+                    (eq, ":pos_def", 2),
+                    (assign, ":continue", 1),
+                (else_try),
+                # Feint when free
+                    (eq, ":pos_def", 0),
+                    (assign, ":continue", 1),
+                (try_end),
+                (eq, ":continue", 1),
+                
+                (display_message, "@Feinting."),
+                (store_random_in_range, ":feint_times", 2, 10),
+                # Feint to different directions
+                (try_for_range, ":feinting_amount", 0, ":feint_times"),
+                    (store_random_in_range, ":random_dir", 0, 3),
+                    (store_random_in_range, ":random_action", 0, 1),
+                    (neq, ":random_dir", "$last_direction"),
+                    (agent_set_attack_action, ":agents", ":random_dir", ":random_action"),
+                    (assign, "$last_direction", ":random_dir"),
+                    (eq, ":feinting_amount", ":feint_times"),
+                    (assign, ":feinting_amount", -1),
+                (try_end),
+        (try_end),
+        
+        # Footwork
+        (try_begin),
+            # When distance is too far, come closer to target
             (try_begin),
-                (eq, ":style", 1),
-                (agent_set_attack_action, ":agents", ":random_dir", ":random_action"),
-                (assign, ":continue", 0),
-                (agent_set_attack_action, ":agents", ":random_dir", ":random_action"),
-                (assign, ":continue", 0),
-                (agent_set_attack_action, ":agents", ":random_dir", ":random_action"),
-                (assign, ":continue", 0),
-                (agent_set_attack_action, ":agents", ":random_dir", ":random_action"),
-                (assign, ":continue", 0),
-                (agent_set_attack_action, ":agents", ":random_dir", ":random_action"),
-                (assign, ":continue", 1),
+                (ge, ":dist", 225),
+                (agent_force_rethink, ":agents"),
+                (agent_set_scripted_destination, ":agents", pos11, 0, 1),
+
+            # When close enough, 
             (else_try),
-                (eq, ":style", 2),
-                (agent_set_attack_action, ":agents", ":random_dir", ":random_action"),
-                (assign, ":continue", 0),
-                (agent_set_attack_action, ":agents", ":random_dir", ":random_action"),
-                (assign, ":continue", 1),
-            (else_try),
-                (eq, ":style", 3),
-                (agent_set_attack_action, ":agents", ":random_dir", ":random_action"),
-                (assign, ":continue", 0),
-                (agent_set_attack_action, ":agents", ":random_dir", ":random_action"),
-                (assign, ":continue", 0),
-                (agent_set_attack_action, ":agents", ":random_dir", ":random_action"),
-                (assign, ":continue", 1),
-            (else_try),
-                (eq, ":style", 4),
-                (agent_set_attack_action, ":agents", ":random_dir", ":random_action"),
-                (assign, ":continue", 0),
-                (agent_set_attack_action, ":agents", ":random_dir", ":random_action"),
-                (assign, ":continue", 0),
-                (agent_set_attack_action, ":agents", ":random_dir", ":random_action"),
-                (assign, ":continue", 0),
-                (agent_set_attack_action, ":agents", ":random_dir", ":random_action"),
-                (assign, ":continue", 1),
+                (store_random_in_range, ":right", -150, -350),
+                (store_random_in_range, ":left", 150, 150),
+                (store_random_in_range, ":up", 5, 15),
+                (store_random_in_range, ":forward", 50, 150),
+                (agent_force_rethink, ":agents"),
+                # (store_random_in_range, ":dice_for_footwork", 0, 3),
+                # (eq, ":dice_for_footwork", 2),
+               (try_begin),
+                    (eq, ":source_attack_dir", 0), #down
+                    (position_move_y, pos12, ":forward"),
+                    # (display_message, "@Move forward when thrust is active."),
+                (else_try),
+                    (eq, ":source_attack_dir", 1), #slashright
+                    (position_move_x, pos12, ":right"),
+                    (position_move_y, pos12, ":forward"),
+                    # (display_message, "@Move right when slash-right is active."),
+                (else_try),
+                    (eq, ":source_attack_dir", 2), #slashleft
+                    (position_move_x, pos12, ":left"),
+                    (position_move_y, pos12, ":forward"),
+                    # (display_message, "@Move left when slash-left is active."),
+                (else_try),
+                    (eq, ":source_attack_dir", 3), #overswing
+                    (position_move_y, pos12, ":up"),
+                    # (display_message, "@Move back when overhead is active."),
+                (try_end),
+                (agent_set_scripted_destination, ":agents", pos12, 0, 1),
             (try_end),
             
         (try_end),
+        
+        # Target Switching
+        
+        # Cavalry
+        # Bump-lance
+        
+        # Archers
+        # Leg shot
+        
+        # AI kick
+        
         
         #Counter-attack
         (try_begin),
@@ -527,7 +565,226 @@ advanced_ai = (
     (try_end),
     ])
 
-
+# advanced_ai = (
+# 0, 0, 0, [(eq, "$advanced_ai_open", 1),], [
+    
+    # (get_player_agent_no, ":player"),
+    # (agent_is_active, ":player"),
+    # (agent_is_alive, ":player"),
+	
+   # (try_for_agents, ":agents"),
+    
+        # # SOURCE CHECK
+		# (neq, ":agents", ":player"),    # Source Agent is not player
+		# (agent_is_active, ":agents"),   # Source Agent is present
+		# (agent_is_alive, ":agents"),    # Source Agent is alive
+		# (agent_is_human, ":agents"),    # Source Agent is not horse
+		# (agent_slot_eq, ":agents", slot_agent_is_running_away, 0), # Source Agent is not fleeing
+		
+		# (agent_get_troop_id, ":troop_no", ":agents"),   # Get troop reference of the source agent
+        
+		# (troop_get_slot, ":is_AI", ":troop_no", player_knows_how_to_play), # Source troop has AI
+		# (eq, ":is_AI", 1), # Source troop has AI
+        # (troop_get_slot, ":chance_AI", ":troop_no", player_skill_level), # # Source troop skill level
+    
+		# (agent_get_team, ":agent_team", ":agents"),  # Get source team
+		
+		# (agent_ai_get_look_target, ":target", ":agents"),   # Get the current enemy of the source agent
+		# (gt, ":target", 0),   # If there is a target
+		
+        # # TARGET CHECK
+		# (agent_is_active, ":target"),
+		# (agent_is_alive, ":target"),
+		# (agent_is_human, ":target"),
+		
+		# (agent_get_team, ":target_team", ":target"),
+		# (neq, ":target_team", ":agent_team"), #unfriendly teams
+		
+        # # POSITION
+		# (agent_get_position, pos11, ":target"),
+	    # (agent_get_position, pos12, ":agents"),
+		# (neg|position_is_behind_position, pos11, pos12), #agents are not behind each other
+		# (get_distance_between_positions, ":dist", pos11, pos12),
+		
+        # # COMBAT INFO
+	    # (agent_get_defend_action, ":pos_def", ":target"), #attack action
+		# (agent_get_action_dir, ":pos_atkdir", ":target"),
+	    # (agent_get_attack_action, ":pos_atk", ":target"), #attack action
+        
+        # (agent_get_defend_action, ":source_defend_action", ":agents"), #attack action
+		# (agent_get_action_dir, ":source_attack_dir", ":agents"),
+	    # (agent_get_attack_action, ":source_attack_action", ":agents"), #attack action
+        
+        
+		# (store_random_in_range, ":chance_strength", 1, ":chance_AI"), #chance is based on troop
+		# (eq, ":chance_strength", 1),
+        
+        # # Chambering
+        # (try_begin),
+            # (le, ":dist", 200),
+            # (store_random_in_range, ":extra_dice", 1, 80),
+            # (neq, ":pos_atk", 1),
+            # (eq, ":pos_atk", 2),
+            # (eq, ":extra_dice", 1),
+            
+            # (try_begin),					
+                # (eq, ":pos_atkdir", 0),
+                # (agent_set_attack_action, ":agents", 0, 0),
+            # (else_try),
+                # (eq, ":pos_atkdir", 1),
+                # (agent_set_attack_action,":agents", 2, 0),
+            # (else_try),
+                # (eq, ":pos_atkdir", 2),
+                # (agent_set_attack_action, ":agents", 1, 0),
+            # (else_try),
+                # (eq, ":pos_atkdir", 3),
+                # (agent_set_attack_action, ":agents", 3, 0),
+            # (try_end),
+            
+        # (try_end),
+        
+        # #Feinting & Attacking
+        # (try_begin),
+                # (le, ":dist", 75),
+                # # dice
+                # (store_random_in_range, ":dice", 1, 60),
+                # (eq, ":dice", 15),
+                # # if distance is close enough
+              
+                # # may attack even if you are not blocking
+                # (assign, ":continue", 0),
+                # (store_random_in_range, ":dice_1", 0, 12),
+                # # Attack/Feint when blocking
+                # (try_begin),
+                    # (le, ":dice_1", 8),
+                    # (eq, ":pos_def", 2),
+                    # (assign, ":continue", 1),
+                # (else_try),
+                # # Attack/Feint when free
+                    # (eq, ":pos_def", 0),
+                    # (assign, ":continue", 1),
+                # (try_end),
+                # (eq, ":continue", 1),
+                # (store_random_in_range, ":attack_or_feint", 0, 7),
+                # (try_begin),
+                    # # FEINTING
+                    # (eq, ":attack_or_feint", 5), 
+                    # (store_random_in_range, ":dice_2", 0, 2),
+                    # (try_begin),
+                        # (eq, ":dice_2", 1),
+                        # (assign, ":max_feint", 4),
+                    # (else_try),
+                        # (store_random_in_range, ":max_feint", 4, 7),
+                    # (try_end),
+                
+                    # (store_random_in_range, ":feint_times", 2, ":max_feint"),
+                    # # Feint to different directions
+                    # (try_for_range, ":feinting_amount", 0, ":feint_times"),
+                        # (store_random_in_range, ":random_dir", 0, 3),
+                        # (store_random_in_range, ":random_action", 0, 1),
+                        # (neq, ":random_dir", "$last_direction"),
+                        # (agent_set_attack_action, ":agents", ":random_dir", ":random_action"),
+                        # (assign, "$last_direction", ":random_dir"),
+                        # (eq, ":feinting_amount", ":feint_times"),
+                        # (assign, ":feinting_amount", -1),
+                    # (try_end),
+                    # (display_message, "@Feinting."),
+                # (else_try),
+                    # #ATTACKING
+                    # (store_random_in_range, ":hold", 0, 6),
+                    # (try_begin),
+                        # (eq, ":hold", 3),
+                        # (agent_set_attack_action, ":agents", ":random_dir", 1),
+                    # (else_try),
+                        # (agent_set_attack_action, ":agents", ":random_dir", 0),
+                    # (try_end),
+                # (try_end),
+        # (try_end),
+        
+        # # Footwork
+        # (try_begin),
+            # # When distance is too far, come closer to target
+            # (try_begin),
+                # (ge, ":dist", 125),
+                # (agent_force_rethink, ":agents"),
+                # (agent_set_scripted_destination, ":agents", pos11, 0, 1),
+            # # When close enough, 
+            # (else_try),
+                # (store_random_in_range, ":right", -250, -550),
+                # (store_random_in_range, ":left", 250, 550),
+                # (store_random_in_range, ":up", 55, 105),
+                # (store_random_in_range, ":forward", 150, 250),
+                # (agent_force_rethink, ":agents"),
+                # # (store_random_in_range, ":dice_for_footwork", 0, 3),
+                # # (eq, ":dice_for_footwork", 2),
+               # (try_begin),
+                    # (eq, ":source_attack_dir", 0), #down
+                    # (position_move_y, pos12, ":forward"),
+                    # # (display_message, "@Move forward when thrust is active."),
+                # (else_try),
+                    # (eq, ":source_attack_dir", 1), #slashright
+                    # (position_move_x, pos12, ":right"),
+                    # (position_move_y, pos12, ":forward"),
+                    # # (display_message, "@Move right when slash-right is active."),
+                # (else_try),
+                    # (eq, ":source_attack_dir", 2), #slashleft
+                    # (position_move_x, pos12, ":left"),
+                    # (position_move_y, pos12, ":forward"),
+                    # # (display_message, "@Move left when slash-left is active."),
+                # (else_try),
+                    # (eq, ":source_attack_dir", 3), #overswing
+                    # (position_move_y, pos12, ":up"),
+                    # # (display_message, "@Move back when overhead is active."),
+                # (try_end),
+                # (agent_set_scripted_destination, ":agents", pos12, 0, 1),
+            # (try_end),
+            
+        # (try_end),
+        
+        # # Target Switching
+        
+        # # Cavalry
+        # # Bump-lance
+        
+        # # Archers
+        # # Leg shot
+        
+        # # AI kick
+        
+        # # Jump AI when kick
+        
+        # # Move head up and down while doing any action for natural player
+        
+        
+        # #Blocking
+        # (try_begin),
+            # (le, ":dist", 300),
+            # (store_random_in_range, ":dice_block", 0, 5),
+            # (eq, ":dice_block", 3),
+            # (assign, ":continue", 0),
+            # (try_begin),
+                # (eq, ":pos_atk", 2), #releasing attack
+                # (assign, ":continue", 1),
+            # (try_end),
+            # (eq, ":continue", 1),
+              
+            # (agent_force_rethink, ":agents"),
+            # (try_begin),
+                # (eq, ":pos_atkdir", 0),
+                # (agent_set_defend_action, ":agents", 0, 0),
+            # (else_try),
+                # (eq, ":pos_atkdir", 1),
+                # (agent_set_defend_action, ":agents", 1, 0),
+            # (else_try),
+                # (eq, ":pos_atkdir", 2),
+                # (agent_set_defend_action, ":agents", 2, 0),
+            # (else_try),
+                # (eq, ":pos_atkdir", 3),
+                # (agent_set_defend_action, ":agents", 3, 0),
+            # (try_end),
+        # (try_end),
+    # (try_end),
+    # ])
 multiplayer_server_check_belfry_movement = (
   0, 0, 0, [],
   [
@@ -16694,17 +16951,35 @@ mission_templates = [
     advanced_ai,   
     display_agent_labels,
     lord_hp,
-    wk_appear,
     death_music,
     battle_initialization,
-    new_player_follow_player,
-    new_players_ask_dumb_questions,
-    new_players,
-    rempica,
     corpsekicking,
     corpsekicking_enable,
     looting_artifacts,
+    debug_big_battle,
     
+    #Efe
+    (ti_on_agent_spawn, 0, 0, [], [
+    
+    (store_trigger_param_1, ":agent"),
+    
+    (try_begin),
+        (agent_get_troop_id, ":troop", ":agent"),
+        (neg|troop_slot_eq, ":troop", this_guy_fights_with_shield, 1),
+        (troop_get_slot, ":player_dueling_weapon", ":troop", player_dueling_weapon),
+        (ge, ":player_dueling_weapon", 0),
+        (agent_equip_item, ":agent", ":player_dueling_weapon"),
+    (try_end),
+    
+    (try_begin),
+        (agent_get_wielded_item, ":bow", ":agent", 1),
+        (item_get_type, ":type", ":bow"),
+        (this_or_next|eq, ":type", itp_type_crossbow),
+        (eq, ":type", itp_type_bow),
+        (agent_unequip_item, ":agent", ":bow"),
+    (try_end),
+
+    ]),
     
 	(ti_tab_pressed, 0, 0, [],
        [(question_box,"@Do you wish to give up the fight?")]),
