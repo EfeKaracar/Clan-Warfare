@@ -51073,8 +51073,55 @@ scripts = [
     
     (call_script, "script_player_init"),
     (call_script, "script_wear_lords"),
+    (call_script, "script_ai_init"),
     (display_message, "@mod_init"),
     
+    ]),
+    
+    ("faction_init", [
+    
+    (faction_set_slot, "fac_kingdom_1", faction_intro, "str_rat_intro"),
+    (faction_set_slot, "fac_kingdom_2", faction_intro, "str_hb_intro"),
+    (faction_set_slot, "fac_kingdom_3", faction_intro, "str_rcc_intro"),
+    (faction_set_slot, "fac_kingdom_4", faction_intro, "str_wk_intro"),
+    (faction_set_slot, "fac_kingdom_5", faction_intro, "str_tk_intro"),
+    (faction_set_slot, "fac_kingdom_6", faction_intro, "str_gk_intro"),
+    (faction_set_slot, "fac_kingdom_7", faction_intro, "str_ava_intro"),
+    (faction_set_slot, "fac_kingdom_8", faction_intro, "str_dof_intro"),
+    
+    ]),
+    
+    ("ai_init", [
+    
+        (troop_set_slot, "trp_knight_3_3", this_guy_only_hilt_spams, 1),
+        
+        (troop_set_slot, ppk, player_skill_level, 1),
+        (troop_set_slot, lagstro, player_skill_level, 1),
+        (troop_set_slot, edwards, player_skill_level, 10),
+        (troop_set_slot, guacc, player_skill_level, 1),
+        (troop_set_slot, oodle, player_skill_level, 1),
+        (troop_set_slot, tito, player_skill_level, 1),
+        (troop_set_slot, vahaemar, player_skill_level, 6),
+        (troop_set_slot, cedrics, player_skill_level, 3),
+        (troop_set_slot, belendor, player_skill_level, 3),
+        (troop_set_slot, marquis, player_skill_level, 4),
+        (troop_set_slot, achilles, player_skill_level, 4),
+        (troop_set_slot, john, player_skill_level, 4),
+        (troop_set_slot, calamity, player_skill_level, 5),
+        (troop_set_slot, heat, player_skill_level, 4),
+        (troop_set_slot, gorlock, player_skill_level, 7),
+        (troop_set_slot, ordyn, player_skill_level, 1),
+        (troop_set_slot, mav, player_skill_level, 1),
+        (troop_set_slot, eb, player_skill_level, 4),
+        (troop_set_slot, rob, player_skill_level, 7),
+        (troop_set_slot, vinny, player_skill_level, 4),
+        (troop_set_slot, pico, player_skill_level, 5),
+        (troop_set_slot, pico, player_skill_level, 4),
+        
+        (troop_set_slot, pico, this_guy_only_blocks, 1),
+        
+        (troop_set_slot, calamity, this_guy_only_s, 1),
+        
     ]),
     
     ("player_init", [
@@ -51086,6 +51133,8 @@ scripts = [
         
         (store_random_in_range, ":dice", 1, 6),
         (troop_set_slot, ":troops", player_skill_level, ":dice"),
+        (troop_set_slot, ":troops", this_guy_doesnt_feint, -1),
+        (troop_set_slot, ":troops", this_guy_doesnt_chamber, -1),
         
         (store_random_in_range, ":random", 50, 100),
         (troop_set_slot, ":troops", player_hp, ":random"),
@@ -51096,8 +51145,8 @@ scripts = [
         (troop_set_slot, ":troops", player_thought_on_bl, -1),
     (try_end),
     
-    # (troop_set_slot, "trp_knight_3_3", this_guy_only_s, 1),
-    (troop_set_slot, "trp_knight_3_3", this_guy_only_hilt_spams, 1),
+
+
     
     # BL Thoughts
     (troop_set_slot, "trp_knight_3_3", player_thought_on_bl, "str_eb_bl"),

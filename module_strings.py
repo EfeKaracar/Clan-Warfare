@@ -4361,5 +4361,72 @@ We apologize sincerely if you contributed your suggestions and feedback but were
   ("brave_bl", "-"),
   ("arni_bl", "-"),
   
-  
+    ("rat_intro", "Bleugh. I am (Name) of the (Faction). State your business or move aside, peasant."),  
+    ("rat_intro_1", "I am (Name) of the (Faction). Have you seen Sigi? Emperor Roberta said something about another ft7… "),  
+    ("rat_intro_negative", "Fuck off."),  
+    ("rat_intro_renown_n", "Fuck off, Fucker, or we’ll sic the Mole on you."),  
+    ("rat_intro_renown_p", "Mmmm. I am (Name) of the (Faction). You strike me as the rat-type."),  
+    
+    ("hb_intro", "Hello there! I am (Name) of the (Faction). We’re on our way to a training match. Care to join?"),
+    ("hb_intro_1", "Hi! I am (Name) of the (Faction). Eventful times, these..."),
+    ("hb_intro_negative", "Hmmm. I am (Name) of the (Faction). I suppose you could join us as a levy..."),
+    ("hb_intro_renown_n", "Hmph. I’m ({playername}) of the (Faction). You’re certainly as sweaty as they say… "),
+    ("hb_intro_renown_p", "Ah, it's you! I am ({playername}) of the (Faction). The (Faction) is always looking for experienced fighters to help train our levies… "),
+    
+    ("rcc_intro", "Ho! I am (Name) of the (Faction). We are not retreating, just advancing in reverse. What can I do for you?"),
+    ("rcc_intro_1", "Goshdarnit I said chargers and they went and bought coursers… Ah hello, I didn’t see you there. What is it?"),
+    ("rcc_intro_negative", "Halt! Drop shoes or die! … Oh you’re not worth it anyway…"),
+    ("rcc_intro_renown_n", "For all your renown I notice you spend a lot of time hiding in castles."),
+    ("rcc_intro_renown_p", "Ah, I’ve heard of you. We won’t halt you… this time."),
+    
+    ("wk_intro", "Welcome! I am (Name) of the (Faction). Come to learn from the best? See Bladecasttv for details."),
+    ("wk_intro_1", "………….. What?"),
+    ("wk_intro_negative", "I am (Name) of the (Faction). I suppose you’ll do for a minor trophy in our trophy case."),
+    ("wk_intro_renown_n", "I am ({playername}) of the (Faction). Who are you?"),
+    ("wk_intro_renown_p", "I am {playername} of the {s5}. We are NA’s best defense against the EU hordes. Care to join in our fight?"),
+    
+    ("tk_intro", "I’d rather be playing 2k… "),
+    ("tk_intro_1", "I am ({playername}) of (Faction). Trash like you should move out of the way."),
+    ("tk_intro_negative", "REEEEEEEEEEEEEEEEEEEEEEEEEE"),
+    ("tk_intro_renown_n", "Mouthbreathers like you should just uninstall."),
+    ("tk_intro_renown_p", "Bwat a bwave bwarrior! I am ({playername}) of the (Faction). What is it?"),
+    
+    ("gk_intro", "Hail and well met! I am (name), of the (Faction). Mind your manners within our borders or face expulsion from our lands."),
+    ("gk_intro_1", "Greetings! I am (Name) of the (Faction). We are often seeking patrons to help with our kingdom’s costs. Care to donate?"),
+    ("gk_intro_negative", "Greetings! I am (Name) of the (Faction). We are often seeking patrons to help with our kingdom’s costs. Care to donate?"),
+    ("gk_intro_renown_n", "Greetings! I am (Name) of the (Faction). We are often seeking patrons to help with our kingdom’s costs. Care to donate?"),
+    ("gk_intro_renown_p", "Greetings! I am (Name) of the (Faction). We are often seeking patrons to help with our kingdom’s costs. Care to donate?"),
+    
+    
+    ("ava_intro", "Uhhhh hey man. I’m ({playername}) of (Faction). What’s up?   "),
+    ("ava_intro_1", "Excuse me, have you seen John anywhere? He was supposed to schedule a feast but his communication skills are horrible. "),
+    ("ava_intro_negative", "I am ({playername}) of the (Faction). If you’re not playing this on fastest speed, you shouldn’t be playing at all. "),
+    ("ava_intro_renown_n", " Bah. I am ({playername}) of the (Faction). Speak quickly or begone."),
+    ("ava_intro_renown_p", "Ahhh! A fellow taco lover! I am ({playername}) of the (Faction). What do you need?"),
+    
+    ("dof_intro", "Hail and well met! I am ({playername}) of the (Faction). Our order is old, international, and ever expanding."),
+    ("dof_intro_1", "Greetings: I am ({playername}) of the (Faction). We were just about to start a round of javby. Care to join?"),
+    ("dof_intro_negative", " I am ({playername}) of the (Faction). Cause no trouble or you’ll be exiled to Norway."),
+    ("dof_intro_renown_n", "Yeugh. Another one of Kohath’s drinking buddies?"),
+    ("dof_intro_renown_p", "Hello! I am ({playername}) of the (Faction). You’re not too shabby of a warrior, eh?"),
+    
+    # Efe
+    ("war_going_1", "CAV BEHIND! CAV BEHIND!"),
+    ("war_going_2", "I don't know but I think there in archer in the brew..."),
+    ("war_going_3", "I fucked up my drops."),
+    ("war_going_4", "I have no arrows."),
+    ("war_going_5", "I spawned with a courser, fuck - it downgraded."),
+    ("war_going_6", "We keep getting bumplanced."),
+    ("war_going_7", "We keep getting teamkilled."),
+    ("war_going_8", "We split."),
+    ("war_going_9", "How should I know? I am benched."),
+    ("war_going_10", "Server is shit, I am lagging."),
+    ("war_going_11", "Flag keeps spawning on them."),
+    ("war_going_12", "Our cav suicided."),
+    ("war_going_end", "Our cav suicided."),
+    
+    ("you_your_men", "Your mom."),
+    
+    ("realm_1", "We are not playing bannerlord."),
+    
 ]

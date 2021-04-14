@@ -5962,6 +5962,7 @@ dialogs = [
   (assign, "$g_leave_encounter", 1),
   ]],
   
+  #Efe
   
   [anyone ,"start", [(troop_slot_eq,"$g_talk_troop",slot_troop_met, 2),
                      (gt, "$g_time_since_last_talk", 24),
@@ -6014,8 +6015,17 @@ dialogs = [
                      (eq, "$g_talk_troop_met", 0),
                      (ge, "$g_talk_troop_faction_relation", 0),
                      (le,"$talk_context",tc_siege_commander),
+                     # Efe
+                     (try_begin),
+                        (store_troop_faction, ":faction", "$g_talk_troop"),
+                        (faction_get_slot, ":string", ":faction", faction_intro),
+                        (ge, ":string", 0),
+                        (str_store_string, s5, ":string"),
+                    (try_end),
+                    
                      ],
-   "Do I know you?", "lord_meet_neutral", []],
+   "{s5}", "lord_meet_neutral", []],
+   
   [anyone|plyr ,"lord_meet_neutral", [],  "I am {playername}.", "lord_intro", []],
   [anyone|plyr ,"lord_meet_neutral", [],  "My name is {playername}. At your service sir.", "lord_intro", []],
 
