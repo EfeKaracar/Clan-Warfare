@@ -14,22 +14,86 @@ from ID_factions import *
 
 # Efe
 
-player_knows_how_to_play = 1001
-player_skill_level = 1002   
+ppk = "trp_knight_4_2"
+lagstro = "trp_knight_4_1"
+achilles = "trp_knight_4_3"
+marquis = "trp_knight_3_4"
+belendor = "trp_knight_3_2"
+cedrics = "trp_knight_3_1"
+john = "trp_kingdom_7_lord"
+eb = "trp_knight_3_3"
+calamity = "trp_knight_4_5"
+vinny = "trp_knight_4_6"
+edwards = "trp_kingdom_3_lord"
+pico = "trp_knight_3_5"
+mav = "trp_knight_5_14"
+wily = "trp_kingdom_4_lord"
+tito = "trp_kingdom_5_lord"
+guacc = "trp_knight_5_21"
+vahaemar = "trp_kingdom_2_lord"
+rob = "trp_kingdom_1_lord"
+oodle = "trp_knight_5_17"
+ordyn = "trp_knight_5_18"
+heat = "trp_knight_5_10"
+gorlock = "trp_knight_5_8"
+aporta = "trp_knight_1_11"
+danate = "trp_knight_1_10"
+vorn = "trp_knight_1_8"
+daemon = "trp_knight_1_17"
+rake = "trp_knight_1_19"
+grimsight = "trp_knight_1_15"
+sigi = "trp_knight_1_9"
+manry = "trp_knight_1_4"
+arni = "trp_knight_1_3"
+nikkle = "trp_knight_1_2"
+chowski = "trp_knight_1_1"
+thunderbeu = "trp_knight_1_13"
+xearian = "trp_knight_2_6"
+jeffrey = "trp_knight_5_12"
+erminas = "trp_knight_8_8"
+deathangel = "trp_knight_8_7"
+
+
+faction_intro = 4500
+faction_intro_1 = 4501
+faction_intro_negative = 4502
+faction_intro_renown_n = 4503
+faction_intro_renown_p = 4504
+
+
 player_hp = 1000
 player_thought_on_bl = 1003
 player_death_music = 1004
 
-player_special_loot = 1100
+player_special_loot = 1100 # works
 
-this_guy_only_s = 1004
-this_guy_only_hilt_spams = 1005
-this_guy_only_outreaches = 1006
+# AI #
 
+player_knows_how_to_play = 1001 # works
+player_skill_level = 1002       # works
+
+# Constraints
+this_guy_only_s = 1004          # wip
+this_guy_only_hilt_spams = 1005 # planned
+this_guy_only_outreaches = 1006 # planned
+this_guy_only_blocks = 1007     # works
+                                
 this_guy_doesnt_feint = 1007
+this_guy_doesnt_chamber = 1008
+
 this_guy_does_jump_swing = 1008
 this_guy_does_holds = 1009
 this_guy_is_spastic = 1010
+
+
+run_block = 20000
+run_feint = 20010
+run_footwork = 20020
+run_attack = 20030
+run_counter_attack = 20040
+run_chamber = 20050
+
+# AI END #
 
 bks_invasion_phase = 1200
 eu_invasion_done = 1201
