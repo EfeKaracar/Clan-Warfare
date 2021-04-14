@@ -506,7 +506,7 @@ troops = [
    str_14 | agi_10 | int_4 | cha_4|level(20),wp_one_handed (140) | wp_two_handed (100) | wp_polearm (100) | wp_archery (100) | wp_crossbow (160) | wp_throwing (100),knows_common|knows_power_draw_3|knows_ironflesh_2|knows_power_strike_3|knows_athletics_2,swadian_face_middle_1, swadian_face_older_2],
   
   ["swadian_man_at_arms","Emperor's Hand","Emperor's Hands",tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_shield,0,0,fac_kingdom_1,
-   [itm_sarranid_axe_b,itm_sword_medieval_b,itm_tab_shield_heater_b,
+   [itm_sarranid_axe_b,itm_sword_medieval_c,itm_tab_shield_heater_b,
     itm_haubergeon,itm_brigandine_red, itm_mail_chausses, itm_iron_greaves, itm_gauntlets, itm_mail_mittens, itm_great_helmet,itm_guard_helmet],
    def_attrib|level(24),wp_melee(180),knows_common|knows_riding_4|knows_ironflesh_6|knows_shield_5|knows_power_strike_5,swadian_face_young_1, swadian_face_old_2],
   
