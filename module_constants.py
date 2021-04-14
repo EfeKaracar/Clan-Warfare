@@ -73,6 +73,7 @@ player_knows_how_to_play = 1001 # works
 player_skill_level = 1002       # works
 
 # Constraints
+constraints_start = 25000
 this_guy_only_s = 1004          # wip
 this_guy_only_hilt_spams = 1005 # planned
 this_guy_only_outreaches = 1006 # planned
@@ -92,7 +93,7 @@ run_footwork = 20020
 run_attack = 20030
 run_counter_attack = 20040
 run_chamber = 20050
-
+constraints_end = 25000
 # AI END #
 
 bks_invasion_phase = 1200

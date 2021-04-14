@@ -425,8 +425,8 @@ advanced_ai = (
 		(agent_get_action_dir, ":source_attack_dir", ":agents"), # attack/block direction
 	    # (agent_get_attack_action, ":source_attack_action", ":agents"), #attack action
         
-        (assign, reg5, ":source_attack_dir"),
-        (display_message, "@{reg5}"),
+        # (assign, reg5, ":source_attack_dir"),
+        # (display_message, "@{reg5}"),
         
 		(store_random_in_range, ":chance_strength", 1, ":chance_AI"), #chance is based on troop
 		(eq, ":chance_strength", 1),

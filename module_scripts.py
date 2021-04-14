@@ -1054,43 +1054,65 @@ scripts = [
       (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_2_archer, "trp_taiga_bandit"),
       (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_1_cavalry, "trp_steppe_bandit"),
       (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_2_cavalry, "trp_desert_bandit"),
+      
       (faction_set_slot, "fac_kingdom_1", slot_faction_quick_battle_tier_1_infantry, "trp_swadian_footman"),
       (faction_set_slot, "fac_kingdom_1", slot_faction_quick_battle_tier_2_infantry, "trp_swadian_infantry"),
       (faction_set_slot, "fac_kingdom_1", slot_faction_quick_battle_tier_1_archer, "trp_swadian_skirmisher"),
       (faction_set_slot, "fac_kingdom_1", slot_faction_quick_battle_tier_2_archer, "trp_swadian_crossbowman"),
       (faction_set_slot, "fac_kingdom_1", slot_faction_quick_battle_tier_1_cavalry, "trp_swadian_man_at_arms"),
       (faction_set_slot, "fac_kingdom_1", slot_faction_quick_battle_tier_2_cavalry, "trp_swadian_knight"),
+      
       (faction_set_slot, "fac_kingdom_2", slot_faction_quick_battle_tier_1_infantry, "trp_vaegir_footman"),
       (faction_set_slot, "fac_kingdom_2", slot_faction_quick_battle_tier_2_infantry, "trp_vaegir_infantry"),
       (faction_set_slot, "fac_kingdom_2", slot_faction_quick_battle_tier_1_archer, "trp_vaegir_skirmisher"),
       (faction_set_slot, "fac_kingdom_2", slot_faction_quick_battle_tier_2_archer, "trp_vaegir_archer"),
       (faction_set_slot, "fac_kingdom_2", slot_faction_quick_battle_tier_1_cavalry, "trp_vaegir_horseman"),
       (faction_set_slot, "fac_kingdom_2", slot_faction_quick_battle_tier_2_cavalry, "trp_vaegir_knight"),
+      
       (faction_set_slot, "fac_kingdom_3", slot_faction_quick_battle_tier_1_infantry, "trp_khergit_dismounted_lancer_multiplayer_ai"),
       (faction_set_slot, "fac_kingdom_3", slot_faction_quick_battle_tier_2_infantry, "trp_khergit_dismounted_lancer_multiplayer_ai"),
       (faction_set_slot, "fac_kingdom_3", slot_faction_quick_battle_tier_1_archer, "trp_khergit_horse_archer"),
       (faction_set_slot, "fac_kingdom_3", slot_faction_quick_battle_tier_2_archer, "trp_khergit_veteran_horse_archer"),
       (faction_set_slot, "fac_kingdom_3", slot_faction_quick_battle_tier_1_cavalry, "trp_khergit_lancer"),
       (faction_set_slot, "fac_kingdom_3", slot_faction_quick_battle_tier_2_cavalry, "trp_khergit_lancer"),
+      
       (faction_set_slot, "fac_kingdom_4", slot_faction_quick_battle_tier_1_infantry, "trp_nord_warrior"),
       (faction_set_slot, "fac_kingdom_4", slot_faction_quick_battle_tier_2_infantry, "trp_nord_champion"),
       (faction_set_slot, "fac_kingdom_4", slot_faction_quick_battle_tier_1_archer, "trp_nord_archer"),
       (faction_set_slot, "fac_kingdom_4", slot_faction_quick_battle_tier_2_archer, "trp_nord_veteran_archer"),
       (faction_set_slot, "fac_kingdom_4", slot_faction_quick_battle_tier_1_cavalry, "trp_nord_scout_multiplayer_ai"),
       (faction_set_slot, "fac_kingdom_4", slot_faction_quick_battle_tier_2_cavalry, "trp_nord_scout_multiplayer_ai"),
+      
       (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_1_infantry, "trp_rhodok_veteran_spearman"),
       (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_2_infantry, "trp_rhodok_sergeant"),
       (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_1_archer, "trp_rhodok_crossbowman"),
       (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_2_archer, "trp_rhodok_veteran_crossbowman"),
       (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_1_cavalry, "trp_rhodok_scout_multiplayer_ai"),
       (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_2_cavalry, "trp_rhodok_scout_multiplayer_ai"),
+      
       (faction_set_slot, "fac_kingdom_6", slot_faction_quick_battle_tier_1_infantry, "trp_sarranid_veteran_footman"),
       (faction_set_slot, "fac_kingdom_6", slot_faction_quick_battle_tier_2_infantry, "trp_sarranid_infantry"),
       (faction_set_slot, "fac_kingdom_6", slot_faction_quick_battle_tier_1_archer, "trp_sarranid_skirmisher"),
       (faction_set_slot, "fac_kingdom_6", slot_faction_quick_battle_tier_2_archer, "trp_sarranid_archer"),
       (faction_set_slot, "fac_kingdom_6", slot_faction_quick_battle_tier_1_cavalry, "trp_sarranid_horseman"),
       (faction_set_slot, "fac_kingdom_6", slot_faction_quick_battle_tier_2_cavalry, "trp_sarranid_mamluke"),
+        #Efe
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_infantry, "trp_sarranid_veteran_footman"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_infantry, "trp_sarranid_infantry"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_archer, "trp_sarranid_skirmisher"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_archer, "trp_sarranid_archer"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_cavalry, "trp_sarranid_horseman"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_cavalry, "trp_sarranid_mamluke"),
 
+      (faction_set_slot, "fac_kingdom_8", slot_faction_quick_battle_tier_1_infantry, "trp_sarranid_veteran_footman"),
+      (faction_set_slot, "fac_kingdom_8", slot_faction_quick_battle_tier_2_infantry, "trp_sarranid_infantry"),
+      (faction_set_slot, "fac_kingdom_8", slot_faction_quick_battle_tier_1_archer, "trp_sarranid_skirmisher"),
+      (faction_set_slot, "fac_kingdom_8", slot_faction_quick_battle_tier_2_archer, "trp_sarranid_archer"),
+      (faction_set_slot, "fac_kingdom_8", slot_faction_quick_battle_tier_1_cavalry, "trp_sarranid_horseman"),
+      (faction_set_slot, "fac_kingdom_8", slot_faction_quick_battle_tier_2_cavalry, "trp_sarranid_mamluke"),
+
+
+        
       #for multiplayer mode
       (assign, "$g_multiplayer_selected_map", multiplayer_scenes_begin),
       (assign, "$g_multiplayer_respawn_period", 5),
@@ -51133,8 +51155,10 @@ scripts = [
         
         (store_random_in_range, ":dice", 1, 6),
         (troop_set_slot, ":troops", player_skill_level, ":dice"),
-        (troop_set_slot, ":troops", this_guy_doesnt_feint, -1),
-        (troop_set_slot, ":troops", this_guy_doesnt_chamber, -1),
+        
+        (try_for_range, ":constraints", constraints_starts, constraints_end),
+            (troop_set_slot, ":troop", ":constraints", -1),
+        (try_end),
         
         (store_random_in_range, ":random", 50, 100),
         (troop_set_slot, ":troops", player_hp, ":random"),
