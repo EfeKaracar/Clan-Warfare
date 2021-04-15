@@ -94,6 +94,10 @@ run_attack = 200306
 run_counter_attack = 200408
 run_chamber = 200509
 
+agent_cur_action = 50001
+action_hold = 50000
+action_feint = 50001
+
 # AI END #
 
 bks_invasion_phase = 1200

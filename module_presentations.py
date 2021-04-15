@@ -13679,7 +13679,7 @@ presentations = [
 			  (agent_is_active, ":agent_id"),
               (agent_get_troop_id, ":troop_id", ":agent_id"),
               (str_store_troop_name, s3, ":troop_id"),
-              (store_agent_hit_points, reg5, ":agent_id"),
+              (store_agent_hit_points, reg5, ":agent_id", 1),
               (agent_get_troop_id, ":troop", ":agent_id"),
               (troop_get_slot, reg6, ":troop", player_hp),
               (str_store_string, s2, "@{s3}^{reg5}/{reg6}"),

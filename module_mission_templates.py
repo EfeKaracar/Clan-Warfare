@@ -511,8 +511,22 @@ advanced_ai = (
         
         #adjust speeds depending on the action
         
+        
+        # Make holds
+        # (try_begin),
+            # (store_random_in_range, ":dice", 200, 500),
+            # (eq, ":dice", 300),
+            # (store_random_in_range, ":random_dir", 0, 3),
+            # (agent_set_attack_action, ":agent", ":random_dir", 1),
+            # (agent_set_slot, ":agents", agent_cur_action, action_hold),
+            
+        # (try_end),
+        
         #Feinting
         (try_begin),
+            (ge, ":timer", 10), # ai starts feinting after 10 seconds into duel
+            
+            # (neg|agent_slot_eq, ":agents", agent_cur_action, action_hold),
             # (agent_slot_ge, ":agents", run_feint, 1),
                 # dice
             # (is_between, ":decision", 6, 8),
@@ -521,12 +535,15 @@ advanced_ai = (
             (le, ":dist", 225),
             
             # (display_message, "@Feinting."),
-            (store_random_in_range, ":feint_times", 3, 12),
+            (store_random_in_range, ":feint_times", 5, 12),
             # Feint to different directions
             (try_for_range, ":feinting_amount", 0, ":feint_times"),
-                (store_random_in_range, ":random_dir", 0, 3),
-                (store_random_in_range, ":random_action", 0, 1),
-                (agent_set_attack_action, ":agents", ":random_dir", ":random_action"),
+                (store_random_in_range, ":random_dir", 0, 3), # store direction
+                (neq, ":random_dir", "$last_direction"), # if it is not equal to last direction
+
+                (agent_set_attack_action, ":agents", ":random_dir", 0), # attack
+                (assign, "$last_direction", ":random_dir"), # store the last used direction
+                
                 (eq, ":feinting_amount", ":feint_times"),
                 (assign, ":feinting_amount", -1),
             (try_end),
@@ -574,7 +591,7 @@ advanced_ai = (
                     # BOTH ATTACK AND BLOCK
                     (try_begin),
                         (eq, ":source_attack_dir", 0), #down
-                        (position_move_y, pos12, ":right"),
+                        (position_move_x, pos12, ":right"),
                     (else_try),
                         (eq, ":source_attack_dir", 1), #slashright
                         (position_move_x, pos12, ":right"),
@@ -585,7 +602,7 @@ advanced_ai = (
                         (position_move_y, pos12, ":forward"),
                     (else_try),
                         (eq, ":source_attack_dir", 3), #overswing
-                        (position_move_y, pos12, ":left"),
+                        (position_move_x, pos12, ":left"),
                     (try_end),
                     # (display_message, "@I have no shield."),
                 (try_end),
@@ -604,7 +621,17 @@ advanced_ai = (
         
         # Target Switching
         
+        
         # Make head of the source move up and down when is attacking
+        (try_begin),
+            (agent_set_is_alarmed, ":agents", 0),
+            (agent_get_look_position, pos51, ":agents"),
+            (store_random_in_range, ":y", -50, 50),
+            (position_move_y, pos51, ":y"),
+            (agent_set_look_target_position, ":agents", pos51),
+        (try_end),
+        
+        
         
         # Cavalry
         # Bump-lance
@@ -657,7 +684,7 @@ advanced_ai = (
     ])
 
 ai_corpsekick = (
-ti_on_agent_killed_or_wounded, 0, 0, [], [
+ti_on_agent_killed_or_wounded, 2, 2, [], [
 
 (store_trigger_param_1, ":dead"),
 (store_trigger_param_2, ":killer"),
@@ -665,8 +692,7 @@ ti_on_agent_killed_or_wounded, 0, 0, [], [
 (get_player_agent_no, ":player"),
 (eq, ":dead", ":player"),
 
-(agent_set_animation, ":killer", -1),
-(agent_set_animation, ":killer", "anim_kick_left_leg"),
+(agent_set_animation, ":killer", "anim_prepare_kick_0"),
 (display_message, "@Ez"),
 
 ])
@@ -690,6 +716,16 @@ ti_on_agent_spawn, 0, 0, [], [
 (agent_equip_item, ":player", "itm_sword_two_handed_a"),
 (agent_equip_item, ":player", "itm_red_tunic"),
 
+(try_begin),
+    (eq, ":agent", ":player"),
+    (agent_get_position, pos11, ":agent"),
+    (position_move_y, pos11, 300),
+    (position_set_z_to_ground_level, pos11),
+    (set_spawn_position, pos11),
+    (spawn_agent, "trp_player"),
+(try_end),
+
+
 (neq, ":player", ":agent"),
 (agent_get_team, ":team", ":agent"),
 
@@ -710,6 +746,8 @@ ti_on_agent_spawn, 0, 0, [], [
 # all duels are going to be great sword
 (agent_equip_item, ":agent", "itm_sword_two_handed_a"),
 (agent_equip_item, ":agent", "itm_red_tunic"),
+
+(play_track, "track_duel_comp"),
 
 ])
 
@@ -17084,7 +17122,7 @@ mission_templates = [
 "The duel begins!",    
 [
 # visitors 0 and 1 are completely standard
-(0, mtef_visitor_source|mtef_team_0, 0, aif_start_alarmed, 1, []),      
+(0, mtef_scene_source|mtef_team_0, af_override_horse, aif_start_alarmed, 1, []),      
 (8, mtef_visitor_source|mtef_team_2, 0, aif_start_alarmed, 1, []),
 #visitors 2 and 3 are override horse only
 (56, mtef_visitor_source|mtef_team_0, af_override_horse, aif_start_alarmed, 1, []),
