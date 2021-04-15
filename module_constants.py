@@ -69,31 +69,35 @@ player_special_loot = 1100 # works
 
 # AI #
 
-player_knows_how_to_play = 1001 # works
-player_skill_level = 1002       # works
+player_knows_how_to_play = 100113 # works
+player_skill_level = 100232       # works
 
 # Constraints
 constraints_start = 25000
-this_guy_only_s = 1004          # wip
-this_guy_only_hilt_spams = 1005 # planned
-this_guy_only_outreaches = 1006 # planned
-this_guy_only_blocks = 1007     # works
+this_guy_only_s = 10044          # wip
+this_guy_only_hilt_spams = 10055 # planned
+this_guy_only_outreaches = 10066 # planned
+this_guy_only_blocks = 10077     # works
                                 
-this_guy_doesnt_feint = 1007
-this_guy_doesnt_chamber = 1008
+this_guy_doesnt_feint = 10079
+this_guy_doesnt_chamber = 10088
 
-this_guy_does_jump_swing = 1008
-this_guy_does_holds = 1009
-this_guy_is_spastic = 1010
+this_guy_does_jump_swing = 10082
+this_guy_does_holds = 10091
+this_guy_is_spastic = 10102
+constraints_end = 250003
 
+run_block = 200004
+run_feint = 200105
+run_footwork = 200207
+run_attack = 200306
+run_counter_attack = 200408
+run_chamber = 200509
 
-run_block = 20000
-run_feint = 20010
-run_footwork = 20020
-run_attack = 20030
-run_counter_attack = 20040
-run_chamber = 20050
-constraints_end = 25000
+agent_cur_action = 50001
+action_hold = 50000
+action_feint = 50001
+
 # AI END #
 
 bks_invasion_phase = 1200
