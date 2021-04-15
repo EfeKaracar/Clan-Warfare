@@ -26425,7 +26425,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 #options for the unmounted fights
  [anyone, "duel_weap_choose", [], "What kind of weapons would you like to fight with?", "duel_weap_choose", []],
     [anyone|plyr,"duel_weap_choose", [],
-         "We should use our own weapons.", "duel_start", [(str_clear, s5), (str_store_string, s5, "@our own weapons"),
+         "I would like to duel in the traditional manner with greatswords.", "duel_start", [(str_clear, s5), (str_store_string, s5, "@our own weapons"),
             (assign, "$g_duel_vis_point_plyr", 2), (assign, "$g_duel_vis_point_opp", 3),]],
     # [anyone|plyr,"duel_weap_choose", [],
          # "Let us fight with sword and shield.", "duel_start", [(str_clear, s5), (str_store_string, s5, "@sword and shield"),
@@ -26440,7 +26440,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
          "What was your previous question again?.", "duel_accept", []],
 
 #final dialog
-[anyone, "duel_start", [], "Very well {playername}. ^^We will be duelling on {s4}, using {s5}.^^If this is all right, I will meet you down at the arena as soon as you finish preparing.", "duel_start", []],
+    [anyone, "duel_start", [], "Very well {playername}. ^^We will be duelling on {s4}, using {s5}.^^If this is all right, I will meet you down at the arena as soon as you finish preparing.", "duel_start", []],
     [anyone|plyr, "duel_start", [], "That sound great. I'll meet you down there.", "close_window", [(assign, reg(0), "$g_talk_troop"),(finish_mission),(jump_to_menu, "mnu_duel_menu"),]],
     [anyone|plyr, "duel_start", [], "No, you've got it all wrong, let's try again.", "duel_accept", []],
 

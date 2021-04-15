@@ -58,7 +58,7 @@ lord_hp = (
         (try_end),
         
         (agent_set_max_hit_points, ":agent", ":hp", 1),
-        (agent_set_hit_points, ":agent", 100, 0),
+        (agent_set_hit_points, ":agent", ":hp", 1),
         
         (assign, reg25, ":hp"),
         (str_store_troop_name, s5, ":troop"),
@@ -202,7 +202,7 @@ corpsekicking = (
 
 
 check_game_difficulty = (
-0,0,0, [], [
+ti_after_mission_start, 0, 0, [], [
 
 (get_average_game_difficulty, ":difficulty"),
 (le, ":difficulty", 69),
@@ -382,6 +382,8 @@ advanced_ai = (
     (get_player_agent_no, ":player"),
     (agent_is_active, ":player"),
     (agent_is_alive, ":player"),
+    
+    (store_mission_timer_a, ":timer"),
 	
    (try_for_agents, ":agents"),
         # SOURCE CHECK
@@ -410,6 +412,27 @@ advanced_ai = (
 		(agent_get_team, ":target_team", ":target"),
 		(neq, ":target_team", ":agent_team"), #unfriendly teams
 		
+        # WEAPONS
+        (try_begin),
+            (agent_get_wielded_item, ":left_item_source", ":agents", 1),
+            (gt, ":left_item_source", 0),
+            (item_get_type, ":left_item_type_source", ":left_item_source"),
+        (try_end),
+        
+        (try_begin),
+            (agent_get_wielded_item, ":right_item_source", ":agents", 0),
+            (gt, ":right_item_source", 0),
+            (item_get_type, ":right_item_type_source", ":right_item_source"),
+            (item_get_weapon_length, ":weapon_length_right_source", ":right_item_source"),
+        (try_end),
+        # HORSE
+        (agent_get_horse, ":horse", ":agents"),
+        (eq, ":horse", -1), # no horse
+        
+        (agent_get_animation, ":source_animation", ":agents"),
+        (agent_get_animation, ":target_animation", ":target"),
+        
+        
         # POSITION
 		(agent_get_position, pos11, ":target"),
 	    (agent_get_position, pos12, ":agents"),
@@ -420,10 +443,12 @@ advanced_ai = (
 	    (agent_get_defend_action, ":pos_def", ":target"), #attack action
 		(agent_get_action_dir, ":pos_atkdir", ":target"),
 	    (agent_get_attack_action, ":pos_atk", ":target"), #attack action
-        
+        (agent_get_combat_state, ":pos_state", ":target"),
+       
+        (agent_get_combat_state, ":source_state", ":agents"),
         (agent_get_defend_action, ":source_defend_action", ":agents"), #defend action
 		(agent_get_action_dir, ":source_attack_dir", ":agents"), # attack/block direction
-	    # (agent_get_attack_action, ":source_attack_action", ":agents"), #attack action
+	    (agent_get_attack_action, ":source_attack_action", ":agents"), #attack action
         
         # (assign, reg5, ":source_attack_dir"),
         # (display_message, "@{reg5}"),
@@ -431,47 +456,188 @@ advanced_ai = (
 		(store_random_in_range, ":chance_strength", 1, ":chance_AI"), #chance is based on troop
 		(eq, ":chance_strength", 1),
         
-        (store_random_in_range, ":decision", 1, 10),
+        # (store_random_in_range, ":decision", 1, 10),
         
-        (agent_set_slot, ":agents", run_block, 1),
-        (agent_set_slot, ":agents", run_feint, 1),
-        (agent_set_slot, ":agents", run_footwork, 1),
-        (agent_set_slot, ":agents", run_attack, 1),
-        (agent_set_slot, ":agents", run_counter_attack, 1),
-        (agent_set_slot, ":agents", run_chamber, 1),
+        # (agent_set_slot, ":agents", run_block, 1),
+        # (agent_set_slot, ":agents", run_feint, 1),
+        # (agent_set_slot, ":agents", run_footwork, 1),
+        # (agent_set_slot, ":agents", run_attack, 1),
+        # (agent_set_slot, ":agents", run_counter_attack, 1),
+        # (agent_set_slot, ":agents", run_chamber, 1),
         
-        
-        (try_begin),
-            (troop_slot_ge, ":troop_no", this_guy_only_blocks, 1),
-            (agent_set_slot, ":agents", run_feint, -1),
-            (agent_set_slot, ":agents", run_footwork, -1),
-            (agent_set_slot, ":agents", run_attack, -1),
-            (agent_set_slot, ":agents", run_counter_attack, -1),
-            (agent_set_slot, ":agents", run_chamber, -1),
-        (try_end),
+        # (try_begin),
+            # (troop_slot_ge, ":troop_no", this_guy_only_blocks, 1),
+            # (agent_set_slot, ":agents", run_feint, -1),
+            # (agent_set_slot, ":agents", run_footwork, -1),
+            # (agent_set_slot, ":agents", run_attack, -1),
+            # (agent_set_slot, ":agents", run_counter_attack, -1),
+            # (agent_set_slot, ":agents", run_chamber, -1),
+        # (try_end),
           
+        # (try_begin),
+            # (troop_slot_ge, ":troop_no", this_guy_only_s, 1),
+            # (agent_set_slot, ":agents", run_feint, -1),
+            # (agent_set_slot, ":agents", run_block, -1),
+            # (agent_set_slot, ":agents", run_footwork, -1),
+            # (agent_set_slot, ":agents", run_counter_attack, -1),
+            # (agent_set_slot, ":agents", run_chamber, -1),
+        # (try_end),
+        
+
+        
+        # make ai block more when their hp is low
+        
+        # Chambering
+        # (try_begin),
+            # # (eq, ":source_attack_action", 0), # if free
+            # # (agent_slot_ge, ":agents", run_chamber, 1), # troop constraints
+            # (le, ":dist", 200), # IF close enough
+            # (eq, ":pos_atk", 2), # release attack
+            # # (eq, ":decision", 5), # decided to chamber
+            # (try_begin),					
+                # (eq, ":pos_atkdir", 0), # enemy is attackin down
+                # (agent_set_attack_action, ":agents", 0, 0), # attack down
+            # (else_try),
+                # (eq, ":pos_atkdir", 1), # enemy is attackin right
+                # (agent_set_attack_action,":agents", 2, 0),  # attack left
+            # (else_try),
+                # (eq, ":pos_atkdir", 2), # enemy is attackin left
+                # (agent_set_attack_action, ":agents", 1, 0), # attack right
+            # (else_try),
+                # (eq, ":pos_atkdir", 3), # enemy is attacking up
+                # (agent_set_attack_action, ":agents", 3, 0), # attack up
+            # (try_end),
+        # (try_end),
+        
+        #adjust speeds depending on the action
+        
+        #Feinting
         (try_begin),
-            (troop_slot_ge, ":troop_no", this_guy_only_s, 1),
-            (agent_set_slot, ":agents", run_feint, -1),
-            (agent_set_slot, ":agents", run_block, -1),
-            (agent_set_slot, ":agents", run_footwork, -1),
-            (agent_set_slot, ":agents", run_counter_attack, -1),
-            (agent_set_slot, ":agents", run_chamber, -1),
+            # (agent_slot_ge, ":agents", run_feint, 1),
+                # dice
+            # (is_between, ":decision", 6, 8),
+            # if distance is close enough
+            (eq, ":pos_def", 2),
+            (le, ":dist", 225),
+            
+            # (display_message, "@Feinting."),
+            (store_random_in_range, ":feint_times", 3, 12),
+            # Feint to different directions
+            (try_for_range, ":feinting_amount", 0, ":feint_times"),
+                (store_random_in_range, ":random_dir", 0, 3),
+                (store_random_in_range, ":random_action", 0, 1),
+                (agent_set_attack_action, ":agents", ":random_dir", ":random_action"),
+                (eq, ":feinting_amount", ":feint_times"),
+                (assign, ":feinting_amount", -1),
+            (try_end),
         (try_end),
+        
+        # Footwork
+        (try_begin),
+            # (agent_slot_ge, ":agents", run_footwork, 1),
+            # When distance is too far, come closer to target
+            (try_begin),
+                # (try_begin),
+                    # (troop_slot_ge, ":troop_no", this_guy_only_s, 1),
+                    # (val_mul, pos11, -1),
+                # (else_try),
+                    (ge, ":dist", 225),
+                # (try_end),
+                
+                (agent_force_rethink, ":agents"),
+                (agent_set_scripted_destination, ":agents", pos11, 0, 1),
+            # When close enough, 
+            (else_try),
+                (store_random_in_range, ":right", -150, -750),
+                (store_random_in_range, ":left", 150, 450),
+                (store_random_in_range, ":up", 25, 75),
+                (store_random_in_range, ":forward", 50, 150),
+                (store_random_in_range, ":backwards", -350, -550),
+                (store_random_in_range, ":shield", -300, 300),
+                (agent_force_rethink, ":agents"),
+                # (copy_position, pos13, pos12),
+                # (store_random_in_range, ":dice_for_footwork", 0, 3),
+                # (eq, ":dice_for_footwork", 2),
+                (agent_clear_scripted_mode, ":agents"),
+                # ATTACKING / BLOCKING
+                (try_begin),
+                    # # WITH SHIELD
+                    # # ONLY BLOCK
+                    # (gt, ":left_item_source", 0), # if he has item on left hand 
+                    # (eq, ":left_item_type_source", itp_type_shield), # if the item is shield
+                    # (eq, ":source_animation", "anim_defend_shield"),
+                    # # (eq, ":source_attack_action", 2), # guarding
+                    # (position_move_x, pos12, ":shield"),
+                    # (display_message, "@I have shield."),
+                # (else_try),
+                    # NO SHIELD  
+                    # BOTH ATTACK AND BLOCK
+                    (try_begin),
+                        (eq, ":source_attack_dir", 0), #down
+                        (position_move_y, pos12, ":right"),
+                    (else_try),
+                        (eq, ":source_attack_dir", 1), #slashright
+                        (position_move_x, pos12, ":right"),
+                        (position_move_y, pos12, ":forward"),
+                    (else_try),
+                        (eq, ":source_attack_dir", 2), #slashleft
+                        (position_move_x, pos12, ":left"),
+                        (position_move_y, pos12, ":forward"),
+                    (else_try),
+                        (eq, ":source_attack_dir", 3), #overswing
+                        (position_move_y, pos12, ":left"),
+                    (try_end),
+                    # (display_message, "@I have no shield."),
+                (try_end),
+                
+                # (try_begin),
+                    # (troop_slot_ge, ":troop_no", this_guy_only_s, 1),
+                    # (agent_set_scripted_destination, ":agents", pos13, 0, 1),
+                # (else_try), 
+                    (agent_set_scripted_destination, ":agents", pos12, 0, 1),
+                # (try_end),
+                
+            (try_end),
+        (try_end),
+        
+        # make footwork inverse for allowed players
+        
+        # Target Switching
+        
+        # Make head of the source move up and down when is attacking
+        
+        # Cavalry
+        # Bump-lance
+        
+        # Archers
+        # Leg shot
+        
+        # AI kick
+        
+        
+        #Counter-attack
+        # (try_begin),
+            # # (agent_slot_ge, ":agents", run_counter_attack, 1),
+            # (le, ":dist", 200),
+            # (this_or_next|eq, ":pos_atk", 6),
+            # (eq, ":pos_atk", 3),
+            # (store_random_in_range, ":random_dir", 1, 3),
+            # (store_random_in_range, ":random_action", 0, 1),
+            # (agent_set_attack_action, ":agents", ":random_dir", ":random_action"),
+        # (try_end),
         
         #Blocking
         (try_begin),
-            (agent_slot_eq, ":agents", run_block, 1),
-            (try_begin),
-                (troop_slot_ge, ":troop_no", this_guy_only_blocks, 1),
-            (else_try),
-                (neq, ":pos_atk", 1), # not readying attack
-                (eq, ":pos_atk", 3), # completing attack after hit
-                # (eq, ":pos_atk", 2), # releasing attack	
-                (le, ":dist", 200), # close enough
-                (le, ":decision", 4), # decision made
-            (try_end),
-            
+            # (agent_slot_ge, ":agents", run_block, 1),
+            # (try_begin),
+                # (troop_slot_ge, ":troop_no", this_guy_only_blocks, 1),
+            # (else_try),
+                # (this_or_next|eq, ":pos_atk", 3), # completing attack after hit
+             (eq, ":pos_atk", 2), # releasing attack	
+             (le, ":dist", 400), # close enough
+                # (le, ":decision", 4), # decision made
+            # (try_end),
+            (agent_force_rethink, ":agents"),
             #(store_random_in_range, ":random_chance", 1, 150),
             (try_begin),
                 (eq, ":pos_atkdir", 0),
@@ -487,174 +653,65 @@ advanced_ai = (
                 (agent_set_defend_action, ":agents", 3, 0),
             (try_end),
         (try_end),
-        
-        # make ai block more when their hp is low
-        
-        # Chambering
-        (try_begin),
-            (agent_slot_eq, ":agents", run_chamber, 1), # troop constraints
-            (le, ":dist", 200), # IF close enough
-            (eq, ":pos_atk", 6), # after release
-            (eq, ":decision", 5), # decided to chamber
-            (try_begin),					
-                (eq, ":pos_atkdir", 0), # enemy is attackin down
-                (agent_set_attack_action, ":agents", 0, 0), # attack down
-            (else_try),
-                (eq, ":pos_atkdir", 1), # enemy is attackin right
-                (agent_set_attack_action,":agents", 2, 0),  # attack left
-            (else_try),
-                (eq, ":pos_atkdir", 2), # enemy is attackin left
-                (agent_set_attack_action, ":agents", 1, 0), # attack right
-            (else_try),
-                (eq, ":pos_atkdir", 3), # enemy is attacking up
-                (agent_set_attack_action, ":agents", 3, 0), # attack up
-            (try_end),
-            
-        (try_end),
-        
-        #adjust speeds depending on the action
-        
-        #Feinting
-        (try_begin),
-            (agent_slot_eq, ":agents", run_feint, 1),
-                # dice
-            (is_between, ":decision", 6-8),
-            # if distance is close enough
-            (le, ":dist", 200),
-
-            
-            # may attack even if you are not blocking
-            (assign, ":continue", 0),
-            (store_random_in_range, ":dice", 0, 12),
-            # Feint when blocking
-            (try_begin),
-                (eq, ":dice", 2),
-                (eq, ":pos_def", 2),
-                (assign, ":continue", 1),
-            (else_try),
-            # Feint when free
-                (eq, ":pos_def", 0),
-                (assign, ":continue", 1),
-            (try_end),
-            (eq, ":continue", 1),
-            
-            # (display_message, "@Feinting."),
-            (store_random_in_range, ":feint_times", 2, 10),
-            # Feint to different directions
-            (try_for_range, ":feinting_amount", 0, ":feint_times"),
-                (store_random_in_range, ":random_dir", 0, 3),
-                (store_random_in_range, ":random_action", 0, 1),
-                (neq, ":random_dir", "$last_direction"),
-                (agent_set_attack_action, ":agents", ":random_dir", ":random_action"),
-                (assign, "$last_direction", ":random_dir"),
-                (eq, ":feinting_amount", ":feint_times"),
-                (assign, ":feinting_amount", -1),
-            (try_end),
-        (try_end),
-        
-        # Footwork
-        (try_begin),
-            (agent_slot_eq, ":agents", run_footwork, 1),
-            # When distance is too far, come closer to target
-            (try_begin),
-                (try_begin),
-                    (troop_slot_ge, ":troop_no", this_guy_only_s, 1),
-                    (val_mul, pos11, -1),
-                (else_try),
-                    (ge, ":dist", 225),
-                (try_end),
-                
-                (agent_force_rethink, ":agents"),
-                (agent_set_scripted_destination, ":agents", pos11, 0, 1),
-            # When close enough, 
-            (else_try),
-                (store_random_in_range, ":right", -150, -750),
-                (store_random_in_range, ":left", 150, 450),
-                (store_random_in_range, ":up", 5, 15),
-                (store_random_in_range, ":forward", 50, 150),
-                (agent_force_rethink, ":agents"),
-                (copy_position, pos13, pos12),
-                # (store_random_in_range, ":dice_for_footwork", 0, 3),
-                # (eq, ":dice_for_footwork", 2),
-               (try_begin),
-                    #ATTACKING / BLOCKING
-                    # NO SHIELD
-                    (eq, ":source_attack_dir", 0), #down
-                    (position_move_y, pos12, ":forward"),
-                    # (display_message, "@Move forward when thrust is active."),
-                (else_try),
-                    (eq, ":source_attack_dir", 1), #slashright
-                    (position_move_x, pos12, ":right"),
-                    (position_move_y, pos12, ":forward"),
-                    # (display_message, "@Move right when slash-right is active."),
-                (else_try),
-                    (eq, ":source_attack_dir", 2), #slashleft
-                    (position_move_x, pos12, ":left"),
-                    (position_move_y, pos12, ":forward"),
-                    # (display_message, "@Move left when slash-left is active."),
-                (else_try),
-                    (eq, ":source_attack_dir", 3), #overswing
-                    (position_move_y, pos12, ":up"),
-                    # (display_message, "@Move back when overhead is active."),
-                    # WITH SHIELD
-                (try_end),
-                
-                (try_begin),
-                    (troop_slot_ge, ":troop_no", this_guy_only_s, 1),
-                    (agent_set_scripted_destination, ":agents", pos13, 0, 1),
-                (else_try), 
-                    (agent_set_scripted_destination, ":agents", pos12, 0, 1),
-                (try_end),
-                
-            (try_end),
-        (try_end),
-        
-        # make footwork inverse for allowed players
-        
-        # Target Switching
-        
-        # Cavalry
-        # Bump-lance
-        
-        # Archers
-        # Leg shot
-        
-        # AI kick
-        
-        
-        #Counter-attack
-        (try_begin),
-            (agent_slot_eq, ":agents", run_counter_attack, 1),
-            (le, ":dist", 200),
-            (this_or_next|eq, ":pos_atk", 6),
-            (eq, ":pos_atk", 3),
-            (store_random_in_range, ":random_dir", 1, 3),
-            (store_random_in_range, ":random_action", 0, 1),
-            (agent_set_attack_action, ":agents", ":random_dir", ":random_action"),
-        (try_end),
-        
-        #Attacking
-        (try_begin),
-            (agent_slot_eq, ":agents", run_attack, 1),
-            (try_begin),
-                (le, ":dist", 300),
-                (store_random_in_range, ":random_dir", 0, 3),
-                (store_random_in_range, ":random_action", 0, 1),
-                (eq, ":pos_def", 2),
-                (agent_set_attack_action, ":agents", ":random_dir", ":random_action"),
-            (else_try),
-                (le, ":dist", 200),
-                (store_random_in_range, ":random_dir", 1, 3),
-                (store_random_in_range, ":random_action", 0, 1),
-                (eq, ":pos_def", 2),
-                (agent_set_attack_action, ":agents", ":random_dir", ":random_action"),
-            (try_end),
-        (try_end),
-        
-
     (try_end),
     ])
 
+ai_corpsekick = (
+ti_on_agent_killed_or_wounded, 0, 0, [], [
+
+(store_trigger_param_1, ":dead"),
+(store_trigger_param_2, ":killer"),
+
+(get_player_agent_no, ":player"),
+(eq, ":dead", ":player"),
+
+(agent_set_animation, ":killer", -1),
+(agent_set_animation, ":killer", "anim_kick_left_leg"),
+(display_message, "@Ez"),
+
+])
+
+duel_init = (
+ti_on_agent_spawn, 0, 0, [], [
+
+(store_trigger_param_1, ":agent"),
+
+(get_player_agent_no, ":player"),
+(agent_get_item_slot, ":1", ":player", 0),
+(agent_get_item_slot, ":2", ":player", 1),
+(agent_get_item_slot, ":3", ":player", 2),
+(agent_get_item_slot, ":4", ":player", 3),
+
+(agent_unequip_item, ":player", ":1", 0),
+(agent_unequip_item, ":player", ":2", 1),
+(agent_unequip_item, ":player", ":3", 2),
+(agent_unequip_item, ":player", ":4", 3),
+
+(agent_equip_item, ":player", "itm_sword_two_handed_a"),
+(agent_equip_item, ":player", "itm_red_tunic"),
+
+(neq, ":player", ":agent"),
+(agent_get_team, ":team", ":agent"),
+
+# make sure they always use melee
+(team_give_order, ":team", grc_everyone, mordr_use_melee_weapons),
+
+# remove shield if they have one
+(agent_get_item_slot, ":1", ":agent", 0),
+(agent_get_item_slot, ":2", ":agent", 1),
+(agent_get_item_slot, ":3", ":agent", 2),
+(agent_get_item_slot, ":4", ":agent", 3),
+
+(agent_unequip_item, ":agent", ":1", 0),
+(agent_unequip_item, ":agent", ":2", 1),
+(agent_unequip_item, ":agent", ":3", 2),
+(agent_unequip_item, ":agent", ":4", 3),
+
+# all duels are going to be great sword
+(agent_equip_item, ":agent", "itm_sword_two_handed_a"),
+(agent_equip_item, ":agent", "itm_red_tunic"),
+
+])
 
 # advanced_ai = (
 # 0, 0, 0, [(eq, "$advanced_ai_open", 1),], [
@@ -17065,7 +17122,9 @@ mission_templates = [
     corpsekicking_enable,
     looting_artifacts,
     debug_big_battle,
+    duel_init,
     check_game_difficulty,
+    ai_corpsekick,
     
     # #Efe
     # (ti_on_agent_spawn, 0, 0, [], [

@@ -51115,11 +51115,15 @@ scripts = [
     
     ("ai_init", [
     
-        (troop_set_slot, "trp_knight_3_3", this_guy_only_hilt_spams, 1),
+        # (troop_set_slot, "trp_knight_3_3", this_guy_only_hilt_spams, 1),
         
         (troop_set_slot, ppk, player_skill_level, 1),
+        (troop_set_slot, ppk, player_hp, 500),
+        
         (troop_set_slot, lagstro, player_skill_level, 1),
-        (troop_set_slot, edwards, player_skill_level, 10),
+        (troop_set_slot, lagstro, player_hp, 350),
+        
+        (troop_set_slot, edwards, player_skill_level, 50),
         (troop_set_slot, guacc, player_skill_level, 1),
         (troop_set_slot, oodle, player_skill_level, 1),
         (troop_set_slot, tito, player_skill_level, 1),
@@ -51140,9 +51144,11 @@ scripts = [
         (troop_set_slot, pico, player_skill_level, 5),
         (troop_set_slot, pico, player_skill_level, 4),
         
-        (troop_set_slot, pico, this_guy_only_blocks, 1),
         
-        (troop_set_slot, calamity, this_guy_only_s, 1),
+        
+        # (troop_set_slot, pico, this_guy_only_blocks, 1),
+        
+        # (troop_set_slot, calamity, this_guy_only_s, 1),
         
     ]),
     
@@ -51153,17 +51159,14 @@ scripts = [
     (try_for_range, ":troops", heroes_begin, heroes_end),
         (troop_set_slot, ":troops", player_knows_how_to_play, 1), 
         
-        (store_random_in_range, ":dice", 1, 6),
+        (store_random_in_range, ":dice", 1, 10),
         (troop_set_slot, ":troops", player_skill_level, ":dice"),
         
-        (try_for_range, ":constraints", constraints_starts, constraints_end),
-            (troop_set_slot, ":troop", ":constraints", -1),
-        (try_end),
+        # (try_for_range, ":constraints", constraints_start, constraints_end),
+            # (troop_set_slot, ":troop", ":constraints", -1),
+        # (try_end),
         
-        (store_random_in_range, ":random", 50, 100),
-        (troop_set_slot, ":troops", player_hp, ":random"),
-        
-        (store_random_in_range, ":hp", 70, 120),
+        (store_random_in_range, ":hp", 150, 300),
         (troop_set_slot, ":troops", player_hp, ":hp"),
         
         (troop_set_slot, ":troops", player_thought_on_bl, -1),
