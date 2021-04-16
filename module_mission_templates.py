@@ -35,6 +35,9 @@ from module_constants import *
 pilgrim_disguise = [itm_pilgrim_hood,itm_pilgrim_disguise,itm_practice_staff, itm_throwing_daggers]
 af_castle_lord = af_override_horse | af_override_weapons| af_require_civilian
 
+duel_triggers = []
+
+battle_triggers = []
 
 #Efe
 display_agent_labels = (
@@ -206,9 +209,10 @@ ti_after_mission_start, 0, 0, [], [
 
 (get_average_game_difficulty, ":difficulty"),
 (le, ":difficulty", 69),
-(display_message, "@You are playing with autoblocking or easy settings."),
+(display_message, "@You are playing with autoblocking or easy settings. You need minimum %70 difficulty rating in options."),
 
 ])
+
 
 rempica = (
 0, 0, 0, [
@@ -262,6 +266,97 @@ rempica = (
         
     ])
 
+first_blood = (
+    ti_on_agent_killed_or_wounded, 0, 0, [],
+   [
+		(store_trigger_param_1, ":dead_agent"),
+		(store_trigger_param_2, ":killer_agent"),
+      
+		(get_player_agent_no, ":player"),
+		(eq, ":killer_agent", ":player"),
+		(agent_is_human, ":dead_agent"),
+		(agent_slot_eq, ":killer_agent", first_blood_done, 0),
+		(display_message, "@FIRST BLOOD!", 0xFF0000),
+		(add_xp_as_reward, 100),
+		(agent_set_slot, ":killer_agent", first_blood_done, 1),
+		(val_add, "$first_blood_count", 1),
+   ])	
+
+
+
+location_intro = (
+  1, 0, 500, [], [	
+		
+
+		(troop_set_slot, "trp_player", location_entered, "$g_encountered_party"),
+		(str_store_party_name, s5, "$g_encountered_party"),
+		(store_faction_of_party, ":fac", "$g_encountered_party"),
+		(str_store_faction_name, s7, ":fac"),
+		(call_script, "script_cf_start_cinematic_fade", 3, "str_location_entered", "str_location_fac", -1),
+        
+        (try_begin),
+            (eq, "$mod_debug", 1),
+            (display_message, "@location_intro, {s5}, {s7}"),
+        (try_end),		
+		
+    ])
+
+# Two triggers below implement an assist system
+common_kill_assist_tag	= (
+ti_on_agent_hit, 0, 0, [],
+  [
+        (store_trigger_param_1, ":hitone"),
+        (store_trigger_param_2, ":tagger"),
+        (get_player_agent_no, ":player"),
+        (eq, ":tagger", ":player"),
+        (agent_is_alive, ":hitone"),
+        (agent_set_slot, ":hitone", agent_is_tagged, 1),
+        
+        (try_begin),
+            (eq, "$mod_debug", 1),
+            (str_store_agent_name, s3, ":hitone"),
+            (str_store_agent_name, s4, ":tagger"),
+            (display_message, "@{s3} tagged by {s4}"),
+        (try_end),
+    ])
+    
+
+common_kill_assist_tag_done	= (
+ti_on_agent_killed_or_wounded, 0, 0, [],
+  [
+        (store_trigger_param_1, ":hitone"),
+        (store_trigger_param_2, ":killer"),
+        
+        (get_player_agent_no, ":player"),
+        (agent_slot_eq, ":hitone", agent_is_tagged, 1),
+        (neq, ":killer", ":player"),
+        
+        (store_character_level, ":plyr_level", "trp_player"),
+        (agent_get_troop_id, ":troop", ":hitone"),
+        (store_character_level, ":enemy_level", ":troop"),
+        (val_sub, ":plyr_level", ":enemy_level"),
+        (val_min, ":plyr_level", 5),
+        (store_mul, ":level_buff", ":plyr_level", 10),
+        
+        (add_xp_as_reward, ":level_buff"),
+        (str_store_agent_name, s1, ":killer"),
+        (assign, reg2, ":level_buff"),
+        (display_message, "@You earned {reg2} amount of experience points with the help of {s1}.", game_event_hex),
+        (val_add, "$kill_steal_amount", 1),
+    ])
+
+# This trigger makes rain in the current scene on the start randomly
+random_weather = (
+ti_before_mission_start, 0, 0, [],
+  [	
+	(store_random_in_range, ":chance", 1, 3),
+	(eq, ":chance", 2),
+	(store_random_in_range, ":rainstr", 30, 60),
+    (set_rain, 1, ":rainstr"),
+		
+	])
+
+# This trigger spawns a PPK randomly
 wk_appear = (
 1, 0, 0, [
 
@@ -17220,7 +17315,11 @@ mission_templates = [
     debug_big_battle,
     duel_init,
     check_game_difficulty,
-    ai_corpsekick,
+    # ai_corpsekick,
+    location_intro,
+    random_weather,
+    common_anti_cheat_heal,
+    common_anti_cheat_kill,
     
     # #Efe
     # (ti_on_agent_spawn, 0, 0, [], [

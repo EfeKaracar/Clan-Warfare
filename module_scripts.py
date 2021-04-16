@@ -51088,6 +51088,59 @@ scripts = [
       (assign, reg0, ":page_no"),
   ]),
     
+    ("cf_start_cinematic_fade", [
+	 
+	 (store_script_param, ":type", 1),
+	 (store_script_param, ":first_text", 2),
+	 (store_script_param, ":second_text", 3),
+	 (store_script_param, ":music", 4),
+	 
+		(neg|conversation_screen_is_active),
+		
+		(eq, "$cinematic_fade", 1),
+		(try_begin),
+			(neq, ":music", -1),
+			(assign, "$music_to_play_in_fade", ":music"),
+		(else_try),
+			(eq, ":music", -1),
+			(assign, "$music_to_play_in_fade", -1),
+		(try_end),
+		#
+		(try_begin),
+			(eq, ":type", -1),
+			(troop_set_slot, "trp_temp_troop", text_to_show, -1),
+			(troop_set_slot, "trp_temp_troop", second_text_to_show, -1),
+			(start_presentation, "prsnt_pure_black"),
+		(else_try),
+			(eq, ":type", 1),
+			(troop_set_slot, "trp_temp_troop", text_to_show, ":first_text"),
+			(troop_set_slot, "trp_temp_troop", second_text_to_show, -1),
+			(start_presentation, "prsnt_fade_with_text"),
+		(else_try),
+			(eq, ":type", 2),
+			(troop_set_slot, "trp_temp_troop", text_to_show, ":first_text"),
+			(troop_set_slot, "trp_temp_troop", second_text_to_show, ":second_text"),
+			(start_presentation, "prsnt_fade_with_text"),
+		(else_try),
+			(eq, ":type", 3),
+			(troop_set_slot, "trp_temp_troop", text_to_show, ":first_text"),
+			(troop_set_slot, "trp_temp_troop", second_text_to_show, ":second_text"),
+			(start_presentation, "prsnt_location_intro"),
+		(else_try),
+			(eq, ":type", 4),
+			(troop_set_slot, "trp_temp_troop", text_to_show, ":first_text"),
+			(troop_set_slot, "trp_temp_troop", second_text_to_show, ":second_text"),
+			(start_presentation, "prsnt_text_without_bg"),
+		(else_try),
+			(eq, ":type", 5),
+			(troop_set_slot, "trp_temp_troop", text_to_show, -1),
+			(troop_set_slot, "trp_temp_troop", second_text_to_show, -1),
+			(start_presentation, "prsnt_pure_white"),
+		(try_end),
+		
+	 
+	 ]),
+    
     ("mod_init", [
     
     (assign, "$advanced_ai_open", 1),
@@ -51116,8 +51169,11 @@ scripts = [
     ("ai_init", [
         
         # UGLY TRUTH DO NOT SHARE
+        # DRAMA ALERT - DO NOT CROSS
         
-        # (troop_set_slot, "trp_knight_3_3", this_guy_only_hilt_spams, 1),
+
+        
+        # Less the number, better ai
         
         (troop_set_slot, ppk, player_skill_level, 1),
         (troop_set_slot, ppk, player_hp, 500),
@@ -51125,17 +51181,19 @@ scripts = [
         (troop_set_slot, lagstro, player_skill_level, 1),
         (troop_set_slot, lagstro, player_hp, 350),
         
-        (troop_set_slot, edwards, player_skill_level, 50),
-        
-        (troop_set_slot, guacc, player_skill_level, 2),
-        
         (troop_set_slot, oodle, player_skill_level, 1),
         
         (troop_set_slot, tito, player_skill_level, 1),
         
-        (troop_set_slot, vahaemar, player_skill_level, 6),
+        (troop_set_slot, ordyn, player_skill_level, 1),
         
-        (troop_set_slot, cedrics, player_skill_level, 3),
+        (troop_set_slot, mav, player_skill_level, 1),
+       
+        (troop_set_slot, guacc, player_skill_level, 2),
+        
+        (troop_set_slot, vahaemar, player_skill_level, 9),
+        
+        (troop_set_slot, cedric, player_skill_level, 7),
         
         (troop_set_slot, belendor, player_skill_level, 3),
         
@@ -51151,9 +51209,7 @@ scripts = [
         
         (troop_set_slot, gorlock, player_skill_level, 7),
         
-        (troop_set_slot, ordyn, player_skill_level, 1),
-        
-        (troop_set_slot, mav, player_skill_level, 1),
+
         
         (troop_set_slot, eb, player_skill_level, 4),
         
@@ -51163,7 +51219,9 @@ scripts = [
         
         (troop_set_slot, pico, player_skill_level, 5),
         
-        (troop_set_slot, pico, player_skill_level, 4),
+        (troop_set_slot, erminas, player_skill_level, 25),
+        
+        (troop_set_slot, edwards, player_skill_level, 50),
         
         
         

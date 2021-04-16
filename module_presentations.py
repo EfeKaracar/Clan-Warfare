@@ -9,6 +9,49 @@ import string
 
 from ID_skills import *
 
+
+coord_helper = [
+  (ti_on_presentation_load, [
+	  (eq, "$first_cheat_menu_unlocked", 1),
+      #(eq, debug_show_presentation_coordinates, 1),
+      (create_text_overlay, "$mouse_coordinates", "str_empty_string"),
+      (overlay_set_color, "$mouse_coordinates", 0xFF0000),
+      (position_set_x, pos1, 10),
+      (position_set_y, pos1, 700),
+      (overlay_set_position, "$mouse_coordinates", pos1),
+  ]),
+  (ti_on_presentation_run, [
+	
+	(eq, "$first_cheat_menu_unlocked", 1),
+	
+	# (try_begin),
+		# (key_clicked, key_1),
+		# (set_fixed_point_multiplier, 1000),
+		# (position_set_x, pos1, 10),
+		# (position_set_y, pos1, 1200),
+		# (overlay_set_size, "$text", pos1),
+	
+      #(eq, debug_show_presentation_coordinates, 1),
+      (set_fixed_point_multiplier, 1000),
+      
+      (mouse_get_position, pos1),
+      (position_get_x, reg1, pos1),
+      (position_get_y, reg2, pos1),
+      (overlay_set_text, "$mouse_coordinates", "@{reg1}, {reg2}"),
+  ]),
+]
+prsnt_escape_close = [
+  (ti_on_presentation_run,
+    [
+     (try_begin),
+        (this_or_next|key_clicked, key_escape),
+        (key_clicked, key_xbox_start),
+        (presentation_set_duration, 0),
+        (change_screen_return,0),
+      (try_end),
+  ]),
+]
+
 ####################################################################################################################
 #  Each presentation record contains the following fields:
 #  1) Presentation id: used for referencing presentations in other files. The prefix prsnt_ is automatically added before each presentation id.
@@ -14289,4 +14332,554 @@ presentations = [
 ##### troop_ratio_bar
 ##################################################
       
+      
+      ("speech_box",prsntf_read_only,0,[
+	(ti_on_presentation_load,
+	[
+		(assign, "$g_presentation_object_1", -1),
+		#(assign, "$g_presentation_object_1_alpha", 0),
+	]),
+	(ti_on_presentation_run,
+	[
+			(set_fixed_point_multiplier, 1000),
+			(presentation_set_duration, 1000000),	
+		(try_begin),
+			(lt, "$g_presentation_object_2", 0), 
+			(lt, "$g_presentation_object_1", 0), 
+			(str_store_string, s1, "@Write your speech in the box"),#first string
+			(create_text_overlay, "$g_presentation_object_2", s1, tf_center_justify),
+			(create_simple_text_box_overlay, "$g_presentation_object_1", -1, tf_center_justify|tf_double_space|tf_vertical_align_center),
+			(position_set_x, pos1, 500),
+			(position_set_y, pos1, 375),
+			(overlay_set_size, "$g_presentation_object_1", pos1),
+			(overlay_animate_to_alpha, "$g_presentation_object_1", 2000, 0xFF),
+		(try_end),
+		]),  
+		  (ti_on_presentation_event_state_change,
+      [
+        (store_trigger_param_1, ":object"),
+        
+        (try_begin),
+          (eq, ":object", "$g_presentation_object_2"), # show towns
+          (display_message, "@{s0}", sevenheart_dialog_hex),
+		  (presentation_set_duration, 0),
+        (try_end),
+      ]),
+  ]),
+  
+ #Cinematic black screen
+ # screen write
+("fade_with_text",prsntf_read_only,0,[
+	(ti_on_presentation_load,
+	[
+	(assign, "$g_presentation_obje_1", -1),
+	(assign, "$g_presentation_obje_2", -1),
+	(assign, "$g_presentation_obje_1_alpha", 0),
+    (assign, "$g_presentation_obje_2_alpha", 0),
+	(mission_cam_set_screen_color, 0xFF000000), #Blackout the screen first
+	(try_begin),
+		(neq, "$music_to_play_in_fade", -1),
+		(play_track, "$music_to_play_in_fade", 2),
+	(try_end),
+			(str_clear, s5),
+			(str_clear, s4),
+	]),
+	
+	(ti_on_presentation_run,
+	[		
+
+			#
+			(store_trigger_param_1, ":cur_time"),
+			(set_fixed_point_multiplier, 1000),
+			(presentation_set_duration, 1000000),
+			#
+			(troop_get_slot, ":first_text", "trp_temp_troop", text_to_show),
+			(troop_get_slot, ":second_text", "trp_temp_troop", second_text_to_show),
+			(try_begin),
+				(neq, ":first_text", -1),
+				(str_store_string, s4, ":first_text"),
+			(try_end),
+			(try_begin),
+				(neq, ":second_text", -1),
+				(str_store_string, s5, ":second_text"),
+			(try_end),
+			(try_begin),
+				(eq, ":first_text", -1),
+				(eq, ":second_text", -1),
+				(store_random_in_range, ":dice", 1, 10),
+					(try_begin),
+						(eq, ":dice", 1),
+						(str_store_string, s4, "@'Know your enemy, if you must triumph.'"),
+						(str_store_string, s5, "@'~ Alixenus the Great'"),
+					(try_end),
+					(try_begin),
+						(eq, ":dice", 2),
+						(str_store_string, s4, "@'Jinns deserved to live, if they knew to respect.'"),
+						(str_store_string, s5, "@'~ Emperor Akembra'"),
+					(try_end),
+					(try_begin),
+						(gt, ":dice", 2),
+						(str_store_string, s4, "@'To think, calradia has no neighbours?'"),
+						(str_store_string, s5, "@'~ Wileth'"),
+					(try_end),
+			(try_end),
+			#
+			(try_begin),
+				(lt, "$g_presentation_obje_1", 0), 
+				(create_text_overlay, "$g_presentation_obje_1", s4, tf_center_justify|tf_double_space|tf_vertical_align_center),
+				(overlay_set_color, "$g_presentation_obje_1", 0xffffff),
+				(overlay_set_alpha, "$g_presentation_obje_1", 0),
+				(position_set_x, pos1, 2250),
+				(position_set_y, pos1, 2250),
+				(overlay_set_size, "$g_presentation_obje_1", pos1),
+				(position_set_x, pos1, 500),
+				(position_set_y, pos1, 375),
+				(overlay_set_position, "$g_presentation_obje_1", pos1),
+				(overlay_animate_to_alpha, "$g_presentation_obje_1", 2000, 0xFF),
+			(else_try),
+				(gt, ":cur_time", 4000), # If 6 seconds past
+				(lt, "$g_presentation_obje_2", 0), #then second string
+				(create_text_overlay, "$g_presentation_obje_2", s5, tf_center_justify|tf_double_space|tf_vertical_align_center),
+				(overlay_set_color, "$g_presentation_obje_2", 0xFF0000),
+				(overlay_set_alpha, "$g_presentation_obje_2", 0),
+				(position_set_x, pos1, 1500),
+				(position_set_y, pos1, 1500),
+				(overlay_set_size, "$g_presentation_obje_2", pos1),
+				(position_set_x, pos1, 500),
+				(position_set_y, pos1, 310),
+				(overlay_set_position, "$g_presentation_obje_2", pos1),
+				(overlay_animate_to_alpha, "$g_presentation_obje_2", 2000, 0xFF),
+			(else_try),
+				(gt, ":cur_time", 7500), #If 7.5 seconds past
+				(eq, "$g_presentation_obje_1_alpha", 0),
+				(assign, "$g_presentation_obje_1_alpha", 1),
+				(overlay_animate_to_alpha, "$g_presentation_obje_1", 1500, 0x00), #lose the string1
+			(else_try),
+				(gt, ":cur_time", 8500), #If 8.5 seconds past
+				(eq, "$g_presentation_obje_2_alpha", 0),
+				(assign, "$g_presentation_obje_2_alpha", 1),
+				(overlay_animate_to_alpha, "$g_presentation_obje_2", 1500, 0x00),#lose the string2
+			(else_try),
+				(gt, ":cur_time", 11000), #If 11 seconds past
+				(mission_cam_animate_to_screen_color, 0x00000000, 3000), # bright the screen in 3 seconds
+			(else_try),
+				(gt, ":cur_time", 15000), # If 15 seconds past
+				(presentation_set_duration, 0), #end the party  
+			(try_end),
+		   ],
+		  ),
+		 ] + prsnt_escape_close,
+		 ),
+  #
+  
+  
+	("pure_black",prsntf_read_only,0,[
+	(ti_on_presentation_load,
+	[
+	(assign, "$g_presentation_obje_1", -1),
+	(assign, "$g_presentation_obje_2", -1),
+	(assign, "$g_presentation_obje_1_alpha", 0),
+    (assign, "$g_presentation_obje_2_alpha", 0),
+	(mission_cam_set_screen_color, 0xFF000000), #Blackout the screen first
+	
+	(try_begin),
+		(neq, "$music_to_play_in_fade", -1),
+		(play_track, "$music_to_play_in_fade", 2),
+	(try_end),
+				
+			(str_clear, s5),
+			(str_clear, s4),
+	]),
+	
+	(ti_on_presentation_run,
+	
+	[		
+						#
+			(store_trigger_param_1, ":cur_time"),
+			(set_fixed_point_multiplier, 1000),
+			(presentation_set_duration, 1000000),
+			
+			(try_begin),
+				(eq, "$cheat_mode", 1),
+				(display_message, "@Pure black"),
+			(try_end),
+			(try_begin),
+				(key_clicked, key_escape),
+				(display_message, "@Presentation is running.", game_hint_hex),
+				(presentation_set_duration, 0),
+			(try_end),
+			#
+			(troop_get_slot, ":first_text", "trp_temp_troop", text_to_show),
+			(troop_get_slot, ":second_text", "trp_temp_troop", second_text_to_show),
+			(try_begin),
+				(eq, ":first_text", -1),
+				(eq, ":second_text", -1),
+				(store_random_in_range, ":dice", 1, 10),
+					(try_begin),
+						(eq, ":dice", 1),
+						(str_store_string, s4, "@'Know your enemy, if you must triumph.'"),
+						(str_store_string, s5, "@'~ Alixenus the Great'"),
+					(try_end),
+					(try_begin),
+						(eq, ":dice", 2),
+						(str_store_string, s4, "@'Jinns deserved to live, if they knew to respect.'"),
+						(str_store_string, s5, "@'~ Emperor Akembra'"),
+					(try_end),
+					(try_begin),
+						(gt, ":dice", 2),
+						(str_store_string, s4, "@'To think, calradia has no neighbours?'"),
+						(str_store_string, s5, "@'~ Wileth'"),
+					(try_end),
+			(try_end),
+
+			#
+			(try_begin),
+				(lt, "$g_presentation_obje_1", 0), 
+				(create_text_overlay, "$g_presentation_obje_1", s4, tf_center_justify|tf_double_space|tf_vertical_align_center),
+				(overlay_set_color, "$g_presentation_obje_1", 0xffffff),
+				(overlay_set_alpha, "$g_presentation_obje_1", 0),
+				(position_set_x, pos1, 2250),
+				(position_set_y, pos1, 2250),
+				(overlay_set_size, "$g_presentation_obje_1", pos1),
+				(position_set_x, pos1, 500),
+				(position_set_y, pos1, 375),
+				(overlay_set_position, "$g_presentation_obje_1", pos1),
+				(overlay_animate_to_alpha, "$g_presentation_obje_1", 2000, 0xFF),
+			(try_end),
+			(try_begin),
+				(gt, ":cur_time", 2000), # If 6 seconds past
+				(lt, "$g_presentation_obje_2", 0), #then second string
+				(create_text_overlay, "$g_presentation_obje_2", s5, tf_center_justify|tf_double_space|tf_vertical_align_center),
+				(overlay_set_color, "$g_presentation_obje_2", 0xFFFFFF),
+				(overlay_set_alpha, "$g_presentation_obje_2", 0),
+				(position_set_x, pos1, 1500),
+				(position_set_y, pos1, 1500),
+				(overlay_set_size, "$g_presentation_obje_2", pos1),
+				(position_set_x, pos1, 500),
+				(position_set_y, pos1, 310),
+				(overlay_set_position, "$g_presentation_obje_2", pos1),
+				(overlay_animate_to_alpha, "$g_presentation_obje_2", 2000, 0xFF),
+			(try_end),
+			(try_begin),
+				(gt, ":cur_time", 5500), #If 7.5 seconds past
+				(eq, "$g_presentation_obje_1_alpha", 0),
+				(assign, "$g_presentation_obje_1_alpha", 1),
+				(overlay_animate_to_alpha, "$g_presentation_obje_1", 1500, 0x00), #lose the string1
+			(else_try),
+				(gt, ":cur_time", 6500), #If 8.5 seconds past
+				(eq, "$g_presentation_obje_2_alpha", 0),
+				(assign, "$g_presentation_obje_2_alpha", 1),
+				(overlay_animate_to_alpha, "$g_presentation_obje_2", 1500, 0x00),#lose the string2
+			(else_try),
+				(gt, ":cur_time", 9000), #If 11 seconds past
+				(mission_cam_animate_to_screen_color, 0x00000000, 3000), # bright the screen in 3 seconds
+			(else_try),
+				(gt, ":cur_time", 13000), # If 15 seconds past
+				(presentation_set_duration, 0), #end the party  
+			(try_end),
+		  ],
+		  ),
+		 ] + prsnt_escape_close,
+		 ),
+         
+         ("location_intro",prsntf_read_only,0,[
+	(ti_on_presentation_load,
+	[
+	(assign, "$g_presentation_obje_1", -1),
+	(assign, "$g_presentation_obje_2", -1),
+	(assign, "$g_presentation_obje_1_alpha", 0),
+    (assign, "$g_presentation_obje_2_alpha", 0),
+	(try_begin),
+		(neq, "$music_to_play_in_fade", -1),
+		(play_track, "$music_to_play_in_fade", 2),
+	(try_end),
+
+	]),
+	
+	(ti_on_presentation_run,
+	
+	[		
+	
+			(troop_get_slot, ":first_text", "trp_temp_troop", text_to_show),
+			(troop_get_slot, ":second_text", "trp_temp_troop", second_text_to_show),
+			(try_begin),
+				(neq, ":first_text", -1),
+				(str_store_string, s4, ":first_text"),
+			(try_end),
+			(try_begin),
+				(neq, ":second_text", -1),
+				(str_store_string, s5, ":second_text"),
+			(try_end),
+			(try_begin),
+				(eq, ":first_text", -1),
+				(eq, ":second_text", -1),
+				(store_random_in_range, ":dice", 1, 10),
+					(try_begin),
+						(eq, ":dice", 1),
+						(str_store_string, s4, "@'Know your enemy, if you must triumph.'"),
+						(str_store_string, s5, "@'~ Alixenus the Great'"),
+					(try_end),
+					(try_begin),
+						(eq, ":dice", 2),
+						(str_store_string, s4, "@'Jinns deserved to live, if they knew to respect.'"),
+						(str_store_string, s5, "@'~ Emperor Akembra'"),
+					(try_end),
+					(try_begin),
+						(gt, ":dice", 2),
+						(str_store_string, s4, "@'To think, calradia has no neighbours?'"),
+						(str_store_string, s5, "@'~ Wileth'"),
+					(try_end),
+			(try_end),
+			#
+			(store_trigger_param_1, ":cur_time"),
+			(set_fixed_point_multiplier, 1000),
+			(presentation_set_duration, 1000000),
+			#
+			# (assign, reg6, 0xffffff),
+			# (try_begin),
+				# (store_faction_of_party, ":faction_no", "$g_encountered_party"),
+				# (faction_slot_eq, ":faction_no", faction_type, kingdom),
+				# (faction_get_slot, reg6, ":faction_no", color_hex),
+			# (try_end),
+			(try_begin),
+				(lt, "$g_presentation_obje_1", 0), 
+				(create_text_overlay, "$g_presentation_obje_1", s4, tf_center_justify|tf_double_space|tf_vertical_align_center),
+				(overlay_set_color, "$g_presentation_obje_1", 0xffffff),
+				(overlay_set_alpha, "$g_presentation_obje_1", 0),
+				(position_set_x, pos1, 2750),
+				(position_set_y, pos1, 2750),
+				(overlay_set_size, "$g_presentation_obje_1", pos1),
+				(position_set_x, pos1, 500),
+				(position_set_y, pos1, 375),
+				(overlay_set_position, "$g_presentation_obje_1", pos1),
+				(overlay_animate_to_alpha, "$g_presentation_obje_1", 2000, 0xFF),
+			(else_try),
+				(gt, ":cur_time", 4000), # If 4 seconds past
+				(lt, "$g_presentation_obje_2", 0), #then second string
+				(create_text_overlay, "$g_presentation_obje_2", s5, tf_center_justify|tf_double_space|tf_vertical_align_center),
+				(overlay_set_color, "$g_presentation_obje_2", reg6),
+				(overlay_set_alpha, "$g_presentation_obje_2", 0),
+				(position_set_x, pos1, 1500),
+				(position_set_y, pos1, 1500),
+				(overlay_set_size, "$g_presentation_obje_2", pos1),
+				(position_set_x, pos1, 500),
+				(position_set_y, pos1, 310),
+				(overlay_set_position, "$g_presentation_obje_2", pos1),
+				(overlay_animate_to_alpha, "$g_presentation_obje_2", 2000, 0xFF),
+			(else_try),
+				(gt, ":cur_time", 7500), #If 7.5 seconds past
+				(eq, "$g_presentation_obje_1_alpha", 0),
+				(assign, "$g_presentation_obje_1_alpha", 1),
+				(overlay_animate_to_alpha, "$g_presentation_obje_1", 1500, 0x00), #lose the string1
+			(else_try),
+				(gt, ":cur_time", 8500), #If 8.5 seconds past
+				(eq, "$g_presentation_obje_2_alpha", 0),
+				(assign, "$g_presentation_obje_2_alpha", 1),
+				(overlay_animate_to_alpha, "$g_presentation_obje_2", 1500, 0x00),#lose the string2
+			(else_try),
+				(gt, ":cur_time", 15000), # If 15 seconds past
+				(presentation_set_duration, 0), #end the party  
+			(try_end),
+		   ],
+		  ),
+		 ] + prsnt_escape_close,
+		 ),
+		 
+         ("pure_white",prsntf_read_only,0,[
+	(ti_on_presentation_load,
+	[
+	(assign, "$g_presentation_obje_1", -1),
+	(assign, "$g_presentation_obje_2", -1),
+	(assign, "$g_presentation_obje_1_alpha", 0),
+    (assign, "$g_presentation_obje_2_alpha", 0),
+	(mission_cam_set_screen_color, 0xFFFFFF), #Blackout the screen first
+	(try_begin),
+		(neq, "$music_to_play_in_fade", -1),
+		(play_track, "$music_to_play_in_fade", 2),
+	(try_end),
+				(str_clear, s5),
+			(str_clear, s4),
+	]),
+	
+	(ti_on_presentation_run,
+	
+	[		
+	
+			(try_begin),
+				(key_clicked, key_escape),
+				(display_message, "@Presentation is running.", game_hint_hex),
+				(presentation_set_duration, 0),
+			(try_end),
+			#
+			(troop_get_slot, ":first_text", "trp_temp_troop", text_to_show),
+			(troop_get_slot, ":second_text", "trp_temp_troop", second_text_to_show),
+			(try_begin),
+				(eq, ":first_text", -1),
+				(eq, ":second_text", -1),
+				(store_random_in_range, ":dice", 1, 10),
+					(try_begin),
+						(eq, ":dice", 1),
+						(str_store_string, s4, "@'Know your enemy, if you must triumph.'"),
+						(str_store_string, s5, "@'~ Alixenus the Great'"),
+					(try_end),
+					(try_begin),
+						(eq, ":dice", 2),
+						(str_store_string, s4, "@'Jinns deserved to live, if they knew to respect.'"),
+						(str_store_string, s5, "@'~ Emperor Akembra'"),
+					(try_end),
+					(try_begin),
+						(gt, ":dice", 2),
+						(str_store_string, s4, "@'To think, calradia has no neighbours?'"),
+						(str_store_string, s5, "@'~ Wileth'"),
+					(try_end),
+			(try_end),
+			#
+			(store_trigger_param_1, ":cur_time"),
+			(set_fixed_point_multiplier, 1000),
+			(presentation_set_duration, 1000000),
+			#
+			(try_begin),
+				(lt, "$g_presentation_obje_1", 0), 
+				(create_text_overlay, "$g_presentation_obje_1", s4, tf_center_justify|tf_double_space|tf_vertical_align_center),
+				(overlay_set_color, "$g_presentation_obje_1", 0xffffff),
+				(overlay_set_alpha, "$g_presentation_obje_1", 0),
+				(position_set_x, pos1, 2250),
+				(position_set_y, pos1, 2250),
+				(overlay_set_size, "$g_presentation_obje_1", pos1),
+				(position_set_x, pos1, 500),
+				(position_set_y, pos1, 375),
+				(overlay_set_position, "$g_presentation_obje_1", pos1),
+				(overlay_animate_to_alpha, "$g_presentation_obje_1", 2000, 0xFF),
+			(else_try),
+				(gt, ":cur_time", 2000), # If 6 seconds past
+				(lt, "$g_presentation_obje_2", 0), #then second string
+				(create_text_overlay, "$g_presentation_obje_2", s5, tf_center_justify|tf_double_space|tf_vertical_align_center),
+				(overlay_set_color, "$g_presentation_obje_2", 0xFFFFFF),
+				(overlay_set_alpha, "$g_presentation_obje_2", 0),
+				(position_set_x, pos1, 1500),
+				(position_set_y, pos1, 1500),
+				(overlay_set_size, "$g_presentation_obje_2", pos1),
+				(position_set_x, pos1, 500),
+				(position_set_y, pos1, 310),
+				(overlay_set_position, "$g_presentation_obje_2", pos1),
+				(overlay_animate_to_alpha, "$g_presentation_obje_2", 2000, 0xFF),
+			(else_try),
+				(gt, ":cur_time", 5500), #If 7.5 seconds past
+				(eq, "$g_presentation_obje_1_alpha", 0),
+				(assign, "$g_presentation_obje_1_alpha", 1),
+				(overlay_animate_to_alpha, "$g_presentation_obje_1", 1500, 0x00), #lose the string1
+			(else_try),
+				(gt, ":cur_time", 6500), #If 8.5 seconds past
+				(eq, "$g_presentation_obje_2_alpha", 0),
+				(assign, "$g_presentation_obje_2_alpha", 1),
+				(overlay_animate_to_alpha, "$g_presentation_obje_2", 1500, 0x00),#lose the string2
+			(else_try),
+				(gt, ":cur_time", 9000), #If 11 seconds past
+				(mission_cam_animate_to_screen_color, 0x00000000, 3000), # bright the screen in 3 seconds
+			(else_try),
+				(gt, ":cur_time", 13000), # If 15 seconds past
+				(presentation_set_duration, 0), #end the party  
+			(try_end),
+		   ],
+		  ),
+		 ] + prsnt_escape_close,
+		 ),	 
+         
+		("text_without_bg",prsntf_read_only,0,[
+	(ti_on_presentation_load,
+	[
+	(assign, "$g_presentation_obje_1", -1),
+	(assign, "$g_presentation_obje_2", -1),
+	(assign, "$g_presentation_obje_1_alpha", 0),
+    (assign, "$g_presentation_obje_2_alpha", 0),
+	(try_begin),
+		(neq, "$music_to_play_in_fade", -1),
+		(play_track, "$music_to_play_in_fade", 2),
+	(try_end),
+				(str_clear, s5),
+			(str_clear, s4),
+	]),
+	
+	(ti_on_presentation_run,
+	
+	[		
+	
+			(troop_get_slot, ":first_text", "trp_temp_troop", text_to_show),
+			(troop_get_slot, ":second_text", "trp_temp_troop", second_text_to_show),
+			(try_begin),
+				(neq, ":first_text", -1),
+				(str_store_string, s4, ":first_text"),
+			(try_end),
+			(try_begin),
+				(neq, ":second_text", -1),
+				(str_store_string, s5, ":second_text"),
+			(try_end),
+			(try_begin),
+				(eq, ":first_text", -1),
+				(eq, ":second_text", -1),
+				(store_random_in_range, ":dice", 1, 10),
+					(try_begin),
+						(eq, ":dice", 1),
+						(str_store_string, s4, "@'Know your enemy, if you must triumph.'"),
+						(str_store_string, s5, "@'~ Alixenus the Great'"),
+					(try_end),
+					(try_begin),
+						(eq, ":dice", 2),
+						(str_store_string, s4, "@'Jinns deserved to live, if they knew to respect.'"),
+						(str_store_string, s5, "@'~ Emperor Akembra'"),
+					(try_end),
+					(try_begin),
+						(gt, ":dice", 2),
+						(str_store_string, s4, "@'To think, calradia has no neighbours?'"),
+						(str_store_string, s5, "@'~ Wileth'"),
+					(try_end),
+			(try_end),
+			#
+			(store_trigger_param_1, ":cur_time"),
+			(set_fixed_point_multiplier, 1000),
+			(presentation_set_duration, 1000000),
+			#
+			(try_begin),
+				(lt, "$g_presentation_obje_1", 0), 
+				(create_text_overlay, "$g_presentation_obje_1", s4, tf_center_justify|tf_double_space|tf_vertical_align_center),
+				(overlay_set_color, "$g_presentation_obje_1", 0xffffff),
+				(overlay_set_alpha, "$g_presentation_obje_1", 0),
+				(position_set_x, pos1, 2750),
+				(position_set_y, pos1, 2750),
+				(overlay_set_size, "$g_presentation_obje_1", pos1),
+				(position_set_x, pos1, 500),
+				(position_set_y, pos1, 375),
+				(overlay_set_position, "$g_presentation_obje_1", pos1),
+				(overlay_animate_to_alpha, "$g_presentation_obje_1", 2000, 0xFF),
+			(else_try),
+				(gt, ":cur_time", 4000), # If 4 seconds past
+				(lt, "$g_presentation_obje_2", 0), #then second string
+				(create_text_overlay, "$g_presentation_obje_2", s5, tf_center_justify|tf_double_space|tf_vertical_align_center),
+				(overlay_set_color, "$g_presentation_obje_2", 0xFFffff),
+				(overlay_set_alpha, "$g_presentation_obje_2", 0),
+				(position_set_x, pos1, 1500),
+				(position_set_y, pos1, 1500),
+				(overlay_set_size, "$g_presentation_obje_2", pos1),
+				(position_set_x, pos1, 500),
+				(position_set_y, pos1, 310),
+				(overlay_set_position, "$g_presentation_obje_2", pos1),
+				(overlay_animate_to_alpha, "$g_presentation_obje_2", 2000, 0xFF),
+			(else_try),
+				(gt, ":cur_time", 7500), #If 7.5 seconds past
+				(eq, "$g_presentation_obje_1_alpha", 0),
+				(assign, "$g_presentation_obje_1_alpha", 1),
+				(overlay_animate_to_alpha, "$g_presentation_obje_1", 1500, 0x00), #lose the string1
+			(else_try),
+				(gt, ":cur_time", 8500), #If 8.5 seconds past
+				(eq, "$g_presentation_obje_2_alpha", 0),
+				(assign, "$g_presentation_obje_2_alpha", 1),
+				(overlay_animate_to_alpha, "$g_presentation_obje_2", 1500, 0x00),#lose the string2
+			(else_try),
+				(gt, ":cur_time", 15000), # If 15 seconds past
+				(presentation_set_duration, 0), #end the party  
+			(try_end),
+		   ],
+		  ),
+		 ] + prsnt_escape_close,
+		 ),
   ]

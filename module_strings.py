@@ -4429,4 +4429,9 @@ We apologize sincerely if you contributed your suggestions and feedback but were
     
     ("realm_1", "We are not playing bannerlord."),
     
+    ("location_entered", "{s5}"),
+	("location_fac", "{s7}"),
+	("str_1_entry", "{s12}"),
+	("str_2_entry", "{s13}"),
+    
 ]

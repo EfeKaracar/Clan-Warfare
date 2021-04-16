@@ -3470,5 +3470,9 @@ str_war_going_12 = 3468
 str_war_going_end = 3469
 str_you_your_men = 3470
 str_realm_1 = 3471
+str_location_entered = 3472
+str_location_fac = 3473
+str_str_1_entry = 3474
+str_str_2_entry = 3475
 
 

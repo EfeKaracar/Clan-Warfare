@@ -7598,6 +7598,42 @@ game_menus = [
            (jump_to_menu, "mnu_recruit_volunteers"),
          (try_end),
         ]),
+      #Efe
+      ("village_elder_talk",[(neg|party_slot_eq, "$current_town", slot_village_state, svs_looted),
+                        (neg|party_slot_eq, "$current_town", slot_village_state, svs_being_raided),
+                        (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),]
+      ,"Speak with the Village Elder.",
+      [
+        (try_begin),
+          (call_script, "script_cf_enter_center_location_bandit_check"),
+        (else_try),
+          (party_get_slot, ":village_scene", "$current_town", slot_castle_exterior),
+          (modify_visitors_at_site,":village_scene"),
+          (reset_visitors),
+          (party_get_slot, ":village_elder_troop", "$current_town",slot_town_elder),
+          (set_visitor, 11, ":village_elder_troop"),
+
+          (call_script, "script_init_town_walkers"),
+
+          (try_begin),
+            (check_quest_active, "qst_hunt_down_fugitive"),
+            (neg|is_currently_night),
+            (quest_slot_eq, "qst_hunt_down_fugitive", slot_quest_target_center, "$current_town"),
+            (neg|check_quest_succeeded, "qst_hunt_down_fugitive"),
+            (neg|check_quest_failed, "qst_hunt_down_fugitive"),
+            (set_visitor, 45, "trp_fugitive"),
+          (try_end),
+
+          (set_jump_mission,"mt_village_center"),
+          (jump_to_scene,":village_scene"),
+
+          (change_screen_map_conversation, ":village_elder_troop"),
+        (try_end),
+        ],"Door to the village center."),
+#---------------------------------------------------------------------------------- 
+      
+      
+      
       ("village_center",[(neg|party_slot_eq, "$current_town", slot_village_state, svs_looted),
                          (neg|party_slot_eq, "$current_town", slot_village_state, svs_being_raided),
                          (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),]
@@ -8850,6 +8886,86 @@ game_menus = [
            (jump_to_menu, "mnu_town_tournament"),
         ]),
       
+      
+      #Efe
+        ("talk_mayor",[
+          (party_slot_eq,"$current_town",slot_party_type, spt_town),
+          (this_or_next|eq,"$entry_to_town_forbidden",0),
+          (eq, "$sneaked_into_town",1)]
+      ,"Talk to the Guild Master.",
+      [
+          (assign, "$talk_context", 0),
+          (try_begin),
+            (call_script, "script_cf_enter_center_location_bandit_check"),
+          (else_try),
+            (party_get_slot, ":town_scene", "$current_town", slot_town_center),
+            (modify_visitors_at_site, ":town_scene"),
+            (reset_visitors),
+            (assign, "$g_mt_mode", tcm_default),
+            (store_faction_of_party, ":town_faction","$current_town"),
+            (try_begin),
+              (neq, ":town_faction", "fac_player_supporters_faction"),
+              (faction_get_slot, ":troop_prison_guard", "$g_encountered_party_faction", slot_faction_prison_guard_troop),
+              (faction_get_slot, ":troop_castle_guard", "$g_encountered_party_faction", slot_faction_castle_guard_troop),
+              (set_visitor, 23, ":troop_castle_guard"),
+              (set_visitor, 24, ":troop_prison_guard"),
+            (try_end),
+            (faction_get_slot, ":tier_2_troop", ":town_faction", slot_faction_tier_2_troop),
+            (faction_get_slot, ":tier_3_troop", ":town_faction", slot_faction_tier_3_troop),
+
+            (try_begin),
+              (gt,":tier_2_troop", 0),
+              (assign,reg(0),":tier_3_troop"),
+              (assign,reg(1),":tier_3_troop"),
+              (assign,reg(2),":tier_2_troop"),
+              (assign,reg(3),":tier_2_troop"),
+            (else_try),
+              (assign,reg(0),"trp_vaegir_infantry"),
+              (assign,reg(1),"trp_vaegir_infantry"),
+              (assign,reg(2),"trp_vaegir_archer"),
+              (assign,reg(3),"trp_vaegir_footman"),
+            (try_end),
+            (shuffle_range,0,4),
+            (set_visitor,25,reg(0)),
+            (set_visitor,26,reg(1)),
+            (set_visitor,27,reg(2)),
+            (set_visitor,28,reg(3)),
+
+            (party_get_slot, ":spawned_troop", "$current_town", slot_town_armorer),
+            (set_visitor, 9, ":spawned_troop"),
+            (party_get_slot, ":spawned_troop", "$current_town", slot_town_weaponsmith),
+            (set_visitor, 10, ":spawned_troop"),
+            (party_get_slot, ":spawned_troop", "$current_town", slot_town_horse_merchant),
+            (set_visitor, 12, ":spawned_troop"),
+            (party_get_slot, ":spawned_troop", "$current_town", slot_town_elder),
+            (set_visitor, 11, ":spawned_troop"),
+
+            (call_script, "script_init_town_walkers"),
+            (set_jump_mission,"mt_town_center"),
+            (assign, ":eek:verride_state", af_override_horse),
+            (try_begin),
+              (eq, "$sneaked_into_town", 1), #setup disguise
+              (assign, ":eek:verride_state", af_override_all),
+            (try_end),
+            (mission_tpl_entry_set_override_flags, "mt_town_center", 0, ":eek:verride_state"),
+            (mission_tpl_entry_set_override_flags, "mt_town_center", 2, ":eek:verride_state"),
+            (mission_tpl_entry_set_override_flags, "mt_town_center", 3, ":eek:verride_state"),
+            (mission_tpl_entry_set_override_flags, "mt_town_center", 4, ":eek:verride_state"),
+            (mission_tpl_entry_set_override_flags, "mt_town_center", 5, ":eek:verride_state"),
+            (mission_tpl_entry_set_override_flags, "mt_town_center", 6, ":eek:verride_state"),
+            (mission_tpl_entry_set_override_flags, "mt_town_center", 7, ":eek:verride_state"),
+            (try_begin),
+              (eq, "$town_entered", 0),
+              (assign, "$town_entered", 1),
+              (eq, "$town_nighttime", 0),
+              (set_jump_entry, 1),
+            (try_end),
+            (jump_to_scene, ":town_scene"),
+            (change_screen_map_conversation, ":spawned_troop"),
+          (try_end),
+        ],"Door to the town center."),
+#----------------------------------------------------------------------------------     
+      
       ("town_castle",[        
           (party_slot_eq,"$current_town",slot_party_type, spt_town),        
           (eq,"$entry_to_town_forbidden",0),        
@@ -9045,6 +9161,20 @@ game_menus = [
            (change_screen_mission),
          (try_end),	   
       ],"Door to the town center."),
+      
+    #Efe
+      ("recruit_volunteers",
+      [
+        (call_script, "script_cf_village_recruit_volunteers_cond"),
+       ]
+       ,"Recruit Soldiers.",
+       [
+         (try_begin),
+           (call_script, "script_cf_enter_center_location_bandit_check"),
+         (else_try),
+           (jump_to_menu, "mnu_recruit_volunteers"),
+         (try_end),
+        ]),
       
       ("town_tavern",[
           (party_slot_eq,"$current_town",slot_party_type, spt_town),

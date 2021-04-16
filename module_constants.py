@@ -19,7 +19,7 @@ lagstro = "trp_knight_4_1"
 achilles = "trp_knight_4_3"
 marquis = "trp_knight_3_4"
 belendor = "trp_knight_3_2"
-cedrics = "trp_knight_3_1"
+cedric = "trp_knight_3_1"
 john = "trp_kingdom_7_lord"
 eb = "trp_knight_3_3"
 calamity = "trp_knight_4_5"
@@ -54,11 +54,11 @@ erminas = "trp_knight_8_8"
 deathangel = "trp_knight_8_7"
 
 
-faction_intro = 4500
-faction_intro_1 = 4501
-faction_intro_negative = 4502
-faction_intro_renown_n = 4503
-faction_intro_renown_p = 4504
+faction_intro = 450
+faction_intro_1 = 451
+faction_intro_negative = 452
+faction_intro_renown_n = 453
+faction_intro_renown_p = 454
 
 
 player_hp = 1000
@@ -67,36 +67,47 @@ player_death_music = 1004
 
 player_special_loot = 1100 # works
 
+# Sevenheart - fix to do
+first_blood_done = 1203
+location_entered = 1204
+agent_is_tagged = 1205
+game_event_hex = 0xAAAAAA
+sevenheart_dialog_hex = 0xAAAAAA
+game_hint_hex = 0xAAAAAA
+p_main_party = "p_main_party"
+text_to_show = 500
+second_text_to_show = 501
+
 # AI #
 
-player_knows_how_to_play = 100113 # works
-player_skill_level = 100232       # works
+player_knows_how_to_play = 1201 # works
+player_skill_level = 1202      # works
 
 # Constraints
-constraints_start = 25000
-this_guy_only_s = 10044          # wip
-this_guy_only_hilt_spams = 10055 # planned
-this_guy_only_outreaches = 10066 # planned
-this_guy_only_blocks = 10077     # works
+constraints_start = 2500
+this_guy_only_s = 2501          # wip
+this_guy_only_hilt_spams = 2502 # planned
+this_guy_only_outreaches = 2503 # planned
+this_guy_only_blocks = 2504     # works
                                 
-this_guy_doesnt_feint = 10079
-this_guy_doesnt_chamber = 10088
+this_guy_doesnt_feint = 2505
+this_guy_doesnt_chamber = 2506
 
-this_guy_does_jump_swing = 10082
-this_guy_does_holds = 10091
-this_guy_is_spastic = 10102
-constraints_end = 250003
+this_guy_does_jump_swing = 2507
+this_guy_does_holds = 2508
+this_guy_is_spastic = 2509
+constraints_end = 2510
 
-run_block = 200004
-run_feint = 200105
-run_footwork = 200207
-run_attack = 200306
-run_counter_attack = 200408
-run_chamber = 200509
+run_block = 2511
+run_feint = 2512
+run_footwork = 2513
+run_attack = 2514
+run_counter_attack = 2515
+run_chamber = 2516
 
-agent_cur_action = 50001
-action_hold = 50000
-action_feint = 50001
+agent_cur_action = 2517
+action_hold = 2518
+action_feint = 2519
 
 # AI END #
 

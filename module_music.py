@@ -127,6 +127,6 @@ tracks = [
 
 
     #Efe
-     ("duel_comp", "duel_comp.mp3", mtf_start_immediately|mtf_looping|mtf_culture_all|mtf_persist_until_finished, 0),
+     ("duel_comp", "duel_comp.mp3", mtf_sit_main_title|mtf_start_immediately|mtf_looping|mtf_culture_all, 0),
 
 ]
