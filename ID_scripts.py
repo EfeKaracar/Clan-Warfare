@@ -618,5 +618,6 @@ script_ai_init = 616
 script_player_init = 617
 script_wear_lords = 618
 script_duel_quest_process = 619
+script_game_reset_player_party_name = 620
 
 

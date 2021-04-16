@@ -1493,8 +1493,22 @@ items = [
     
     ["vahaemar_horn","Brightfyre Vahaemar's Horn", 
     [("book_c",0)], itp_type_book, 0, 3500,weight(2)|abundance(100),
-    imodbits_none],
-
+    imodbits_none], 
+    
+    #Efe
+    ["flame_sword",   "Flame Sword", [("sword_two_handed_a",0)], 
+    itp_type_two_handed_wpn|itp_merchandise|itp_two_handed|itp_primary, 
+    itc_greatsword|itcf_carry_sword_back,
+    1123 , weight(2.75)|difficulty(10)|spd_rtng(96) 
+    | weapon_length(120)|swing_damage(42 , cut) | thrust_damage(29 ,  pierce),
+    imodbits_sword_high, [(ti_on_init_item, 
+    [
+    (set_position_delta,0,60,0),
+    (particle_system_add_new, "psys_torch_fire"),(particle_system_add_new, "psys_torch_smoke"),(set_current_color,150, 130, 70),(add_point_light, 10, 30),
+    ]
+    )]
+    ],
+    
     ["artifacts_end","Brightfyre Vahaemar's Horn", 
     [("book_c",0)], itp_type_book, 0, 3500,weight(2)|abundance(100),
     imodbits_none],    

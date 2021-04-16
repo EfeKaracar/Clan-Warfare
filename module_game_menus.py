@@ -3044,6 +3044,12 @@ game_menus = [
         ]
         ),
         
+        ("action_change_party_name",
+       [(troop_slot_ge, "trp_player", slot_troop_renown, 300)], #My opinion is that it should be renown-dependent...
+       "Change your party's name.",
+       [(start_presentation, "prsnt_set_party_name")]
+       ),
+        
         ("camp_action",[],"Take an action.",
         [(jump_to_menu, "mnu_camp_action"),
         ]
@@ -14608,8 +14614,8 @@ game_menus = [
         
             (modify_visitors_at_site, ":arena_scene"),    
             (reset_visitors),
-            # (set_visitor, "$g_duel_vis_point_opp", "$g_talk_troop"),
-            # (set_visitor, "$g_duel_vis_point_plyr", "trp_player"),
+            (set_visitor, "$g_duel_vis_point_opp", "$g_talk_troop"),
+            (set_visitor, "$g_duel_vis_point_plyr", "trp_player"),
         
             (set_jump_mission, "mt_arena_duel_thing_std"),
         

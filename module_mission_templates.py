@@ -376,6 +376,63 @@ debug_big_battle = (
 ]
 )
 
+
+troop_ratio = (
+0, 0, ti_once, [], [
+      (start_presentation, "prsnt_troop_ratio_bar"),
+      ])
+
+
+
+common_anti_cheat_heal = (
+	0,0,0,
+	[       (this_or_next|key_is_down, key_right_control),
+		(key_is_down, key_left_control),
+                (key_clicked, key_h),
+		],
+	[       (get_player_agent_no, ":playeragent"),
+			 (agent_is_alive,":playeragent"),
+			 (display_message, "@Cheating is bad, ya know."),	 
+			 (try_begin),
+				 (store_agent_hit_points,":hp",":playeragent",1),
+				 (val_sub,":hp",100),
+				 (try_begin),
+					 (le, ":hp", 0),
+					 (agent_set_hit_points,":playeragent",0,0),
+				 (try_end),				
+				 (play_sound,"snd_man_die"),
+				 (agent_deliver_damage_to_agent,":playeragent",":playeragent"), 
+                                 (finish_mission),
+			(try_end),
+		 (try_end),
+		]
+ )
+
+
+common_anti_cheat_kill = (
+	0,0,0,
+	[       (this_or_next|key_is_down, key_right_control),
+		(key_is_down, key_left_control),
+                (key_clicked, key_f4),
+		],
+	[       (get_player_agent_no, ":playeragent"),
+			 (agent_is_alive,":playeragent"),
+			 (display_message, "@Cheating is bad, ya know."),	 
+			 (try_begin),
+				 (store_agent_hit_points,":hp",":playeragent",1),
+				 (val_sub,":hp",100),
+				 (try_begin),
+					 (le, ":hp", 0),
+					 (agent_set_hit_points,":playeragent",0,0),
+				 (try_end),				
+				 (play_sound,"snd_man_die"),
+				 (agent_deliver_damage_to_agent,":playeragent",":playeragent"),
+                                 (finish_mission), 
+			(try_end),
+		 (try_end),
+		]
+ )
+
 advanced_ai = (
 0, 0, 0, [(eq, "$advanced_ai_open", 1),], [
     
@@ -416,21 +473,21 @@ advanced_ai = (
         (try_begin),
             (agent_get_wielded_item, ":left_item_source", ":agents", 1),
             (gt, ":left_item_source", 0),
-            (item_get_type, ":left_item_type_source", ":left_item_source"),
+            # (item_get_type, ":left_item_type_source", ":left_item_source"),
         (try_end),
         
         (try_begin),
             (agent_get_wielded_item, ":right_item_source", ":agents", 0),
             (gt, ":right_item_source", 0),
-            (item_get_type, ":right_item_type_source", ":right_item_source"),
-            (item_get_weapon_length, ":weapon_length_right_source", ":right_item_source"),
+            # (item_get_type, ":right_item_type_source", ":right_item_source"),
+            # (item_get_weapon_length, ":weapon_length_right_source", ":right_item_source"),
         (try_end),
         # HORSE
         (agent_get_horse, ":horse", ":agents"),
         (eq, ":horse", -1), # no horse
         
-        (agent_get_animation, ":source_animation", ":agents"),
-        (agent_get_animation, ":target_animation", ":target"),
+        # (agent_get_animation, ":source_animation", ":agents"),
+        # (agent_get_animation, ":target_animation", ":target"),
         
         
         # POSITION
@@ -443,12 +500,12 @@ advanced_ai = (
 	    (agent_get_defend_action, ":pos_def", ":target"), #attack action
 		(agent_get_action_dir, ":pos_atkdir", ":target"),
 	    (agent_get_attack_action, ":pos_atk", ":target"), #attack action
-        (agent_get_combat_state, ":pos_state", ":target"),
+        # (agent_get_combat_state, ":pos_state", ":target"),
        
-        (agent_get_combat_state, ":source_state", ":agents"),
-        (agent_get_defend_action, ":source_defend_action", ":agents"), #defend action
+        # (agent_get_combat_state, ":source_state", ":agents"),
+        # (agent_get_defend_action, ":source_defend_action", ":agents"), #defend action
 		(agent_get_action_dir, ":source_attack_dir", ":agents"), # attack/block direction
-	    (agent_get_attack_action, ":source_attack_action", ":agents"), #attack action
+	    # (agent_get_attack_action, ":source_attack_action", ":agents"), #attack action
         
         # (assign, reg5, ":source_attack_dir"),
         # (display_message, "@{reg5}"),
@@ -567,10 +624,10 @@ advanced_ai = (
             (else_try),
                 (store_random_in_range, ":right", -150, -750),
                 (store_random_in_range, ":left", 150, 450),
-                (store_random_in_range, ":up", 25, 75),
+                # (store_random_in_range, ":up", 25, 75),
                 (store_random_in_range, ":forward", 50, 150),
-                (store_random_in_range, ":backwards", -350, -550),
-                (store_random_in_range, ":shield", -300, 300),
+                # (store_random_in_range, ":backwards", -350, -550),
+                # (store_random_in_range, ":shield", -300, 300),
                 (agent_force_rethink, ":agents"),
                 # (copy_position, pos13, pos12),
                 # (store_random_in_range, ":dice_for_footwork", 0, 3),
@@ -623,13 +680,14 @@ advanced_ai = (
         
         
         # Make head of the source move up and down when is attacking
-        (try_begin),
-            (agent_set_is_alarmed, ":agents", 0),
-            (agent_get_look_position, pos51, ":agents"),
-            (store_random_in_range, ":y", -50, 50),
-            (position_move_y, pos51, ":y"),
-            (agent_set_look_target_position, ":agents", pos51),
-        (try_end),
+        # (try_begin),
+            # (agent_get_combat_state, ":state", ":agents"),
+            # (eq, ":state", 3),#Agent is preparing his attack or shot...
+            # (agent_set_attack_action, ":agents", -2, 0),#Make sure agents doesn't have time to prepare his attack, before you start your own new one
+            
+            # (entry_point_get_position, pos19, 0),
+            # (agent_set_look_target_position, ":agents", pos19),
+        # (try_end),
         
         
         
@@ -716,14 +774,14 @@ ti_on_agent_spawn, 0, 0, [], [
 (agent_equip_item, ":player", "itm_sword_two_handed_a"),
 (agent_equip_item, ":player", "itm_red_tunic"),
 
-(try_begin),
-    (eq, ":agent", ":player"),
-    (agent_get_position, pos11, ":agent"),
-    (position_move_y, pos11, 300),
-    (position_set_z_to_ground_level, pos11),
-    (set_spawn_position, pos11),
-    (spawn_agent, "trp_player"),
-(try_end),
+# (try_begin),
+    # (eq, ":agent", ":player"),
+    # (agent_get_position, pos11, ":agent"),
+    # (position_move_y, pos11, 300),
+    # (position_set_z_to_ground_level, pos11),
+    # (set_spawn_position, pos11),
+    # (spawn_agent, "trp_player"),
+# (try_end),
 
 
 (neq, ":player", ":agent"),
@@ -17122,7 +17180,7 @@ mission_templates = [
 "The duel begins!",    
 [
 # visitors 0 and 1 are completely standard
-(0, mtef_scene_source|mtef_team_0, af_override_horse, aif_start_alarmed, 1, []),      
+(0, mtef_visitor_source|mtef_team_0, af_override_horse, aif_start_alarmed, 1, []),      
 (8, mtef_visitor_source|mtef_team_2, 0, aif_start_alarmed, 1, []),
 #visitors 2 and 3 are override horse only
 (56, mtef_visitor_source|mtef_team_0, af_override_horse, aif_start_alarmed, 1, []),

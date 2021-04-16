@@ -1546,6 +1546,8 @@ triggers = [
         
         (try_for_range, ":amount", 0, ":max_raider_amount"),
             (spawn_around_party, ":random_spawn", "pt_bks_raider"),
+            (eq, ":amount", ":max_raider_amount"),
+            (assign, ":amount", -1),
         (try_end),
         
         (try_begin),
@@ -1605,7 +1607,7 @@ triggers = [
         (party_set_name, reg0, "@EU Players"),
         (store_random_in_range, ":add", 100, 200),
         (party_clear, reg0),
-        (party_add_leader, reg0, ":bks_lords"),
+        (party_add_leader, reg0, "trp_bandit"),
         (party_add_members, reg0, "trp_bandit", ":add"),
 
         

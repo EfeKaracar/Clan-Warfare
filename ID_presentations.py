@@ -49,3 +49,5 @@ prsnt_multiplayer_ccoop_next_wave_time_counter = 47
 prsnt_multiplayer_ccoop_victory_message = 48
 prsnt_display_agent_labels = 49
 prsnt_faction_troop_trees = 50
+prsnt_set_party_name = 51
+prsnt_troop_ratio_bar = 52

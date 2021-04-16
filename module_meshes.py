@@ -611,4 +611,13 @@ meshes = [
   ("ccoop_ranged_class", 0, "ccoop_ranged_class", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("ccoop_mounted_class", 0, "ccoop_mounted_class", 0, 0, 0, 0, 0, 0, 1, 1, 1),
 #INVASION MODE END
+
+##################################################
+##### troop_ratio_bar
+##################################################
+  ("status_troop_ratio_bar", 0, "slider_hor", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("status_troop_ratio_bar_button", 0, "handle_hor", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+##################################################
+##### troop_ratio_bar
+##################################################
 ]

@@ -11465,6 +11465,14 @@ presentations = [
             (agent_set_slot, ":cur_agent", slot_agent_map_overlay_id, 0),
           (try_end),
           (presentation_set_duration, 0),
+          #Efe
+          ##################################################
+##### troop_ratio_bar
+##################################################
+          (start_presentation, "prsnt_troop_ratio_bar"),
+##################################################
+##### troop_ratio_bar
+##################################################
         (try_end),
         ]),
       ]),
@@ -14111,4 +14119,174 @@ presentations = [
         (try_end),
       ]),
   ]),
+  
+  
+  ("set_party_name",0,mesh_load_window,[
+     (ti_on_presentation_load,
+       [(set_fixed_point_multiplier, 1000),
+        (str_store_string, s1, "@What will your party be known as?"),
+        (create_text_overlay, reg1, s1, tf_center_justify),
+        (position_set_x, pos1, 500),
+        (position_set_y, pos1, 500),
+        (overlay_set_position, reg1, pos1),
+        (overlay_set_text, reg1, s1),
+        (create_simple_text_box_overlay, "$g_presentation_obj_name_kingdom_1"),
+        (position_set_x, pos1, 400),
+        (position_set_y, pos1, 400),
+        (overlay_set_position, "$g_presentation_obj_name_kingdom_1", pos1),        
+        (str_store_party_name, s7, "p_main_party"),
+        (overlay_set_text, "$g_presentation_obj_name_kingdom_1", s7),
+        
+        (create_button_overlay, "$g_presentation_obj_name_kingdom_2", "@By the name entered above."),
+        (position_set_x, pos1, 500),
+        (position_set_y, pos1, 300),
+        (overlay_set_position, "$g_presentation_obj_name_kingdom_2", pos1),
+          
+        (str_store_troop_name, s5, "trp_player"),
+        (create_button_overlay, reg1, "@Simply by my name: {s5}."),
+        (position_set_x, pos1, 500),
+        (position_set_y, pos1, 275),
+        (overlay_set_position, reg1, pos1),  
+          
+        (presentation_set_duration, 999999),
+        ]),
+      (ti_on_presentation_event_state_change,
+       [(store_trigger_param_1, ":object"),
+        (try_begin),
+          (eq, ":object", "$g_presentation_obj_name_kingdom_1"),
+          (str_store_string, s7, s0),
+        (else_try),
+          (eq, ":object", "$g_presentation_obj_name_kingdom_2"),
+          (party_set_name, "p_main_party", s7),
+          (party_set_slot, 0, 1, 1),
+          (presentation_set_duration, 0),
+        (else_try),
+          (store_add, ":overlay", "$g_presentation_obj_name_kingdom_2", 1),
+          (eq, ":overlay", ":object"),
+          (party_set_name, "p_main_party", s5),
+          (party_set_slot, 0, 1, 0),
+          (presentation_set_duration, 0),
+        (try_end),
+        ]),
+      ]),  
+
+##################################################
+##### troop_ratio_bar 
+##################################################
+  ("troop_ratio_bar",prsntf_read_only,0,[
+      (ti_on_presentation_load,
+       [
+        (assign, "$presentation_troop_ratio_bar_active", 1),
+        (set_fixed_point_multiplier, 1000),
+        
+        (create_mesh_overlay, "$g_presentation_obj_1", "mesh_status_troop_ratio_bar"),
+        (position_set_x, pos1, 30),
+        (position_set_y, pos1, 700),
+        (overlay_set_position, "$g_presentation_obj_1", pos1),
+        
+        (position_set_x, pos1, 35),
+        (position_set_y, pos1, 713),
+        
+        (create_mesh_overlay, "$g_presentation_obj_2", "mesh_white_plane"),
+        (overlay_set_color, "$g_presentation_obj_2", 0xAA1F1F),
+        (overlay_set_position, "$g_presentation_obj_2", pos1),
+        
+        (create_mesh_overlay, "$g_presentation_obj_3", "mesh_white_plane"),
+        (overlay_set_color, "$g_presentation_obj_3", 0x1F1FAA),
+        (overlay_set_position, "$g_presentation_obj_3", pos1),
+     
+        (create_mesh_overlay, "$g_presentation_obj_4", "mesh_white_plane"),
+        (overlay_set_color, "$g_presentation_obj_4", 0x1FAA1F),
+        (overlay_set_position, "$g_presentation_obj_4", pos1),
+        
+        (create_mesh_overlay, "$g_presentation_obj_5", "mesh_status_troop_ratio_bar_button"),
+        (position_set_x, pos1, 35),
+        (position_set_y, pos1, 700),
+        (overlay_set_position, "$g_presentation_obj_5", pos1),
+        
+        (create_mesh_overlay, "$g_presentation_obj_6", "mesh_status_troop_ratio_bar_button"),
+        (position_set_x, pos1, 275),
+        (position_set_y, pos1, 700),
+        (overlay_set_position, "$g_presentation_obj_6", pos1),
+
+        (create_mesh_overlay, "$g_presentation_obj_7", "mesh_status_troop_ratio_bar_button"),
+        (create_mesh_overlay, "$g_presentation_obj_8", "mesh_status_troop_ratio_bar_button"),
+        
+        (presentation_set_duration, 999999),
+       ]),
+      (ti_on_presentation_run,
+       [
+        (store_trigger_param_1, ":cur_time"),
+        
+        (set_fixed_point_multiplier, 1000),
+        (assign, ":player_count", 0),
+        (assign, ":ally_count", 0),
+        (assign, ":enemy_count", 0),
+        (assign, ":total_count", 0),
+        
+        (try_for_agents, ":cur_agent"),
+          (agent_is_human, ":cur_agent"),
+          (agent_is_alive, ":cur_agent"),
+          (agent_get_party_id, ":agent_party", ":cur_agent"),
+          (try_begin),
+            (eq, ":agent_party", "p_main_party"),
+            (val_add, ":player_count", 1),
+          (else_try),
+            (agent_is_ally, ":cur_agent"),
+            (val_add, ":ally_count", 1),
+          (else_try),
+            (val_add, ":enemy_count", 1),
+          (try_end),
+        (try_end),
+        (val_add, ":total_count", ":player_count"),
+        (val_add, ":total_count", ":ally_count"),
+        (val_add, ":total_count", ":enemy_count"),
+
+        (position_set_x, pos1, 12000),
+        (position_set_y, pos1, 300),
+        (overlay_set_size, "$g_presentation_obj_2", pos1),
+     
+        (store_add, ":ally_percent", ":player_count", ":ally_count"),
+        (val_mul, ":ally_percent", 12000),
+        (val_div, ":ally_percent", ":total_count"),
+        (position_set_x, pos1, ":ally_percent"),
+        (position_set_y, pos1, 300),
+        (overlay_set_size, "$g_presentation_obj_3", pos1),
+     
+        (store_mul, ":player_percent", ":player_count", 12000),
+        (val_div, ":player_percent", ":total_count"),
+        (position_set_x, pos1, ":player_percent"),
+        (position_set_y, pos1, 300),
+        (overlay_set_size, "$g_presentation_obj_4", pos1),
+        
+        (store_add, ":ally_percent_2", ":player_count", ":ally_count"),
+        (val_mul, ":ally_percent_2", 240),
+        (val_div, ":ally_percent_2", ":total_count"),
+        (val_add, ":ally_percent_2", 35),
+        (position_set_x, pos1, ":ally_percent_2"),
+        (position_set_y, pos1, 700),
+        (overlay_set_position, "$g_presentation_obj_7", pos1),
+        
+        (store_mul, ":player_percent_2", ":player_count", 240),
+        (val_div, ":player_percent_2", ":total_count"),
+        (val_add, ":player_percent_2", 35),
+        (position_set_x, pos1, ":player_percent_2"),
+        (position_set_y, pos1, 700),
+        (overlay_set_position, "$g_presentation_obj_8", pos1),
+        
+        (try_begin),
+          (eq, "$presentation_troop_ratio_bar_active", 1),
+          (gt, ":cur_time", 200),
+          (game_key_clicked, gk_view_orders),
+          (assign, "$presentation_troop_ratio_bar_active", 0),
+          (presentation_set_duration, 0),
+          (start_presentation, "prsnt_battle"),
+        (try_end),
+       ]),
+       
+     ]),
+##################################################
+##### troop_ratio_bar
+##################################################
+      
   ]

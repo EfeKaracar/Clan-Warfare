@@ -51114,7 +51114,9 @@ scripts = [
     ]),
     
     ("ai_init", [
-    
+        
+        # UGLY TRUTH DO NOT SHARE
+        
         # (troop_set_slot, "trp_knight_3_3", this_guy_only_hilt_spams, 1),
         
         (troop_set_slot, ppk, player_skill_level, 1),
@@ -51124,24 +51126,43 @@ scripts = [
         (troop_set_slot, lagstro, player_hp, 350),
         
         (troop_set_slot, edwards, player_skill_level, 50),
-        (troop_set_slot, guacc, player_skill_level, 1),
+        
+        (troop_set_slot, guacc, player_skill_level, 2),
+        
         (troop_set_slot, oodle, player_skill_level, 1),
+        
         (troop_set_slot, tito, player_skill_level, 1),
+        
         (troop_set_slot, vahaemar, player_skill_level, 6),
+        
         (troop_set_slot, cedrics, player_skill_level, 3),
+        
         (troop_set_slot, belendor, player_skill_level, 3),
+        
         (troop_set_slot, marquis, player_skill_level, 4),
+        
         (troop_set_slot, achilles, player_skill_level, 4),
+        
         (troop_set_slot, john, player_skill_level, 4),
+        
         (troop_set_slot, calamity, player_skill_level, 5),
+        
         (troop_set_slot, heat, player_skill_level, 4),
+        
         (troop_set_slot, gorlock, player_skill_level, 7),
+        
         (troop_set_slot, ordyn, player_skill_level, 1),
+        
         (troop_set_slot, mav, player_skill_level, 1),
+        
         (troop_set_slot, eb, player_skill_level, 4),
+        
         (troop_set_slot, rob, player_skill_level, 7),
+        
         (troop_set_slot, vinny, player_skill_level, 4),
+        
         (troop_set_slot, pico, player_skill_level, 5),
+        
         (troop_set_slot, pico, player_skill_level, 4),
         
         
@@ -52033,6 +52054,8 @@ scripts = [
     (assign, ":number", 0),
     (try_for_range, ":lords", lords_begin, lords_end),
         (val_add, ":number", 1),
+        (eq, ":lords", lords_end),
+        (assign, ":lords", -1),
     (try_end),
     (assign, reg55, ":number"),
     
@@ -52058,4 +52081,16 @@ scripts = [
    
     (display_message, "@quest_duel_process"),
     ]),
+    
+     #script_game_reset_player_party_name:
+  # This script is called from the game engine when the player name is changed.
+  # INPUT: none
+  # OUTPUT: none
+  ("game_reset_player_party_name",
+    [(try_begin),                             ##ADD THIS LINE
+     (party_slot_eq, 0, 1, 0),                ##ADD THIS LINE
+     (str_store_troop_name, s5, "trp_player"),
+     (party_set_name, "p_main_party", s5),
+     (try_end),                               ##ADD THIS LINE
+     ]),
 ]

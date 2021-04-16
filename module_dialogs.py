@@ -20024,7 +20024,83 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
   
 
   [anyone|plyr,"tavernkeeper_buy_drinks_2", [], "Actually, cancel that order.", "tavernkeeper_pretalk",[]],
+    #Efe
+    [anyone|plyr,"tavernkeeper_talk", [
+      (store_current_hours,":cur_hours"),
+      (val_sub, ":cur_hours", 6),
+      (gt, ":cur_hours", "$gamble_last_time"),
+      ], "I'd like to flip a coin with you.", "tavernkeeper_coin",[]],
 
+  [anyone,"tavernkeeper_coin", [
+      ], "Alright. How much money do you want to lose?", "tavernkeeper_coin2",[]],
+
+  [anyone|plyr,"tavernkeeper_coin2", [
+      (store_troop_gold, ":gold", "trp_player"),
+      (ge,":gold",50),
+      ], "50 Denars.", "tavernkeeper_coin3",[
+          (assign, reg6, 50),]],
+  [anyone|plyr,"tavernkeeper_coin2", [
+      (store_troop_gold, ":gold", "trp_player"),
+      (ge,":gold",100),
+      ], "100 Denars.", "tavernkeeper_coin3",[
+          (assign, reg6, 100),]],
+  [anyone|plyr,"tavernkeeper_coin2", [
+      (store_troop_gold, ":gold", "trp_player"),
+      (ge,":gold",200),
+      ], "200 Denars.", "tavernkeeper_coin3",[
+          (assign, reg6, 200),]],
+  [anyone|plyr,"tavernkeeper_coin2", [
+      (store_troop_gold, ":gold", "trp_player"),
+      (ge,":gold",500),
+      ], "500 Denars.", "tavernkeeper_coin3",[
+          (assign, reg6, 500),]],
+  [anyone|plyr,"tavernkeeper_coin2", [
+      (store_troop_gold, ":gold", "trp_player"),
+      (ge,":gold",1000),
+      ], "1000 Denars.", "tavernkeeper_coin3",[
+          (assign, reg6, 1000),]],
+  [anyone|plyr,"tavernkeeper_coin2", [
+      (store_troop_gold, ":gold", "trp_player"),
+      (ge,":gold",2000),
+      ], "20000 Denars.", "tavernkeeper_coin3",[
+          (assign, reg6, 2000),]],
+  [anyone|plyr,"tavernkeeper_coin2", [
+      ], "I can't afford it.", "tavernkeeper_coinn",[]],
+
+  [anyone,"tavernkeeper_coinn", [
+      ], "Nevermind.", "tavernkeeper_talk",[]],
+
+  [anyone,"tavernkeeper_coin3", [
+      ], "Okay. Head or tail?", "tavernkeeper_coin4",[]],
+
+  [anyone|plyr,"tavernkeeper_coin4", [
+      ], "Head.", "tavernkeeper_coin5",[
+          (str_store_string, s2, "@head"),
+          (str_store_string, s3, "@tail"),]],
+  [anyone|plyr,"tavernkeeper_coin4", [
+      ], "Tail.", "tavernkeeper_coin5",[
+          (str_store_string, s2, "@tail"),
+          (str_store_string, s3, "@head"),]],
+
+  [anyone,"tavernkeeper_coin5", [
+      ], "Well, here we go... (He flips the coin.)", "tavernkeeper_coin6",[
+        (store_random_in_range, "$rand2", 0, 2),]],
+
+  [anyone,"tavernkeeper_coin6", [
+       (eq,"$rand2",0),
+      ], "Look, it's {s3}! Bad luck for you.", "tavernkeeper_coin6a",[]],
+  [anyone,"tavernkeeper_coin6", [
+       (eq,"$rand2",1),
+      ], "Damn, it's {s2}... Here's your money.", "tavernkeeper_pretalk",[
+          (troop_add_gold,"trp_player",reg6),
+          (store_current_hours,":cur_hours"),
+          (assign, "$gamble_last_time", ":cur_hours"),]],
+
+  [anyone|plyr,"tavernkeeper_coin6a", [
+      ], "Here are your {reg6} Denars.", "tavernkeeper_pretalk",[
+       (troop_remove_gold,"trp_player",reg6),
+       (store_current_hours,":cur_hours"),
+       (assign, "$gamble_last_time", ":cur_hours"),]],
   [anyone|plyr,"tavernkeeper_talk", [
   (neq, "$g_encountered_party_faction", "fac_player_supporters_faction"),
   ],
