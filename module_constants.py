@@ -109,6 +109,8 @@ agent_cur_action = 2517
 action_hold = 2518
 action_feint = 2519
 
+play_passive = 2520
+
 # AI END #
 
 bks_invasion_phase = 1200

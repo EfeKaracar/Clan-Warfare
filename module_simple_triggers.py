@@ -34,20 +34,20 @@ simple_triggers = [
 
    
 # FORCED DIPLOMACY
-(0,
-[
+# (0,
+# [
 
-    (try_for_range, ":kingdoms", kingdoms_begin, kingdoms_end),
-        (try_for_range, ":kingdoms2", kingdoms_begin, kingdoms_end),
-            (this_or_next|neq, ":kingdoms2", "fac_player_supporters_faction"),
-            (this_or_next|neq, ":kingdoms", "fac_player_supporters_faction"),
-            (neq, ":kingdoms", "fac_player_faction"),
-            (neq, ":kingdoms2", "fac_player_faction"),
-            (set_relation, ":kingdoms", ":kingdoms2", -100),
-        (try_end),
-    (try_end),
+    # (try_for_range, ":kingdoms", kingdoms_begin, kingdoms_end),
+        # (try_for_range, ":kingdoms2", kingdoms_begin, kingdoms_end),
+            # (this_or_next|neq, ":kingdoms2", "fac_player_supporters_faction"),
+            # (this_or_next|neq, ":kingdoms", "fac_player_supporters_faction"),
+            # (neq, ":kingdoms", "fac_player_faction"),
+            # (neq, ":kingdoms2", "fac_player_faction"),
+            # (set_relation, ":kingdoms", ":kingdoms2", -100),
+        # (try_end),
+    # (try_end),
        
-]),
+# ]),
     
   (1,
    [

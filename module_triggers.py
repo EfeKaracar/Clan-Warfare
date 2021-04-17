@@ -1501,11 +1501,9 @@ triggers = [
 
 
 #Efe
-(24, 0, 0, [], [
+(24, 0, 0, [(store_current_day, ":cur_day"),
+        (ge, ":cur_day", 1),], [
 
-        (store_current_day, ":cur_day"),
-        (ge, ":cur_day", 1),
-        
         (neg|troop_slot_ge, "trp_temp_troop", bks_invasion_phase, 5),
         (store_random_party_in_range, ":random_spawn", "p_invasion_spawn_1_ne", "p_invasion_spawn_end"),
         (assign, ":spawn_lords", 0),
@@ -1555,12 +1553,13 @@ triggers = [
             (assign, reg60, "trp_bks_12"),
             (try_for_range, ":bks_lords", "trp_bks_1", "trp_bks_12"),
                 (spawn_around_party, ":random_spawn", "pt_bks_lord"),
+                (assign, ":bks_party", reg0),
                 (str_store_troop_name, s5, ":bks_lords"),
-                (party_set_name, reg0, "@{s5}`s Party"),
+                (party_set_name, ":bks_party", "@{s5}`s Party"),
                 (store_random_in_range, ":add", 200, 500),
-                (party_clear, reg0),
-                (party_add_leader, reg0, ":bks_lords"),
-                (party_add_members, reg0, "trp_bandit", ":add"),
+                (party_clear, ":bks_party"),
+                (party_add_leader, ":bks_party", ":bks_lords"),
+                (party_add_members, ":bks_party", "trp_bandit", ":add"),
             (try_end),
         (try_end),
         

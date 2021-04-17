@@ -14660,7 +14660,7 @@ presentations = [
 				(gt, ":cur_time", 4000), # If 4 seconds past
 				(lt, "$g_presentation_obje_2", 0), #then second string
 				(create_text_overlay, "$g_presentation_obje_2", s5, tf_center_justify|tf_double_space|tf_vertical_align_center),
-				(overlay_set_color, "$g_presentation_obje_2", reg6),
+				(overlay_set_color, "$g_presentation_obje_2", 0xFFFFFF),
 				(overlay_set_alpha, "$g_presentation_obje_2", 0),
 				(position_set_x, pos1, 1500),
 				(position_set_y, pos1, 1500),

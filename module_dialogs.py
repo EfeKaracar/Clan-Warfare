@@ -1863,6 +1863,7 @@ dialogs = [
 					(is_between, "$g_talk_troop", lords_begin, lords_end),
 					(neq, reg(25), 1), #make sure lord is not a king
 					(troop_get_slot, ":player_renown", "trp_player", slot_troop_renown),
+					(ge, ":player_renown", lord_renown_for_duel),
 					], "I would like to challenge you to a friendly duel.", "lord_question_duel",[]],
 				
 	
