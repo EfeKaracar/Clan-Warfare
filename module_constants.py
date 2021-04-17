@@ -83,6 +83,11 @@ second_text_to_show = 501
 player_knows_how_to_play = 1201 # works
 player_skill_level = 1202      # works
 
+archery_level = 1203
+calling_level = 1204
+melee_level = 1205
+cav_level = 1206
+
 # Constraints
 constraints_start = 2500
 this_guy_only_s = 2501          # wip

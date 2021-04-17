@@ -1001,7 +1001,8 @@ advanced_ai = (
                     # (position_move_x, pos12, ":shield"),
                     # (display_message, "@I have shield."),
                 # (else_try),
-                    # NO SHIELD  
+                    # NO SHIELD
+                    # BY SOURCE POS
                     # ATTACK
                     (try_begin),
                         (eq, ":source_attack_dir", 0), #down
@@ -1045,12 +1046,62 @@ advanced_ai = (
                             (position_move_y, pos12, ":forward"),
                         (try_end),
                         (position_move_y, pos12, ":forward"),
-                        
                     (try_end),
                     # BLOCK
                     (try_begin),
                         (eq, ":source_defend_action", 2),
                         (position_move_x, pos12, ":blocking"),
+                        # (display_message, "@i am blocking"),
+                    (try_end),
+                    # BY TARGET POS
+                      # ATTACK
+                    (try_begin),
+                        (eq, ":source_attack_dir", 0), #down
+                        (position_move_x, pos11, ":right"),
+                        
+                        (try_begin),
+                            (store_random_in_range, ":dice_forward", 0, 10),
+                            (eq, ":dice_forward", 5),
+                            (position_move_y, pos11, ":forward"),
+                        (try_end),
+                        
+                    (else_try),
+                        (eq, ":source_attack_dir", 1), #slashright
+                        (position_move_x, pos11, ":right"),
+                        
+                        (try_begin),
+                            (store_random_in_range, ":dice_forward", 0, 10),
+                            (eq, ":dice_forward", 5),
+                            (position_move_y, pos11, ":forward"),
+                        (try_end),
+                        (position_move_y, pos11, ":up_down"),
+                        
+                    (else_try),
+                        (eq, ":source_attack_dir", 2), #slashleft
+                        (position_move_x, pos11, ":left"),
+                        
+                        (try_begin),
+                            (store_random_in_range, ":dice_forward", 0, 10),
+                            (eq, ":dice_forward", 5),
+                            (position_move_y, pos11, ":forward"),
+                        (try_end),
+                        (position_move_y, pos11, ":up_down"),
+                        
+                    (else_try),
+                        (eq, ":source_attack_dir", 3), #overswing
+                        (position_move_x, pos11, ":left"),
+                        
+                        (try_begin),
+                            (store_random_in_range, ":dice_forward", 0, 10),
+                            (eq, ":dice_forward", 5),
+                            (position_move_y, pos11, ":forward"),
+                        (try_end),
+                        (position_move_y, pos11, ":forward"),
+                    (try_end),
+                    # BLOCK
+                    (try_begin),
+                        (eq, ":source_defend_action", 2),
+                        (position_move_x, pos11, ":blocking"),
                         # (display_message, "@i am blocking"),
                     (try_end),
                     # (display_message, "@I have no shield."),
@@ -1061,8 +1112,15 @@ advanced_ai = (
                 # (else_try), 
                     (agent_set_speed_modifier, ":agents", 100),
                     (agent_clear_scripted_mode, ":agents"),
-                    (agent_set_scripted_destination, ":agents", pos12, 0, 1),
-                # (try_end),
+                    (try_begin),
+                        (store_random_in_range, ":move_by_player", 0, 2),
+                        # (try_begin),
+                            # (eq, ":move_by_player", 0),
+                            (agent_set_scripted_destination, ":agents", pos12, 0, 1),
+                        # (else_try),
+                            # (agent_set_scripted_destination, ":agents", pos11, 0, 1),
+                        # (try_end),
+                    (try_end),
                 
             (try_end),
         (try_end),
