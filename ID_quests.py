@@ -90,6 +90,9 @@ qst_save_relative_of_merchant = 88
 qst_save_town_from_bandits = 89
 qst_quests_end = 90
 qst_kill_everyone = 91
+qst_freelancer_enlisted = 92
+qst_freelancer_vacation = 93
+qst_freelancer_captured = 94
 qsttag_deliver_message = 504403158265495552
 qsttag_deliver_message_to_enemy_lord = 504403158265495553
 qsttag_raise_troops = 504403158265495554
@@ -182,5 +185,8 @@ qsttag_save_relative_of_merchant = 504403158265495640
 qsttag_save_town_from_bandits = 504403158265495641
 qsttag_quests_end = 504403158265495642
 qsttag_kill_everyone = 504403158265495643
+qsttag_freelancer_enlisted = 504403158265495644
+qsttag_freelancer_vacation = 504403158265495645
+qsttag_freelancer_captured = 504403158265495646
 
 
