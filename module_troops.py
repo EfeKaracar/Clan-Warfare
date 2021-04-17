@@ -1197,21 +1197,21 @@ troops = [
 #Companions
   ["kingdom_heroes_including_player_begin",  "kingdom_heroes_including_player_begin",  "kingdom_heroes_including_player_begin",  tf_hero, 0,reserved,  fac_kingdom_1,[],          lord_attrib,wp(220),knows_lord_1, 0x000000000010918a01f248377289467d],
 
-  ["npc1","Cru","Cru",tf_hero|tf_unmoveable_in_party_window, 0, reserved, fac_commoners,[itm_khergit_armor,itm_nomad_boots,itm_saddle_horse],
-   str_8|agi_7|int_12|cha_7|level(20),wp(200),knows_tracker_npc|
-   knows_ironflesh_1|knows_power_strike_1|knows_pathfinding_3|knows_athletics_2|knows_tracking_1|knows_riding_2, #skills 2/3 player at that level
-   0x00000004bf086143259d061a9046e23500000000001db52c0000000000000000],
+  ["npc1","Cru","Cru",tf_hero|tf_unmoveable_in_party_window, 0, reserved, fac_commoners,[itm_black_hood,itm_leather_boots,itm_lance,itm_sword_medieval_a,itm_mail_with_surcoat,itm_saddle_horse],
+   str_18|agi_12|int_12|cha_7|level(14),wp(200),knows_tracker_npc|
+   knows_ironflesh_3|knows_power_strike_3|knows_pathfinding_3|knows_athletics_5|knows_riding_4|knows_shield_3|knows_tracking_3|knows_weapon_master_5|knows_riding_3, #skills 2/3 player at that level
+   0x00000000100c11823a046c49f288f23a00000000001db5000000000000000000,
   ["npc2","Zaffa","Zaffa", tf_hero|tf_unmoveable_in_party_window, 0,reserved, fac_commoners,[itm_linen_tunic,itm_hide_boots,itm_club],
-   str_7|agi_7|int_11|cha_6|level(1),wp(40),knows_merchant_npc|
-   knows_trade_2|knows_weapon_master_1|knows_ironflesh_1|knows_wound_treatment_1|knows_athletics_2|knows_first_aid_1|knows_leadership_1,
+   str_12|agi_10|int_14|cha_11|level(9),wp(140),knows_merchant_npc|
+   knows_trade_3|knows_weapon_master_2|knows_ironflesh_1|knows_wound_treatment_1|knows_power_strike_1|knows_athletics_2|knows_first_aid_1|knows_persuasion_4|knows_engineering_3|knows_leadership_1,
    0x000000019d004001570b893712c8d28d00000000001dc8990000000000000000],
   ["npc3","Easter Cow","Easter Cow",tf_hero|tf_unmoveable_in_party_window, 0, reserved, fac_commoners,[itm_leather_jerkin, itm_leather_gloves,itm_hide_boots, itm_hunter],
-   str_18|agi_15|int_8|cha_8|level(20),wp(200),knows_merchant_npc|
+   str_18|agi_15|int_8|cha_8|level(14),wp(200),knows_merchant_npc|
    knows_trainer_2|knows_riding_5|knows_shield_3|knows_weapon_master_5|knows_power_strike_3|knows_athletics_2|knows_ironflesh_2,
-   0x0000000083040001583b6db8dec5925b00000000001d80980000000000000000],
+   0x000000003e003191203f6db6db6db6db00000000001db6f80000000000000000],
   ["npc4","Alyss","Alyss",tf_hero|tf_unmoveable_in_party_window, 0, reserved,  fac_commoners,[itm_leather_jerkin,itm_nomad_boots, itm_sword_medieval_a],
-   str_10|agi_9|int_13|cha_10|level(10),wp(110),knows_warrior_npc|
-   knows_weapon_master_2|knows_power_strike_2|knows_riding_2|knows_athletics_2|knows_power_throw_2|knows_first_aid_1|knows_surgery_1|knows_tactics_2|knows_leadership_2,
+   str_15|agi_15|int_8|cha_6|level(14),wp(220),knows_warrior_npc|
+   knows_weapon_master_6|knows_power_strike_2|knows_riding_2|knows_athletics_4|knows_power_draw_4|knows_first_aid_1|knows_ironflesh_2|knows_shield_2|knows_tactics_2|knows_leadership_2,
    0x0000000fff0030067ffffc01c71f81ff00000000001f8fc00000000000000000],
   ["npc5","Gwaebloom","Gwaebloom",tf_hero|tf_unmoveable_in_party_window, 0, reserved,  fac_commoners,[itm_nomad_vest,itm_nomad_boots, itm_sword_khergit_1],
    str_9|agi_9|int_12|cha_7|level(5),wp(90),knows_warrior_npc|
