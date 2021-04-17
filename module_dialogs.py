@@ -1857,7 +1857,15 @@ dialogs = [
       ]],
 
   [anyone,"do_member_trade", [], "Anything else?", "member_talk",[]],
-
+    
+    #Efe
+      [anyone|plyr,"member_talk",[
+					(is_between, "$g_talk_troop", lords_begin, lords_end),
+					(neq, reg(25), 1), #make sure lord is not a king
+					(troop_get_slot, ":player_renown", "trp_player", slot_troop_renown),
+					], "I would like to challenge you to a friendly duel.", "lord_question_duel",[]],
+				
+	
   [anyone|plyr,"member_talk", [], "What can you tell me about your skills?", "view_member_char_requested",[]],
   [anyone,"view_member_char_requested", [], "All right, let me tell you...", "do_member_view_char",[(change_screen_view_character)]],
 

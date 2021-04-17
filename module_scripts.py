@@ -51150,7 +51150,10 @@ scripts = [
     (call_script, "script_player_init"),
     (call_script, "script_wear_lords"),
     (call_script, "script_ai_init"),
+    (call_script, "script_faction_init"),
     (display_message, "@mod_init"),
+    
+    (troop_set_slot, chowski, player_death_music, "snd_ear_rape"),
     
     ]),
     
@@ -51172,15 +51175,139 @@ scripts = [
         # UGLY TRUTH DO NOT SHARE
         # DRAMA ALERT - DO NOT CROSS
         
-
-        
         # Less the number, better ai
         
+        # hb
+        (troop_set_slot, vahaemar, player_skill_level, 9),
+       
+        # KOA
+        (troop_set_slot, john, player_skill_level, 4),
+        
+        # RCC
+        (troop_set_slot, "trp_knight_3_20", player_skill_level, 70), # preston
+        (troop_set_slot, "trp_knight_3_20", player_hp, 50),
+
+        (troop_set_slot, "trp_knight_3_19", player_skill_level, 40), # yeet
+        (troop_set_slot, "trp_knight_3_19", player_hp, 70),
+
+        (troop_set_slot, "trp_knight_3_18", player_skill_level, 40), # lars
+        (troop_set_slot, "trp_knight_3_18", player_hp, 60),
+        
+        (troop_set_slot, "trp_knight_3_17", player_skill_level, 11), # rip
+        (troop_set_slot, "trp_knight_3_17", player_hp, 160),
+        
+        (troop_set_slot, "trp_knight_3_16", player_skill_level, 15), # shotty
+        (troop_set_slot, "trp_knight_3_16", player_hp, 120),
+        
+        (troop_set_slot, "trp_knight_3_15", player_skill_level, 15), # kappa
+        (troop_set_slot, "trp_knight_3_15", player_hp, 110),
+        
+        (troop_set_slot, "trp_knight_3_14", player_skill_level, 25), # a zach
+        (troop_set_slot, "trp_knight_3_14", player_hp, 70),
+             
+        (troop_set_slot, "trp_knight_3_13", player_skill_level, 12), # zach
+        (troop_set_slot, "trp_knight_3_13", player_hp, 110),
+        
+        (troop_set_slot, "trp_knight_3_10", player_skill_level, 5), # whalefish
+        (troop_set_slot, "trp_knight_3_10", player_hp, 220),
+        
+        (troop_set_slot, "trp_knight_3_9", player_skill_level, 5), # ahmed
+        (troop_set_slot, "trp_knight_3_9", player_hp, 210),
+        
+        (troop_set_slot, "trp_knight_3_8", player_skill_level, 13), # whalegod
+        (troop_set_slot, "trp_knight_3_8", player_hp, 110),
+        
+        (troop_set_slot, "trp_knight_3_6", player_skill_level, 7), # rhine
+        (troop_set_slot, "trp_knight_3_6", player_hp, 150),
+        
+        (troop_set_slot, "trp_knight_3_7", player_skill_level, 7), # valarr
+        (troop_set_slot, "trp_knight_3_7", player_hp, 160),
+        
+        (troop_set_slot, "trp_knight_3_12", player_skill_level, 13), # geofrey
+        (troop_set_slot, "trp_knight_3_12", player_hp, 130),
+             
+        (troop_set_slot, "trp_knight_3_11", player_skill_level, 9), # vandalh
+        (troop_set_slot, "trp_knight_3_11", player_hp, 180),
+        
+        (troop_set_slot, cedric, player_skill_level, 3),
+        (troop_set_slot, cedric, player_hp, 320),
+        
+        (troop_set_slot, belendor, player_skill_level, 3),
+        (troop_set_slot, belendor, player_hp, 320),
+        
+        (troop_set_slot, marquis, player_skill_level, 3),
+        (troop_set_slot, marquis, player_hp, 320),
+        
+        (troop_set_slot, eb, player_skill_level, 3),
+        (troop_set_slot, eb, player_hp, 320),
+        
+        (troop_set_slot, pico, player_skill_level, 5),
+        (troop_set_slot, pico, player_hp, 125),
+        
+        (troop_set_slot, edwards, player_skill_level, 50),
+        (troop_set_slot, edwards, player_hp, 750),
+        
+        # wk
         (troop_set_slot, ppk, player_skill_level, 1),
         (troop_set_slot, ppk, player_hp, 500),
         
+        (troop_set_slot, achilles, player_skill_level, 2),
+        (troop_set_slot, achilles, player_hp, 500),
+        
         (troop_set_slot, lagstro, player_skill_level, 1),
-        (troop_set_slot, lagstro, player_hp, 350),
+        (troop_set_slot, lagstro, player_hp, 500),
+        
+        (troop_set_slot, calamity, player_skill_level, 5),
+        (troop_set_slot, calamity, player_hp, 550),
+        
+        (troop_set_slot, vinny, player_skill_level, 2),
+        (troop_set_slot, vinny, player_hp, 450),
+        
+        (troop_set_slot, "trp_knight_4_7", player_skill_level, 4), # gelden
+        (troop_set_slot, "trp_knight_4_7", player_hp, 450),
+        
+        (troop_set_slot, "trp_knight_4_4", player_skill_level, 4), # Varill
+        (troop_set_slot, "trp_knight_4_4", player_hp, 250),
+        
+        (troop_set_slot, "trp_knight_4_8", player_skill_level, 3), # juve
+        (troop_set_slot, "trp_knight_4_8", player_hp, 350),
+        
+        (troop_set_slot, "trp_knight_4_9", player_skill_level, 3), # cradoc
+        (troop_set_slot, "trp_knight_4_9", player_hp, 450),
+            
+        (troop_set_slot, "trp_knight_4_10", player_skill_level, 2), # beer
+        (troop_set_slot, "trp_knight_4_10", player_hp, 450),
+    
+        (troop_set_slot, "trp_knight_4_11", player_skill_level, 6), # robert
+        (troop_set_slot, "trp_knight_4_11", player_hp, 250),
+        
+        (troop_set_slot, "trp_knight_4_12", player_skill_level, 6), # Oenomaus
+        (troop_set_slot, "trp_knight_4_12", player_hp, 330),
+        
+        (troop_set_slot, "trp_knight_4_13", player_skill_level, 6), # BigBoss
+        (troop_set_slot, "trp_knight_4_13", player_hp, 420),
+        
+        (troop_set_slot, "trp_knight_4_14", player_skill_level, 3), # Ragnola
+        (troop_set_slot, "trp_knight_4_14", player_hp, 320),
+        
+        (troop_set_slot, "trp_knight_4_15", player_skill_level, 5), # Boggy
+        (troop_set_slot, "trp_knight_4_15", player_hp, 320),
+        
+        (troop_set_slot, "trp_knight_4_16", player_skill_level, 5), # Cerann
+        (troop_set_slot, "trp_knight_4_16", player_hp, 310),
+          
+        (troop_set_slot, "trp_knight_4_17", player_skill_level, 5), # Samson
+        (troop_set_slot, "trp_knight_4_17", player_hp, 320),
+
+        (troop_set_slot, "trp_knight_4_18", player_skill_level, 5), # Tron
+        (troop_set_slot, "trp_knight_4_18", player_hp, 310),
+       
+        # TK OE
+        (troop_set_slot, heat, player_skill_level, 4),
+        (troop_set_slot, heat, player_hp, 400),
+
+        (troop_set_slot, gorlock, player_skill_level, 7),
+        (troop_set_slot, gorlock, player_hp, 250),
         
         (troop_set_slot, oodle, player_skill_level, 1),
         
@@ -51192,43 +51319,18 @@ scripts = [
        
         (troop_set_slot, guacc, player_skill_level, 2),
         
-        (troop_set_slot, vahaemar, player_skill_level, 9),
+        (troop_set_slot, chowski, player_skill_level, 50),
+        (troop_set_slot, chowski, player_hp, 30),
         
-        (troop_set_slot, cedric, player_skill_level, 7),
-        
-        (troop_set_slot, belendor, player_skill_level, 3),
-        
-        (troop_set_slot, marquis, player_skill_level, 4),
-        
-        (troop_set_slot, achilles, player_skill_level, 4),
-        
-        (troop_set_slot, john, player_skill_level, 4),
-        
-        (troop_set_slot, calamity, player_skill_level, 5),
-        
-        (troop_set_slot, heat, player_skill_level, 4),
-        
-        (troop_set_slot, gorlock, player_skill_level, 7),
-        
-
-        
-        (troop_set_slot, eb, player_skill_level, 4),
-        
+        # Rat
         (troop_set_slot, rob, player_skill_level, 7),
         
-        (troop_set_slot, vinny, player_skill_level, 4),
         
-        (troop_set_slot, pico, player_skill_level, 5),
         
+        # DOF
         (troop_set_slot, erminas, player_skill_level, 25),
         
-        (troop_set_slot, edwards, player_skill_level, 50),
-        
-        
-        
-        # (troop_set_slot, pico, this_guy_only_blocks, 1),
-        
-        # (troop_set_slot, calamity, this_guy_only_s, 1),
+      
         
     ]),
     

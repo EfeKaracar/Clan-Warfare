@@ -560,10 +560,10 @@ ti_on_agent_hit, 0, 0, [],
 		  # (eq, ":attacker_item", "itm_supersledge"),
 		  # (assign, ":run", 1),
 	  # (else_try),
-		  (neq, ":attacker_item", "itm_mace_1"), ### List of weapons that cannot decapitate
-		  (neq, ":attacker_item", "itm_mace_2"), ### This would be easier to do with a preperty check (for damage type), but I don't know if that is possible or not
-		  (neq, ":attacker_item", "itm_mace_3"),
-		  (neq, ":attacker_item", "itm_staff"),
+		  # (neq, ":attacker_item", "itm_mace_1"), ### List of weapons that cannot decapitate
+		  # (neq, ":attacker_item", "itm_mace_2"), ### This would be easier to do with a preperty check (for damage type), but I don't know if that is possible or not
+		  # (neq, ":attacker_item", "itm_mace_3"),
+		  # (neq, ":attacker_item", "itm_staff"),
 		  
 		  (agent_get_action_dir, ":attack_dir", ":attacker_agent"), ### Makes sure the attack is either a left or right swing
 		  (this_or_next|eq, ":attack_dir", 1), ### Right swing
@@ -576,17 +576,17 @@ ti_on_agent_hit, 0, 0, [],
 	  #(assign, reg1, ":damage"), #Debug messages
 	  #(display_message, "@Damage: {reg1}"),
 	  
-	  (assign, ":run", 0), ### Reset the run test variable
-	  (try_begin),
-		(ge, ":damage", 30), ### Minimum damage required to decapitate an agent
-		(assign, ":run", 1),
+	  # (assign, ":run", 0), ### Reset the run test variable
+	  # (try_begin),
+		# # (ge, ":damage", 30), ### Minimum damage required to decapitate an agent
+		# (assign, ":run", 1),
 		
-	  # (else_try),  ### If debugging mode is on, this bypasses the damage requirement check
-		  # (eq,"$g_decapitations_debugging", 1),
-		  # (assign, ":run", 1),
-		  # (display_message, "@Decap minimum DMG req bypassed"),
-	  (try_end),
-	  (eq, ":run", 1),
+	  # # (else_try),  ### If debugging mode is on, this bypasses the damage requirement check
+		  # # (eq,"$g_decapitations_debugging", 1),
+		  # # (assign, ":run", 1),
+		  # # (display_message, "@Decap minimum DMG req bypassed"),
+	  # (try_end),
+	  # (eq, ":run", 1),
 	  
 	  (store_agent_hit_points, ":hp", ":victim_agent", 1),
 	  (val_add, ":hp", 10), ### Victim must have the negative of this hp or below after hit for the script to move on (never put this value below 0 since the agent has to be absolutley positvely dead)!
@@ -608,26 +608,26 @@ ti_on_agent_hit, 0, 0, [],
       (is_between, ":distance", ":min_distance", ":max_distance"), ### Check to see if the hit is within the allowed area
 	  
 	  
-	  (assign, ":run", 0), ### Default variable value before damage test
-	  (try_begin),
-		  (store_div, ":chance", ":damage", 4), ### Chance of decap is damage / 4 right now. Lower this value for higher chances of decapitation (or press M+Right Ctrl for debug more if you just want to test easy decaps in-game).
+	  # (assign, ":run", 0), ### Default variable value before damage test
+	  # (try_begin),
+		  # (store_div, ":chance", ":damage", 4), ### Chance of decap is damage / 4 right now. Lower this value for higher chances of decapitation (or press M+Right Ctrl for debug more if you just want to test easy decaps in-game).
 		  
-		  #(assign, reg1, ":chance"), #Debug messages
-		  #(display_message, "@Decap chance is: {reg1}"),
-		  (store_random_in_range, ":diceroll", 0, 100), ### Randomizer, 0-100
+		  # #(assign, reg1, ":chance"), #Debug messages
+		  # #(display_message, "@Decap chance is: {reg1}"),
+		  # (store_random_in_range, ":diceroll", 0, 100), ### Randomizer, 0-100
 		  
-		  #(assign, reg1, ":diceroll"), #Debug messages
-		  #(display_message, "@Diceroll: {reg1}"),
-		  (le, ":diceroll", ":chance"), ### ":diceroll" must be less than or equal to ":chance", if it is, decapitation occurs!
+		  # #(assign, reg1, ":diceroll"), #Debug messages
+		  # #(display_message, "@Diceroll: {reg1}"),
+		  # (le, ":diceroll", ":chance"), ### ":diceroll" must be less than or equal to ":chance", if it is, decapitation occurs!
 		  
-		  (assign, ":run", 1), ### SUCCESS!
+		  # (assign, ":run", 1), ### SUCCESS!
 		  
-      # (else_try),  ### If debugging mode is on, bypass chance calculation
-		  # (eq,"$g_decapitations_debugging", 1),
-		  # (assign, ":run", 1),
-		  # (display_message, "@Decap chance calc bypassed"),
-	  (try_end),  
-	  (eq, ":run", 1), ### Time for the fun stuff!
+      # # (else_try),  ### If debugging mode is on, bypass chance calculation
+		  # # (eq,"$g_decapitations_debugging", 1),
+		  # # (assign, ":run", 1),
+		  # # (display_message, "@Decap chance calc bypassed"),
+	  # (try_end),  
+	  # (eq, ":run", 1), ### Time for the fun stuff!
 
 	  ### Gender test for spawning the right head type
 	  (assign, ":head_type", "itm_cut_off_head_male"),
@@ -2613,6 +2613,7 @@ mission_templates = [
         advanced_ai,   
         display_agent_labels,
         lord_hp,
+        dismemberment_mod_decap,
         wk_appear,
         death_music,
         battle_initialization,
@@ -9083,6 +9084,11 @@ mission_templates = [
       common_custom_battle_tab_press,
       common_custom_battle_question_answered,
       common_inventory_not_available,
+      # Efe
+      advanced_ai,
+      troop_ratio,
+      lord_hp,
+      dismemberment_mod_decap,
 
       (ti_before_mission_start, 0, 0, [],
        [

@@ -234,7 +234,8 @@ sounds = [
  ("sounds_end", sf_2d|sf_priority_10|sf_vol_10, ["enemy_scored_a_point.ogg"]),
  #INVASION MODE END
  
- 
- ("decapitation",sf_priority_9|sf_vol_11, ["decap1.ogg","decap2.ogg","decap3.ogg","decap4.ogg"]),
-
+    # Efe
+    ("decapitation",sf_priority_9|sf_vol_11, ["decap1.ogg","decap2.ogg","decap3.ogg","decap4.ogg"]),
+    ("ear_rape",sf_priority_9|sf_vol_11, ["ear_rape.ogg"]),
+    
 ]

@@ -199,5 +199,6 @@ snd_ccoop_sea_raider_taunt_2 = 197
 snd_ccoop_sea_raider_taunt_3 = 198
 snd_sounds_end = 199
 snd_decapitation = 200
+snd_ear_rape = 201
 
 
