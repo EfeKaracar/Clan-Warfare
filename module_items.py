@@ -1512,5 +1512,13 @@ items = [
     ["artifacts_end","Brightfyre Vahaemar's Horn", 
     [("book_c",0)], itp_type_book, 0, 3500,weight(2)|abundance(100),
     imodbits_none],    
+    
+    ["invisible_head", "Headless", [("invalid_item",0)], itp_type_head_armor|itp_covers_head   ,0, 
+    0 , weight(4)|abundance(0)|head_armor(0)|body_armor(0)|leg_armor(0)|difficulty(0) ,imodbits_plate ],
+    ["cut_off_head_male", "Bloody Male Head", [("cut_off_head_male",0)], itp_type_head_armor|itp_covers_head   ,0, 
+    0 , weight(4)|abundance(0)|head_armor(0)|body_armor(0)|leg_armor(0)|difficulty(0) ,imodbits_plate ],
+    ["cut_off_head_female", "Bloody Female Head", [("cut_off_head_female",0)], itp_type_head_armor|itp_covers_head   ,0, 
+    0 , weight(4)|abundance(0)|head_armor(0)|body_armor(0)|leg_armor(0)|difficulty(0) ,imodbits_plate ],
+
 
 ]

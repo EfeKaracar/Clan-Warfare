@@ -657,3 +657,6 @@ itm_grimsight_matchmaker = 655
 itm_vahaemar_horn = 656
 itm_flame_sword = 657
 itm_artifacts_end = 658
+itm_invisible_head = 659
+itm_cut_off_head_male = 660
+itm_cut_off_head_female = 661

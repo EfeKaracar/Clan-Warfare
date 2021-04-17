@@ -6011,17 +6011,16 @@ dialogs = [
                      ],
    "We meet again, {playername}...", "lord_start", []],
 
+
   [anyone ,"start", [(troop_slot_eq,"$g_talk_troop",slot_troop_occupation, slto_kingdom_hero),
                      (eq, "$g_talk_troop_met", 0),
                      (ge, "$g_talk_troop_faction_relation", 0),
                      (le,"$talk_context",tc_siege_commander),
-                     # Efe
-                     (try_begin),
-                        (store_troop_faction, ":faction", "$g_talk_troop"),
-                        (faction_get_slot, ":string", ":faction", faction_intro),
-                        (ge, ":string", 0),
-                        (str_store_string, s5, ":string"),
-                    (try_end),
+                    
+                    #Efe
+                    (faction_get_slot, ":d", "$g_talk_troop_faction", faction_intro),
+                    (str_store_string, s5, ":d"),
+
                     
                      ],
    "{s5}", "lord_meet_neutral", []],
@@ -11728,31 +11727,38 @@ dialogs = [
    "{s1}", "lord_pretalk",[]],
 
   [anyone,"lord_talk_ask_about_war", [],
-   "{s12}", "lord_talk_ask_about_war_2",[
-                                                                      (assign, ":num_enemies", 0),
-                                                                      (try_for_range_backwards, ":cur_faction", kingdoms_begin, kingdoms_end),
-                                                                        (faction_slot_eq, ":cur_faction", slot_faction_state, sfs_active),
-                                                                        (store_relation, ":cur_relation", ":cur_faction", "$g_talk_troop_faction"),
-                                                                        (lt, ":cur_relation", 0),
-                                                                        (try_begin),
-                                                                          (eq, ":num_enemies", 0),
-                                                                          (str_store_faction_name_link, s12, ":cur_faction"),
-                                                                        (else_try),
-                                                                          (eq, ":num_enemies", 1),
-                                                                          (str_store_faction_name_link, s11, ":cur_faction"),
-                                                                          (str_store_string, s12, "@{s11} and {s12}"),
-                                                                        (else_try),
-                                                                          (str_store_faction_name_link, s11, ":cur_faction"),
-                                                                          (str_store_string, s12, "@{!}{s11}, {s12}"),
-                                                                        (try_end),
-                                                                        (val_add, ":num_enemies", 1),
-                                                                      (try_end),
-                                                                      (try_begin),
-                                                                        (eq, ":num_enemies", 0),
-                                                                        (str_store_string, s12, "@We are not at war with anyone."),
-                                                                      (else_try),
-                                                                        (str_store_string, s12, "@We are at war with {s12}."),
-                                                                      (try_end),
+   "{s12}", "lord_talk_ask_about_war_2",[   
+
+    #Efe
+      # (assign, ":num_enemies", 0),
+      # (try_for_range_backwards, ":cur_faction", kingdoms_begin, kingdoms_end),
+        # (faction_slot_eq, ":cur_faction", slot_faction_state, sfs_active),
+        # (store_relation, ":cur_relation", ":cur_faction", "$g_talk_troop_faction"),
+        # (lt, ":cur_relation", 0),
+        # (try_begin),
+          # (eq, ":num_enemies", 0),
+          # (str_store_faction_name_link, s12, ":cur_faction"),
+        # (else_try),
+          # (eq, ":num_enemies", 1),
+          # (str_store_faction_name_link, s11, ":cur_faction"),
+          # (str_store_string, s12, "@{s11} and {s12}"),
+        # (else_try),
+          # (str_store_faction_name_link, s11, ":cur_faction"),
+          # (str_store_string, s12, "@{!}{s11}, {s12}"),
+        # (try_end),
+        # (val_add, ":num_enemies", 1),
+      # (try_end),
+      # (try_begin),
+        # (eq, ":num_enemies", 0),
+        # (str_store_string, s12, "@We are not at war with anyone."),
+      # (else_try),
+        # (str_store_string, s12, "@We are at war with {s12}."),
+      # (try_end),
+      
+      
+        (store_random_in_range, ":war", "str_war_going_1", "str_war_going_end"),
+        (str_store_string, s12, ":war"),
+                                                                      
                                                                       ]],
 
   [anyone|plyr|repeat_for_factions, "lord_talk_ask_about_war_2", [(store_repeat_object, ":faction_no"),

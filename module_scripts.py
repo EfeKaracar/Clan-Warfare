@@ -1097,19 +1097,19 @@ scripts = [
       (faction_set_slot, "fac_kingdom_6", slot_faction_quick_battle_tier_1_cavalry, "trp_sarranid_horseman"),
       (faction_set_slot, "fac_kingdom_6", slot_faction_quick_battle_tier_2_cavalry, "trp_sarranid_mamluke"),
         #Efe
-      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_infantry, "trp_sarranid_veteran_footman"),
-      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_infantry, "trp_sarranid_infantry"),
-      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_archer, "trp_sarranid_skirmisher"),
-      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_archer, "trp_sarranid_archer"),
-      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_cavalry, "trp_sarranid_horseman"),
-      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_cavalry, "trp_sarranid_mamluke"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_infantry, "trp_boar_hoplite"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_infantry, "trp_avalonian_infantry"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_archer, "trp_avalonian_crossbowman"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_archer, "trp_tacoss_bowman"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_1_cavalry, "trp_roxhardian"),
+      (faction_set_slot, "fac_kingdom_7", slot_faction_quick_battle_tier_2_cavalry, "trp_taco_knight"),
 
-      (faction_set_slot, "fac_kingdom_8", slot_faction_quick_battle_tier_1_infantry, "trp_sarranid_veteran_footman"),
-      (faction_set_slot, "fac_kingdom_8", slot_faction_quick_battle_tier_2_infantry, "trp_sarranid_infantry"),
-      (faction_set_slot, "fac_kingdom_8", slot_faction_quick_battle_tier_1_archer, "trp_sarranid_skirmisher"),
-      (faction_set_slot, "fac_kingdom_8", slot_faction_quick_battle_tier_2_archer, "trp_sarranid_archer"),
-      (faction_set_slot, "fac_kingdom_8", slot_faction_quick_battle_tier_1_cavalry, "trp_sarranid_horseman"),
-      (faction_set_slot, "fac_kingdom_8", slot_faction_quick_battle_tier_2_cavalry, "trp_sarranid_mamluke"),
+      (faction_set_slot, "fac_kingdom_8", slot_faction_quick_battle_tier_1_infantry, "trp_allied_smashmas_champion"),
+      (faction_set_slot, "fac_kingdom_8", slot_faction_quick_battle_tier_2_infantry, "trp_veteran_defender"),
+      (faction_set_slot, "fac_kingdom_8", slot_faction_quick_battle_tier_1_archer, "trp_eu_archer_recruit"),
+      (faction_set_slot, "fac_kingdom_8", slot_faction_quick_battle_tier_2_archer, "trp_eu_sniper"),
+      (faction_set_slot, "fac_kingdom_8", slot_faction_quick_battle_tier_1_cavalry, "trp_alejanbro_in_arms"),
+      (faction_set_slot, "fac_kingdom_8", slot_faction_quick_battle_tier_2_cavalry, "trp_disciple_of_erminas"),
 
 
         
@@ -51145,6 +51145,7 @@ scripts = [
     
     (assign, "$advanced_ai_open", 1),
     (assign, "$mod_debug", 1),
+    (assign, "$cinematic_fade", 1),
     
     (call_script, "script_player_init"),
     (call_script, "script_wear_lords"),

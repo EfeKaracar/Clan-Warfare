@@ -218,7 +218,7 @@ rempica = (
 0, 0, 0, [
 (neg|main_hero_fallen),
 (neg|all_enemies_defeated), 
-(eq, "$what_to_spawn", 0),
+(eq, "$what_to_spawn", 1),
 (eq, "$RempicaSpawned", 0),
 ], [
 
@@ -342,7 +342,7 @@ ti_on_agent_killed_or_wounded, 0, 0, [],
         (str_store_agent_name, s1, ":killer"),
         (assign, reg2, ":level_buff"),
         (display_message, "@You earned {reg2} amount of experience points with the help of {s1}.", game_event_hex),
-        (val_add, "$kill_steal_amount", 1),
+
     ])
 
 # This trigger makes rain in the current scene on the start randomly
@@ -363,7 +363,7 @@ wk_appear = (
 (neg|main_hero_fallen),
 (neg|all_enemies_defeated), 
 
-(eq, "$what_to_spawn", 0),
+(eq, "$what_to_spawn", 2),
 (eq, "$PPKSpawned", 0),
 
 
@@ -371,9 +371,6 @@ wk_appear = (
 
         (store_mission_timer_a, ":timer"),
         (eq, ":timer", 5),
-        
-        (store_random_in_range, ":dice", 1, 15),
-        (eq, ":dice", 12),
         
         (assign, ":continue", 1),
         (try_for_agents, ":agents"),
@@ -444,12 +441,16 @@ ti_after_mission_start, 0, 0, [], [
 (try_begin),
     (eq, ":dice", 0),
     (assign, "$what_to_spawn", 0),
+    (display_message, "@new player will spawn"),
+
 (else_try),
     (eq, ":dice", 1),
     (assign, "$what_to_spawn", 1),
+    (display_message, "@remp will spawn"),
+
 (else_try),
-    (eq, ":dice", 2),
     (assign, "$what_to_spawn", 2),
+    (display_message, "@ppk will spawn"),
 (try_end),
 
     ])
@@ -473,7 +474,7 @@ debug_big_battle = (
 
 
 troop_ratio = (
-0, 0, ti_once, [], [
+ti_after_mission_start, 0, 0, [], [
       (start_presentation, "prsnt_troop_ratio_bar"),
       ])
 
@@ -527,6 +528,199 @@ common_anti_cheat_kill = (
 		 (try_end),
 		]
  )
+
+
+dismemberment_mod_decap = (
+
+# Trigger Param 1: damage inflicted agent_id
+# Trigger Param 2: damage dealer agent_id
+# Trigger Param 3: inflicted damage
+# Register 0: damage dealer item_id
+# Position Register 0: position of the blow rotation gives the direction of the blow
+
+ti_on_agent_hit, 0, 0, [],
+[
+   (store_trigger_param_1, ":victim_agent"),
+   (store_trigger_param_2, ":attacker_agent"),
+   (store_trigger_param_3, ":damage"),
+   
+   (assign, ":attacker_item", reg0), ### Transfer the item ID to make sure it dosn't change while the script is running
+   (copy_position, pos5, pos0), ### Transfer the position of the hit to make sure it dosn't change while the script is running
+   
+   (neq, ":victim_agent", -1),
+   
+   (try_begin), #-- Decapitations --#
+      (agent_is_human, ":victim_agent"),
+	  (ge, ":attacker_item", 0),
+	  
+	  
+	  (assign, ":run", 0), ### Reset the run test variable
+	  (try_begin), ### Special weapons that can decap, ovevrrides the below conditions
+		  # (this_or_next|eq, ":attacker_item", "itm_supercrossbow"),
+		  # (eq, ":attacker_item", "itm_supersledge"),
+		  # (assign, ":run", 1),
+	  # (else_try),
+		  (neq, ":attacker_item", "itm_mace_1"), ### List of weapons that cannot decapitate
+		  (neq, ":attacker_item", "itm_mace_2"), ### This would be easier to do with a preperty check (for damage type), but I don't know if that is possible or not
+		  (neq, ":attacker_item", "itm_mace_3"),
+		  (neq, ":attacker_item", "itm_staff"),
+		  
+		  (agent_get_action_dir, ":attack_dir", ":attacker_agent"), ### Makes sure the attack is either a left or right swing
+		  (this_or_next|eq, ":attack_dir", 1), ### Right swing
+		  (eq, ":attack_dir", 2), ### Left swing
+		  (assign, ":run", 1),
+	  (try_end),
+	  (eq, ":run", 1), ### One of the checks were true, continue to run script
+	  
+	  
+	  #(assign, reg1, ":damage"), #Debug messages
+	  #(display_message, "@Damage: {reg1}"),
+	  
+	  (assign, ":run", 0), ### Reset the run test variable
+	  (try_begin),
+		(ge, ":damage", 30), ### Minimum damage required to decapitate an agent
+		(assign, ":run", 1),
+		
+	  # (else_try),  ### If debugging mode is on, this bypasses the damage requirement check
+		  # (eq,"$g_decapitations_debugging", 1),
+		  # (assign, ":run", 1),
+		  # (display_message, "@Decap minimum DMG req bypassed"),
+	  (try_end),
+	  (eq, ":run", 1),
+	  
+	  (store_agent_hit_points, ":hp", ":victim_agent", 1),
+	  (val_add, ":hp", 10), ### Victim must have the negative of this hp or below after hit for the script to move on (never put this value below 0 since the agent has to be absolutley positvely dead)!
+	  (ge, ":damage", ":hp"),
+	  
+	  
+	  ### Compare the hit position to the agent's position
+      (agent_get_position, pos4, ":victim_agent"),
+      (get_distance_between_positions, ":distance", pos4, pos5), 
+	  (agent_get_horse, ":is_mounted", ":victim_agent"),
+	  (try_begin), ### If the agent is on horseback, these values are used (note that these values will not be exactly correct if the horse is very large or very small)
+		(ge, ":is_mounted", 0), ### Will be -1 if no horse is to be found, so anything above means that the agent is mounted
+		(assign, ":min_distance", 240), ### Minimum distance from the agent's horse's hooves from which the hit is valid (240 is an approximate value)
+		(assign, ":max_distance", 260), ### Maximum distance from the agent's horse's hooves to which the hit is valid (260 is an approximate value)
+	  (else_try),  ### If the agent is on foot, these values are used
+	    (assign, ":min_distance", 160), ### Minimum distance from the agent's feet from which the hit is valid (160 = slightly below the neck)
+	    (assign, ":max_distance", 176), ### Maximum distance from the agent's feet to which the hit is valid (176 = near the nose)
+	  (try_end),
+      (is_between, ":distance", ":min_distance", ":max_distance"), ### Check to see if the hit is within the allowed area
+	  
+	  
+	  (assign, ":run", 0), ### Default variable value before damage test
+	  (try_begin),
+		  (store_div, ":chance", ":damage", 4), ### Chance of decap is damage / 4 right now. Lower this value for higher chances of decapitation (or press M+Right Ctrl for debug more if you just want to test easy decaps in-game).
+		  
+		  #(assign, reg1, ":chance"), #Debug messages
+		  #(display_message, "@Decap chance is: {reg1}"),
+		  (store_random_in_range, ":diceroll", 0, 100), ### Randomizer, 0-100
+		  
+		  #(assign, reg1, ":diceroll"), #Debug messages
+		  #(display_message, "@Diceroll: {reg1}"),
+		  (le, ":diceroll", ":chance"), ### ":diceroll" must be less than or equal to ":chance", if it is, decapitation occurs!
+		  
+		  (assign, ":run", 1), ### SUCCESS!
+		  
+      # (else_try),  ### If debugging mode is on, bypass chance calculation
+		  # (eq,"$g_decapitations_debugging", 1),
+		  # (assign, ":run", 1),
+		  # (display_message, "@Decap chance calc bypassed"),
+	  (try_end),  
+	  (eq, ":run", 1), ### Time for the fun stuff!
+
+	  ### Gender test for spawning the right head type
+	  (assign, ":head_type", "itm_cut_off_head_male"),
+	  (agent_get_troop_id, ":victim_troop", ":victim_agent"),
+	  (try_begin),
+	    (ge, ":victim_troop", 0),
+		(troop_get_type,":victim_gender",":victim_troop"),
+		(eq, ":victim_gender", 1),
+		(assign, ":head_type", "itm_cut_off_head_female"),
+	  (try_end),
+	  
+	  ### Randomize the spawned head's and/or helmet's position and orientation
+	  (store_random_in_range, ":z_rotation", 0, 360),
+	  (store_random_in_range, ":y_rotation", -60, 60),
+	  (store_random_in_range, ":x_pos", -90, 90),
+	  (store_random_in_range, ":y_pos", -90, 90),
+	  (position_rotate_z, pos4,":z_rotation"),
+	  (position_rotate_y, pos4,":y_rotation"),
+	  (position_move_x, pos4, ":x_pos"),
+	  (position_move_y, pos4, ":y_pos"),
+	  (position_set_z_to_ground_level, pos4),
+	  (position_move_z, pos4, 5),
+	  (set_spawn_position, pos4),
+	  (assign, ":prunetime", 360), ### This is the time in seconds before the spawned head or helmet gets pruned (removed). Recommended to keep it above 0 to make sure it gets removed eventually or when the scene resets, to prevent performance issues.
+	  
+	  #(spawn_item, ":head_type", 0, ":prunetime"), ### This is the old way of spawning the head on the ground with the helmet, disabled because of the new dynamic heads. You can comment away (disable) the dynamic heads spawning further down and uncomment this line for a less performance-needing approach (with no physics involved).
+	  
+	  ### Does the agent have a helmet or hat equipped?
+      (agent_get_item_slot, ":item", ":victim_agent", 4), #head slot
+      (try_begin),
+         (ge, ":item", 1), ### Does it?
+         (agent_unequip_item, ":victim_agent", ":item"), ### Yes it does. Unequip it to allow replacement by the invisible helmet further down
+		 (try_begin),
+			 ### Don't spawn items with "itp_attatch_armature" flag: rigging causes floating bugs
+			 ### This would be much better to do with an item flag check, but I haven't found any way to do that
+			 #(neq, ":item", "itm_with_itp_attatch_armature"),
+			 #(neg|is_between,":item","start_of_itm_range_with_itp_attatch_armature","end_of_itm_range_with_itp_attatch_armature"),
+			#(set_spawn_position, pos4),
+			(spawn_item, ":item", 0, ":prunetime"), ### Spawns the agent's currently equipped headgear on the dropped head's position
+		 (try_end),
+      (try_end),
+	  
+	  (agent_equip_item, ":victim_agent", "itm_invisible_head"), ### Put an invisible helmet on the agent's head to "remove" it
+	  
+	  
+	  (agent_get_position, pos4, ":victim_agent"), ### Refreshes the agent's position
+	  (position_move_z, pos4, ":min_distance"), ### Move to the where the neck used to be attached
+	  
+	  
+	  ### Blood effects! The last variable is the strength. Lower or increase it for more/less blood (or tweak the particle effects themselves in "module_particle_systems.py").
+      (particle_system_burst, "psys_blood_decapitation", pos4, 40), 
+	  (particle_system_burst, "psys_game_blood", pos4, 10),
+	  (particle_system_burst, "psys_game_blood_2", pos4, 10),
+	  
+	  (play_sound_at_position, "snd_decapitation", pos4), ### Play some nasty sounds
+	  
+	  
+	  ### Dynamic head spawning! See the bottom of "module_scene_props.py" for physics-related options and more.
+	  (position_move_z, pos4, 20),
+	  (set_spawn_position, pos4),
+	  (assign, ":head_type", "spr_head_dynamic_male"),
+	  (try_begin), ### Gender check (for determening the type of head)
+		(eq, ":victim_gender", 1),
+		(assign, ":head_type", "spr_head_dynamic_female"),
+	  (try_end),
+	  (spawn_scene_prop, ":head_type"),
+	  
+	  
+
+	  ### This below is for the text that shows up when somebody is decapitated.
+	  
+	  ### Who decapitated who?
+		(agent_get_troop_id, ":attacker_troop", ":attacker_agent"),
+		(str_store_troop_name, s0, ":attacker_troop"),
+
+		(agent_get_troop_id, ":victim_troop", ":victim_agent"),
+		(str_store_troop_name, s1, ":victim_troop"),
+
+	  
+	  ### Colour check (friend or foe?)
+	  (get_player_agent_no, ":my_agent"),
+	  (agent_get_team, ":my_team", ":my_agent"),
+	  (agent_get_team, ":victim_team", ":victim_agent"),
+	  (try_begin), ### Display it!
+		  (neq, ":my_team", ":victim_team"),
+		  (display_message, "@>>> {s0} decapitated {s1}!", 0xFF33DD11), ## Green
+	  (else_try),
+		  (display_message, "@>>> {s0} decapitated {s1}!", 0xFFFF4422), ## Red
+	  (try_end),
+   (try_end), #-- Decapitations END --#
+   
+   ])
+
 
 advanced_ai = (
 0, 0, 0, [(eq, "$advanced_ai_open", 1),], [
@@ -2415,16 +2609,17 @@ mission_templates = [
      (31,mtef_visitor_source,af_override_horse,0,1,[]),
      ],     
      [
-           #Efe
-          advanced_ai,   
-    display_agent_labels,
-    lord_hp,
-    wk_appear,
-    death_music,
-    battle_initialization,
-    new_player_follow_player,
-    new_players_ask_dumb_questions,
-    new_players,
+        #Efe
+        advanced_ai,   
+        display_agent_labels,
+        lord_hp,
+        wk_appear,
+        death_music,
+        battle_initialization,
+        new_player_follow_player,
+        new_players_ask_dumb_questions,
+        new_players,
+        location_intro,
     
       (1, 0, ti_once, [], 
       [
@@ -3417,23 +3612,30 @@ mission_templates = [
      (4,mtef_attackers|mtef_team_1,0,aif_start_alarmed,0,[]),
      ],
     [
-    #Efe
-    advanced_ai,   
-    display_agent_labels,
-    lord_hp,
-    wk_appear,
-    death_music,
-    battle_initialization,
-    new_player_follow_player,
-    new_players_ask_dumb_questions,
-    new_players,
-    rempica,
-    corpsekicking,
-    corpsekicking_enable,
-    looting_artifacts,
+        #Efe
+        advanced_ai,   
+        troop_ratio,
+        lord_hp,
+        wk_appear,
+        death_music,
+        battle_initialization,
+        new_player_follow_player,
+        new_players_ask_dumb_questions,
+        new_players,
+        rempica,
+        corpsekicking,
+        corpsekicking_enable,
+        looting_artifacts,
+        common_anti_cheat_heal,
+        common_anti_cheat_kill,
+        random_weather,
+        common_kill_assist_tag_done,
+        common_kill_assist_tag,
+        dismemberment_mod_decap,
+        
     
-      (ti_on_agent_spawn, 0, 0, [],
-       [
+        (ti_on_agent_spawn, 0, 0, [],
+        [
          (store_trigger_param_1, ":agent_no"),
          (call_script, "script_agent_reassign_team", ":agent_no"),
 

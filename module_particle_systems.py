@@ -990,4 +990,19 @@ particle_systems = [
       15,                       #rotation speed
       0,                        #rotation damping
     ),
+
+    
+	("blood_decapitation", psf_billboard_3d|psf_global_emit_dir|psf_randomize_size|psf_randomize_rotation,  "prt_mesh_blood_3", 
+     230, 2, 0.07, 1.0, 8, 11,     #num_particles, life, damping, gravity_strength, turbulance_size, turbulance_strength
+     (0.0, 0.6), (0.3, 0.6),          #alpha keys
+     (0.1, 0.4), (1, 0.5),      #red keys
+     (0.1, 0.4), (1, 0.5),       #green keys
+     (0.1, 0.4), (1, 0.5),      #blue keys
+     (0.1, 0.20),   (1, 1.5),    #scale keys
+     (0.05, 0.05, 0.0),           #emit box size
+     (0, 0, 3),                 #emit velocity
+     0.25,                       #emit dir randomness
+     300,                       #rotation speed
+     0.5,                       #rotation damping
+    ),
 ]

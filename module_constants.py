@@ -54,11 +54,11 @@ erminas = "trp_knight_8_8"
 deathangel = "trp_knight_8_7"
 
 
-faction_intro = 450
-faction_intro_1 = 451
-faction_intro_negative = 452
-faction_intro_renown_n = 453
-faction_intro_renown_p = 454
+faction_intro = 750
+faction_intro_1 = 751
+faction_intro_negative = 752
+faction_intro_renown_n = 753
+faction_intro_renown_p = 754
 
 
 player_hp = 1000
@@ -1611,8 +1611,9 @@ multiplayer_flag_taken_projections_end = "mesh_flag_project_misses_end"
 multiplayer_game_type_names_begin = "str_multi_game_type_1"
 multiplayer_game_type_names_end = "str_multi_game_types_end"
 
-quick_battle_troops_begin = "trp_quick_battle_troop_1"
-quick_battle_troops_end = "trp_quick_battle_troops_end"
+#Efe
+quick_battle_troops_begin = kings_begin
+quick_battle_troops_end = lords_end
 
 quick_battle_troop_texts_begin = "str_quick_battle_troop_1"
 quick_battle_troop_texts_end = "str_quick_battle_troops_end"

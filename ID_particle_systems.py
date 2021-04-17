@@ -58,3 +58,4 @@ psys_dungeon_water_drops = 56
 psys_wedding_rose = 57
 psys_sea_foam_a = 58
 psys_fall_leafs_a = 59
+psys_blood_decapitation = 60

@@ -9003,6 +9003,30 @@ game_menus = [
               (call_script, "script_enter_court", "$current_town"),
            (try_end),
         ], "Door to the castle."),
+      #Efe
+        ("meet_with_lord", #5
+        [
+			(party_slot_eq,"$current_town",slot_party_type, spt_town),
+		   	(party_get_slot, ":conversation_troop", "$current_town", slot_town_lord),
+			(troop_get_slot, ":conversation_party", ":conversation_troop", slot_troop_leaded_party),
+			(store_distance_to_party_from_party, ":dist", ":conversation_party", "$current_town"),
+			(le, ":dist", 0),
+			(eq, "$sneaked_into_town", 0),    
+			#Sevenheart
+		 	#feast resctrictions
+			(store_faction_of_party, ":center_faction", "$current_town"),
+		   	(neg|faction_slot_eq, ":center_faction", slot_faction_ai_state, sfai_feast),
+			(neg|faction_slot_eq, ":center_faction", slot_faction_ai_object, "$current_town"),
+			(neg|party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
+         ],
+         "Request audience with the lord.",
+         [	
+
+            (party_get_slot, ":conversation_troop", "$current_town", slot_town_lord),
+            (call_script, "script_setup_troop_meeting", ":conversation_troop", -1),
+
+           
+          ]),
       
       ("town_center",
       [                        

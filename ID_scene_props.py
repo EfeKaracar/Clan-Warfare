@@ -1044,3 +1044,5 @@ spr_prison_cart = 1042
 spr_prison_cart_door_right = 1043
 spr_prison_cart_door_left = 1044
 spr_multiplayer_coop_item_drop = 1045
+spr_head_dynamic_male = 1046
+spr_head_dynamic_female = 1047

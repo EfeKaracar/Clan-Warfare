@@ -13677,6 +13677,9 @@ presentations = [
    [(ti_on_presentation_load,
      [(assign, "$g_presentation_agent_labels_overlay_count", 0),
       (presentation_set_duration, 999999),
+      
+      (neg|is_presentation_active, "prsnt_location_intro"),
+      
       ]),
     (ti_on_presentation_run,
      [
@@ -14487,8 +14490,8 @@ presentations = [
 		(play_track, "$music_to_play_in_fade", 2),
 	(try_end),
 				
-			(str_clear, s5),
-			(str_clear, s4),
+    (str_clear, s5),
+    (str_clear, s4),
 	]),
 	
 	(ti_on_presentation_run,
@@ -14582,7 +14585,7 @@ presentations = [
 		 ] + prsnt_escape_close,
 		 ),
          
-         ("location_intro",prsntf_read_only,0,[
+    ("location_intro",prsntf_read_only,0,[
 	(ti_on_presentation_load,
 	[
 	(assign, "$g_presentation_obje_1", -1),
@@ -14599,7 +14602,7 @@ presentations = [
 	(ti_on_presentation_run,
 	
 	[		
-	
+
 			(troop_get_slot, ":first_text", "trp_temp_troop", text_to_show),
 			(troop_get_slot, ":second_text", "trp_temp_troop", second_text_to_show),
 			(try_begin),
@@ -14685,7 +14688,7 @@ presentations = [
 		 ] + prsnt_escape_close,
 		 ),
 		 
-         ("pure_white",prsntf_read_only,0,[
+     ("pure_white",prsntf_read_only,0,[
 	(ti_on_presentation_load,
 	[
 	(assign, "$g_presentation_obje_1", -1),
