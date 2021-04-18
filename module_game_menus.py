@@ -1001,7 +1001,7 @@ game_menus = [
 
   (
     "start_character_1",mnf_disable_all_keys,
-    "You were born years ago, in a land far away. Your father was...",
+    "You bought the game weeks ago during a steam sale, you kept playing this dogshit game because...",
     "none",
     [
     (str_clear,s10),
@@ -1012,59 +1012,59 @@ game_menus = [
     (str_clear,s15),
     ],
     [
-    ("start_noble",[],"An impoverished noble.",[
+    ("start_noble",[],"You found a mentor.",[
       (assign,"$background_type",cb_noble),
       (assign, reg3, "$character_gender"),
-      (str_store_string,s10,"@You came into the world a {reg3?daughter:son} of declining nobility,\
- owning only the house in which they lived. However, despite your family's hardships,\
- they afforded you a good education and trained you from childhood for the rigors of aristocracy and life at court."),
+      (str_store_string,s10,"@Your mentor was a respected member of the native community;\
+        From them you learned the basics of combat, but no amount of teaching can quickly erase how utter garbo you are.\
+    Your main take away is that you met some prominent names, and some of the community recognize you because you're in their discord."),
 	(jump_to_menu,"mnu_start_character_2"),
     ]),
-    ("start_merchant",[],"A travelling merchant.",[
+    ("start_merchant",[],"You heard about PW.",[
       (assign,"$background_type",cb_merchant),
       (assign, reg3, "$character_gender"),
-      (str_store_string,s10,"@You were born the {reg3?daughter:son} of travelling merchants,\
- always moving from place to place in search of a profit. Although your parents were wealthier than most\
- and educated you as well as they could, you found little opportunity to make friends on the road,\
- living mostly for the moments when you could sell something to somebody."),
+      (str_store_string,s10,"@You fucking hated native, the kids there sweat more than a summer watter bottle.\
+ One day though, some TDM RPers were talking about a mod where you could do more than just mindlessly spawn and die.\
+ You grinded day in and day out as a serf on PW, your bank was getting big, but\
+ there were sweats here too and they literally were after your bread. It was then you realized combat was unavoidable."),
 	(jump_to_menu,"mnu_start_character_2"),
     ]),
-    ("start_guard",[],"A veteran warrior.",[
+    ("start_guard",[],"You enjoyed the combat.",[
       (assign,"$background_type",cb_guard),
       (assign, reg3, "$character_gender"),
-      (str_store_string,s10,"@As a child, your family scrabbled out a meagre living from your father's wages\
- as a guardsman to the local lord. It was not an easy existence, and you were too poor to get much of an\
- education. You learned mainly how to defend yourself on the streets, with or without a weapon in hand."),
+      (str_store_string,s10,"@You got a long way from the top, but you recognize that it isn't supposed to be easy.\
+ You get pubstomped most of the time, sometimes you even rage, however you always log back in the next day because you live for the\
+ small victories, like stabbing that pussy archer in his first person no tilde key having ass and lasting for more than 2 seconds in melee."),
 	(jump_to_menu,"mnu_start_character_2"),
     ]),
-    ("start_forester",[],"A hunter.",[
+    ("start_forester",[],"You're cracked.",[
       (assign,"$background_type",cb_forester),
       (assign, reg3, "$character_gender"),
       (str_store_string,s11,"@{reg3?daughter:son}"),
-      (str_store_string,s10,"@You were the {reg3?daughter:son} of a family who lived off the woods,\
- doing whatever they needed to make ends meet. Hunting, woodcutting, making arrows,\
- even a spot of poaching whenever things got tight. Winter was never a good time for your family\
- as the cold took animals and people alike, but you always lived to see another dawn,\
- though your brothers and sisters might not be so fortunate."),
+      (str_store_string,s10,"@You don't understand how these kids don't go positive.\
+ You've played CoD all your life, and this game is no different... Except when your useless infantry let someone past them.\
+ Those moments are rare though, since you're smart enough to sit VERY far away from the fight while you shoot.\
+ You're pretty good, Atleast you thought so until you pressed tab.\
+ Turns out there is more to this game than you thought..."),
 	(jump_to_menu,"mnu_start_character_2"),
     ]),
-    ("start_nomad",[],"A steppe nomad.",[
+    ("start_nomad",[],"Someone taught you how to couch.",[
       (assign,"$background_type",cb_nomad),
       (assign, reg3, "$character_gender"),
       (str_store_string,s11,"@{reg3?daughter:son}"),
-      (str_store_string,s10,"@You were a child of the steppe, born to a tribe of wandering nomads who lived\
- in great camps throughout the arid grasslands.\
- Like the other tribesmen, your family revered horses above almost everything else, and they taught you\
- how to ride almost before you learned how to walk. "),
+      (str_store_string,s10,"@You enjoyed riding on the horses and watching all the slow people on the ground try and kill you.\
+ Unfortunately, you have just as much trouble trying to kill them.\
+ Things got alot easier when you saw your first couch lance kill and asked about how to do it.\
+ Apparently there's alot more you can do off of horseback... "),
 	(jump_to_menu,"mnu_start_character_2"),
     ]),
-    ("start_thief",[],"A thief.",[
+    ("start_thief",[],"You just have fun.",[
       (assign,"$background_type",cb_thief),
       (assign, reg3, "$character_gender"),
-      (str_store_string,s10,"@As the {reg3?daughter:son} of a thief, you had very little 'formal' education.\
- Instead you were out on the street, begging until you learned how to cut purses, cutting purses\
- until you learned how to pick locks, all the way through your childhood.\
- Still, these long years made you streetwise and sharp to the secrets of cities and shadowy backways."),
+      (str_store_string,s10,"@You didn't care too much about winning or how to be 'good' at the video game.\
+ Truth is, the point was to have fun and in that regard you're winning.\
+ Your loadouts were usually really weird and you spent more time in chat than others.\
+ Still, even though you were just having fun lots of the other players would get frustrated and you even got banned from a few servers. You decided after awhile to see what's so fun about just random fighting."),
 	(jump_to_menu,"mnu_start_character_2"),
     ]),
 ##    ("start_priest",[],"Priests.",[
@@ -1084,59 +1084,59 @@ game_menus = [
   ),
   (
     "start_character_2",0,
-    "{s10}^^ You started to learn about the world almost as soon as you could walk and talk. You spent your early life as...",
+    "{s10}^^ You started...",
     "none",
     [],
     [
       ("page",[
-          ],"A page at a nobleman's court.",[
+          ],"Playing in Pickup Parties.",[
       (assign,"$background_answer_2", cb2_page),
       (assign, reg3, "$character_gender"),
-      (str_store_string,s11,"@As a {reg3?girl:boy} growing out of childhood,\
- you were sent to live in the court of one of the nobles of the land.\
- There, your first lessons were in humility, as you waited upon the lords and ladies of the household.\
- But from their chess games, their gossip, even the poetry of great deeds and courtly love, you quickly began to learn about the adult world of conflict\
- and competition. You also learned from the rough games of the other children, who battered at each other with sticks in imitation of their elders' swords."),
+      (str_store_string,s11,"@For some godforsaken reason, you decided to spend alot of time with the inner circles of competitive Warband.\
+ There, your first lessons were in humility, as every single one of the players were better than you; And alot of them made sure you knew it.\
+ It was disheartening, but someone told you that most of the players had been playing the game for years and that you shouldn't be embarrassed.\
+ On top of this, you started to notice they're just as toxic towards eachother, but most of the time it ends up all being good fun.\
+ With time, you started understanding competitive Warband from the various pickup parties and learned alot about the game from the years of experience around you."),
 	(jump_to_menu,"mnu_start_character_3"),
     ]),
       ("apprentice",[
-          ],"A craftsman's apprentice.",[
+          ],"Dueling",[
       (assign,"$background_answer_2", cb2_apprentice),
       (assign, reg3, "$character_gender"),
-      (str_store_string,s11,"@As a {reg3?girl:boy} growing out of childhood,\
- you apprenticed with a local craftsman to learn a trade. After years of hard work and study under your\
- new master, he promoted you to journeyman and employed you as a fully paid craftsman for as long as\
- you wished to stay."),
+      (str_store_string,s11,"@You spending alot of time on the duel servers.\
+ At first, it was no different than normal pubstomping but you did begin to understand fundamentals like manual blocking and footwork.\
+ You began consistently winning against some players, however there were always a few names you could never beat.\
+ One of these names began practicing alot with you and you could see the gradual improvement in your play style."),
 	(jump_to_menu,"mnu_start_character_3"),
     ]),
       ("stockboy",[
-          ],"A shop assistant.",[
+          ],"Getting really into PW.",[
       (assign,"$background_answer_2",cb2_merchants_helper),
       (assign, reg3, "$character_gender"),
-      (str_store_string,s11,"@As a {reg3?girl:boy} growing out of childhood,\
- you apprenticed to a wealthy merchant, picking up the trade over years of working shops and driving caravans.\
- You soon became adept at the art of buying low, selling high, and leaving the customer thinking they'd\
- got the better deal."),
+      (str_store_string,s11,"@You started as a serf, but you realized PW had alot more to offer.\
+ You joined a group of players who did various things like joining wars, halting tin cans, and gold mining.\
+ You accumulated a fortune in the mod and could do it all over again with the skills you learned.\
+ Though the factions lords of your mod still have more wealth than you, you're determined to change that."),
 	(jump_to_menu,"mnu_start_character_3"),
     ]),
       ("urchin",[
-          ],"A street urchin.",[
+          ],"Playing cRPG.",[
       (assign,"$background_answer_2",cb2_urchin),
       (assign, reg3, "$character_gender"),
-      (str_store_string,s11,"@As a {reg3?girl:boy} growing out of childhood,\
- you took to the streets, doing whatever you must to survive.\
- Begging, thieving and working for gangs to earn your bread, you lived from day to day in this violent world,\
- always one step ahead of the law and those who wished you ill."),
+      (str_store_string,s11,"@The combat of the game was enjoyable enough, but what's the point of playing the game if you're not progressing?\
+ Fortunately, you found cRPG. In this mod your character actually improves and you're not just wasting time killing and dying every map.\
+ It was a rough grind though, you started with nothing while others were already clad in plate. In order to reach their level you'd need to improve.\
+ With enough time, you picked up the metas and adopted a play style."),
 	(jump_to_menu,"mnu_start_character_3"),
     ]),
       ("nomad",[
-          ],"A steppe child.",[
+          ],"Playing TDM Cav.",[
       (assign,"$background_answer_2",cb2_steppe_child),
       (assign, reg3, "$character_gender"),
-      (str_store_string,s11,"@As a {reg3?girl:boy} growing out of childhood,\
- you rode the great steppes on a horse of your own, learning the ways of the grass and the desert.\
- Although you sometimes went hungry, you became a skillful hunter and pathfinder in this trackless country.\
- Your body too started to harden with muscle as you grew into the life of a nomad {reg3?woman:man}."),
+      (str_store_string,s11,"@Cavalry is simply better than being on the ground. After all, you could always just get off your horse if you wanted to play infantry.\
+ You began learning to bumplance, couch around corners, and with Neo GK you even learned to shoot a bit off horseback.\
+ You weren't always successful though, the maps had lots of things you would run into and more often than not this meant death.\
+ In the end, you grew confident in your cavalry skills and usually you'd be a large contributor to your team."),
 	(jump_to_menu,"mnu_start_character_3"),
     ]),
       
@@ -1201,7 +1201,7 @@ game_menus = [
   ),
   (
     "start_character_3",mnf_disable_all_keys,
-    "{s11}^^ Then, as a young adult, life changed as it always does. You became...",
+    "{s11}^^ You've grown skilled and have decided to use your skills to...",
     "none",
     [(assign, reg3, "$character_gender"),],
     [
@@ -1229,90 +1229,85 @@ game_menus = [
 ##	(jump_to_menu,"mnu_start_character_4"),
 ##        ]),
 
-      ("squire",[(eq,"$character_gender",tf_male)],"A squire.",[
+      ("squire",[(eq,"$character_gender",tf_male)],"Play Native competitvely.",[
         (assign,"$background_answer_3",cb3_squire),
       (str_store_string,s14,"@{reg3?daughter:man}"),
       (str_store_string,s12,"@Though the distinction felt sudden to you,\
- somewhere along the way you had become a {reg3?woman:man}, and the whole world seemed to change around you.\
- When you were named squire to a noble at court, you practiced long hours with weapons,\
- learning how to deal out hard knocks and how to take them, too.\
- You were instructed in your obligations to your lord, and of your duties to those who might one day be your vassals.\
- But in addition to learning the chivalric ideal, you also learned about the less uplifting side\
- -- old warriors' stories of ruthless power politics, of betrayals and usurpations,\
- of men who used guile as well as valor to achieve their aims."),
+      you no longer were a random pubber.\
+ You learned how to win rounds and play with a team.\
+ You joined some tournaments as a free agent and played in countless pickup parties,\
+ each scrim your impact being made in atleast a set or two.\
+ You understood why calls were being made and how to play off of flags for each map, though you haven't done much calling yourself.\
+ Your name is feared on TDM and Battle servers, but among the competitive community you're still not rated much off of average."),
 	(jump_to_menu,"mnu_start_character_4"),
         ]),
-      ("lady",[(eq,"$character_gender",tf_female)],"A lady-in-waiting.",[
+      ("lady",[(eq,"$character_gender",tf_female)],"Play Native competitvely.",[
         (assign,"$background_answer_3",cb3_lady_in_waiting),
       (str_store_string,s14,"@{reg3?daughter:man}"),
       (str_store_string,s13,"@{reg3?woman:man}"),
       (str_store_string,s12,"@Though the distinction felt sudden to you,\
- somewhere along the way you had become a {s13}, and the whole world seemed to change around you.\
- You joined the tightly-knit circle of women at court, ladies who all did proper ladylike things,\
- the wives and mistresses of noble men as well as maidens who had yet to find a husband.\
- However, even here you found politics at work as the ladies schemed for prominence and fought each other\
- bitterly to catch the eye of whatever unmarried man was in fashion at court.\
- You soon learned ways of turning these situations and goings-on to your advantage. With it came the\
- realisation that you yourself could wield great influence in the world, if only you applied yourself\
- with a little bit of subtlety."),
+      you no longer were a random pubber.\
+ You learned how to win rounds and play with a team.\
+ You joined some tournaments as a free agent and played in countless pickup parties,\
+ each scrim your impact being made in atleast a set or two.\
+ You understood why calls were being made and how to play off of flags for each map, though you haven't done much calling yourself.\
+ Your name is feared on TDM and Battle servers, but among the competitive community you're still not rated much off of average."),
 	(jump_to_menu,"mnu_start_character_4"),
         ]),
-      ("troubadour",[],"A troubadour.",[
+      ("troubadour",[],"Become A Pubstar.",[
         (assign,"$background_answer_3",cb3_troubadour),
       (str_store_string,s14,"@{reg3?daughter:man}"),
       (str_store_string,s13,"@{reg3?woman:man}"),
       (str_store_string,s12,"@Though the distinction felt sudden to you,\
- somewhere along the way you had become a {s13}, and the whole world seemed to change around you.\
- You set out on your own with nothing except the instrument slung over your back and your own voice.\
- It was a poor existence, with many a hungry night when people failed to appreciate your play,\
- but you managed to survive on your music alone. As the years went by you became adept at playing the\
- drunken crowds in your taverns, and even better at talking anyone out of anything you wanted."),
+ somewhere along the way you had become a pubstar.\
+ The lesser pubs would worship you as an icon, and you became a sort of celebrity.\
+ Even still, there are many that could do away with you in seconds. Though they're more skilled, they are no where near as popular.\
+ GK servers have become a home to you and you do well keeping the server fun for the others."),
 	(jump_to_menu,"mnu_start_character_4"),
         ]),
-      ("student",[],"A university student.",[
+      ("student",[],"Host a server.",[
         (assign,"$background_answer_3",cb3_student),
       (str_store_string,s12,"@Though the distinction felt sudden to you,\
- somewhere along the way you had become a {reg3?woman:man}, and the whole world seemed to change around you.\
- You found yourself as a student in the university of one of the great cities,\
- where you studied theology, philosophy, and medicine.\
- But not all your lessons were learned in the lecture halls.\
- You may or may not have joined in with your fellows as they roamed the alleys in search of wine, women, and a good fight.\
- However, you certainly were able to observe how a broken jaw is set,\
- or how an angry townsman can be persuaded to set down his club and accept cash compensation for the destruction of his shop."),
+ you knew the game well enough you could run a server.\
+ You found a team of admins and launched your first server.\
+ The increased amount of time you spent in spectator improved your understanding of other players,\
+ you also were contacted by many map makers and script editors who helped improve your knowledge of the more technical side of the game.\
+ Many came to respect your administration, and you even were asked to host competitive tournaments on your servers.\
+ You're not known for your skill, but you have earned a place within the community."),
 	(jump_to_menu,"mnu_start_character_4"),
         ]),
-      ("peddler",[],"A goods peddler.",[
+      ("peddler",[],"Become a PW Leader.",[
         (assign,"$background_answer_3",cb3_peddler),
       (str_store_string,s14,"@{reg3?daughter:man}"),
       (str_store_string,s13,"@{reg3?woman:man}"),
       (str_store_string,s12,"@Though the distinction felt sudden to you,\
- somewhere along the way you had become a {s13}, and the whole world seemed to change around you.\
- Heeding the call of the open road, you travelled from village to village buying and selling what you could.\
- It was not a rich existence, but you became a master at haggling even the most miserly elders into\
- giving you a good price. Soon, you knew, you would be well-placed to start your own trading empire..."),
+ somewhere along the way you had become a leader.\
+ You organized a group who eventually became involved with a bigger faction.\
+ At your fingertips were unlimited riches and levies willing to die for you.\
+ The only thing holding you back is the fact you're not the king... yet."),
 	(jump_to_menu,"mnu_start_character_4"),
         ]),
-      ("craftsman",[],"A smith.",[
+      ("craftsman",[],"Become a Duelist.",[
         (assign,"$background_answer_3", cb3_craftsman),
       (str_store_string,s14,"@{reg3?daughter:man}"),
       (str_store_string,s13,"@{reg3?woman:man}"),
       (str_store_string,s12,"@Though the distinction felt sudden to you,\
- somewhere along the way you had become a {s13}, and the whole world seemed to change around you.\
- You pursued a career as a smith, crafting items of function and beauty out of simple metal.\
- As time wore on you became a master of your trade, and fine work started to fetch fine prices.\
- With food in your belly and logs on your fire, you could take pride in your work and your growing reputation."),
+ somewhere along the way you had become a renowned duelist, and the duel server became your home.\
+ Numerous pubbers would try and beat you, but the only ones that could were obvious smurfs.\
+ You signed up for many duel tournaments and would always make it past atleast the lower half of the bracket.\
+ Your mechanics are strong and the only thing stopping you from being the best is making the rest of the community recognize it."),
 	(jump_to_menu,"mnu_start_character_4"),
         ]),
-      ("poacher",[],"A game poacher.",[
+      ("poacher",[],"Become a Crackshot.",[
         (assign,"$background_answer_3", cb3_poacher),
       (str_store_string,s14,"@{reg3?daughter:man}"),
       (str_store_string,s13,"@{reg3?woman:man}"),
       (str_store_string,s12,"@Though the distinction felt sudden to you,\
- somewhere along the way you had become a {s13}, and the whole world seemed to change around you.\
- Dissatisfied with common men's desperate scrabble for coin, you took to your local lord's own forests\
- and decided to help yourself to its bounty, laws be damned. You hunted stags, boars and geese and sold\
- the precious meat under the table. You cut down trees right under the watchmen's noses and turned them into\
- firewood that warmed many freezing homes during winter. All for a few silvers, of course."),
+ you became absolutely cracked.\
+ You feel as if you can land a shot from any place, anywhere.\
+ On top of that, you learned a thing or two about melee.\
+ People know you as a skilled archer, whether they love you or hate you.\
+ Many clans have tried to recruit you, maybe it's time to try one of them out."),
 	(jump_to_menu,"mnu_start_character_4"),
         ]),
 ##      ("preacher",[],"Itinerant preacher.",[
@@ -1336,33 +1331,33 @@ game_menus = [
 
   (
     "start_character_4",mnf_disable_all_keys,
-    "{s12}^^But soon everything changed and you decided to strike out on your own as an adventurer. What made you take this decision was...",
+    "{s12}^^But soon everything changed and you decided to strike out on your own and try to be the best NA. What made you take this decision was...",
     #Finally, what made you decide to strike out on your own as an adventurer?",
     "none",
     [],
     [
-      ("revenge",[],"Personal revenge.",[
+      ("revenge",[],"You got corpsekicked.",[
         (assign,"$background_answer_4", cb4_revenge),
-      (str_store_string,s13,"@Only you know exactly what caused you to give up your old life and become an adventurer.\
- Still, it was not a difficult choice to leave, with the rage burning brightly in your heart.\
+      (str_store_string,s13,"@Only you know exactly what caused you to give up your old life and become a tryhard.\
+ Still, it was not a difficult choice to leave TDM, with the rage burning brightly in your heart.\
  You want vengeance. You want justice. What was done to you cannot be undone,\
  and these debts can only be paid in blood..."),
         (jump_to_menu,"mnu_choose_skill"),
         ]),
-      ("death",[],"The loss of a loved one.",[
+      ("death",[],"Your clan disbanded.",[
         (assign,"$background_answer_4",cb4_loss),
-      (str_store_string,s13,"@Only you know exactly what caused you to give up your old life and become an adventurer.\
- All you can say is that you couldn't bear to stay, not with the memories of those you loved so close and so\
+      (str_store_string,s13,"@Only you know exactly what caused you to give up your old life and become a tryahrd.\
+ All you can say is that you couldn't bear to stay, not with the memories of your clan so close and so\
  painful. Perhaps your new life will let you forget,\
- or honour the name that you can no longer bear to speak..."),
+ or honour the names that you can no longer bear to speak..."),
         (jump_to_menu,"mnu_choose_skill"),
         ]),
-      ("wanderlust",[],"Wanderlust.",[
+      ("wanderlust",[],"Cause fuck it.",[
         (assign,"$background_answer_4",cb4_wanderlust),
-      (str_store_string,s13,"@Only you know exactly what caused you to give up your old life and become an adventurer.\
- You're not even sure when your home became a prison, when the familiar became mundane, but your dreams of\
- wandering have taken over your life. Whether you yearn for some faraway place or merely for the open road and the\
- freedom to travel, you could no longer bear to stay in the same place. You simply went and never looked back..."),
+      (str_store_string,s13,"@Only you know exactly what caused you to give up your old life and become a tryhard.\
+ You're not even sure when your old stomping grounds became a prison, when the familiar became mundane, but your dreams of\
+ being the best have taken over your life. Whether you yearn for some glory or merely for\
+ freedom to shittalk who you please, you could no longer bear to stay in the same place. You simply went and never looked back..."),
         (jump_to_menu,"mnu_choose_skill"),
         ]),
 ##      ("fervor",[],"Religious fervor.",[
@@ -1374,16 +1369,16 @@ game_menus = [
 ## glory of God by the time you're done..."),
 ##        (jump_to_menu,"mnu_choose_skill"),
 ##        ]),
-      ("disown",[],"Being forced out of your home.",[
+      ("disown",[],"You got kicked from your clan.",[
         (assign,"$background_answer_4",cb4_disown),
-      (str_store_string,s13,"@Only you know exactly what caused you to give up your old life and become an adventurer.\
- However, you know you cannot go back. There's nothing to go back to. Whatever home you may have had is gone\
+      (str_store_string,s13,"@Only you know exactly what caused you to give up your old life and become a tryhard.\
+ However, you know you cannot go back. There's nothing to go back to. Whatever clan you may have had is gone\
  now, and you must face the fact that you're out in the wide wide world. Alone to sink or swim..."),
         (jump_to_menu,"mnu_choose_skill"),
         ]),
-     ("greed",[],"Lust for money and power.",[
+     ("greed",[],"Everyone needs to know you're the best.",[
         (assign,"$background_answer_4",cb4_greed),
-      (str_store_string,s13,"@Only you know exactly what caused you to give up your old life and become an adventurer.\
+      (str_store_string,s13,"@Only you know exactly what caused you to give up your old life and become a tryhard.\
  To everyone else, it's clear that you're now motivated solely by personal gain.\
  You want to be rich, powerful, respected, feared.\
  You want to be the one whom others hurry to obey.\
