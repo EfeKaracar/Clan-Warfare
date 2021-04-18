@@ -555,5 +555,8 @@ mesh_ccoop_ranged_class = 553
 mesh_ccoop_mounted_class = 554
 mesh_status_troop_ratio_bar = 555
 mesh_status_troop_ratio_bar_button = 556
+mesh_pic_soldier_world_map = 557
+mesh_pic_soldier_rebel = 558
+mesh_pic_soldier_desert = 559
 
 

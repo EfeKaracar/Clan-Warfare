@@ -620,5 +620,18 @@ script_player_init = 618
 script_wear_lords = 619
 script_duel_quest_process = 620
 script_game_reset_player_party_name = 621
+script_freelancer_attach_party = 622
+script_freelancer_detach_party = 623
+script_event_player_enlists = 624
+script_event_player_discharge = 625
+script_event_player_vacation = 626
+script_event_player_returns_vacation = 627
+script_event_player_deserts = 628
+script_party_restore = 629
+script_get_desert_troops = 630
+script_freelancer_keep_field_loot = 631
+script_cf_freelancer_player_can_upgrade = 632
+script_freelancer_equip_troop = 633
+script_freelancer_unequip_troop = 634
 
 

@@ -35,6 +35,20 @@ from module_constants import *
 pilgrim_disguise = [itm_pilgrim_hood,itm_pilgrim_disguise,itm_practice_staff, itm_throwing_daggers]
 af_castle_lord = af_override_horse | af_override_weapons| af_require_civilian
 
+freelancer_siege_triggers = (
+ti_on_agent_spawn, 0, 0, [(eq, "$freelancer_state", 1)],
+		[
+			(get_player_agent_no, ":player"),
+			(ge, ":player", 0),
+			(agent_is_active, ":player"),
+			(store_trigger_param_1, ":agent_no"),
+			(eq, ":player", ":agent_no"),
+			(agent_get_team, ":player_team", ":player"),
+			(team_set_order_listener, ":player_team", -1),
+			(val_add, ":player_team", 2),
+			(agent_set_team, ":player", ":player_team"),
+		])
+
 duel_triggers = []
 
 battle_triggers = []
@@ -813,7 +827,7 @@ advanced_ai = (
         # (agent_get_combat_state, ":pos_state", ":target"),
        
         # (agent_get_combat_state, ":source_state", ":agents"),
-        (agent_get_defend_action, ":source_defend_action", ":agents"), #defend action
+        # (agent_get_defend_action, ":source_defend_action", ":agents"), #defend action
 		(agent_get_action_dir, ":source_attack_dir", ":agents"), # attack/block direction
 	    (agent_get_attack_action, ":source_attack_action", ":agents"), #attack action
         
@@ -832,20 +846,21 @@ advanced_ai = (
         (eq, ":continue", 1),
         
         # switch between passive / agressive
-        (try_begin),    
-            (eq, ":timer_b", 10),
-            (try_begin),
-                (agent_slot_eq, ":agents", play_passive, 0),
-                (agent_set_slot, ":agents", play_passive, 1),
-                (agent_ai_set_aggressiveness, ":agents", 30),
-                (display_message, "@I am passive now."),
-            (else_try),
-                (agent_set_slot, ":agents", play_passive, 0),
-                (agent_ai_set_aggressiveness, ":agents", 100),
-                (display_message, "@I am agressive now."),
-            (try_end),
-            (reset_mission_timer_b),
-        (try_end),
+        # (try_begin),    
+            # (eq, ":timer_b", 10),
+            # (try_begin),
+                # (agent_slot_eq, ":agents", play_passive, 0),
+                # (agent_set_slot, ":agents", play_passive, 1),
+                # (agent_ai_set_aggressiveness, ":agents", 30),
+                # (display_message, "@I am passive now."),
+            # (else_try),
+                # (agent_slot_eq, ":agents", play_passive, 1),
+                # (agent_set_slot, ":agents", play_passive, 0),
+                # (agent_ai_set_aggressiveness, ":agents", 100),
+                # (display_message, "@I am agressive now."),
+            # (try_end),
+            # (reset_mission_timer_b),
+        # (try_end),
             
         # (store_random_in_range, ":decision", 1, 10),
         
@@ -911,7 +926,7 @@ advanced_ai = (
         
         # Make holds
         (try_begin),
-            (eq, ":timer_b", 7),
+            (eq, ":timer_b", 15),
             (store_random_in_range, ":random_dir", 1, 3),
             (agent_set_attack_action, ":agents", ":random_dir", 1),
             (agent_set_slot, ":agents", agent_cur_action, action_hold),
@@ -919,9 +934,10 @@ advanced_ai = (
             
         (try_begin),
             (agent_slot_eq, ":agents", agent_cur_action, action_hold),
-            (eq, ":timer_b", 8),
+            (eq, ":timer_b", 16),
             (agent_set_attack_action, ":agents", ":source_attack_dir", 0),
             (agent_set_slot, ":agents", agent_cur_action, action_feint),
+            (reset_mission_timer_b),
         (try_end),
         
         #Feinting
@@ -937,7 +953,7 @@ advanced_ai = (
             (le, ":dist", 225),
             
             # (display_message, "@Feinting."),
-            (store_random_in_range, ":feint_times", 3, 6),
+            (store_random_in_range, ":feint_times", 3, 12),
             # Feint to different directions
             (try_for_range, ":feinting_amount", 0, ":feint_times"),
                 
@@ -982,9 +998,9 @@ advanced_ai = (
                 (store_random_in_range, ":right", -150, -450),
                 (store_random_in_range, ":left", 150, 350),
                 # (store_random_in_range, ":up", 25, 75),
-                (store_random_in_range, ":forward", 10, 350),
-                (store_random_in_range, ":up_down", 150, -150),
-                (store_random_in_range, ":blocking", -500, 500),
+                (store_random_in_range, ":forward", 150, 350),
+                # (store_random_in_range, ":up_down", 150, -150),
+                # (store_random_in_range, ":blocking", -500, 500),
                 (agent_force_rethink, ":agents"),
                 # (copy_position, pos13, pos12),
                 # (store_random_in_range, ":dice_for_footwork", 0, 3),
@@ -1008,102 +1024,84 @@ advanced_ai = (
                         (eq, ":source_attack_dir", 0), #down
                         (position_move_x, pos12, ":right"),
                         
-                        (try_begin),
-                            (store_random_in_range, ":dice_forward", 0, 10),
-                            (eq, ":dice_forward", 5),
+                        # (try_begin),
+                            # (store_random_in_range, ":dice_forward", 0, 6),
+                            # (eq, ":dice_forward", 5),
                             (position_move_y, pos12, ":forward"),
-                        (try_end),
-                        
+                        # (try_end),
                     (else_try),
                         (eq, ":source_attack_dir", 1), #slashright
                         (position_move_x, pos12, ":right"),
                         
-                        (try_begin),
-                            (store_random_in_range, ":dice_forward", 0, 10),
-                            (eq, ":dice_forward", 5),
+                        # (try_begin),
+                            # (store_random_in_range, ":dice_forward", 0, 6),
+                            # (eq, ":dice_forward", 5),
                             (position_move_y, pos12, ":forward"),
-                        (try_end),
-                        (position_move_y, pos12, ":up_down"),
-                        
+                        # (try_end),
                     (else_try),
                         (eq, ":source_attack_dir", 2), #slashleft
                         (position_move_x, pos12, ":left"),
                         
-                        (try_begin),
-                            (store_random_in_range, ":dice_forward", 0, 10),
-                            (eq, ":dice_forward", 5),
+                         # (try_begin),
+                            # (store_random_in_range, ":dice_forward", 0, 6),
+                            # (eq, ":dice_forward", 5),
                             (position_move_y, pos12, ":forward"),
-                        (try_end),
-                        (position_move_y, pos12, ":up_down"),
-                        
+                        # (try_end),
                     (else_try),
                         (eq, ":source_attack_dir", 3), #overswing
                         (position_move_x, pos12, ":left"),
                         
-                        (try_begin),
-                            (store_random_in_range, ":dice_forward", 0, 10),
-                            (eq, ":dice_forward", 5),
+                        # (try_begin),
+                            # (store_random_in_range, ":dice_forward", 0, 6),
+                            # (eq, ":dice_forward", 5),
                             (position_move_y, pos12, ":forward"),
-                        (try_end),
-                        (position_move_y, pos12, ":forward"),
-                    (try_end),
-                    # BLOCK
-                    (try_begin),
-                        (eq, ":source_defend_action", 2),
-                        (position_move_x, pos12, ":blocking"),
-                        # (display_message, "@i am blocking"),
+                        # (try_end),
                     (try_end),
                     # BY TARGET POS
                       # ATTACK
-                    (try_begin),
-                        (eq, ":source_attack_dir", 0), #down
-                        (position_move_x, pos11, ":right"),
+                    # (try_begin),
+                        # (eq, ":source_attack_dir", 0), #down
+                        # (position_move_x, pos11, ":right"),
                         
-                        (try_begin),
-                            (store_random_in_range, ":dice_forward", 0, 10),
-                            (eq, ":dice_forward", 5),
-                            (position_move_y, pos11, ":forward"),
-                        (try_end),
+                        # (try_begin),
+                            # (store_random_in_range, ":dice_forward", 0, 10),
+                            # (eq, ":dice_forward", 5),
+                            # (position_move_y, pos11, ":forward"),
+                        # (try_end),
                         
-                    (else_try),
-                        (eq, ":source_attack_dir", 1), #slashright
-                        (position_move_x, pos11, ":right"),
+                    # (else_try),
+                        # (eq, ":source_attack_dir", 1), #slashright
+                        # (position_move_x, pos11, ":right"),
                         
-                        (try_begin),
-                            (store_random_in_range, ":dice_forward", 0, 10),
-                            (eq, ":dice_forward", 5),
-                            (position_move_y, pos11, ":forward"),
-                        (try_end),
-                        (position_move_y, pos11, ":up_down"),
+                        # (try_begin),
+                            # (store_random_in_range, ":dice_forward", 0, 10),
+                            # (eq, ":dice_forward", 5),
+                            # (position_move_y, pos11, ":forward"),
+                        # (try_end),
+                        # (position_move_y, pos11, ":up_down"),
                         
-                    (else_try),
-                        (eq, ":source_attack_dir", 2), #slashleft
-                        (position_move_x, pos11, ":left"),
+                    # (else_try),
+                        # (eq, ":source_attack_dir", 2), #slashleft
+                        # (position_move_x, pos11, ":left"),
                         
-                        (try_begin),
-                            (store_random_in_range, ":dice_forward", 0, 10),
-                            (eq, ":dice_forward", 5),
-                            (position_move_y, pos11, ":forward"),
-                        (try_end),
-                        (position_move_y, pos11, ":up_down"),
+                        # (try_begin),
+                            # (store_random_in_range, ":dice_forward", 0, 10),
+                            # (eq, ":dice_forward", 5),
+                            # (position_move_y, pos11, ":forward"),
+                        # (try_end),
+                        # (position_move_y, pos11, ":up_down"),
                         
-                    (else_try),
-                        (eq, ":source_attack_dir", 3), #overswing
-                        (position_move_x, pos11, ":left"),
+                    # (else_try),
+                        # (eq, ":source_attack_dir", 3), #overswing
+                        # (position_move_x, pos11, ":left"),
                         
-                        (try_begin),
-                            (store_random_in_range, ":dice_forward", 0, 10),
-                            (eq, ":dice_forward", 5),
-                            (position_move_y, pos11, ":forward"),
-                        (try_end),
-                        (position_move_y, pos11, ":forward"),
-                    (try_end),
-                    # BLOCK
-                    (try_begin),
-                        (eq, ":source_defend_action", 2),
-                        (position_move_x, pos11, ":blocking"),
-                        # (display_message, "@i am blocking"),
-                    (try_end),
+                        # (try_begin),
+                            # (store_random_in_range, ":dice_forward", 0, 10),
+                            # (eq, ":dice_forward", 5),
+                            # (position_move_y, pos11, ":forward"),
+                        # (try_end),
+                        # (position_move_y, pos11, ":forward"),
+                    # (try_end),
                     # (display_message, "@I have no shield."),
                 (try_end),
                 # (try_begin),
@@ -1111,9 +1109,9 @@ advanced_ai = (
                     # (agent_set_scripted_destination, ":agents", pos13, 0, 1),
                 # (else_try), 
                     (agent_set_speed_modifier, ":agents", 100),
-                    (agent_clear_scripted_mode, ":agents"),
+                    # (agent_clear_scripted_mode, ":agents"),
                     (try_begin),
-                        (store_random_in_range, ":move_by_player", 0, 2),
+                        # (store_random_in_range, ":move_by_player", 0, 2),
                         # (try_begin),
                             # (eq, ":move_by_player", 0),
                             (agent_set_scripted_destination, ":agents", pos12, 0, 1),
@@ -1126,31 +1124,30 @@ advanced_ai = (
         (try_end),
         
         # Move agent back after completing a release
-        (try_begin),
-            (eq, ":source_attack_action", 3),
-            (agent_force_rethink, ":agents"),
-            (position_move_y, pos12, -200),
-            (agent_set_scripted_destination, ":agents", pos12, 0, 1),
-        (try_end),
+        # (try_begin),
+            # (this_or_next|eq, ":source_attack_action", 6),
+            # (eq, ":source_attack_action", 3),
+            # (position_move_y, pos12, -600),
+            # (agent_set_scripted_destination, ":agents", pos12, 0, 1),
+        # (try_end),
         # make footwork inverse for allowed players
         
         # Target Switching
         
         
         # Make head of the source move up and down when is attacking
-        (try_begin),
+        # (try_begin),
             
-            (store_random_in_range, ":look", 0, 2),
-            (try_begin),
-                (eq, ":look", 0),
-                
-                (agent_set_look_target_position, ":agents", pos55),
-                (display_message, "@look at foot"),
-            (else_try),
-                 (agent_set_look_target_position, ":agents", pos56),
-                 (display_message, "@look at head"),
-             (try_end),
-        (try_end),
+            # (store_random_in_range, ":look", 0, 2),
+            # (try_begin),
+                # (eq, ":look", 0),
+                # (agent_set_look_target_position, ":agents", pos55),
+                # # (display_message, "@look at foot"),
+            # (else_try),
+                 # (agent_set_look_target_position, ":agents", pos56),
+                 # # (display_message, "@look at head"),
+             # (try_end),
+        # (try_end),
         
         
         
@@ -1166,20 +1163,28 @@ advanced_ai = (
             # (store_random_in_range, ":dice_kick", 0, 100),
             # (eq, ":dice_kick", 50),
             (eq, ":timer_c", 30),
-            (display_message, "@Agent kicks."),
+            (agent_set_attack_action, ":agents", -2, -2),
+            (agent_set_attack_action, ":target", -2, -2),
+            (agent_set_defend_action, ":agents", -2, -2),
+            (agent_set_defend_action, ":target", -2, -2),
             (agent_set_animation, ":agents", "anim_prepare_kick_0"),
             (agent_deliver_damage_to_agent, ":agents", ":target", 3),
             (agent_set_animation, ":target", -1),
             (agent_set_animation, ":target", "anim_strike3_abdomen_front"), # Get Kicked
             (store_random_in_range, ":random_dir", 0, 3), # store direction
             (agent_set_attack_action, ":agents", ":random_dir", 0), # attack
+            (display_message, "@Agent kicks."),
         (try_end),
         # AI kicks over jumps
         (try_begin),    
             (le, ":dist", 200),
-            (display_message, "@Agent avoids kicks."),
             (eq, ":target_animation", "anim_prepare_kick_0"),
+            (agent_set_attack_action, ":agents", -2, -2),
+            (agent_set_attack_action, ":target", -2, -2),
+            (agent_set_defend_action, ":agents", -2, -2),
+            (agent_set_defend_action, ":target", -2, -2),
             (agent_set_animation, ":agents", "anim_jump"),
+            (display_message, "@Agent avoids kicks."),
         (try_end),
         
         
@@ -1204,9 +1209,9 @@ advanced_ai = (
             (assign, ":continue", 0),
             (try_begin),
                 (agent_slot_eq, ":agents", play_passive, 1),
-                (eq, ":pos_atk", 1), # readying attack
                 (assign, ":continue", 1),
             (else_try),
+                (agent_slot_eq, ":agents", play_passive, 0),
                 (eq, ":pos_atk", 2), # releasing attack	
                 (assign, ":continue", 1),
             (try_end),
@@ -1256,15 +1261,15 @@ ti_on_agent_spawn, 0, 0, [], [
 (store_trigger_param_1, ":agent"),
 
 (get_player_agent_no, ":player"),
-(agent_get_item_slot, ":1", ":player", 0),
-(agent_get_item_slot, ":2", ":player", 1),
-(agent_get_item_slot, ":3", ":player", 2),
-(agent_get_item_slot, ":4", ":player", 3),
+# (agent_get_item_slot, ":1", ":player"),
+# (agent_get_item_slot, ":2", ":player"),
+# (agent_get_item_slot, ":3", ":player"),
+# (agent_get_item_slot, ":4", ":player"),
 
-(agent_unequip_item, ":player", ":1", 0),
-(agent_unequip_item, ":player", ":2", 1),
-(agent_unequip_item, ":player", ":3", 2),
-(agent_unequip_item, ":player", ":4", 3),
+# (agent_unequip_item, ":player", ":1"),
+# (agent_unequip_item, ":player", ":2"),
+# (agent_unequip_item, ":player", ":3"),
+# (agent_unequip_item, ":player", ":4"),
 
 (agent_equip_item, ":player", "itm_sword_two_handed_a"),
 (agent_equip_item, ":player", "itm_red_tunic"),
@@ -1281,24 +1286,34 @@ ti_on_agent_spawn, 0, 0, [], [
 
 (neq, ":player", ":agent"),
 (agent_get_team, ":team", ":agent"),
-
+(agent_get_troop_id, ":troop", ":agent"),
 # make sure they always use melee
 (team_give_order, ":team", grc_everyone, mordr_use_melee_weapons),
 
 # remove shield if they have one
-(agent_get_item_slot, ":1", ":agent", 0),
-(agent_get_item_slot, ":2", ":agent", 1),
-(agent_get_item_slot, ":3", ":agent", 2),
-(agent_get_item_slot, ":4", ":agent", 3),
+# (agent_get_item_slot, ":1", ":agent"),
+# (agent_get_item_slot, ":2", ":agent"),
+# (agent_get_item_slot, ":3", ":agent"),
+# (agent_get_item_slot, ":4", ":agent"),
 
-(agent_unequip_item, ":agent", ":1", 0),
-(agent_unequip_item, ":agent", ":2", 1),
-(agent_unequip_item, ":agent", ":3", 2),
-(agent_unequip_item, ":agent", ":4", 3),
+# (agent_unequip_item, ":agent", ":1"),
+# (agent_unequip_item, ":agent", ":2"),
+# (agent_unequip_item, ":agent", ":3"),
+# (agent_unequip_item, ":agent", ":4"),
 
 # all duels are going to be great sword
 (agent_equip_item, ":agent", "itm_sword_two_handed_a"),
-(agent_equip_item, ":agent", "itm_red_tunic"),
+
+(try_begin),    
+    (troop_slot_ge, ":troop", player_skill_level, 5),
+    (agent_get_item_slot, ":item", ":agent", 4), #head slot
+    (agent_equip_item, ":agent", "itm_red_tunic"),
+(else_try),
+    (agent_equip_item, ":agent", "itm_heraldic_mail_with_surcoat"),
+    (agent_get_item_slot, ":item", ":agent", 4), #head slot
+    (ge, ":item", 1),
+    (agent_unequip_item, ":agent", ":item"),
+(try_end),
 
 (play_track, "track_duel_comp"),
 
