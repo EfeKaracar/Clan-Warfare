@@ -3474,5 +3474,6 @@ str_location_entered = 3472
 str_location_fac = 3473
 str_str_1_entry = 3474
 str_str_2_entry = 3475
+str_new_quick = 3476
 
 

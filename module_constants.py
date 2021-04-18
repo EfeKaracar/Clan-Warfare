@@ -1650,8 +1650,8 @@ multiplayer_game_type_names_end = "str_multi_game_types_end"
 quick_battle_troops_begin = kings_begin
 quick_battle_troops_end = lords_end
 
-quick_battle_troop_texts_begin = "str_quick_battle_troop_1"
-quick_battle_troop_texts_end = "str_quick_battle_troops_end"
+quick_battle_troop_texts_begin = "str_new_quick"
+quick_battle_troop_texts_end = "str_new_quick"
 
 quick_battle_scenes_begin = "scn_quick_battle_scene_1"
 quick_battle_scenes_end = "scn_quick_battle_maps_end"

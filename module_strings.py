@@ -4434,4 +4434,5 @@ We apologize sincerely if you contributed your suggestions and feedback but were
 	("str_1_entry", "{s12}"),
 	("str_2_entry", "{s13}"),
     
+    ("new_quick", "A player in scene."),
 ]

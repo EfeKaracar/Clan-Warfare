@@ -179,6 +179,7 @@ new_players_ask_dumb_questions = (
 
 new_player_follow_player = (
 3, 0, 0, [(neg|main_hero_fallen),], [
+
 (try_for_agents, ":newplayers"),
     (agent_is_alive, ":newplayers"),
     (agent_get_troop_id, ":troop", ":newplayers"),
@@ -444,7 +445,12 @@ ti_on_agent_killed_or_wounded, 0, 0, [], [
 )
 
 battle_initialization = (
-ti_after_mission_start, 0, 0, [], [
+ti_after_mission_start, 0, 0, [
+
+(store_current_scene, ":scene"),
+(neg|is_between, ":scene", "scn_town_1_alley", "scn_castle_1_exterior"),
+
+], [
 
 (assign, "$PPKSpawned", 0), 
 (assign, "$RempicaSpawned", 0),
@@ -923,7 +929,7 @@ advanced_ai = (
             (store_random_in_range, ":dice_to_release", 0, 5),
             (eq, ":dice_to_release", 3),
             (eq, ":source_attack_action", 1),
-                        (this_or_next|eq, ":pos_def", 1),
+            (this_or_next|eq, ":pos_def", 1),
             (this_or_next|eq, ":pos_def", 2),
             (eq, ":pos_def", 0),
             
