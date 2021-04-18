@@ -945,7 +945,7 @@ troops = [
    
    ["black_shield_infantry","Black Shield","Black Shields",tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_ranged|tf_guarantee_shield,0,0,fac_kingdom_5,
    [itm_sword_medieval_c_long,itm_military_pick,itm_military_hammer,itm_tab_shield_kite_c,
-    itm_vaegir_spiked_helmet,itm_spiked_helmet,itm_heraldic_mail_with_surcoat,itm_black_hood,itm_mail_chausses,itm_splinted_leather_greaves],
+    itm_vaegir_spiked_helmet,itm_spiked_helmet,itm_heraldic_mail_with_surcoat,itm_black_hood,itm_mail_chausses,itm_splinted_leather_greaves, itm_mail_mittens],
    str_18 | agi_12 | int_4 | cha_4|level(21),wp_one_handed (200) | wp_two_handed (110) | wp_polearm (110) | wp_archery (100) | wp_crossbow (140) | wp_throwing (100),knows_common|knows_ironflesh_4|knows_shield_4|knows_power_strike_6|knows_athletics_4,rhodok_face_middle_1, rhodok_face_older_2],
    ["black_shield_follower","Black Shield Follower","Black Shield Followers",tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_ranged|tf_guarantee_shield,0,0,fac_kingdom_5,
    [itm_sword_medieval_a,itm_sword_medieval_b_small,itm_tab_shield_kite_b,itm_crossbow,itm_bolts,
