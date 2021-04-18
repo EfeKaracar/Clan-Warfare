@@ -1333,7 +1333,7 @@ troops = [
   ["npc30","BestPlayerNaGta","BestPlayerNaGta",tf_hero|tf_unmoveable_in_party_window, 0, reserved,  fac_commoners,[itm_mail_shirt,itm_leather_boots, itm_sword_medieval_c, itm_tab_shield_heater_c],
    str_12|agi_10|int_8|cha_7|level(10),wp(150),knows_tracker_npc|
    knows_power_throw_1|knows_athletics_3|knows_power_strike_4|knows_shield_2|knows_ironflesh_2,
-   0x0000000fd2046286386065c8856e3aab00000000000ce12e0000000000000000],
+   0x0000000fc000028533626eb64a2d1c1d00000000001da0f10000000000000000],
 
 #NPC system changes end
 
