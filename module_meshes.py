@@ -622,8 +622,8 @@ meshes = [
 ##################################################
 
 #+freelancer begin
-  ("pic_soldier_world_map", 0, "pic_soldier_world_map", 0, 0, 0, 0, 0, 0, 1, 1, 1),
-  ("pic_soldier_rebel", 0, "pic_soldier_rebel", 0, 0, 0, 0, 0, 0, 1, 1, 1),
-  ("pic_soldier_desert", 0, "pic_soldier_desert", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("pic_soldier_world_map", 0, "pic_castledes", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("pic_soldier_rebel", 0, "pic_castledes", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("pic_soldier_desert", 0, "pic_castledes", 0, 0, 0, 0, 0, 0, 1, 1, 1),
 #+freelancer end
 ]

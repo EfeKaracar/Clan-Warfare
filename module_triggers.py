@@ -1603,11 +1603,12 @@ triggers = [
         (try_end),
 
         (spawn_around_party, ":random_spawn", "pt_eu_party"),
-        (party_set_name, reg0, "@EU Players"),
+        (assign, ":eu", reg0),
+        (party_set_name, ":eu", "@EU Players"),
         (store_random_in_range, ":add", 100, 200),
-        (party_clear, reg0),
-        (party_add_leader, reg0, "trp_bandit"),
-        (party_add_members, reg0, "trp_bandit", ":add"),
+        (party_clear, ":eu"),
+        (party_add_leader, ":eu", "trp_bandit"),
+        (party_add_members, ":eu", "trp_bandit", ":add"),
 
         
         (set_camera_follow_party, ":random_spawn"),
