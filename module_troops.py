@@ -943,7 +943,19 @@ troops = [
    def_attrib|level(24),wp_one_handed (135) | wp_two_handed (240) | wp_polearm (135) | wp_archery (75) | wp_crossbow (75) | wp_throwing (140),knows_common|knows_shield_3|knows_ironflesh_5|knows_power_strike_6|knows_power_throw_4|knows_athletics_5,swadian_face_middle_1, swadian_face_older_2],
    
    
-   
+   ["black_shield_infantry","Black Shield","Black Shields",tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_ranged|tf_guarantee_shield,0,0,fac_kingdom_5,
+   [itm_sword_medieval_c_long,itm_military_pick,itm_military_hammer,itm_tab_shield_kite_c,
+    itm_vaegir_spiked_helmet,itm_spiked_helmet,itm_heraldic_mail_with_surcoat,itm_black_hood,itm_mail_chausses,itm_splinted_leather_greaves],
+   str_18 | agi_12 | int_4 | cha_4|level(21),wp_one_handed (200) | wp_two_handed (110) | wp_polearm (110) | wp_archery (100) | wp_crossbow (140) | wp_throwing (100),knows_common|knows_ironflesh_4|knows_shield_4|knows_power_strike_6|knows_athletics_4,rhodok_face_middle_1, rhodok_face_older_2],
+   ["black_shield_follower","Black Shield Follower","Black Shield Followers",tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_ranged|tf_guarantee_shield,0,0,fac_kingdom_5,
+   [itm_sword_medieval_a,itm_sword_medieval_b_small,itm_tab_shield_kite_b,itm_crossbow,itm_bolts,
+    itm_black_hood,itm_robe,itm_leather_boots, itm_ankle_boots],
+   def_attrib|level(18),wp_one_handed (140) | wp_two_handed (90) | wp_polearm (90) | wp_archery (90) | wp_crossbow (160) | wp_throwing (90),knows_common|knows_ironflesh_2|knows_shield_2|knows_power_strike_2|knows_athletics_4,rhodok_face_young_1, rhodok_face_older_2],
+   ["black_shield_rider","Black Shield Rider","Black Shield Riders",tf_guarantee_boots|tf_mounted|tf_guarantee_horse|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_gloves|tf_guarantee_shield,0,0,fac_kingdom_5,
+   [itm_sarranid_cavalry_sword,itm_sword_viking_3,itm_lance,itm_tab_shield_kite_c, itm_heavy_lance, itm_warhorse, itm_hunter,
+    itm_great_helmet,itm_vaegir_spiked_helmet, itm_coat_of_plates, itm_bascinet_3, itm_plate_boots, itm_iron_greaves, itm_gauntlets],
+   str_21 | agi_12 | int_4 | cha_4|level(25),wp_one_handed (250) | wp_two_handed (110) | wp_polearm (200) | wp_archery (100) | wp_crossbow (140) | wp_throwing (100),knows_common|knows_ironflesh_5|knows_shield_5|knows_riding_6|knows_power_strike_5|knows_athletics_4,rhodok_face_middle_1, rhodok_face_older_2],
+
     
     
     
@@ -3159,6 +3171,10 @@ upgrade(troops,"swadian_infantry","swadian_sergeant")
 upgrade2(troops,"swadian_footman","swadian_man_at_arms","swadian_knight")
 upgrade2(troops,"swadian_skirmisher","swadian_crossbowman","swadian_sharpshooter")
 upgrade(troops,"vaegir_veteran","vaegir_infantry")
+
+#Black Shields upgrades
+upgrade(troops,"black_shield_follower","black_shield_infantry")
+upgrade(troops,"black_shield_infantry","black_shield_rider")
 
 
 #new tree connections
