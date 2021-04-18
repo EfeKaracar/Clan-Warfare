@@ -34331,7 +34331,6 @@ scripts = [
     [
 
 # set strings
-
         (troop_set_slot, "trp_npc1", slot_troop_morality_type, tmt_egalitarian),  #borcha
         (troop_set_slot, "trp_npc1", slot_troop_morality_value, 4),  #borcha
         (troop_set_slot, "trp_npc1", slot_troop_2ary_morality_type, tmt_aristocratic),  #borcha
@@ -48020,6 +48019,7 @@ scripts = [
      #(try_end),  
                
      #(set_visitor, 3, ":bandit_troop"),
+     
      # Efe
      (set_visitor, 3, "trp_daemonClone"),
 
