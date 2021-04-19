@@ -1214,7 +1214,7 @@ troops = [
 #Companions
   ["kingdom_heroes_including_player_begin",  "kingdom_heroes_including_player_begin",  "kingdom_heroes_including_player_begin",  tf_hero, 0,reserved,  fac_kingdom_1,[],          lord_attrib,wp(220),knows_lord_1, 0x000000000010918a01f248377289467d],
 
-  ["npc1","Cru","Cru",tf_hero|tf_unmoveable_in_party_window, 0, reserved, fac_commoners,[itm_black_hood,itm_leather_boots,itm_lance,itm_sword_medieval_a,itm_mail_with_surcoat,itm_saddle_horse],
+  ["npc1","Cru","Cru",tf_hero|tf_unmoveable_in_party_window, 0, reserved, fac_commoners,[itm_sarranid_mail_coif,itm_mail_mittens,itm_mail_chausses,itm_lance,itm_tab_shield_kite_c,itm_sword_medieval_c,itm_lamellar_armor,itm_saddle_horse],
    str_18|agi_12|int_12|cha_7|level(17),wp(220),knows_tracker_npc|
    knows_ironflesh_5|knows_power_strike_5|knows_athletics_5|knows_riding_5|knows_shield_3|knows_weapon_master_5, #skills 2/3 player at that level
    0x00000000100c11823a046c49f288f23a00000000001db5000000000000000000],
