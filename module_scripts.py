@@ -551,32 +551,32 @@ scripts = [
 	  
       (call_script, "script_give_center_to_faction_aux", "p_castle_1", "fac_kingdom_5"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_2", "fac_kingdom_3"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_3", "fac_kingdom_2"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_3", "fac_kingdom_7"), # avalon, bulugha
       (call_script, "script_give_center_to_faction_aux", "p_castle_4", "fac_kingdom_2"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_5", "fac_kingdom_4"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_5", "fac_kingdom_7"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_6", "fac_kingdom_1"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_7", "fac_kingdom_3"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_8", "fac_kingdom_2"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_9", "fac_kingdom_5"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_10", "fac_kingdom_4"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_11", "fac_kingdom_4"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_9", "fac_kingdom_8"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_10", "fac_kingdom_7"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_11", "fac_kingdom_7"),
 
       (call_script, "script_give_center_to_faction_aux", "p_castle_12", "fac_kingdom_4"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_13", "fac_kingdom_1"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_14", "fac_kingdom_5"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_15", "fac_kingdom_5"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_16", "fac_kingdom_5"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_16", "fac_kingdom_8"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_17", "fac_kingdom_3"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_18", "fac_kingdom_2"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_19", "fac_kingdom_2"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_20", "fac_kingdom_1"),
 
-      (call_script, "script_give_center_to_faction_aux", "p_castle_21", "fac_kingdom_5"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_22", "fac_kingdom_3"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_23", "fac_kingdom_1"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_21", "fac_kingdom_8"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_22", "fac_kingdom_8"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_23", "fac_kingdom_4"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_24", "fac_kingdom_1"),
 
-      (call_script, "script_give_center_to_faction_aux", "p_castle_25", "fac_kingdom_1"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_25", "fac_kingdom_4"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_26", "fac_kingdom_1"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_27", "fac_kingdom_1"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_28", "fac_kingdom_5"),
@@ -585,10 +585,10 @@ scripts = [
       (call_script, "script_give_center_to_faction_aux", "p_castle_30", "fac_kingdom_3"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_31", "fac_kingdom_1"),
 
-      (call_script, "script_give_center_to_faction_aux", "p_castle_32", "fac_kingdom_4"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_32", "fac_kingdom_1"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_33", "fac_kingdom_5"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_34", "fac_kingdom_4"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_35", "fac_kingdom_1"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_35", "fac_kingdom_4"),
       
       (call_script, "script_give_center_to_faction_aux", "p_castle_36", "fac_kingdom_4"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_37", "fac_kingdom_2"),
@@ -596,12 +596,12 @@ scripts = [
       (call_script, "script_give_center_to_faction_aux", "p_castle_39", "fac_kingdom_2"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_40", "fac_kingdom_3"),
       
-      (call_script, "script_give_center_to_faction_aux", "p_castle_41", "fac_kingdom_6"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_41", "fac_kingdom_8"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_42", "fac_kingdom_6"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_43", "fac_kingdom_6"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_44", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_45", "fac_kingdom_6"),
-      (call_script, "script_give_center_to_faction_aux", "p_castle_46", "fac_kingdom_6"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_45", "fac_kingdom_8"),
+      (call_script, "script_give_center_to_faction_aux", "p_castle_46", "fac_kingdom_8"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_47", "fac_kingdom_6"),
       (call_script, "script_give_center_to_faction_aux", "p_castle_48", "fac_kingdom_6"),
       
@@ -634,9 +634,9 @@ scripts = [
       (call_script, "script_give_center_to_lord", "p_town_22", "trp_knight_6_3", 0),	#bariyye  
       
       # Give family castles to certain nobles.
-      (call_script, "script_give_center_to_lord", "p_castle_29", "trp_knight_2_10", 0), #Nelag_Castle
-      (call_script, "script_give_center_to_lord", "p_castle_30", "trp_knight_3_4", 0), #Asugan_Castle
-      (call_script, "script_give_center_to_lord", "p_castle_35", "trp_knight_1_3", 0), #Haringoth_Castle
+      # (call_script, "script_give_center_to_lord", "p_castle_29", "trp_knight_2_10", 0), #Nelag_Castle
+      # (call_script, "script_give_center_to_lord", "p_castle_30", "trp_knight_3_4", 0), #Asugan_Castle
+      # (call_script, "script_give_center_to_lord", "p_castle_35", "trp_knight_1_3", 0), #Haringoth_Castle
 	  
       (call_script, "script_assign_lords_to_empty_centers"),
 	  	  

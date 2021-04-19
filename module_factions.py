@@ -71,11 +71,11 @@ factions = [
     
     ("kingdom_7",  "Avalonian Alliance",  0, 0.9, [("outlaws",-0.05),
     ("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),
-    ("forest_bandits", -0.05)], [], 0xdecd18),
+    ("forest_bandits", -0.05)], [], 0xd13bff),
     
     ("kingdom_8",  "Defenders of Faith",  0, 0.9, [("outlaws",-0.05),
     ("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),
-    ("forest_bandits", -0.05)], [], 0xdecd18),
+    ("forest_bandits", -0.05)], [], 0xf52020),
     
 ##  ("kingdom_1_rebels",  "Swadian rebels", 0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xCC2211),
 ##  ("kingdom_2_rebels",  "Vaegir rebels",    0, 0.9, [("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05)], [], 0xCC2211),
@@ -86,7 +86,7 @@ factions = [
   ("kingdoms_end","{!}kingdoms_end", 0, 0,[], []),
 
    ("robber_knights",  "{!}robber_knights", 0, 0.1, [], []),
-   ("black_shields",  "Black Shields", 0, 0.1, [], []),
+   ("black_shields",  "Black Shields", 0, 0.1, [], [], 0x000000),
    
     
   ("khergits","{!}Khergits", 0, 0.5,[("player_faction",0.0)], []),

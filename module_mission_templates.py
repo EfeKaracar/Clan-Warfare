@@ -768,8 +768,8 @@ advanced_ai = (
     
     (store_mission_timer_a, ":timer"),
     (store_mission_timer_b, ":timer_b"),
-    (store_mission_timer_c, ":timer_c"),
-    (store_mission_timer_a_msec, ":timer_mili"),
+    # (store_mission_timer_c, ":timer_c"),
+    # (store_mission_timer_a_msec, ":timer_mili"),
 	
    (try_for_agents, ":agents"),
         # SOURCE CHECK

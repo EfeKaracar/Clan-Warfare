@@ -59,6 +59,7 @@ game_menus = [
             (troop_add_items, "trp_player", "itm_leather_boots", 1),
             (troop_add_items, "trp_player", "itm_leather_jerkin", 1),
             (troop_add_items, "trp_player", "itm_roxhard_horse", 1),
+            (troop_add_items, "trp_player", "itm_turtle", 1),
             
             (troop_equip_items, "trp_player"),
             

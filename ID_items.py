@@ -660,3 +660,4 @@ itm_artifacts_end = 658
 itm_invisible_head = 659
 itm_cut_off_head_male = 660
 itm_cut_off_head_female = 661
+itm_turtle = 662
