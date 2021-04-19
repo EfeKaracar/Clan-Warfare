@@ -1334,26 +1334,26 @@ items = [
     [(store_trigger_param_1, ":agent_no"),(store_trigger_param_2, ":troop_no"),(call_script, "script_shield_item_set_banner", "tableau_kite_shield_4", ":agent_no", ":troop_no")])]],
 
     ["kiss_axe", "Balion KissMyAxe's AxeKissers", [("throwing_axe_a",0)],
-    itp_type_thrown |itp_merchandise|itp_primary|itp_next_item_as_melee,
+    itp_type_thrown |itp_primary,
     itcf_throw_axe,
     490, weight(5)|difficulty(3)|spd_rtng(78) | shoot_speed(18) | 
     thrust_damage(39,cut)|max_ammo(8)|weapon_length(53),
     imodbits_thrown_minus_heavy ],
 
     ["danate_helmet", "OE Danate's Legacy of Akaria", [("great_helmet_new",0)], 
-    itp_merchandise| itp_type_head_armor|itp_covers_head,0, 980 , 
+     itp_type_head_armor|itp_covers_head,0, 980 , 
     weight(2.75)|abundance(100)|head_armor(63)|body_armor(0)|leg_armor(0)
     |difficulty(10) ,imodbits_plate ],
 
 
     ["leonidas_boots", "GK Leonidas' Backsteppers", [("leather_boots_a",0)],
-    itp_merchandise| itp_type_foot_armor  |itp_civilian | 
+     itp_type_foot_armor  |itp_civilian | 
     itp_attach_armature,0,
     174 , weight(1.25)|abundance(100)|head_armor(0)|body_armor(0)|
     leg_armor(16)|difficulty(0) ,imodbits_cloth ],
 
     ["scott_ray_warhorse","Scott Ray's Warhorse",
-    [("warhorse_chain",0)], itp_merchandise|itp_type_horse,
+    [("warhorse_chain",0)], itp_type_horse,
     0, 1224,abundance(50)|hit_points(165)|body_armor(90)|difficulty(4)|
     horse_speed(20)|horse_maneuver(41)|horse_charge(28)|horse_scale(110),
     imodbits_horse_basic|imodbit_champion],
@@ -1363,13 +1363,13 @@ items = [
 
     ["derpy_carver", "GK Derpy Hoove's Carver", [("long_axe_b",0)], 
     itp_type_polearm| itp_two_handed|itp_primary|itp_bonus_against_shield|
-    itp_wooden_parry|itp_next_item_as_melee|itp_unbalanced|itp_merchandise, 
+    itp_wooden_parry|itp_unbalanced, 
     itc_staff|itcf_carry_axe_back,
     510 , weight(5.0)|difficulty(12)|spd_rtng(102) | weapon_length(125)|
     swing_damage(60 , cut) | thrust_damage(28 ,  blunt),imodbits_axe ],
 
     ["pierce_spear", "Wappaw Pierce's Piercer", [("spear_a_3m",0)], 
-    itp_type_polearm|itp_merchandise| 
+    itp_type_polearm| 
     itp_cant_use_on_horseback|itp_primary|itp_penalty_with_shield|itp_wooden_parry|
     itp_two_handed, itc_cutting_spear,
     125 , weight(3.0)|difficulty(0)|spd_rtng(95) | weapon_length(245)
@@ -1497,7 +1497,7 @@ items = [
     
     #Efe
     ["flame_sword",   "Flame Sword", [("sword_two_handed_a",0)], 
-    itp_type_two_handed_wpn|itp_merchandise|itp_two_handed|itp_primary, 
+    itp_type_two_handed_wpn|itp_two_handed|itp_primary, 
     itc_greatsword|itcf_carry_sword_back,
     1123 , weight(2.75)|difficulty(10)|spd_rtng(96) 
     | weapon_length(120)|swing_damage(42 , cut) | thrust_damage(29 ,  pierce),

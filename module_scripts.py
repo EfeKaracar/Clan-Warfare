@@ -51155,6 +51155,114 @@ scripts = [
     
     (troop_set_slot, chowski, player_death_music, "snd_ear_rape"),
     
+            # Soldier
+        (try_for_range, ":soldiers", soldiers_begin, soldiers_end),
+            (troop_set_slot, ":soldiers", player_knows_how_to_play, 1),
+        (try_end),
+        
+        # RATS
+        (troop_set_slot, "trp_swadian_recruit", player_skill_level, 100),
+        (troop_set_slot, "trp_swadian_militia", player_skill_level, 90),
+        (troop_set_slot, "trp_swadian_footman", player_skill_level, 85),
+        (troop_set_slot, "trp_swadian_infantry", player_skill_level, 75),
+        (troop_set_slot, "trp_swadian_sergeant", player_skill_level, 70),
+        (troop_set_slot, "trp_swadian_skirmisher", player_skill_level, 65),
+        (troop_set_slot, "trp_swadian_crossbowman", player_skill_level, 65),
+        (troop_set_slot, "trp_swadian_sharpshooter", player_skill_level, 70),
+        (troop_set_slot, "trp_swadian_man_at_arms", player_skill_level, 60),
+        (troop_set_slot, "trp_swadian_knight", player_skill_level, 50),
+        
+        # WK
+        (troop_set_slot, "trp_nord_recruit", player_skill_level, 100),
+        (troop_set_slot, "trp_PPKCLONE", player_skill_level, 25),
+        (troop_set_slot, "trp_nord_footman", player_skill_level, 80),
+        (troop_set_slot, "trp_nord_trained_footman", player_skill_level, 75),
+        (troop_set_slot, "trp_nord_warrior", player_skill_level, 70),
+        (troop_set_slot, "trp_nord_veteran", player_skill_level, 80),
+        (troop_set_slot, "trp_nord_champion", player_skill_level, 85),
+        (troop_set_slot, "trp_nord_huntsman", player_skill_level, 85),
+        (troop_set_slot, "trp_nord_archer", player_skill_level, 80),
+        (troop_set_slot, "trp_nord_veteran_archer", player_skill_level, 50),
+        
+        # RCC
+        (troop_set_slot, "trp_khergit_tribesman", player_skill_level, 100),
+        (troop_set_slot, "trp_khergit_skirmisher", player_skill_level, 95),
+        (troop_set_slot, "trp_khergit_horseman", player_skill_level, 90),
+        (troop_set_slot, "trp_khergit_horse_archer", player_skill_level, 85),
+        (troop_set_slot, "trp_khergit_veteran_horse_archer", player_skill_level, 80),
+        (troop_set_slot, "trp_battle_brother", player_skill_level, 75),
+        (troop_set_slot, "trp_bowling_ball", player_skill_level, 60),
+        (troop_set_slot, "trp_tin_can", player_skill_level, 50),
+        (troop_set_slot, "trp_abu_inf", player_skill_level, 90),
+        (troop_set_slot, "trp_dog_inf", player_skill_level, 90),
+        (troop_set_slot, "trp_eliteDog_inf", player_skill_level, 40),
+        (troop_set_slot, "trp_rooftopper", player_skill_level, 75),
+
+        # TK
+        (troop_set_slot, "trp_rhodok_tribesman", player_skill_level, 100),
+        (troop_set_slot, "trp_rhodok_spearman", player_skill_level, 96),
+        (troop_set_slot, "trp_veteran_hiltslasher", player_skill_level, 85),
+        (troop_set_slot, "trp_rhodok_trained_spearman", player_skill_level, 80),
+        (troop_set_slot, "trp_rhodok_veteran_spearman", player_skill_level, 75),
+        (troop_set_slot, "trp_rhodok_sergeant", player_skill_level, 70),
+        (troop_set_slot, "trp_rhodok_crossbowman", player_skill_level, 80),
+        (troop_set_slot, "trp_rhodok_trained_crossbowman", player_skill_level, 60),
+        (troop_set_slot, "trp_rhodok_veteran_crossbowman", player_skill_level, 85),
+        (troop_set_slot, "trp_rhodok_sharpshooter", player_skill_level, 80),
+        (troop_set_slot, "trp_bunga_elite", player_skill_level, 60),
+        # GK
+        (troop_set_slot, "trp_sarranid_recruit", player_skill_level, 100),
+        (troop_set_slot, "trp_sarranid_footman", player_skill_level, 90),
+        (troop_set_slot, "trp_sarranid_veteran_footman", player_skill_level, 80),
+        (troop_set_slot, "trp_sarranid_infantry", player_skill_level, 85),
+        (troop_set_slot, "trp_sarranid_guard", player_skill_level, 75),
+        (troop_set_slot, "trp_sarranid_skirmisher", player_skill_level, 85),
+        (troop_set_slot, "trp_sarranid_archer", player_skill_level, 70),
+        (troop_set_slot, "trp_sarranid_master_archer", player_skill_level, 55),
+        (troop_set_slot, "trp_sarranid_horseman", player_skill_level, 80),
+        (troop_set_slot, "trp_sarranid_mamluke", player_skill_level, 75),
+        (troop_set_slot, "trp_pubstar", player_skill_level, 60),
+        (troop_set_slot, "trp_godlike_pubstar", player_skill_level, 50),
+        (troop_set_slot, "trp_sarranid_mamluke", player_skill_level, 75),
+        # DOF
+        (troop_set_slot, "trp_loyal_noob", player_skill_level, 100),
+        (troop_set_slot, "trp_defender", player_skill_level, 95),
+        (troop_set_slot, "trp_veteran_defender", player_skill_level, 90),
+        (troop_set_slot, "trp_open_mapper", player_skill_level, 950),
+        (troop_set_slot, "trp_alejanbro_in_arms", player_skill_level, 86),
+        (troop_set_slot, "trp_disciple_of_erminas", player_skill_level, 80),
+        (troop_set_slot, "trp_javby_defender", player_skill_level, 80),
+        (troop_set_slot, "trp_javby_offender", player_skill_level, 80),
+        (troop_set_slot, "trp_eu_archer_recruit", player_skill_level, 75),
+        (troop_set_slot, "trp_eu_archer", player_skill_level, 65),
+        (troop_set_slot, "trp_eu_sniper", player_skill_level, 55),
+        (troop_set_slot, "trp_allied_gk_spammer", player_skill_level, 75),
+        (troop_set_slot, "trp_allied_smashmas_champion", player_skill_level, 50),
+
+        # AVALONIAN
+        (troop_set_slot, "trp_alliance_recruit", player_skill_level, 100),
+        (troop_set_slot, "trp_boar_spearman", player_skill_level, 95),
+        (troop_set_slot, "trp_boar_hoplite", player_skill_level, 90),
+        (troop_set_slot, "trp_roxhardian", player_skill_level, 85),
+        (troop_set_slot, "trp_awlpiker", player_skill_level, 80),
+        (troop_set_slot, "trp_avalonian_infantry", player_skill_level, 75),
+        (troop_set_slot, "trp_avalonian_crossbowman", player_skill_level, 75),
+        (troop_set_slot, "trp_tacoss_bowman", player_skill_level, 60),
+        (troop_set_slot, "trp_avalonian_swordsman", player_skill_level, 75),
+        (troop_set_slot, "trp_taco_knight", player_skill_level, 50),
+        # HB
+        (troop_set_slot, "trp_vaegir_recruit", player_skill_level, 100),
+        (troop_set_slot, "trp_vaegir_footman", player_skill_level, 90),
+        (troop_set_slot, "trp_vaegir_skirmisher", player_skill_level, 80),
+        (troop_set_slot, "trp_vaegir_archer", player_skill_level, 70),
+        (troop_set_slot, "trp_vaegir_marksman", player_skill_level, 65),
+        (troop_set_slot, "trp_vaegir_veteran", player_skill_level, 55),
+        (troop_set_slot, "trp_vaegir_infantry", player_skill_level, 45),
+        (troop_set_slot, "trp_vaegir_guard", player_skill_level, 85),
+        (troop_set_slot, "trp_vaegir_horseman", player_skill_level, 55),
+
+        
+    
     ]),
     
     ("faction_init", [
@@ -51330,6 +51438,15 @@ scripts = [
         # DOF
         (troop_set_slot, erminas, player_skill_level, 25),
         
+        
+        # Companions
+
+        
+        # Arena fighters
+        
+        # Clones
+        (troop_set_slot, "trp_rempicaClone", player_knows_how_to_play, 1),
+        (troop_set_slot, "trp_rempicaClone", player_skill_level, 1),
         
         # Raise skills, attr, prof and level by skill level
         (try_for_range, ":troops", heroes_begin, heroes_end),
@@ -51536,8 +51653,8 @@ scripts = [
     (troop_set_slot, "trp_knight_1_14", troop_class, class_inf),
     (troop_set_slot, "trp_knight_1_14", troop_faction, "fac_kingdom_1"),
     
-    (troop_set_slot, "trp_knight_1_15", troop_class, class_arc),
-    (troop_set_slot, "trp_knight_1_15", troop_faction, "fac_kingdom_1"),
+    # (troop_set_slot, "trp_knight_1_15", troop_class, class_arc),
+    # (troop_set_slot, "trp_knight_1_15", troop_faction, "fac_kingdom_1"),
     
     (troop_set_slot, "trp_knight_1_16", troop_class, class_arc),
     (troop_set_slot, "trp_knight_1_16", troop_faction, "fac_kingdom_1"),
@@ -52599,6 +52716,19 @@ scripts = [
         (try_end),        		
     ]),
 	
+    
+     #script_game_reset_player_party_name:
+  # This script is called from the game engine when the player name is changed.
+  # INPUT: none
+  # OUTPUT: none
+  ("game_reset_player_party_name",
+    [(try_begin),                             ##ADD THIS LINE
+     (party_slot_eq, 0, 1, 0),                ##ADD THIS LINE
+     (str_store_troop_name, s5, "trp_player"),
+     (party_set_name, "p_main_party", s5),
+     (try_end),                               ##ADD THIS LINE
+     ]),
+    
   ("freelancer_keep_field_loot",
    [
 	(get_player_agent_no, ":player"),

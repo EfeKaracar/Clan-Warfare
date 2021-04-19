@@ -629,9 +629,10 @@ script_event_player_returns_vacation = 627
 script_event_player_deserts = 628
 script_party_restore = 629
 script_get_desert_troops = 630
-script_freelancer_keep_field_loot = 631
-script_cf_freelancer_player_can_upgrade = 632
-script_freelancer_equip_troop = 633
-script_freelancer_unequip_troop = 634
+script_game_reset_player_party_name = 631
+script_freelancer_keep_field_loot = 632
+script_cf_freelancer_player_can_upgrade = 633
+script_freelancer_equip_troop = 634
+script_freelancer_unequip_troop = 635
 
 

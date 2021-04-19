@@ -58,3 +58,6 @@ prsnt_location_intro = 56
 prsnt_pure_white = 57
 prsnt_text_without_bg = 58
 prsnt_taragoth_lords_report = 59
+prsnt_killcount = 60
+prsnt_world_map = 61
+prsnt_set_party_name = 62

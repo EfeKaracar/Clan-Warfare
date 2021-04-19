@@ -3071,6 +3071,18 @@ game_menus = [
         (start_presentation, "prsnt_faction_troop_trees"),
         ]
         ),
+        
+        ("action_view_world_map",[],"View the world map.",
+        [
+        (start_presentation, "prsnt_world_map"),
+        ]
+        ),
+        
+        ("action_change_party_name",
+        [(troop_slot_ge, "trp_player", slot_troop_renown, 300)], #My opinion is that it should be renown-dependent...
+        "Change your party's name.",
+        [(start_presentation, "prsnt_set_party_name")]
+        ),
       
         ("camp_cheat_find_item",[], "Find an item...",
         [
@@ -10449,10 +10461,10 @@ game_menus = [
              (store_mod, ":mod", ":town_index_within_faction", 2),
              (try_begin),
                (eq, ":mod", 0),
-               (call_script, "script_set_items_for_tournament", 100, 0, 0, 0, 0, 40, 60, 0, "itm_arena_tunic_red", "itm_steppe_helmet_red"),
+               (call_script, "script_set_items_for_tournament", 100, 0, 100, 0, 0, 40, 60, 0, "itm_arena_tunic_red", "itm_steppe_helmet_red"),
              (else_try),
                (eq, ":mod", 1),
-               (call_script, "script_set_items_for_tournament", 100, 50, 25, 0, 0, 30, 50, 0, "itm_arena_tunic_red", "itm_steppe_helmet_red"),
+               (call_script, "script_set_items_for_tournament", 100, 50, 100, 0, 0, 30, 50, 0, "itm_arena_tunic_red", "itm_steppe_helmet_red"),
              (try_end),
            (else_try),
              (eq, ":town_original_faction", "fac_kingdom_4"),

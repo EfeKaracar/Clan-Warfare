@@ -130,6 +130,7 @@ new_players = (
 (eq, ":continue", 1),
         
 (get_player_agent_no, ":player"),
+(agent_get_team, ":player_team", ":player"),
 (agent_get_position, pos27, ":player"),
 (store_random_in_range, ":number", 1, 3),
 (try_for_range, ":loop", 0, ":number"),
@@ -138,6 +139,7 @@ new_players = (
     (position_move_y, pos27, ":dice"),
     (set_spawn_position, pos27),
     (spawn_agent, "trp_new_player"),
+    (agent_set_team, reg0, ":player_team"),
     (eq, ":loop", ":number"),
     (assign, ":loop", -1),
 (try_end),
@@ -211,9 +213,9 @@ corpsekicking = (
 (this_or_next|eq, ":cur_animation", "anim_kick_left_leg"),
 (eq, ":cur_animation", "anim_kick_right_leg"),
 (str_store_troop_name, s5, "$corpseTarget"),
-(call_script, "script_change_player_honor", -5),
-(call_script, "script_change_player_relation_with_troop", "$corpseTarget", -10),
-(add_xp_as_reward, 250),
+(call_script, "script_change_player_honor", -1),
+(call_script, "script_change_player_relation_with_troop", "$corpseTarget", -3),
+(add_xp_as_reward, 50),
 (assign, "$corpseTarget", -1),
 (display_message, "@You corpsekicked {s5}!", 0x00FFFF),
 
@@ -399,6 +401,7 @@ wk_appear = (
         (eq, ":continue", 1),
         
         (get_player_agent_no, ":player"),
+        (agent_get_team, ":player_team", ":player"),
         (agent_is_alive, ":player"),
         (agent_get_position, pos13, ":player"),
         (store_random_in_range, ":dice", -550, 550),
@@ -410,8 +413,7 @@ wk_appear = (
         (agent_force_rethink, reg0),
         (agent_clear_scripted_mode, reg0),
        
-        (store_random_in_range, ":team", 0, 2),
-        (agent_set_team, reg0, ":team"),
+        (agent_set_team, reg0, ":player_team"),
         (display_message, "@wK_PPK157 joined the server."),
         
         (assign, "$PPKSpawned", 1),
@@ -463,16 +465,15 @@ ti_after_mission_start, 0, 0, [
 (try_begin),
     (eq, ":dice", 0),
     (assign, "$what_to_spawn", 0),
-    (display_message, "@new player will spawn"),
-
+    # (display_message, "@new player will spawn"),
 (else_try),
     (eq, ":dice", 1),
     (assign, "$what_to_spawn", 1),
-    (display_message, "@remp will spawn"),
+    # (display_message, "@remp will spawn"),
 
 (else_try),
     (assign, "$what_to_spawn", 2),
-    (display_message, "@ppk will spawn"),
+    # (display_message, "@ppk will spawn"),
 (try_end),
 
     ])
@@ -541,6 +542,12 @@ common_anti_cheat_heal = (
 		]
  )
 
+
+kill_count = (
+0, 0, ti_once, [], 
+[
+(start_presentation, "prsnt_killcount")
+]) 
 
 common_anti_cheat_kill = (
 	0,0,0,
@@ -759,6 +766,360 @@ ti_on_agent_hit, 0, 0, [],
    ])
 
 
+##BEAN BEGIN - Deathcam
+common_init_deathcam = (
+   0, 0, ti_once,
+   [],
+   [
+        (assign, "$deathcam_on", 0),
+        (assign, "$deathcam_death_pos_x", 0),
+        (assign, "$deathcam_death_pos_y", 0),
+        (assign, "$deathcam_death_pos_z", 0),
+
+        (assign, "$deathcam_mouse_last_x", 5000),
+        (assign, "$deathcam_mouse_last_y", 3750),
+
+        (assign, "$deathcam_mouse_last_notmoved_x", 5000),
+        (assign, "$deathcam_mouse_last_notmoved_y", 3750),
+        (assign, "$deathcam_mouse_notmoved_x", 5000), #Center screen (10k fixed pos)
+        (assign, "$deathcam_mouse_notmoved_y", 3750),
+        (assign, "$deathcam_mouse_notmoved_counter", 0),
+
+        (assign, "$deathcam_total_rotx", 0),
+
+        (assign, "$deathcam_sensitivity_x", 400), #4:3 ratio may be best
+        (assign, "$deathcam_sensitivity_y", 300), #If modified, change values in common_move_deathcam
+
+        (assign, "$deathcam_prsnt_was_active", 0),
+
+        (assign, "$deathcam_keyboard_rotation_x", 0),
+        (assign, "$deathcam_keyboard_rotation_y", 0),
+        (assign, "$deathcam_flip_y_multiplier", 1),
+
+        (get_player_agent_no, ":player_agent"),
+        (agent_get_team, "$deathcam_player_team", ":player_agent"),
+   ]
+)
+
+common_start_deathcam = (
+    0, 1, ti_once, #1 second delay before the camera activates
+    [
+        (main_hero_fallen),
+        (eq, "$deathcam_on", 0),
+    ],
+    [
+        (set_fixed_point_multiplier, 10000),
+        (assign, "$deathcam_on", 1),
+
+        (display_message, "@You were defeated.", 0xFF0000),
+        (display_message, "@Rotate with the mouse. Move with standard keys."),
+        (display_message, "@Shift/Control for Up/Down. Space Bar to increase speed."),
+        (display_message, "@Numpad Plus/Minus to change sensitivity. Numpad to rotate."),
+        (display_message, "@Home to reset position. End to flip Y rotation"),
+
+        (mission_cam_get_position, pos1), #Death pos
+        (position_get_x, reg3, pos1),
+        (position_get_y, reg4, pos1),
+        (position_get_z, reg5, pos1),
+        (assign, "$deathcam_death_pos_x", reg3),
+        (assign, "$deathcam_death_pos_y", reg4),
+        (assign, "$deathcam_death_pos_z", reg5),
+        (position_get_rotation_around_z, ":rot_z", pos1),
+
+        (init_position, pos47),
+        (position_copy_origin, pos47, pos1), #Copy X,Y,Z pos
+        (position_rotate_z, pos47, ":rot_z"), #Copying X-Rotation is likely possible, but I haven't figured it out yet
+
+        (mission_cam_set_mode, 1, 0, 0), #Manual?
+
+        (mission_cam_set_position, pos47),
+
+        (team_give_order, "$deathcam_player_team", grc_everyone, mordr_charge),
+   ]
+)
+
+common_move_deathcam = (
+    0, 0, 0,
+    [
+        (eq, "$deathcam_on", 1),
+        (this_or_next|game_key_is_down, gk_move_forward),
+        (this_or_next|game_key_is_down, gk_move_backward),
+        (this_or_next|game_key_is_down, gk_move_left),
+        (this_or_next|game_key_is_down, gk_move_right),
+        (this_or_next|key_is_down, key_left_shift),
+        (this_or_next|key_is_down, key_left_control),
+        (this_or_next|key_is_down, key_numpad_minus),
+        (this_or_next|key_is_down, key_numpad_plus),
+        (this_or_next|key_clicked, key_home),
+        (key_clicked, key_end),
+    ],
+    [
+        (set_fixed_point_multiplier, 10000),
+        (mission_cam_get_position, pos47),
+
+        (try_begin),
+        (key_clicked, key_home),
+            (position_set_x, pos47, "$deathcam_death_pos_x"),
+            (position_set_y, pos47, "$deathcam_death_pos_y"),
+            (position_set_z, pos47, "$deathcam_death_pos_z"),
+        (try_end),
+
+        (assign, ":move_x", 0),
+        (assign, ":move_y", 0),
+        (assign, ":move_z", 0),
+
+        (try_begin),
+        (game_key_is_down, gk_move_forward),
+            (val_add, ":move_y", 10),
+        (try_end),
+        (try_begin),
+        (game_key_is_down, gk_move_backward),
+            (val_add, ":move_y", -10),
+        (try_end),
+
+        (try_begin),
+        (game_key_is_down, gk_move_right),
+            (val_add, ":move_x", 10),
+        (try_end),
+        (try_begin),
+        (game_key_is_down, gk_move_left),
+            (val_add, ":move_x", -10),
+        (try_end),
+
+        (try_begin),
+        (key_is_down, key_left_shift),
+            (val_add, ":move_z", 10),
+        (try_end),
+        (try_begin),
+        (key_is_down, key_left_control),
+            (val_add, ":move_z", -10),
+        (try_end),
+
+        (try_begin),
+        (key_is_down, key_space),
+            (val_mul, ":move_x", 4),
+            (val_mul, ":move_y", 4),
+            (val_mul, ":move_z", 2),
+        (try_end),
+
+        (try_begin),
+        (key_is_down, key_end),
+            (try_begin),
+            (eq, "$deathcam_flip_y_multiplier", 1),
+                (assign, "$deathcam_flip_y_multiplier", -1),
+                (display_message, "@Y-Rotation Inverted"),
+            (else_try),
+                (assign, "$deathcam_flip_y_multiplier", 1),
+                (display_message, "@Y-Rotation Normal"),
+            (try_end),
+        (try_end),
+
+        (position_move_x, pos47, ":move_x"),
+        (position_move_y, pos47, ":move_y"),
+        (position_move_z, pos47, ":move_z"),
+
+        (mission_cam_set_position, pos47),
+
+        (try_begin),
+        (key_is_down, key_numpad_minus),
+        (ge, "$deathcam_sensitivity_x", 4), #Negative check.
+        (ge, "$deathcam_sensitivity_y", 3),
+            (val_sub, "$deathcam_sensitivity_x", 4),
+            (val_sub, "$deathcam_sensitivity_y", 3),
+            (store_mod, reg6, "$deathcam_sensitivity_x", 100), #25% increments
+            (store_mod, reg7, "$deathcam_sensitivity_y", 75),
+            (try_begin),
+            (eq, reg6, 0),
+            (eq, reg7, 0),
+                (assign, reg8, "$deathcam_sensitivity_x"),
+                (assign, reg9, "$deathcam_sensitivity_y"),
+                (display_message, "@Sensitivity - 25% ({reg8}, {reg9})"),
+            (try_end),
+        (else_try),
+        (key_is_down, key_numpad_plus),
+            (val_add, "$deathcam_sensitivity_x", 4),
+            (val_add, "$deathcam_sensitivity_y", 3),
+            (store_mod, reg6, "$deathcam_sensitivity_x", 100), #25% increments
+            (store_mod, reg7, "$deathcam_sensitivity_y", 75),
+            (try_begin),
+            (eq, reg6, 0),
+            (eq, reg7, 0),
+                (assign, reg8, "$deathcam_sensitivity_x"),
+                (assign, reg9, "$deathcam_sensitivity_y"),
+                (display_message, "@Sensitivity + 25% ({reg8}, {reg9})"),
+            (try_end),
+        (try_end),
+   ]
+)
+
+common_rotate_deathcam = (
+    0, 0, 0,
+    [
+        (eq, "$deathcam_on", 1),
+    ],
+    [
+        (set_fixed_point_multiplier, 10000), #Extra Precision
+
+        (try_begin),
+        (this_or_next|is_presentation_active, "prsnt_battle"), #Opened (mouse must move)
+        (this_or_next|key_clicked, key_escape), #Menu
+        (this_or_next|key_clicked, key_q), #Notes, etc
+        (key_clicked, key_tab), #Retreat
+        (eq, "$deathcam_prsnt_was_active", 0),
+            (assign, "$deathcam_prsnt_was_active", 1),
+            (assign, "$deathcam_mouse_last_notmoved_x", "$deathcam_mouse_notmoved_x"),
+            (assign, "$deathcam_mouse_last_notmoved_y", "$deathcam_mouse_notmoved_y"),
+        (try_end),
+
+        (assign, ":continue", 0),
+
+        (try_begin),
+        (neg|is_presentation_active, "prsnt_battle"),
+            (mouse_get_position, pos1), #Get and set mouse position
+            (position_get_x, reg1, pos1),
+            (position_get_y, reg2, pos1),
+
+            (mission_cam_get_position, pos47),
+
+            (try_begin),
+            (neq, "$deathcam_prsnt_was_active", 1),
+                (try_begin), #Check not moved
+                (eq, reg1, "$deathcam_mouse_last_x"),
+                (eq, reg2, "$deathcam_mouse_last_y"),
+                (this_or_next|neq, reg1, "$deathcam_mouse_notmoved_x"),
+                (neq, reg2, "$deathcam_mouse_notmoved_y"),
+                    (val_add, "$deathcam_mouse_notmoved_counter", 1),
+                    (try_begin), #Notmoved for n cycles
+                    (ge, "$deathcam_mouse_notmoved_counter", 15),
+                        (assign, "$deathcam_mouse_notmoved_counter", 0),
+                        (assign, "$deathcam_mouse_notmoved_x", reg1),
+                        (assign, "$deathcam_mouse_notmoved_y", reg2),
+                    (try_end),
+                (else_try), #Has moved
+                    (assign, ":continue", 1),
+                    (assign, "$deathcam_mouse_notmoved_counter", 0),
+                (try_end),
+                (assign, "$deathcam_mouse_last_x", reg1), #Next cycle, this pos = last pos
+                (assign, "$deathcam_mouse_last_y", reg2),
+            (else_try), #prsnt was active
+                (try_begin),
+                (neq, reg1, "$deathcam_mouse_last_x"), #Is moving
+                (neq, reg2, "$deathcam_mouse_last_y"),
+                    (store_sub, ":delta_x2", reg1, "$deathcam_mouse_last_notmoved_x"), #Store pos difference
+                    (store_sub, ":delta_y2", reg2, "$deathcam_mouse_last_notmoved_y"),
+                (is_between, ":delta_x2", -10, 11), #when engine recenters mouse, there is a small gap
+                (is_between, ":delta_y2", -10, 11), #usually 5 pixels, but did 10 to be safe.
+                    (assign, "$deathcam_prsnt_was_active", 0),
+                    (assign, "$deathcam_mouse_notmoved_x", "$deathcam_mouse_last_notmoved_x"),
+                    (assign, "$deathcam_mouse_notmoved_y", "$deathcam_mouse_last_notmoved_y"),
+                (else_try),
+                    (assign, "$deathcam_mouse_notmoved_x", reg1),
+                    (assign, "$deathcam_mouse_notmoved_y", reg2),
+                (try_end),
+                    (assign, "$deathcam_mouse_last_x", reg1), #Next cycle, this pos = last pos
+                    (assign, "$deathcam_mouse_last_y", reg2),
+            (try_end),
+        (try_end),
+
+        (assign, ":delta_x", 0),
+        (assign, ":delta_y", 0),
+        (assign, ":rotating_horizontal", 0),
+        (assign, ":rotating_vertical", 0),
+
+        (try_begin),
+        (key_is_down, key_numpad_4),
+            (try_begin),
+            (ge, "$deathcam_keyboard_rotation_x", 0),
+                (assign, "$deathcam_keyboard_rotation_x", -20),
+            (try_end),
+            (val_add, "$deathcam_keyboard_rotation_x", -1),
+            (assign, ":continue", 2),
+            (assign, ":rotating_horizontal", -1),
+        (else_try),
+        (key_is_down, key_numpad_6),
+            (try_begin),
+            (le, "$deathcam_keyboard_rotation_x", 0),
+                (assign, "$deathcam_keyboard_rotation_x", 20),
+            (try_end),
+            (val_add, "$deathcam_keyboard_rotation_x", 1),
+            (assign, ":continue", 2),
+            (assign, ":rotating_horizontal", 1),
+        (else_try),
+            (assign, "$deathcam_keyboard_rotation_x", 0),
+            (assign, ":rotating_horizontal", 0),
+        (try_end),
+
+        (try_begin),
+        (key_is_down, key_numpad_8),
+            (try_begin),
+            (le, "$deathcam_keyboard_rotation_y", 0),
+                (assign, "$deathcam_keyboard_rotation_y", 15),
+            (try_end),
+            (val_add, "$deathcam_keyboard_rotation_y", 1),
+            (assign, ":continue", 2),
+            (assign, ":rotating_vertical", 1),
+        (else_try),
+        (this_or_next|key_is_down, key_numpad_2),
+        (key_is_down, key_numpad_5),
+            (try_begin),
+            (ge, "$deathcam_keyboard_rotation_y", 0),
+                (assign, "$deathcam_keyboard_rotation_y", -15),
+            (try_end),
+            (val_add, "$deathcam_keyboard_rotation_y", -1),
+            (assign, ":continue", 2),
+            (assign, ":rotating_vertical", -1),
+        (else_try),
+            (assign, "$deathcam_keyboard_rotation_y", 0),
+            (assign, ":rotating_vertical", 0),
+        (try_end),
+
+        (try_begin),
+        (eq, ":continue", 1),
+            (store_sub, ":delta_x", reg1, "$deathcam_mouse_notmoved_x"), #Store pos difference
+            (store_sub, ":delta_y", reg2, "$deathcam_mouse_notmoved_y"),
+        (else_try),
+        (eq, ":continue", 2),
+            (try_begin),
+            (neq, ":rotating_horizontal", 0),
+                (val_clamp, "$deathcam_keyboard_rotation_x", -80, 80),
+                (assign, ":delta_x", "$deathcam_keyboard_rotation_x"),
+            (try_end),
+
+            (try_begin),
+            (neq, ":rotating_vertical", 0),
+                (val_clamp, "$deathcam_keyboard_rotation_y", -45, 45),
+                (assign, ":delta_y", "$deathcam_keyboard_rotation_y"),
+            (try_end),
+        (try_end),
+
+        (try_begin),
+        (ge, ":continue", 1),
+            (val_mul, ":delta_x", "$deathcam_sensitivity_x"),
+            (val_mul, ":delta_y", "$deathcam_sensitivity_y"),
+            (val_mul, ":delta_y", "$deathcam_flip_y_multiplier"),
+
+            (val_clamp, ":delta_x", -80000, 80001), #8
+            (val_clamp, ":delta_y", -60000, 60001), #6
+
+            (store_mul, ":neg_rotx", "$deathcam_total_rotx", -1),
+            (position_rotate_x_floating, pos47, ":neg_rotx"), #Reset x axis to initial state
+
+            (position_rotate_y, pos47, 90), #Barrel roll by 90 degrees to inverse x/z axis
+            (position_rotate_x_floating, pos47, ":delta_x"), #Rotate simulated z axis, Horizontal
+            (position_rotate_y, pos47, -90), #Reverse
+
+            (position_rotate_x_floating, pos47, "$deathcam_total_rotx"), #Reverse
+
+            (position_rotate_x_floating, pos47, ":delta_y"), #Vertical
+            (val_add, "$deathcam_total_rotx", ":delta_y"), #Fix yaw
+            (mission_cam_set_position, pos47),
+        (try_end),
+    ]
+)
+
+
+##BEAN END - Deathcam
+
 advanced_ai = (
 0, 0, 0, [(eq, "$advanced_ai_open", 1),], [
     
@@ -786,7 +1147,9 @@ advanced_ai = (
         (troop_get_slot, ":chance_AI", ":troop_no", player_skill_level), # # Source troop skill level
     
 		(agent_get_team, ":agent_team", ":agents"),  # Get source team
-		
+		(team_get_movement_order, ":cur_team_order", ":agent_team"),
+        (eq, ":cur_team_order", mordr_charge, grc_everyone),
+        
 		(agent_ai_get_look_target, ":target", ":agents"),   # Get the current enemy of the source agent
 		(gt, ":target", 0),   # If there is a target
 		
@@ -1024,7 +1387,7 @@ advanced_ai = (
                 # (try_end),
                 # (eq, ":continue", 1),
                 
-                (agent_set_speed_modifier, ":agents", 50),
+                # (agent_set_speed_modifier, ":agents", 50),
                 
                 # (neq, ":pos_atkdir", ":source_attack_dir"),
                 (agent_force_rethink, ":agents"),
@@ -1176,7 +1539,7 @@ advanced_ai = (
                     # (troop_slot_ge, ":troop_no", this_guy_only_s, 1),
                     # (agent_set_scripted_destination, ":agents", pos13, 0, 1),
                 # (else_try), 
-                    (agent_set_speed_modifier, ":agents", 100),
+                    # (agent_set_speed_modifier, ":agents", 100),
                     # (agent_clear_scripted_mode, ":agents"),
                     (try_begin),
                         # (store_random_in_range, ":move_by_player", 0, 2),
@@ -1322,23 +1685,44 @@ ti_on_agent_killed_or_wounded, 2, 2, [], [
 
 ])
 
+duel_force_sword = (
+ti_on_item_wielded, 0, 0, [], 
+[
+(store_trigger_param_1, ":agent"),
+(store_trigger_param_2, ":item"),
+
+(neq, ":item", "itm_sword_two_handed_a"),
+(agent_equip_item, ":agent", "itm_sword_two_handed_a"),
+
+])
+
 duel_init = (
 ti_on_agent_spawn, 0, 0, [], [
 
 (store_trigger_param_1, ":agent"),
 
 (get_player_agent_no, ":player"),
-# (agent_get_item_slot, ":1", ":player"),
-# (agent_get_item_slot, ":2", ":player"),
-# (agent_get_item_slot, ":3", ":player"),
-# (agent_get_item_slot, ":4", ":player"),
-
-# (agent_unequip_item, ":player", ":1"),
-# (agent_unequip_item, ":player", ":2"),
-# (agent_unequip_item, ":player", ":3"),
-# (agent_unequip_item, ":player", ":4"),
+(try_begin),
+    (agent_get_item_slot, ":1", ":player"),    
+    (ge, ":1", 0),
+    (agent_unequip_item, ":player", ":1"),
+(else_try),
+    (agent_get_item_slot, ":2", ":player"),
+    (ge, ":2", 0),
+    (agent_unequip_item, ":player", ":2"),
+(else_try),
+    (agent_get_item_slot, ":3", ":player"),
+    (ge, ":3", 0),
+    (agent_unequip_item, ":player", ":3"),
+(else_try),
+    (agent_get_item_slot, ":4", ":player"),
+    (ge, ":4", 0),
+    (agent_unequip_item, ":player", ":4"),
+(try_end),
 
 (agent_equip_item, ":player", "itm_sword_two_handed_a"),
+(agent_set_wielded_item, ":player", "itm_sword_two_handed_a"),
+
 (agent_equip_item, ":player", "itm_red_tunic"),
 
 # (try_begin),
@@ -1356,20 +1740,30 @@ ti_on_agent_spawn, 0, 0, [], [
 (agent_get_troop_id, ":troop", ":agent"),
 # make sure they always use melee
 (team_give_order, ":team", grc_everyone, mordr_use_melee_weapons),
+(team_give_order, ":team", grc_everyone, mordr_charge),
 
 # remove shield if they have one
-# (agent_get_item_slot, ":1", ":agent"),
-# (agent_get_item_slot, ":2", ":agent"),
-# (agent_get_item_slot, ":3", ":agent"),
-# (agent_get_item_slot, ":4", ":agent"),
-
-# (agent_unequip_item, ":agent", ":1"),
-# (agent_unequip_item, ":agent", ":2"),
-# (agent_unequip_item, ":agent", ":3"),
-# (agent_unequip_item, ":agent", ":4"),
+(try_begin),
+    (agent_get_item_slot, ":1", ":agent"),    
+    (ge, ":1", 0),
+    (agent_unequip_item, ":agent", ":1"),
+(else_try),
+    (agent_get_item_slot, ":2", ":agent"),
+    (ge, ":2", 0),
+    (agent_unequip_item, ":agent", ":2"),
+(else_try),
+    (agent_get_item_slot, ":3", ":agent"),
+    (ge, ":3", 0),
+    (agent_unequip_item, ":agent", ":3"),
+(else_try),
+    (agent_get_item_slot, ":4", ":agent"),
+    (ge, ":4", 0),
+    (agent_unequip_item, ":agent", ":4"),
+(try_end),
 
 # all duels are going to be great sword
 (agent_equip_item, ":agent", "itm_sword_two_handed_a"),
+(agent_set_wielded_item, ":agent", "itm_sword_two_handed_a"),
 
 (try_begin),    
     (troop_slot_ge, ":troop", player_skill_level, 5),
@@ -2000,20 +2394,32 @@ common_battle_mission_start = (
     (call_script, "script_change_banners_and_chest"),
     ])
 
+#Efe
 common_battle_tab_press = (
-  ti_tab_pressed, 0, 0, [],
-  [
-    (try_begin),
-      (eq, "$g_battle_won", 1),
-      (call_script, "script_count_mission_casualties_from_agents"),
-      (finish_mission,0),
-    (else_try),
-      (call_script, "script_cf_check_enemies_nearby"),
-      (question_box,"str_do_you_want_to_retreat"),
-    (else_try),
-      (display_message,"str_can_not_retreat"),
-    (try_end),
-    ])
+    ti_tab_pressed, 0, 0, [],
+    [
+        (try_begin),
+        (eq, "$g_battle_won", 1),
+            (call_script, "script_count_mission_casualties_from_agents"),
+            (finish_mission, 0),
+      (else_try),
+        (eq, "$pin_player_fallen", 1),
+            (call_script, "script_simulate_retreat", 0, 0, 0),
+            (assign, "$g_battle_result", -1),
+            (set_mission_result, -1),
+            (call_script, "script_count_mission_casualties_from_agents"),
+            (finish_mission, 0),
+        (else_try),
+        (eq, "$deathcam_on", 1),
+            (question_box,"str_do_you_want_to_retreat"),
+        (else_try),
+            (call_script, "script_cf_check_enemies_nearby"),
+            (question_box,"str_do_you_want_to_retreat"),
+        (else_try),
+            (display_message,"str_can_not_retreat"),
+        (try_end),
+    ]
+)
 
 common_battle_init_banner = (
   ti_on_agent_spawn, 0, 0, [],
@@ -2239,14 +2645,15 @@ common_battle_check_friendly_kills = (
   [
     (call_script, "script_check_friendly_kills"),
     ])
-
+    
+    
 common_battle_check_victory_condition = (
   1, 60, ti_once,
   [
     (store_mission_timer_a,reg(1)),
     (ge,reg(1),10),
     (all_enemies_defeated, 5),
-    (neg|main_hero_fallen, 0),
+    #(neg|main_hero_fallen, 0),
     (set_mission_result,1),
     (display_message,"str_msg_battle_won"),
     (assign,"$g_battle_won",1),
@@ -2281,29 +2688,25 @@ common_siege_refill_ammo = (
     (try_end),
     ])
 
+#Efe
 common_siege_check_defeat_condition = (
-  1, 4, ti_once,
-  [
-    (main_hero_fallen)
+    1, 4, ti_once,
+    [
+        (main_hero_fallen),
+        (assign, ":pteam_alive", 0),
+        (try_for_agents, ":agent"), #Check players team is dead
+        (neq, ":pteam_alive", 1), #Break loop
+        (agent_is_ally, ":agent"),
+        (agent_is_alive, ":agent"),
+            (assign, ":pteam_alive", 1),
+        (try_end),
+        (eq, ":pteam_alive", 0),
     ],
-  [
-    (assign, "$pin_player_fallen", 1),
-    (get_player_agent_no, ":player_agent"),
-    (agent_get_team, ":agent_team", ":player_agent"),
-    (try_begin),
-      (neq, "$attacker_team", ":agent_team"),
-      (neq, "$attacker_team_2", ":agent_team"),
-      (str_store_string, s5, "str_siege_continues"),
-      (call_script, "script_simulate_retreat", 8, 15, 0),
-    (else_try),
-      (str_store_string, s5, "str_retreat"),
-      (call_script, "script_simulate_retreat", 5, 20, 0),
-    (try_end),
-    (assign, "$g_battle_result", -1),
-    (set_mission_result,-1),
-    (call_script, "script_count_mission_casualties_from_agents"),
-    (finish_mission,0),
-    ])
+    [
+        (assign, "$pin_player_fallen", 1),
+        (display_message, "@Press TAB to end the battle."),
+    ]
+)
 
 common_battle_order_panel = (
   0, 0, 0, [],
@@ -3684,6 +4087,10 @@ mission_templates = [
      ],
     [
         #Efe
+        common_init_deathcam,
+        common_start_deathcam,
+        common_move_deathcam,
+        common_rotate_deathcam,
         advanced_ai,   
         troop_ratio,
         lord_hp,
@@ -3854,15 +4261,22 @@ mission_templates = [
       common_battle_check_victory_condition,
       common_battle_victory_display,
 
-      (1, 4, ti_once, [(main_hero_fallen)],
-          [
-              (assign, "$pin_player_fallen", 1),
-              (str_store_string, s5, "str_retreat"),
-              (call_script, "script_simulate_retreat", 10, 20, 1),
-              (assign, "$g_battle_result", -1),
-              (set_mission_result,-1),
-              (call_script, "script_count_mission_casualties_from_agents"),
-              (finish_mission,0)]),
+     (1, 4, ti_once,
+        [
+            (main_hero_fallen),
+            (assign, ":pteam_alive", 0),
+            (try_for_agents, ":agent"), #Check players team is dead
+            (neq, ":pteam_alive", 1), #Break loop
+            (agent_is_ally, ":agent"),
+            (agent_is_alive, ":agent"),
+                (assign, ":pteam_alive", 1),
+            (try_end),
+            (eq, ":pteam_alive", 0),
+        ],
+        [
+            (assign, "$pin_player_fallen", 1),
+            (display_message, "@Press TAB to end the battle."),
+        ]),
 
       common_battle_inventory,
 
@@ -9162,7 +9576,10 @@ mission_templates = [
 
       (ti_before_mission_start, 0, 0, [],
        [
-         (scene_set_day_time, 15),
+         (scene_set_day_time, 15),          
+         #Efe
+        (call_script, "script_mod_init"),
+        
          ]),
 
       common_battle_init_banner,
@@ -9171,6 +9588,8 @@ mission_templates = [
         [
           (assign, "$g_battle_result", 0),
           (call_script, "script_combat_music_set_situation_with_culture"),
+          
+
          ]),
 
       common_music_situation_update,
@@ -17586,7 +18005,7 @@ mission_templates = [
     display_agent_labels,
     lord_hp,
     death_music,
-    battle_initialization,
+    # battle_initialization,
     corpsekicking,
     corpsekicking_enable,
     looting_artifacts,
@@ -17600,6 +18019,7 @@ mission_templates = [
     common_anti_cheat_kill,
     clone_me,
     dismemberment_mod_decap,
+    duel_force_sword,
     
     # #Efe
     # (ti_on_agent_spawn, 0, 0, [], [
