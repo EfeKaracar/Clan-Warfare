@@ -1692,7 +1692,10 @@ ti_on_item_wielded, 0, 0, [],
 (store_trigger_param_2, ":item"),
 
 (neq, ":item", "itm_sword_two_handed_a"),
+(agent_set_wielded_item, ":agent", -1),
 (agent_equip_item, ":agent", "itm_sword_two_handed_a"),
+(agent_set_wielded_item, ":agent", "itm_sword_two_handed_a"),
+(display_message, "@You can only use the two handed sword in the duel."),
 
 ])
 

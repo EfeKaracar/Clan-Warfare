@@ -34602,7 +34602,7 @@ scripts = [
             (try_for_range, ":slot_addition", 0, "$number_of_npc_slots"),
                 (store_add, ":slot", ":slot_addition", slot_troop_intro),
 
-                (store_mul, ":string_addition", ":slot_addition", 16),
+                (store_mul, ":string_addition", ":slot_addition", 30),
                 (store_add, ":string", "str_npc1_intro", ":string_addition"), 
                 (val_add, ":string", ":npc"),
                 (val_sub, ":string", companions_begin),
