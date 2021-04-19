@@ -694,11 +694,11 @@ troops = [
    str_18 | agi_18 | int_4 | cha_4|level(22),wp_one_handed (200) | wp_two_handed (60) | wp_polearm (60) | wp_archery (70) | wp_crossbow (60) | wp_throwing (270),knows_ironflesh_4|knows_power_strike_5|knows_power_throw_7|knows_power_draw_1|knows_athletics_5,nord_face_young_1, nord_face_old_2],
   ["nord_archer","Sacrificial Lamb","Sacrificial Lambs", tf_guarantee_ranged|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_kingdom_4,
    [itm_arrows,itm_one_handed_war_axe_a,itm_nomad_bow,itm_padded_leather,itm_leather_jerkin,itm_padded_leather,itm_leather_boots,itm_nasal_helmet,itm_nordic_archer_helmet,itm_leather_cap],
-   str_12 | agi_9 | int_4 | cha_4|level(17),wp_one_handed (120) | wp_two_handed (80) | wp_polearm (80) | wp_archery (200) | wp_crossbow (80) | wp_throwing (80),knows_ironflesh_2|knows_power_draw_3|knows_power_strike_1|knows_athletics_5,nord_face_young_1, nord_face_old_2],
+   str_12 | agi_9 | int_4 | cha_4|level(17),wp_one_handed (120) | wp_two_handed (80) | wp_polearm (80) | wp_archery (200) | wp_crossbow (80) | wp_throwing (80),knows_ironflesh_2|knows_power_draw_3|knows_power_strike_1|knows_athletics_3,nord_face_young_1, nord_face_old_2],
   ["nord_veteran_archer","Arrow Circle God","Arrow Circle Gods",tf_guarantee_ranged|tf_guarantee_helmet|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_kingdom_4,
    [itm_bodkin_arrows,itm_bodkin_arrows, itm_mail_boots, itm_guard_helmet, itm_lamellar_vest, itm_lamellar_gauntlets, itm_leather_gloves,
    itm_war_bow, itm_strong_bow, itm_military_pick, itm_sword_viking_3],
-   str_18 | agi_15 | int_4 | cha_4|level(28),wp_one_handed (170) | wp_two_handed (95) | wp_polearm (95) | wp_archery (320) | wp_crossbow (95) | wp_throwing (95),knows_power_strike_4|knows_ironflesh_4|knows_power_draw_8|knows_athletics_7,nord_face_middle_1, nord_face_older_2],
+   str_18 | agi_15 | int_4 | cha_4|level(28),wp_one_handed (170) | wp_two_handed (95) | wp_polearm (95) | wp_archery (280) | wp_crossbow (95) | wp_throwing (95),knows_power_strike_3|knows_ironflesh_4|knows_power_draw_7|knows_athletics_4,nord_face_middle_1, nord_face_older_2],
   
 
 
