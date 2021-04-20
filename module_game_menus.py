@@ -14742,7 +14742,7 @@ game_menus = [
 
 
     ("duel_menu",0,
-   "{s1}{s2}",
+   "{s1}{s2}^Skill level: {reg23}",
    "none",
    [
     (str_clear, s2),  (str_clear, s3), (str_clear, s5), (str_clear, s6), (str_clear, s7),
@@ -14768,6 +14768,9 @@ game_menus = [
 	(else_try),
 		(str_store_string, s2, "@^^^^Dueling with your own troops will not count towards your dueling statistics."),
 	(try_end),
+    
+    (troop_get_slot, reg23, "$g_talk_troop", player_skill_level),
+    
 
     ],
     [

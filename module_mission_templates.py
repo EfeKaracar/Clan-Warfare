@@ -749,7 +749,7 @@ ti_on_agent_hit, 0, 0, [],
 
 		(agent_get_troop_id, ":victim_troop", ":victim_agent"),
 		(str_store_troop_name, s1, ":victim_troop"),
-
+        (add_xp_as_reward, 10),
 	  
 	  ### Colour check (friend or foe?)
 	  (get_player_agent_no, ":my_agent"),
@@ -1580,8 +1580,6 @@ advanced_ai = (
              # (try_end),
         # (try_end),
         
-        
-        
         # Cavalry
         # Bump-lance
         
@@ -1589,24 +1587,24 @@ advanced_ai = (
         # Leg shot
         
         # AI kick
-        (try_begin),   
-            (le, ":dist", 80),
+        # (try_begin),  
+            # (neq, ":source_animation", "anim_prepare_kick_0"),
             # (store_random_in_range, ":dice_kick", 0, 100),
             # (eq, ":dice_kick", 50),
-            (eq, ":timer", 30),
-            (neq, ":source_animation", "anim_prepare_kick_0"),
-            (agent_set_attack_action, ":agents", -2, -2),
-            (agent_set_attack_action, ":target", -2, -2),
-            (agent_set_defend_action, ":agents", -2, -2),
-            (agent_set_defend_action, ":target", -2, -2),
-            (agent_set_animation, ":agents", "anim_prepare_kick_0"),
-            (agent_deliver_damage_to_agent, ":agents", ":target", 3),
-            (agent_set_animation, ":target", -1),
-            (agent_set_animation, ":target", "anim_strike3_abdomen_front"), # Get Kicked
-            (store_random_in_range, ":random_dir", 0, 3), # store direction
-            (agent_set_attack_action, ":agents", ":random_dir", 0), # attack
-            (display_message, "@Agent kicks."),
-        (try_end),
+            # (le, ":dist", 80),
+            # (eq, ":timer", 30),
+            # (agent_set_attack_action, ":agents", -2, -2),
+            # (agent_set_attack_action, ":target", -2, -2),
+            # (agent_set_defend_action, ":agents", -2, -2),
+            # (agent_set_defend_action, ":target", -2, -2),
+            # (agent_set_animation, ":agents", "anim_prepare_kick_0"),
+            # (agent_deliver_damage_to_agent, ":agents", ":target", 3),
+            # (agent_set_animation, ":target", -1),
+            # (agent_set_animation, ":target", "anim_strike3_abdomen_front"), # Get Kicked
+            # (store_random_in_range, ":random_dir", 0, 3), # store direction
+            # (agent_set_attack_action, ":agents", ":random_dir", 0), # attack
+            # (display_message, "@Agent kicks."),
+        # (try_end),
         # AI kicks over jumps
         (try_begin),    
             (le, ":dist", 200),
@@ -1699,6 +1697,8 @@ ti_on_item_wielded, 0, 0, [],
 
 ])
 
+
+
 duel_init = (
 ti_on_agent_spawn, 0, 0, [], [
 
@@ -1784,6 +1784,8 @@ ti_on_agent_spawn, 0, 0, [], [
 (agent_set_slot, ":agent", play_passive, 0),
 
 ])
+
+# EFE END
 
     
 multiplayer_server_check_belfry_movement = (
@@ -4096,6 +4098,7 @@ mission_templates = [
         common_rotate_deathcam,
         advanced_ai,   
         troop_ratio,
+        first_blood,
         lord_hp,
         wk_appear,
         death_music,
@@ -18094,7 +18097,10 @@ mission_templates = [
 		(display_message, "@You've won a total number of {reg2} duels"),
 
         #Efe
-        (call_script, "script_duel_quest_process"),
+        (try_begin),
+            (neg|troop_slot_ge, "$g_talk_troop", slot_troop_duel_won, 0),
+            (call_script, "script_duel_quest_process"),
+        (try_end),
         
 	(try_end),
     (finish_mission),

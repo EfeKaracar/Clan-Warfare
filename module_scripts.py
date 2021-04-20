@@ -51155,6 +51155,8 @@ scripts = [
     
     (troop_set_slot, chowski, player_death_music, "snd_ear_rape"),
     
+    
+        
             # Soldier
         (try_for_range, ":soldiers", soldiers_begin, soldiers_end),
             (troop_set_slot, ":soldiers", player_knows_how_to_play, 1),
@@ -51440,9 +51442,16 @@ scripts = [
         
         
         # Companions
-
+        (try_for_range, ":companions", companions_begin, companions_end),
+            (troop_set_slot, ":companions", player_knows_how_to_play, 1),
+            (troop_set_slot, ":companions", player_skill_level, 3),
+        (try_end),
         
         # Arena fighters
+        (try_for_range, ":arena_fighters", "trp_arena_training_fighter_1", "trp_cattle"),
+            (troop_set_slot, ":arena_fighters", player_knows_how_to_play, 1),
+            (troop_set_slot, ":arena_fighters", player_skill_level, 100),
+        (try_end),
         
         # Clones
         (troop_set_slot, "trp_rempicaClone", player_knows_how_to_play, 1),
