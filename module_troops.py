@@ -1218,10 +1218,10 @@ troops = [
    str_18|agi_12|int_12|cha_7|level(17),wp(220),knows_tracker_npc|
    knows_ironflesh_5|knows_power_strike_5|knows_athletics_5|knows_riding_5|knows_shield_3|knows_weapon_master_5, #skills 2/3 player at that level
    0x00000000100c11823a046c49f288f23a00000000001db5000000000000000000],
-  ["npc2","Zaffa","Zaffa", tf_hero|tf_unmoveable_in_party_window, 0,reserved, fac_commoners,[itm_linen_tunic,itm_hide_boots,itm_club],
+  ["npc2","Aura","Aura", tf_female|tf_hero|tf_unmoveable_in_party_window, 0,reserved, fac_commoners,[itm_linen_tunic,itm_hide_boots,itm_club],
    str_12|agi_10|int_14|cha_11|level(7),wp(140),knows_merchant_npc|
    knows_trade_3|knows_weapon_master_2|knows_ironflesh_1|knows_wound_treatment_1|knows_power_strike_1|knows_athletics_2|knows_first_aid_1|knows_persuasion_4|knows_engineer_3|knows_leadership_1,
-   0x000000019d004001570b893712c8d28d00000000001dc8990000000000000000],
+   0x00000001bf0000062462ada29cc648cc00000000001e48cd0000000000000000],
   ["npc3","Easter Cow","Easter Cow",tf_hero|tf_unmoveable_in_party_window, 0, reserved, fac_commoners,[itm_leather_jerkin, itm_leather_gloves,itm_hide_boots, itm_hunter],
    str_18|agi_15|int_8|cha_8|level(17),wp(220),knows_merchant_npc|
    knows_trainer_2|knows_riding_5|knows_shield_3|knows_weapon_master_5|knows_power_strike_5|knows_athletics_2|knows_ironflesh_5,
@@ -1339,7 +1339,7 @@ troops = [
 
 
 #governers olgrel rasevas                                                                        Horse          Bodywear                Footwear_in                     Footwear_out                    Armor                       Weapon                  Shield                  Headwaer
-    ["kingdom_1_lord",  "Emperor Roberta",  "Roberta",  tf_hero, 0,reserved,  fac_kingdom_1,[itm_charger,   itm_rich_outfit,        itm_blue_hose,                  itm_plate_boots,               itm_plate_armor, itm_gauntlets,    itm_bastard_sword_b,      itm_tab_shield_heater_cav_b,       itm_great_helmet],          knight_attrib_5,wp(220),knight_skills_5|knows_trainer_5, 0x0000000f45041105241acd2b5a66a86900000000001e98310000000000000000,swadian_face_older_2],
+    ["kingdom_1_lord",  "Emperor Roberta",  "Roberta",  tf_female|tf_hero, 0,reserved,  fac_kingdom_1,[itm_charger,   itm_rich_outfit,        itm_blue_hose,                  itm_plate_boots,               itm_plate_armor, itm_gauntlets,    itm_bastard_sword_b,      itm_tab_shield_heater_cav_b,       itm_great_helmet],          knight_attrib_5,wp(220),knight_skills_5|knows_trainer_5, 0x00000000d50000030fc0038e000381c700000000001f80380000000000000000,0x00000000d50000030fc0038e000381c700000000001f80380000000000000000],
     ["kingdom_2_lord",  "King Vahaemar",  "Vahaemar",  tf_hero, 0,reserved,  fac_kingdom_2,[itm_hunter,    itm_courtly_outfit,      itm_leather_boots,              itm_plate_boots,              itm_heraldic_mail_with_surcoat, itm_gauntlets,      itm_military_pick,      itm_tab_shield_kite_cav_b,      itm_vaegir_mask],    knight_attrib_5,wp(220),knight_skills_5|knows_trainer_4, 0x0000000ec50001400a2269f919dee11700000000001cc57d0000000000000000, vaegir_face_old_2],
     ["kingdom_3_lord",  "Captain Edwards",  "Edwards",  tf_hero, 0,reserved,  fac_kingdom_3,[itm_courser,   itm_nomad_robe,             itm_leather_boots,              itm_splinted_greaves,           itm_khergit_guard_armor,  itm_lamellar_gauntlets,       itm_sword_khergit_3,              itm_tab_shield_small_round_c,       itm_guard_helmet],      knight_attrib_5,wp(220),knight_skills_5|knows_trainer_6, 0x0000000cee0051cc44be2d14d370c65c00000000001ed6df0000000000000000,khergit_face_old_2],
     ["kingdom_4_lord",  "Captain WilySly",  "WilySly",  tf_hero, 0,reserved,  fac_kingdom_4,[itm_hunter,    itm_nobleman_outfit,    itm_leather_boots,              itm_mail_boots,                 itm_cuir_bouilli,  itm_gauntlets,    itm_great_axe,           itm_tab_shield_round_e,    itm_nordic_helmet],            knight_attrib_5,wp(220),knight_skills_5|knows_trainer_4, 0x0000000e2c0c028a068e8c18557b12a500000000001c0fe80000000000000000, nord_face_older_2],
