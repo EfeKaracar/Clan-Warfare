@@ -1859,8 +1859,8 @@ dialogs = [
   [anyone,"do_member_trade", [], "Anything else?", "member_talk",[]],
     
     #Efe
-    [anyone|plyr,"member_talk",[],
-     "I would like to challenge you to a friendly duel.", "lord_question_duel",[]],
+    # [anyone|plyr,"member_talk",[],
+     # "I would like to challenge you to a friendly duel.", "lord_question_duel",[]],
 				
 	
   [anyone|plyr,"member_talk", [], "What can you tell me about your skills?", "view_member_char_requested",[]],

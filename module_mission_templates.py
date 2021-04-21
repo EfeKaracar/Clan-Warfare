@@ -1127,7 +1127,7 @@ advanced_ai = (
     (agent_is_active, ":player"),
     (agent_is_alive, ":player"),
     
-    (store_mission_timer_a, ":timer"),
+    # (store_mission_timer_a, ":timer"),
     (store_mission_timer_b, ":timer_b"),
     # (store_mission_timer_c, ":timer_c"),
     # (store_mission_timer_a_msec, ":timer_mili"),
@@ -1178,7 +1178,7 @@ advanced_ai = (
         (agent_get_horse, ":horse", ":agents"),
         (eq, ":horse", -1), # no horse
         
-        (agent_get_animation, ":source_animation", ":agents"),
+        # (agent_get_animation, ":source_animation", ":agents"),
         (agent_get_animation, ":target_animation", ":target"),
         
         (agent_get_bone_position, pos55, ":agents", hb_foot_l, 1),

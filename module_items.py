@@ -1336,8 +1336,8 @@ items = [
     ["kiss_axe", "Balion KissMyAxe's AxeKissers", [("throwing_axe_a",0)],
     itp_type_thrown |itp_primary,
     itcf_throw_axe,
-    490, weight(5)|difficulty(3)|spd_rtng(78) | shoot_speed(18) | 
-    thrust_damage(39,cut)|max_ammo(8)|weapon_length(53),
+    490, weight(5)|difficulty(3)|spd_rtng(58) | shoot_speed(18) | 
+    thrust_damage(39,cut)|max_ammo(13)|weapon_length(53),
     imodbits_thrown_minus_heavy ],
 
     ["danate_helmet", "OE Danate's Legacy of Akaria", [("great_helmet_new",0)], 
@@ -1358,22 +1358,25 @@ items = [
     horse_speed(20)|horse_maneuver(41)|horse_charge(28)|horse_scale(110),
     imodbits_horse_basic|imodbit_champion],
 
-    ["oddle_axe", "OE Oodle's Mayhem", [("one_handed_war_axe_a",0)], itp_type_one_handed_wpn|itp_merchandise| itp_primary|itp_secondary|itp_bonus_against_shield|itp_wooden_parry, itc_scimitar|itcf_carry_axe_left_hip,
-    87 , weight(1.5)|difficulty(9)|spd_rtng(98) | weapon_length(71)|swing_damage(32 , cut) | thrust_damage(0 ,  pierce),imodbits_axe ],
+    ["oddle_axe", "OE Oodle's Mayhem", [("one_handed_war_axe_a",0)],
+    itp_type_one_handed_wpn|itp_merchandise| itp_primary|itp_secondary|
+    itp_bonus_against_shield|itp_wooden_parry, itc_scimitar|itcf_carry_axe_left_hip,
+    87 , weight(1.5)|difficulty(9)|spd_rtng(110) | weapon_length(71)|swing_damage(42
+    , cut) | thrust_damage(0 ,  pierce),imodbits_axe ],
 
     ["derpy_carver", "GK Derpy Hoove's Carver", [("long_axe_b",0)], 
     itp_type_polearm| itp_two_handed|itp_primary|itp_bonus_against_shield|
     itp_wooden_parry|itp_unbalanced, 
     itc_staff|itcf_carry_axe_back,
     510 , weight(5.0)|difficulty(12)|spd_rtng(102) | weapon_length(125)|
-    swing_damage(60 , cut) | thrust_damage(28 ,  blunt),imodbits_axe ],
+    swing_damage(60 , cut) | thrust_damage(38 ,  blunt),imodbits_axe ],
 
     ["pierce_spear", "Wappaw Pierce's Piercer", [("spear_a_3m",0)], 
     itp_type_polearm| 
     itp_cant_use_on_horseback|itp_primary|itp_penalty_with_shield|itp_wooden_parry|
     itp_two_handed, itc_cutting_spear,
-    125 , weight(3.0)|difficulty(0)|spd_rtng(95) | weapon_length(245)
-    |swing_damage(16 , blunt) | thrust_damage(36 ,  pierce),imodbits_polearm ],
+    125 , weight(3.0)|difficulty(0)|spd_rtng(125) | weapon_length(245)
+    |swing_damage(26 , blunt) | thrust_damage(46 ,  pierce),imodbits_polearm ],
 
     ["dave_hammer", "GK Deaf Blind Dave's Banhammer", 
     [("pole_hammer",0)], itp_type_polearm|itp_offset_lance|
@@ -1385,19 +1388,19 @@ items = [
     ["jeff_crossbow", "tK Jeffrey's Equalizer",  [("crossbow_a",0)], 
     itp_type_crossbow |itp_primary|itp_two_handed|
     itp_cant_reload_on_horseback ,itcf_shoot_crossbow|itcf_carry_crossbow_back, 
-    182 , weight(3)|difficulty(8)|spd_rtng(43) | shoot_speed(66) |
+    182 , weight(3)|difficulty(8)|spd_rtng(43) | shoot_speed(106) |
     thrust_damage(49,pierce)|max_ammo(1),imodbits_crossbow ],
 
     ["magerick_armor", "OE Magerick's Cuirass ", [("full_plate_armor",0)],
      itp_type_body_armor  |itp_covers_legs ,0,
-    6553 , weight(27)|abundance(100)|head_armor(0)|body_armor(55)|
+    6553 , weight(12)|abundance(100)|head_armor(0)|body_armor(65)|
     leg_armor(17)|difficulty(9) ,imodbits_plate ],
 
     ["fred_sword", "No Feint Fred's Feinter", [("sword_two_handed_a",0)], 
     itp_type_two_handed_wpn|itp_two_handed|itp_primary, 
     itc_greatsword|itcf_carry_sword_back,
-    1123 , weight(2.75)|difficulty(10)|spd_rtng(96) | 
-    weapon_length(120)|swing_damage(42 , cut) | thrust_damage(29 ,  
+    1123 , weight(2.75)|difficulty(10)|spd_rtng(120) | 
+    weapon_length(120)|swing_damage(22 , cut) | thrust_damage(30 ,  
     pierce),imodbits_sword_high ],
 
     ["aporta_lance", "tK Aporta's Patience", [("heavy_lance",0)], 
@@ -1410,7 +1413,7 @@ items = [
     itp_type_two_handed_wpn|itp_two_handed|itp_primary, 
     itc_greatsword|itcf_carry_sword_back,
     1123 , weight(2.75)|difficulty(10)|spd_rtng(96) | 
-    weapon_length(120)|swing_damage(42 , cut) | thrust_damage(29 ,  
+    weapon_length(120)|swing_damage(15 , cut) | thrust_damage(51 ,  
     pierce),imodbits_sword_high ],
 
     ["rob_armor", "RaTs Roberta's Rat Hide", [("nobleman_outf",0)], 
@@ -1422,20 +1425,20 @@ items = [
     ["lagstro_bow","wK Lagstro's Longbow", [("long_bow",0),("long_bow_carry",
     ixmesh_carry)], itp_type_bow |itp_primary|itp_two_handed 
     ,itcf_shoot_bow|itcf_carry_bow_back, 
-    145 , weight(1.75)|difficulty(3)|spd_rtng(79) | shoot_speed(56) | 
-    thrust_damage(22 ,  pierce),imodbits_bow ],
+    145 , weight(1.75)|difficulty(6)|spd_rtng(79) | shoot_speed(56) | 
+    thrust_damage(35 ,  pierce),imodbits_bow ],
 
     ["delion_quiver","GK Delion's Quiver", [("arrow",0),("flying_missile",
     ixmesh_flying_ammo),("quiver", ixmesh_carry)], itp_type_arrows|
     itp_default_ammo, itcf_carry_quiver_back, 
     72,weight(3)|abundance(160)|weapon_length(95)|
-    thrust_damage(1,pierce)|max_ammo(30),imodbits_missile],
+    thrust_damage(1,pierce)|max_ammo(60),imodbits_missile],
  
     ["sparhawk_quiver","GK Sparhawk's Quiver", [("arrow",0),("flying_missile",
     ixmesh_flying_ammo),("quiver", ixmesh_carry)], itp_type_arrows
     |itp_default_ammo, itcf_carry_quiver_back, 
     72,weight(3)|abundance(160)|weapon_length(95)|
-    thrust_damage(1,pierce)|max_ammo(30),imodbits_missile],
+    thrust_damage(1,pierce)|max_ammo(60),imodbits_missile],
 
     ["zacty_boots","Wappaw Zacty's Shield-Splitters", 
     [("bolt",0),("flying_missile",
@@ -1444,19 +1447,19 @@ items = [
     itp_type_bolts|itp_default_ammo|
     itp_can_penetrate_shield, itcf_carry_quiver_right_vertical, 
     64,weight(2.25)|abundance(90)|weapon_length(63)
-    |thrust_damage(1,pierce)|max_ammo(29),imodbits_missile],
+    |thrust_damage(7,pierce)|max_ammo(39),imodbits_missile],
 
 
     ["calamity_lance", "wK Calamity's The Godfather", [("heavy_lance",0)], 
     itp_couchable|itp_type_polearm| itp_primary|
     itp_penalty_with_shield|itp_wooden_parry, itc_greatlance, 
-    410 , weight(5)|difficulty(11)|spd_rtng(55) | weapon_length(240)
+    410 , weight(5)|difficulty(11)|spd_rtng(78) | weapon_length(240)
     |swing_damage(0 , cut) | thrust_damage(21 ,  pierce),imodbits_polearm ],
 
     ["heat_horse","tK Heat's Heiffer", [("hunting_horse",0),("hunting_horse",
     imodbits_horse_good)], itp_type_horse, 0, 
-    810,abundance(60)|hit_points(160)|body_armor(18)|difficulty(3)
-    |horse_speed(43)|horse_maneuver(44)|horse_charge(24)|horse_scale(108)
+    810,abundance(60)|hit_points(190)|body_armor(22)|difficulty(3)
+    |horse_speed(53)|horse_maneuver(54)|horse_charge(24)|horse_scale(108)
     ,imodbits_horse_basic|imodbit_champion],
  
     ["gwaebloom_item","GK Gwaebloom's Mapmaking Guild Membership", 
@@ -1483,9 +1486,15 @@ items = [
     [("book_c",0)], itp_type_book, 0, 3500,weight(2)|abundance(100),
     imodbits_none], 
     
-    ["edward_carrot","RCC Edward's Carrot", 
+    ["hani_item","OE Hani's Silk Roads", 
     [("book_c",0)], itp_type_book, 0, 3500,weight(2)|abundance(100),
     imodbits_none], 
+    
+    ["edward_carrot","RCC Edward's Carrot", 
+    [("bread_a",0)], 
+    itp_type_goods|itp_consumable|itp_food, 0, 
+    50,weight(30)|abundance(110)|food_quality(40)|max_ammo(50),imodbits_none],
+ 
     
     ["grimsight_matchmaker","OE Grimsight's Matchmaker", 
     [("book_c",0)], itp_type_book, 0, 3500,weight(2)|abundance(100),
@@ -1509,7 +1518,22 @@ items = [
     )]
     ],
     
-    ["artifacts_end","Brightfyre Vahaemar's Horn", 
+    
+    ["fisherman_jav",  "KoA Fisherman's Parthian Javelins", 
+    [("javelin",0),("javelins_quiver_new", ixmesh_carry)], 
+    itp_type_thrown |itp_primary|itp_next_item_as_melee ,
+    itcf_throw_javelin|itcf_carry_quiver_back|itcf_show_holster_when_drawn, 
+    300, weight(4)|difficulty(1)|spd_rtng(110) | shoot_speed(25) | 
+    thrust_damage(45 ,  pierce)|max_ammo(5)|weapon_length(75),imodbits_thrown ],
+    
+    ["javelin_melee",  "Javelin", [("javelin",0)], itp_type_polearm|itp_primary|itp_wooden_parry , itc_staff, 
+    300, weight(1)|difficulty(0)|spd_rtng(95) |swing_damage(12, cut)| thrust_damage(14,  pierce)|weapon_length(75),imodbits_polearm ],
+
+    ["rhade_gloves","BkS Rhade's BkS Bitchslap", [("leather_gloves_L",0)], 
+    itp_type_hand_armor,0, 90, weight(0.25)|abundance(120)|
+    body_armor(2)|difficulty(0),imodbits_cloth],
+
+    ["artifacts_end","end", 
     [("book_c",0)], itp_type_book, 0, 3500,weight(2)|abundance(100),
     imodbits_none],    
     

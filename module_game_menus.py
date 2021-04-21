@@ -14832,7 +14832,7 @@ game_menus = [
             (assign, ":any_lords_beaten", 1),
         (try_end),
         (try_begin),
-            (eq, ":any_lords_beaten", 1),
+            (eq, ":any_lords_beaten", 0),
             (display_message, "@You haven't beaten any lords, pleb."),
         (try_end),
     ],
