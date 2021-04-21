@@ -51297,6 +51297,7 @@ scripts = [
     
     (assign, "$advanced_ai_open", 1),
     (assign, "$mod_debug", 1),
+    (assign, "$cheat_mode", 1),
     (assign, "$cinematic_fade", 1),
     
     (call_script, "script_player_init"),
@@ -52846,6 +52847,7 @@ scripts = [
         (assign, ":lords", -1),
     (try_end),
     (assign, reg55, ":number"),
+    (assign, "$lord_number", ":number"),
     
     (assign, ":number_0", 0),
     (try_for_range, ":lords_0", lords_begin, lords_end),

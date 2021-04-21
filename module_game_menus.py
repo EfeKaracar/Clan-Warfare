@@ -80,7 +80,7 @@ game_menus = [
                 (val_mul, ":bonus", 1000),
                 (add_xp_as_reward, ":bonus"),
             (try_end),
-             
+
             
             (call_script, "script_duel_quest_process"),
             
@@ -14742,7 +14742,7 @@ game_menus = [
 
 
     ("duel_menu",0,
-   "{s1}{s2}^Skill level: {reg23}",
+   "{s1}{s2}",
    "none",
    [
     (str_clear, s2),  (str_clear, s3), (str_clear, s5), (str_clear, s6), (str_clear, s7),

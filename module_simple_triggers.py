@@ -4172,4 +4172,20 @@ simple_triggers = [
     ]),
 	
   #+freelancer end  
+  
+  (0, [
+    
+    (neq, "$legend_done", 1),
+    (check_quest_active, "qst_kill_everyone"),
+    (assign, ":number_0", 0),
+    (try_for_range, ":lords_0", lords_begin, lords_end),
+        (troop_slot_ge, ":lords_0", slot_troop_duel_won, 1),
+        (val_add, ":number_0", 1),
+    (try_end),
+    (eq, ":number_0", "$lord_number"),
+    (start_presentation, "prsnt_legend"),
+    (display_message, "@You are a legend!"),
+    (assign, "$legend_done", 1),
+  
+  ]),
 ]

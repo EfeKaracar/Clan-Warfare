@@ -15578,5 +15578,60 @@ presentations = [
         (try_end),
         ]),
       ]),   
+      
+      #Efe
+      ("legend", 0, mesh_load_window,
+   [
+     (ti_on_presentation_load,
+      [
+        (presentation_set_duration, 999999),
+        (set_fixed_point_multiplier, 1000),
+        
+        (create_game_button_overlay, "$g_presentation_obj_retirement_2", "@Continue", tf_center_justify),
+        (position_set_x, pos1, 500),
+        (position_set_y, pos1, 40),
+        (overlay_set_position, "$g_presentation_obj_retirement_2", pos1),
+        
+        (create_text_overlay, reg1, "@You are a legend!", tf_center_justify),
+        (position_set_x, pos1, 750),
+        (position_set_y, pos1, 320),
+        (overlay_set_position, reg1, pos1),
+        (position_set_x, pos1, 2500),
+        (position_set_y, pos1, 2500),
+        (overlay_set_size, reg1, pos1),
+
+        (try_begin),
+          (create_mesh_overlay_with_tableau_material, reg1, -1, "tableau_retirement_troop", 9),
+          (str_store_string, s0, "@You beat all the players in NA scene. Share this screen with your friends!"),
+        (try_end),
+        
+        (position_set_x, pos1, 0),
+        (position_set_y, pos1, 120),
+        (overlay_set_position, reg1, pos1),
+        
+        # 
+        (create_text_overlay, reg1, s0, tf_double_space|tf_scrollable),
+        (position_set_x, pos1, 600),
+        (position_set_y, pos1, 120),
+        (overlay_set_position, reg1, pos1),
+        (position_set_x, pos1, 360),
+        (position_set_y, pos1, 190),
+        (overlay_set_area_size, reg1, pos1),
+        (position_set_x, pos1, 800),
+        (position_set_y, pos1, 800),
+        (overlay_set_size, reg1, pos1),
+        
+        ]),
+     (ti_on_presentation_event_state_change,
+      [
+        (store_trigger_param_1, ":object"),
+        (try_begin),
+          (eq, ":object", "$g_presentation_obj_retirement_2"),
+          (presentation_set_duration, 0),
+          (change_screen_return),
+        (try_end),
+        ]),
+     ]),
+
    
   ]

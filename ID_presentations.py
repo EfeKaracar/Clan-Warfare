@@ -61,3 +61,4 @@ prsnt_taragoth_lords_report = 59
 prsnt_killcount = 60
 prsnt_world_map = 61
 prsnt_set_party_name = 62
+prsnt_legend = 63

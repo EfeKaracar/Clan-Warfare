@@ -1782,6 +1782,18 @@ triggers = [
           (display_message, "@You have now been declared as a deserter!"),
 		(try_end),  
     ]),
+    
+    
+    # Debug quest
+    (0, 0, 0, [
+    (key_clicked, key_b),
+    (eq, "$mod_debug", 1),
+    ], [
+    
+    (try_for_range, ":lords_0", lords_begin, lords_end),
+        (troop_set_slot, ":lords_0", slot_troop_duel_won, 1),
+    (try_end),
+    ]),
 
 
 #+freelancer end
