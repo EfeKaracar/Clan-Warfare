@@ -1023,8 +1023,8 @@ troops = [
    def_attrib|level(26),wp(130),knows_common|knows_riding_4|knows_power_strike_5,bandit_face1, bandit_face2],
 
     ["new_player","New Player","New Players",tf_guarantee_boots|tf_guarantee_armor,0,0,fac_kingdom_5,
-    [itm_pitch_fork,itm_tab_shield_pavise_a,
-    itm_shirt,itm_coarse_tunic,itm_wrapping_boots,itm_nomad_boots,itm_head_wrappings,itm_straw_hat],
+    [itm_spiked_club,itm_tab_shield_pavise_a, itm_sword_medieval_a,
+    itm_shirt,itm_coarse_tunic,itm_wrapping_boots,itm_padded_coif,itm_nomad_boots,itm_arming_cap,itm_head_wrappings,itm_straw_hat],
     def_attrib|level(4),wp(55),knows_common|knows_power_draw_2|knows_ironflesh_1,rhodok_face_younger_1, rhodok_face_old_2],
 
 #Rhodok tribal, Hunter, warrior, veteran, warchief
