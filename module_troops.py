@@ -1218,9 +1218,9 @@ troops = [
    str_18|agi_12|int_12|cha_7|level(17),wp(220),knows_tracker_npc|
    knows_ironflesh_5|knows_power_strike_5|knows_athletics_5|knows_riding_5|knows_shield_3|knows_weapon_master_5, #skills 2/3 player at that level
    0x00000000100c11823a046c49f288f23a00000000001db5000000000000000000],
-  ["npc2","Aura","Aura", tf_female|tf_hero|tf_unmoveable_in_party_window, 0,reserved, fac_commoners,[itm_linen_tunic,itm_hide_boots,itm_club],
-   str_12|agi_10|int_14|cha_11|level(7),wp(140),knows_merchant_npc|
-   knows_trade_3|knows_weapon_master_2|knows_ironflesh_1|knows_wound_treatment_1|knows_power_strike_1|knows_athletics_2|knows_first_aid_1|knows_persuasion_4|knows_engineer_3|knows_leadership_1,
+  ["npc2","Aura","Aura", tf_female|tf_hero|tf_unmoveable_in_party_window, 0,reserved, fac_commoners,[itm_lady_dress_ruby,itm_sarranid_head_cloth,itm_knife, itm_courser, itm_bastard_sword_b, itm_tab_shield_kite_b],
+   str_5|agi_15|int_12|cha_12|level(7),wp(200),knows_merchant_npc|
+   knows_riding_2|knows_weapon_master_2|knows_ironflesh_4|knows_weapon_master_3|knows_power_strike_1|knows_athletics_4|knows_first_aid_3|knows_persuasion_5|knows_wound_treatment_2|knows_surgery_2|knows_engineer_2|knows_leadership_2,
    0x00000001bf0000062462ada29cc648cc00000000001e48cd0000000000000000],
   ["npc3","Easter Cow","Easter Cow",tf_hero|tf_unmoveable_in_party_window, 0, reserved, fac_commoners,[itm_leather_jerkin, itm_leather_gloves,itm_hide_boots, itm_hunter],
    str_18|agi_15|int_8|cha_8|level(17),wp(220),knows_merchant_npc|
@@ -3050,7 +3050,7 @@ troops = [
    ["coop_companion_equipment_sets_end","{!}multiplayer_end","{!}multiplayer_end", 0, 0, 0, fac_kingdom_5, [], 0, 0, 0, 0, 0],
 
     ["PPKCLONE", "PPK157", "PPK157",tf_guarantee_all |tf_male, 0, reserved,  fac_kingdom_4, [ itm_banded_armor, itm_splinted_greaves, itm_scale_gauntlets, itm_one_handed_battle_axe_c,  itm_tab_shield_round_d, itm_throwing_axes],  knight_attrib_2,wp(160),knight_skills_2|knows_trainer_3, 0x0000000c1610218368e29744e9a5985b00000000001db2a10000000000000000, nord_face_old_2],
-    ["daemonClone", "Daemon", "Daemon",tf_guarantee_all |tf_male, 0, reserved,  fac_kingdom_4, [ itm_banded_armor, itm_splinted_greaves, itm_scale_gauntlets, itm_one_handed_battle_axe_c,  itm_tab_shield_round_d, itm_throwing_axes],  knight_attrib_2,wp(160),knight_skills_2|knows_trainer_3, 0x0000000c1610218368e29744e9a5985b00000000001db2a10000000000000000, nord_face_old_2],
+    ["daemonClone", "Daemon", "Daemon",tf_guarantee_all |tf_male, 0, reserved,  fac_kingdom_4, [ itm_leather_jerkin,itm_nordic_fighter_helmet ,itm_leather_boots, itm_leather_gloves, itm_sword_viking_1  itm_tab_shield_round_c],  knight_attrib_2,wp(160),knight_skills_2|knows_trainer_3, 0x0000000c1610218368e29744e9a5985b00000000001db2a10000000000000000, nord_face_old_2],
     ["rempicaClone", "Rempica", "Rempica",tf_guarantee_all |tf_male, 0, reserved,  fac_kingdom_4, [ itm_banded_armor, itm_splinted_greaves, itm_scale_gauntlets, itm_one_handed_battle_axe_c,  itm_tab_shield_round_d, itm_throwing_axes],  knight_attrib_2,wp(160),knight_skills_2|knows_trainer_3, 0x0000000c1610218368e29744e9a5985b00000000001db2a10000000000000000, nord_face_old_2],
 
     ["bks_1", "Rhade", "Rhade",tf_guarantee_all |tf_male, 0, reserved,  fac_kingdom_4, [ itm_banded_armor, itm_splinted_greaves, itm_scale_gauntlets, itm_one_handed_battle_axe_c,  itm_tab_shield_round_d, itm_throwing_axes],  knight_attrib_2,wp(160),knight_skills_2|knows_trainer_3, 0x0000000c1610218368e29744e9a5985b00000000001db2a10000000000000000, nord_face_old_2],
