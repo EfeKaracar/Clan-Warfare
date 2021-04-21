@@ -4185,6 +4185,8 @@ simple_triggers = [
     (eq, ":number_0", "$lord_number"),
     (start_presentation, "prsnt_legend"),
     (display_message, "@You are a legend!"),
+    (add_xp_as_reward, 30000),
+    (troop_add_gold, "trp_player", 25000),
     (assign, "$legend_done", 1),
   
   ]),
