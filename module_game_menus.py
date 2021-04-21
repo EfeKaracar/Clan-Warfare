@@ -3066,11 +3066,8 @@ game_menus = [
         ),
        
         ## CC
-        ("action_view_troop_trees",[],"View troop trees.",
-        [
-        (start_presentation, "prsnt_faction_troop_trees"),
-        ]
-        ),
+        ("faction_troop_tree",[],"View Factions' Troop Tree.",
+       [(start_presentation, "prsnt_faction_troop_tree"), ]),
         
         ("action_view_world_map",[],"View the world map.",
         [

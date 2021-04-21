@@ -3685,5 +3685,6 @@ str_location_fac = 3683
 str_str_1_entry = 3684
 str_str_2_entry = 3685
 str_new_quick = 3686
+str_faction_troop_tree = 3687
 
 

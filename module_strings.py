@@ -4662,4 +4662,6 @@ We apologize sincerely if you contributed your suggestions and feedback but were
 	("str_2_entry", "{s13}"),
     
     ("new_quick", "A player in scene."),
+    
+    ("faction_troop_tree", "Faction's Troop Tree"),
 ]
