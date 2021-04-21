@@ -34542,7 +34542,7 @@ scripts = [
         (troop_set_slot, "trp_npc4", slot_troop_personalityclash2_object, "trp_npc7"), #Rolf - deshavi
         (troop_set_slot, "trp_npc4", slot_troop_personalitymatch_object, "trp_npc5"), #Rolf - beheshtur
         (troop_set_slot, "trp_npc4", slot_troop_home, "p_village_34"), #Ehlerdah
-        (troop_set_slot, "trp_npc4", slot_troop_payment_request, 10000), 
+        (troop_set_slot, "trp_npc4", slot_troop_payment_request, 12000), 
 		(troop_set_slot, "trp_npc4", slot_troop_kingsupport_argument, argument_claim),
 		(troop_set_slot, "trp_npc4", slot_troop_kingsupport_opponent, "trp_npc6"), #firentis
 		(troop_set_slot, "trp_npc4", slot_troop_town_with_contacts, "p_town_3"), #veluca
@@ -52590,6 +52590,16 @@ scripts = [
     (troop_set_slot, "trp_knight_1_19", troop_class, class_arc),
     (troop_set_slot, "trp_knight_1_19", troop_faction, "fac_kingdom_1"),
     
+    (troop_set_slot, "trp_knight_1_20", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_1_20", troop_faction, "fac_kingdom_1"),
+
+    (troop_set_slot, "trp_knight_1_21", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_1_21", troop_faction, "fac_kingdom_1"),
+
+    (troop_set_slot, "trp_knight_1_22", troop_class, class_cav),
+    (troop_set_slot, "trp_knight_1_22", troop_faction, "fac_kingdom_1"),
+
+    
     (troop_set_slot, "trp_knight_2_1", troop_class, class_inf),
     (troop_set_slot, "trp_knight_2_1", troop_faction, "fac_kingdom_2"),
     
@@ -52829,6 +52839,14 @@ scripts = [
     
     (troop_set_slot, "trp_knight_5_21", troop_class, class_inf),
     (troop_set_slot, "trp_knight_5_21", troop_faction, "fac_kingdom_5"),
+    
+    (troop_set_slot, "trp_knight_5_22", troop_class, class_arc),
+    (troop_set_slot, "trp_knight_5_22", troop_faction, "fac_kingdom_5"),
+    
+    (troop_set_slot, "trp_knight_5_23", troop_class, class_inf),
+    (troop_set_slot, "trp_knight_5_23", troop_faction, "fac_kingdom_5"),
+
+
     
     (troop_set_slot, "trp_knight_6_1", troop_class, class_inf),
     (troop_set_slot, "trp_knight_6_1", troop_faction, "fac_kingdom_1"),
