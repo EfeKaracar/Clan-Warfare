@@ -1147,7 +1147,13 @@ common_rotate_deathcam = (
 ##BEAN END - Deathcam
 
 advanced_ai = (
-0, 0, 0, [(eq, "$advanced_ai_open", 1),], [
+0, 0, 0, [
+
+(eq, "$advanced_ai_open", 1),
+(neg|main_hero_fallen),
+(neg|all_enemies_defeated),
+
+], [
     
     (get_player_agent_no, ":player"),
     (agent_is_active, ":player"),
