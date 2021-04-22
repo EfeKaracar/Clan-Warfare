@@ -90,6 +90,23 @@ lord_hp = (
         (try_end),
         
     ])
+    
+charge_on_death = (
+0, 0, ti_once, [(main_hero_fallen),
+
+
+
+], [
+(team_give_order, 0, grc_everyone, mordr_charge),
+(team_give_order, 1, grc_everyone, mordr_charge),
+(team_give_order, 2, grc_everyone, mordr_charge),
+
+
+
+])
+
+        
+    
 
 death_music = (
 ti_on_agent_killed_or_wounded, 0, 0, [], [
@@ -4125,6 +4142,7 @@ mission_templates = [
         common_kill_assist_tag_done,
         common_kill_assist_tag,
         dismemberment_mod_decap,
+        charge_on_death,
         
     
         (ti_on_agent_spawn, 0, 0, [],
