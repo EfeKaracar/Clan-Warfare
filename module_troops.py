@@ -1277,31 +1277,31 @@ troops = [
   ["npc16","Henderson","Henderson",tf_hero|tf_unmoveable_in_party_window, 0, reserved,  fac_commoners,[itm_byrnie,itm_leather_boots,itm_one_handed_war_axe_b],
    str_9|agi_11|int_8|cha_7|level(6),wp(100),knows_tracker_npc|
    knows_ironflesh_3|knows_athletics_2|knows_power_strike_3,
-   0x00000000000c100739ce9c805d2f381300000000001cc7ad0000000000000000],
+   0x00000000020041c136db6db6db6db6db00000000000db6db0000000000000000],
   ["npc17","Arys","Arys",tf_hero|tf_unmoveable_in_party_window, 0, reserved,  fac_commoners,[itm_peasant_dress,itm_nomad_boots, itm_dagger, itm_throwing_knives],
    str_7|agi_11|int_8|cha_7|level(2),wp(80),knows_tracker_npc|
    knows_power_throw_3|knows_athletics_2|knows_power_strike_1,
-   0x00000000000c100739ce9c805d2f381300000000001cc7ad0000000000000000],
+   0x000000002a04300136db6db6db6db6db00000000001db6db0000000000000000],
   ["npc18","Infantry God","Infantry God",tf_hero|tf_unmoveable_in_party_window, 0, reserved,  fac_commoners,[itm_green_tunic,itm_ankle_boots, itm_sword_two_handed_a],
    str_12|agi_11|int_8|cha_7|level(7),wp(140),knows_tracker_npc|
    knows_power_strike_3|knows_athletics_3|knows_ironflesh_2|knows_weapon_master_3,
-   0x00000000000c100739ce9c805d2f381300000000001cc7ad0000000000000000],
+   0x000000000004500236db6db6db6db6db00000000001db6db0000000000000000],
   ["npc19","Jesus","Jesus",tf_hero|tf_unmoveable_in_party_window, 0, reserved,  fac_commoners,[itm_leather_jerkin, itm_war_spear, itm_nomad_boots],
    str_8|agi_11|int_8|cha_7|level(5),wp(105),knows_tracker_npc|
    knows_power_strike_2|knows_athletics_2|knows_ironflesh_2|knows_weapon_master_2,
-   0x00000000000c100739ce9c805d2f381300000000001cc7ad0000000000000000],
+   0x000000000704700a36db6db6db6db6db00000000000db6db0000000000000000],
   ["npc20","Landalore","Landalore",tf_hero|tf_unmoveable_in_party_window, 0, reserved,  fac_commoners,[itm_leather_jerkin,itm_nomad_boots, itm_sword_khergit_2],
    str_7|agi_11|int_8|cha_7|level(2),wp(80),knows_tracker_npc|
    knows_power_draw_2|knows_athletics_2|knows_power_strike_1,
-   0x00000000000c100739ce9c805d2f381300000000001cc7ad0000000000000000],
+   0x00000000360412cd36db6db6db6db6db00000000000db6db0000000000000000],
   ["npc21","Jjboyson","Jjboyson",tf_hero|tf_unmoveable_in_party_window, 0, reserved,  fac_commoners,[itm_leather_vest,itm_nomad_boots, itm_sword_medieval_a, itm_tab_shield_heater_b],
    str_7|agi_11|int_8|cha_7|level(2),wp(80),knows_tracker_npc|
    knows_ironflesh_2|knows_athletics_2|knows_power_strike_1,
-   0x00000000000c100739ce9c805d2f381300000000001cc7ad0000000000000000],
+   0x000000003b00139436db6db6db6db6db00000000000db6db0000000000000000],
   ["npc22","Platypus","Platypus",tf_hero|tf_unmoveable_in_party_window, 0, reserved,  fac_commoners,[itm_leather_vest,itm_nomad_boots, itm_sword_medieval_a, itm_tab_shield_heater_b],
    str_7|agi_11|int_8|cha_7|level(2),wp(80),knows_tracker_npc|
    knows_ironflesh_3|knows_athletics_2|knows_power_strike_1,
-   0x00000000000c100739ce9c805d2f381300000000001cc7ad0000000000000000],
+   0x000000000b04258a36db6db6db6db6db00000000000db6db0000000000000000],
   ["npc23","Snizzle","Snizzle",tf_hero|tf_unmoveable_in_party_window, 0, reserved,  fac_commoners,[itm_leather_vest,itm_nomad_boots, itm_sword_medieval_a, itm_tab_shield_heater_b],
    str_7|agi_11|int_8|cha_7|level(2),wp(80),knows_tracker_npc|
    knows_ironflesh_2|knows_athletics_2|knows_power_strike_1,
@@ -1309,15 +1309,15 @@ troops = [
   ["npc24","Trox","Trox",tf_hero|tf_unmoveable_in_party_window, 0, reserved,  fac_commoners,[itm_leather_vest,itm_nomad_boots, itm_sword_medieval_a, itm_tab_shield_heater_b],
    str_7|agi_11|int_8|cha_7|level(2),wp(80),knows_tracker_npc|
    knows_ironflesh_2|knows_athletics_2|knows_power_strike_1,
-   0x00000000000c100739ce9c805d2f381300000000001cc7ad0000000000000000],
+   0x000000002110318624b1b5bd2051aa5b00000000001ad65a0000000000000000],
   ["npc25","TMW Unicorn","TMW Unicorn",tf_hero|tf_unmoveable_in_party_window, 0, reserved,  fac_commoners,[itm_leather_vest,itm_nomad_boots, itm_sword_medieval_a, itm_tab_shield_heater_b, itm_lance, itm_hunter],
    str_11|agi_14|int_8|cha_7|level(9),wp(140),knows_tracker_npc|
    knows_riding_3|knows_athletics_2|knows_power_strike_3|knows_ironflesh_3|knows_shield_2,
-   0x00000000000c100739ce9c805d2f381300000000001cc7ad0000000000000000],
-  ["npc26","Yoshie","Yoshie",tf_hero|tf_unmoveable_in_party_window, 0, reserved,  fac_commoners,[itm_leather_vest,itm_nomad_boots, itm_sword_medieval_a, itm_tab_shield_heater_b, itm_hunter],
+   0x000000003000418b36db6db6db6db6db00000000001db6db0000000000000000],
+  ["npc26","Yoshie","Yoshie",tf_female|tf_hero|tf_unmoveable_in_party_window, 0, reserved,  fac_commoners,[itm_leather_vest,itm_nomad_boots, itm_sword_medieval_a, itm_tab_shield_heater_b, itm_hunter],
    str_15|agi_15|int_8|cha_7|level(17),wp(220),knows_tracker_npc|
    knows_riding_5|knows_athletics_3|knows_power_strike_4|knows_shield_3|knows_ironflesh_4,
-   0x00000000000c100739ce9c805d2f381300000000001cc7ad0000000000000000],
+   0x00000000000c000136db6db6db6db6db00000000001db6db0000000000000000],
   ["npc27","Hancock","Hancock",tf_hero|tf_unmoveable_in_party_window, 0, reserved,  fac_commoners,[itm_padded_cloth,itm_nomad_boots, itm_sword_medieval_a, itm_crossbow,itm_bolts,itm_tab_shield_heater_b],
    str_12|agi_13|int_8|cha_7|level(15),wp(200),knows_tracker_npc|
    knows_power_draw_4|knows_athletics_3|knows_power_strike_2|knows_ironflesh_2|knows_shield_2,
@@ -1329,7 +1329,7 @@ troops = [
   ["npc29","Mok","Mok",tf_hero|tf_unmoveable_in_party_window, 0, reserved,  fac_commoners,[itm_leather_jerkin,itm_nomad_boots, itm_tab_shield_kite_cav_b, itm_scimitar_b, itm_leather_gloves],
    str_14|agi_12|int_10|cha_7|level(15),wp(220),knows_tracker_npc|
    knows_ironflesh_3|knows_trainer_3|knows_athletics_4|knows_power_strike_4|knows_shield_2,
-   0x00000000000c100739ce9c805d2f381300000000001cc7ad0000000000000000],
+   0x000000003000300653aa71b8948ce72300000000001d27a20000000000000000],
   ["npc30","BestPlayerNaGta","BestPlayerNaGta",tf_hero|tf_unmoveable_in_party_window, 0, reserved,  fac_commoners,[itm_mail_shirt,itm_leather_boots, itm_sword_medieval_c, itm_tab_shield_heater_c],
    str_12|agi_10|int_8|cha_7|level(10),wp(150),knows_tracker_npc|
    knows_power_throw_1|knows_athletics_3|knows_power_strike_4|knows_shield_2|knows_ironflesh_2,
@@ -1531,7 +1531,7 @@ troops = [
   ["knight_8_2", "Brandis", "Brandis",tf_hero, 0, reserved,  fac_kingdom_8, [itm_warhorse_sarranid,     itm_sarranid_cavalry_robe,       itm_sarranid_boots_c,  itm_sarranid_boots_c,       itm_sarranid_veiled_helmet,   itm_lance,      itm_sarranid_cavalry_sword,   itm_tab_shield_small_round_c],  knight_attrib_5,wp(240),knight_skills_5|knows_trainer_6, 0x00000000211035853855ab656b2a3993000000000006372d0000000000000000, 0x00000000211035853855ab656b2a3993000000000006372d0000000000000000],
   ["knight_8_3", "Bubs", "Bubs",tf_hero, 0, reserved,  fac_kingdom_8, [itm_warhorse_sarranid,     itm_sarranid_cavalry_robe,       itm_sarranid_boots_c,  itm_sarranid_boots_c,       itm_sarranid_veiled_helmet,   itm_lance,      itm_sarranid_cavalry_sword,   itm_tab_shield_small_round_c],  knight_attrib_5,wp(240),knight_skills_5|knows_trainer_6, 0x0000000009081392375b6e1729319ca300000000001496ed0000000000000000, 0x0000000009081392375b6e1729319ca300000000001496ed0000000000000000],
   ["knight_8_4", "Chev", "Chev",tf_hero, 0, reserved,  fac_kingdom_8, [itm_warhorse_sarranid,     itm_sarranid_cavalry_robe,       itm_sarranid_boots_c,  itm_sarranid_boots_c,       itm_sarranid_veiled_helmet,   itm_lance,      itm_sarranid_cavalry_sword,   itm_tab_shield_small_round_c],  knight_attrib_5,wp(240),knight_skills_5|knows_trainer_6, 0x000000001e1041d1665b8e9d5ba46f64000000000015b7150000000000000000, 0x000000001e1041d1665b8e9d5ba46f64000000000015b7150000000000000000],
-  ["knight_8_5", "CreamPie", "CreamPie",tf_hero, 0, reserved,  fac_kingdom_8, [itm_warhorse_sarranid,     itm_sarranid_cavalry_robe,       itm_sarranid_boots_c,  itm_sarranid_boots_c,       itm_sarranid_veiled_helmet,   itm_lance,      itm_sarranid_cavalry_sword,   itm_tab_shield_small_round_c],  knight_attrib_5,wp(240),knight_skills_5|knows_trainer_6, 0x000000002410418434aa2dc54e6ec89000000000001437230000000000000000, 0x000000002410418434aa2dc54e6ec89000000000001437230000000000000000],
+  ["knight_8_5", "CreamPie", "CreamPie",tf_female|tf_hero, 0, reserved,  fac_kingdom_8, [itm_warhorse_sarranid,     itm_sarranid_cavalry_robe,       itm_sarranid_boots_c,  itm_sarranid_boots_c,       itm_sarranid_veiled_helmet,   itm_lance,      itm_sarranid_cavalry_sword,   itm_tab_shield_small_round_c],  knight_attrib_5,wp(240),knight_skills_5|knows_trainer_6, 0x000000002410418434aa2dc54e6ec89000000000001437230000000000000000, 0x000000002410418434aa2dc54e6ec89000000000001437230000000000000000],
   ["knight_8_6", "Gadric","Gadric",tf_hero, 0, reserved,  fac_kingdom_8, [itm_warhorse_sarranid,     itm_sarranid_cavalry_robe,       itm_sarranid_boots_c,  itm_sarranid_boots_c,       itm_sarranid_veiled_helmet,   itm_lance,      itm_sarranid_cavalry_sword,   itm_tab_shield_small_round_c],  knight_attrib_5,wp(240),knight_skills_5|knows_trainer_6, 0x00000000100c4212472c79a3655296ec000000000011b3650000000000000000, 0x00000000100c4212472c79a3655296ec000000000011b3650000000000000000],
   ["knight_8_7", "DeathAngel", "DeathAngel",tf_hero, 0, reserved,  fac_kingdom_8, [itm_warhorse_sarranid,     itm_sarranid_cavalry_robe,       itm_sarranid_boots_c,  itm_sarranid_boots_c,       itm_sarranid_veiled_helmet,   itm_lance,      itm_sarranid_cavalry_sword,   itm_tab_shield_small_round_c],  knight_attrib_5,wp(240),knight_skills_5|knows_trainer_6, 0x000000001e0c610d569a7234d38deaa600000000000d52e50000000000000000, 0x000000001e0c610d569a7234d38deaa600000000000d52e50000000000000000],
   ["knight_8_8", "Erminas", "Erminas",tf_hero, 0, reserved,  fac_kingdom_8, [itm_warhorse_sarranid,     itm_sarranid_cavalry_robe,       itm_sarranid_boots_c,  itm_sarranid_boots_c,       itm_sarranid_veiled_helmet,   itm_lance,      itm_sarranid_cavalry_sword,   itm_tab_shield_small_round_c],  knight_attrib_5,wp(240),knight_skills_5|knows_trainer_6, 0x000000002c10741326da662a6cd5964d00000000001134db0000000000000000, 0x000000002c10741326da662a6cd5964d00000000001134db0000000000000000],

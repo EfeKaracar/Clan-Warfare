@@ -4576,7 +4576,7 @@ We apologize sincerely if you contributed your suggestions and feedback but were
   
   #Efe
   # THOUGHTS
-  ("cedric_bl", "I thought the game was so shit that I learned how to code just to make a Warband mod where I tell people how shit I thought the game was"),
+  ("cedric_bl", "This mod probably had better development practice."),
   ("eb_bl", "Im too busy roleplaying as a lord of Calradia to be asked meta questions by some random pubstar."),
   ("bel_bl", "Better than war of roses"),
   ("chow_bl", "fucking disgusting game. I wasted over 1000 hours for this shit fest. Imagine getting over 1200 Skirmish Wins and experiencing a huge downfall with every single patch. It's just sad. I feel pity for myself and my clan members who spent so much time for this shit game and for this dogshit company. They are not even testing their fucking multiplayer patches before they release the fucking hotfix. Great job TW. - moll toll 2v2, crpg 2v2, crpg 3v3. crpg 5v5 champion chowski"),
