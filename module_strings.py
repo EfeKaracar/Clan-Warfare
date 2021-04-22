@@ -4575,18 +4575,18 @@ We apologize sincerely if you contributed your suggestions and feedback but were
   
   
   #Efe
+  # THOUGHTS
   ("cedric_bl", "I thought the game was so shit that I learned how to code just to make a Warband mod where I tell people how shit I thought the game was"),
   ("eb_bl", "Im too busy roleplaying as a lord of Calradia to be asked meta questions by some random pubstar."),
   ("bel_bl", "Better than war of roses"),
   ("chow_bl", "fucking disgusting game. I wasted over 1000 hours for this shit fest. Imagine getting over 1200 Skirmish Wins and experiencing a huge downfall with every single patch. It's just sad. I feel pity for myself and my clan members who spent so much time for this shit game and for this dogshit company. They are not even testing their fucking multiplayer patches before they release the fucking hotfix. Great job TW. - moll toll 2v2, crpg 2v2, crpg 3v3. crpg 5v5 champion chowski"),
   ("john_bl", "Bannerlord, you were the chosen one! It was said that you would exceed our expectations, not destroy them!"),
-  ("aporta_bl", "-"),
-  ("thunder_bl", "-"),
-  ("mav_bl", "-"),
-  ("ppk_bl", "-"),
-  ("marquis_bl", "-"),
-  ("brave_bl", "-"),
-  ("arni_bl", "-"),
+  ("matt_lord_bl", "Taleworlds has Turkbrain disease."),
+  ("abuzut_bl", "Ignore what Duckie has to say about Bannerlord"),
+  ("valar_bl", "This is so right when is spent my time in yale specifically studying psychology among the female and male species of humans. We learned about the Sigmund Freud's points of Feuillemort theorys of the fitful kind, analyst among the center of bannerlord public respects a more monsoon type of idea. I think your point accoutrements towards a more gradual felienick. The more advantageous of the few dedicate a avante-garde style where its a felicious widdershins executable. but as we move towards more of a abibliophian the exetordians of us decide how to handle life."),
+  ("alyss_bl", "Trash game"),
+  ("duckie_bl", "I think the other lords of the realm scoff at the sequel, I myself find many pleasures in it and believe it has great potential. A new era is coming and those who refuse to adapt will die off, like the rest."),
+  # THOUGHTS END
   
     ("rat_intro", "Bleugh. I am (Name) of the (Faction). State your business or move aside, peasant."),  
     ("rat_intro_1", "I am (Name) of the (Faction). Have you seen Sigi? Emperor Roberta said something about another ft7… "),  

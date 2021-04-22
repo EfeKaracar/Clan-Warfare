@@ -52428,6 +52428,9 @@ scripts = [
     (troop_set_slot, "trp_knight_3_2", player_thought_on_bl, "str_bel_bl"),
     (troop_set_slot, "trp_knight_1_1", player_thought_on_bl, "str_chow_bl"),
     (troop_set_slot, "trp_kingdom_7_lord", player_thought_on_bl, "str_john_bl"),
+    (troop_set_slot, "trp_npc4", player_thought_on_bl, "str_alyss_bl"),
+    (troop_set_slot, "trp_knight_3_7", player_thought_on_bl, "str_valar_bl"),
+    (troop_set_slot, "trp_knight_1_21", player_thought_on_bl, "str_abuzut_bl"),
     
     # Dueling weapons
     (troop_set_slot, "trp_knight_3_3", player_dueling_weapon, "itm_great_sword"),
