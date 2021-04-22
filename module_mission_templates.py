@@ -106,6 +106,8 @@ ti_on_agent_killed_or_wounded, 0, 0, [], [
 new_players = (
 0, 0, 0, [
 
+(store_current_day, ":day"),
+(ge, ":day", 1),
 (neg|main_hero_fallen),
 (neg|all_enemies_defeated), 
 (eq, "$newplayerSpawned", 0),
@@ -234,6 +236,10 @@ ti_after_mission_start, 0, 0, [], [
 
 rempica = (
 0, 0, 0, [
+
+(store_current_day, ":day"),
+(ge, ":day", 1),
+
 (neg|main_hero_fallen),
 (neg|all_enemies_defeated), 
 (eq, "$what_to_spawn", 1),
@@ -378,6 +384,9 @@ ti_before_mission_start, 0, 0, [],
 wk_appear = (
 1, 0, 0, [
 
+(store_current_day, ":day"),
+(ge, ":day", 1),
+
 (neg|main_hero_fallen),
 (neg|all_enemies_defeated), 
 
@@ -449,8 +458,8 @@ ti_on_agent_killed_or_wounded, 0, 0, [], [
 battle_initialization = (
 ti_after_mission_start, 0, 0, [
 
-(store_current_scene, ":scene"),
-(neg|is_between, ":scene", "scn_town_1_alley", "scn_castle_1_exterior"),
+(store_current_day, ":day"),
+(ge, ":day", 1),
 
 ], [
 
@@ -458,10 +467,10 @@ ti_after_mission_start, 0, 0, [
 (assign, "$RempicaSpawned", 0),
 (assign, "$newplayerSpawned", 0),
 (assign, "$corpseTarget", -1),
-
+(assign, "$what_to_spawn", -1),
 
 (store_random_in_range, ":dice", 0, 3),
-(assign, "$what_to_spawn", -1),
+
 (try_begin),
     (eq, ":dice", 0),
     (assign, "$what_to_spawn", 0),
