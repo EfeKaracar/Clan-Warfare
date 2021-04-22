@@ -3050,7 +3050,15 @@ troops = [
    ["coop_companion_equipment_sets_end","{!}multiplayer_end","{!}multiplayer_end", 0, 0, 0, fac_kingdom_5, [], 0, 0, 0, 0, 0],
 
     ["PPKCLONE", "PPK157", "PPK157",tf_guarantee_all |tf_male, 0, reserved,  fac_kingdom_4, [ itm_banded_armor, itm_splinted_greaves, itm_scale_gauntlets, itm_one_handed_battle_axe_c,  itm_tab_shield_round_d, itm_throwing_axes],  knight_attrib_2,wp(160),knight_skills_2|knows_trainer_3, 0x0000000c1610218368e29744e9a5985b00000000001db2a10000000000000000, nord_face_old_2],
-    ["daemonClone", "Daemon", "Daemon",tf_guarantee_all |tf_male, 0, reserved,  fac_kingdom_4, [ itm_leather_jerkin,itm_nordic_fighter_helmet ,itm_leather_boots, itm_leather_gloves, itm_sword_viking_1  itm_tab_shield_round_c],  knight_attrib_2,wp(160),knight_skills_2|knows_trainer_3, 0x0000000c1610218368e29744e9a5985b00000000001db2a10000000000000000, nord_face_old_2],
+    ["daemonClone", "Daemon", "Daemon",
+    tf_guarantee_all |tf_male, 0, reserved,  
+    fac_kingdom_4, [ 
+    itm_leather_jerkin,
+    itm_nordic_fighter_helmet,
+    itm_leather_boots, itm_leather_gloves, 
+    itm_sword_viking_1,
+    itm_tab_shield_round_c
+    ],  knight_attrib_2,wp(160),knight_skills_2|knows_trainer_3, 0x0000000c1610218368e29744e9a5985b00000000001db2a10000000000000000, nord_face_old_2],
     ["rempicaClone", "Rempica", "Rempica",tf_guarantee_all |tf_male, 0, reserved,  fac_kingdom_4, [ itm_banded_armor, itm_splinted_greaves, itm_scale_gauntlets, itm_one_handed_battle_axe_c,  itm_tab_shield_round_d, itm_throwing_axes],  knight_attrib_2,wp(160),knight_skills_2|knows_trainer_3, 0x0000000c1610218368e29744e9a5985b00000000001db2a10000000000000000, nord_face_old_2],
 
     ["bks_1", "Rhade", "Rhade",tf_guarantee_all |tf_male, 0, reserved,  fac_kingdom_4, [ itm_banded_armor, itm_splinted_greaves, itm_scale_gauntlets, itm_one_handed_battle_axe_c,  itm_tab_shield_round_d, itm_throwing_axes],  knight_attrib_2,wp(160),knight_skills_2|knows_trainer_3, 0x0000000c1610218368e29744e9a5985b00000000001db2a10000000000000000, nord_face_old_2],
