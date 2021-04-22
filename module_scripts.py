@@ -52405,9 +52405,7 @@ scripts = [
     ]),
     
     ("player_init", [
-    
-    
-    
+
     (try_for_range, ":troops", heroes_begin, heroes_end),
         (troop_set_slot, ":troops", player_knows_how_to_play, 1), 
         
@@ -52423,9 +52421,6 @@ scripts = [
         
         (troop_set_slot, ":troops", player_thought_on_bl, -1),
     (try_end),
-    
-
-
     
     # BL Thoughts
     (troop_set_slot, "trp_knight_3_3", player_thought_on_bl, "str_eb_bl"),
@@ -52473,7 +52468,7 @@ scripts = [
     (troop_set_slot, gorlock, player_special_loot, "itm_gorlock_system"),
     (troop_set_slot, "trp_knight_5_9", player_special_loot, "itm_hani_item"),
     (troop_set_slot, edwards, player_special_loot, "itm_edward_carrot"),
-    (troop_set_slot, grimsight, player_special_loot, "itm_grimsight_matchmaker"),
+    # (troop_set_slot, grimsight, player_special_loot, "itm_grimsight_matchmaker"),
     (troop_set_slot, vahaemar, player_special_loot, "itm_vahaemar_horn"),
     (troop_set_slot, "trp_knight_7_2", player_special_loot, "itm_fisherman_jav"),
     (troop_set_slot, "trp_knight_5_10", player_special_loot, "itm_heat_horse"),
@@ -52481,8 +52476,6 @@ scripts = [
     (troop_set_slot, "trp_knight_5_12", player_special_loot, "itm_jeff_crossbow"),
     (troop_set_slot, "trp_knight_1_11", player_special_loot, "itm_aporta_lance"),
     (troop_set_slot, "trp_knight_6_1", player_special_loot, "itm_dave_hammer"),
-    
-    
     
     (troop_set_slot, "trp_temp_troop", bks_invasion_phase, 0),
     (troop_set_slot, "trp_temp_troop", eu_invasion_done, 0),
