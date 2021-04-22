@@ -1565,9 +1565,9 @@ triggers = [
                 (store_random_in_range, ":add", 100, 200),
                 (party_clear, ":bks_party"),
                 (party_add_leader, ":bks_party", ":bks_lords"),
-                (party_add_members, ":bks_party", "trp_bks_unit_1", ":add"),
-                (party_add_members, ":bks_party", "trp_bks_unit_2", ":add"),
-                (party_add_members, ":bks_party", "trp_bks_unit_3", ":add"),
+                (party_add_members, ":bks_party", "trp_black_shield_infantry", ":add"),
+                (party_add_members, ":bks_party", "trp_black_shield_follower", ":add"),
+                (party_add_members, ":bks_party", "trp_black_shield_rider", ":add"),
             (try_end),
         (try_end),
         
@@ -1578,50 +1578,50 @@ triggers = [
 ]),
 
 
-#Efe
-(24, 0, 0, [], [
+# #Efe
+# (24, 0, 0, [], [
 
-        (store_current_day, ":cur_day"),
-        (eq, ":cur_day", 1),
+        # (store_current_day, ":cur_day"),
+        # (eq, ":cur_day", 1),
         
-        (troop_slot_eq, "trp_temp_troop", eu_invasion_done, -1),
-        (store_random_party_in_range, ":random_spawn", "p_invasion_spawn_1_ne", "p_invasion_spawn_end"),
+        # (troop_slot_eq, "trp_temp_troop", eu_invasion_done, -1),
+        # (store_random_party_in_range, ":random_spawn", "p_invasion_spawn_1_ne", "p_invasion_spawn_end"),
         
-        (try_begin),
-            (eq, ":random_spawn", "p_invasion_spawn_1_ne"),
-            (tutorial_box, "@EU players started their invasion. They are riding to Calradia from North East!", "@EU INVASION"),
-            (display_message, "@EU INVASION!"),
-       (else_try),
-            (eq, ":random_spawn", "p_invasion_spawn_2_e"),
-            (tutorial_box, "@EU players started their invasion. They are riding to Calradia from East!", "@EU INVASION"),
-            (display_message, "@EU INVASION!"),
-       (else_try),
-            (eq, ":random_spawn", "p_invasion_spawn_3_nw"),
-            (tutorial_box, "@EU players started their invasion. They are riding to Calradia from North West!", "@EU INVASION"),
-            (display_message, "@EU INVASION!"),
-       (else_try),
-            (eq, ":random_spawn", "p_invasion_spawn_4_s"),
-            (tutorial_box, "@EU players started their invasion. They are riding to Calradia from South!", "@EU INVASION"),     
-            (display_message, "@EU INVASION!"),
-       (try_end),
+        # (try_begin),
+            # (eq, ":random_spawn", "p_invasion_spawn_1_ne"),
+            # (tutorial_box, "@EU players started their invasion. They are riding to Calradia from North East!", "@EU INVASION"),
+            # (display_message, "@EU INVASION!"),
+       # (else_try),
+            # (eq, ":random_spawn", "p_invasion_spawn_2_e"),
+            # (tutorial_box, "@EU players started their invasion. They are riding to Calradia from East!", "@EU INVASION"),
+            # (display_message, "@EU INVASION!"),
+       # (else_try),
+            # (eq, ":random_spawn", "p_invasion_spawn_3_nw"),
+            # (tutorial_box, "@EU players started their invasion. They are riding to Calradia from North West!", "@EU INVASION"),
+            # (display_message, "@EU INVASION!"),
+       # (else_try),
+            # (eq, ":random_spawn", "p_invasion_spawn_4_s"),
+            # (tutorial_box, "@EU players started their invasion. They are riding to Calradia from South!", "@EU INVASION"),     
+            # (display_message, "@EU INVASION!"),
+       # (try_end),
        
         
-        (try_for_range, ":amount", 0, 20),
-            (spawn_around_party, ":random_spawn", "pt_eu_party"),
-        (try_end),
+        # (try_for_range, ":amount", 0, 20),
+            # (spawn_around_party, ":random_spawn", "pt_eu_party"),
+        # (try_end),
 
-        (spawn_around_party, ":random_spawn", "pt_eu_party"),
-        (assign, ":eu", reg0),
-        (party_set_name, ":eu", "@EU Players"),
-        (store_random_in_range, ":add", 100, 200),
-        (party_clear, ":eu"),
-        (party_add_leader, ":eu", "trp_bandit"),
-        (party_add_members, ":eu", "trp_bandit", ":add"),
+        # (spawn_around_party, ":random_spawn", "pt_eu_party"),
+        # (assign, ":eu", reg0),
+        # (party_set_name, ":eu", "@EU Players"),
+        # (store_random_in_range, ":add", 100, 200),
+        # (party_clear, ":eu"),
+        # (party_add_leader, ":eu", "trp_bandit"),
+        # (party_add_members, ":eu", "trp_bandit", ":add"),
 
         
-        (set_camera_follow_party, ":random_spawn"),
-        (troop_set_slot, "trp_temp_troop", eu_invasion_done, 1),
-]),
+        # (set_camera_follow_party, ":random_spawn"),
+        # (troop_set_slot, "trp_temp_troop", eu_invasion_done, 1),
+# ]),
  
  
 #+freelancer start

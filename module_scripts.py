@@ -34482,7 +34482,8 @@ scripts = [
   ("initialize_npcs",
     [
 
-# set strings
+        # set strings
+        # Efe
         (troop_set_slot, "trp_npc1", slot_troop_morality_type, tmt_egalitarian),  #borcha
         (troop_set_slot, "trp_npc1", slot_troop_morality_value, 4),  #borcha
         (troop_set_slot, "trp_npc1", slot_troop_2ary_morality_type, tmt_aristocratic),  #borcha
@@ -52258,21 +52259,33 @@ scripts = [
     (troop_set_slot, "trp_knight_6_7", player_special_loot, "itm_kradle_smash"),
     (troop_set_slot, "trp_knight_4_3", player_special_loot, "itm_achilles_boots"),
     (troop_set_slot, "trp_knight_7_22", player_special_loot, "itm_nickdean_shield"),
-    # (troop_set_slot, "trp_knight_4_1", player_special_loot, "itm_kiss_axe"),
+    (troop_set_slot, "trp_knight_4_1", player_special_loot, "itm_kiss_axe"),
     (troop_set_slot, "trp_knight_6_20", player_special_loot, "itm_leonidas_boots"),
-    # (troop_set_slot, "trp_knight_4_1", player_special_loot, "itm_scott_ray_warhorse"),
+    (troop_set_slot, "trp_knight_4_1", player_special_loot, "itm_scott_ray_warhorse"),
     (troop_set_slot, "trp_knight_5_17", player_special_loot, "itm_oddle_axe"),
     (troop_set_slot, "trp_knight_6_5", player_special_loot, "itm_derpy_carver"),
     (troop_set_slot, "trp_knight_7_13", player_special_loot, "itm_pierce_spear"),
     (troop_set_slot, "trp_knight_6_1", player_special_loot, "itm_dave_hammer"),
     (troop_set_slot, "trp_knight_5_14", player_special_loot, "itm_magerick_armor"),
-    # (troop_set_slot, "trp_knight_4_1", player_special_loot, "itm_fred_sword"),
+    (troop_set_slot, "trp_knight_4_1", player_special_loot, "itm_fred_sword"),
     (troop_set_slot, "trp_kingdom_1_lord", player_special_loot, "itm_rob_armor"),
     (troop_set_slot, "trp_knight_6_17", player_special_loot, "itm_delion_quiver"),
     (troop_set_slot, "trp_knight_6_9", player_special_loot, "itm_sparhawk_quiver"),
     (troop_set_slot, "trp_knight_7_12", player_special_loot, "itm_zacty_boots"),
     (troop_set_slot, "trp_knight_4_5", player_special_loot, "itm_calamity_lance"),
-    # (troop_set_slot, "trp_knight_4_1", player_special_loot, "itm_gwaebloom_item"),
+    (troop_set_slot, "trp_knight_4_1", player_special_loot, "itm_gwaebloom_item"),
+    (troop_set_slot, john, player_special_loot, "itm_john_taco"),
+    (troop_set_slot, gorlock, player_special_loot, "itm_gorlock_system"),
+    (troop_set_slot, "trp_knight_5_9", player_special_loot, "itm_hani_item"),
+    (troop_set_slot, edwards, player_special_loot, "itm_edward_carrot"),
+    (troop_set_slot, grimsight, player_special_loot, "itm_grimsight_matchmaker"),
+    (troop_set_slot, vahaemar, player_special_loot, "itm_vahaemar_horn"),
+    (troop_set_slot, "trp_knight_7_2", player_special_loot, "itm_fisherman_jav"),
+    (troop_set_slot, "trp_knight_5_10", player_special_loot, "itm_heat_horse"),
+    (troop_set_slot, ordyn, player_special_loot, "itm_ordyn_sword"),
+    (troop_set_slot, "trp_knight_5_12", player_special_loot, "itm_jeff_crossbow"),
+    (troop_set_slot, "trp_knight_1_11", player_special_loot, "itm_aporta_lance"),
+    (troop_set_slot, "trp_knight_6_1", player_special_loot, "itm_dave_hammer"),
     
     
     
