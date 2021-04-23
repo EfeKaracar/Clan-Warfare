@@ -51738,15 +51738,15 @@ scripts = [
     ("mod_init", [
     
     (assign, "$advanced_ai_open", 1),
-    (assign, "$mod_debug", 1),
-    (assign, "$cheat_mode", 1),
+    (assign, "$mod_debug", 0),
+    (assign, "$cheat_mode", 0),
     (assign, "$cinematic_fade", 1),
     
     (call_script, "script_player_init"),
     (call_script, "script_wear_lords"),
     (call_script, "script_ai_init"),
     (call_script, "script_faction_init"),
-    (display_message, "@mod_init"),
+    # (display_message, "@mod_init"),
     
     (troop_set_slot, chowski, player_death_music, "snd_ear_rape"),
     
@@ -52488,7 +52488,7 @@ scripts = [
     (try_end),
    
     
-    (display_message, "@player_init"),
+    # (display_message, "@player_init"),
     
     
     
@@ -53302,7 +53302,7 @@ scripts = [
         (troop_set_auto_equip, ":lords", 1),
     (try_end),
     
-    (display_message, "@wear_lords"),
+    # (display_message, "@wear_lords"),
     
     ]),
     

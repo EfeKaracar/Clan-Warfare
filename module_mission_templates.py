@@ -77,17 +77,17 @@ lord_hp = (
         (agent_set_max_hit_points, ":agent", ":hp", 1),
         (agent_set_hit_points, ":agent", ":hp", 1),
         
-        (assign, reg25, ":hp"),
-        (str_store_troop_name, s5, ":troop"),
-        (display_message, "@{s5} has HP of {reg25}"),
+        # (assign, reg25, ":hp"),
+        # (str_store_troop_name, s5, ":troop"),
+        # (display_message, "@{s5} has HP of {reg25}"),
         
-        (try_begin),
-            (neg|troop_slot_eq, ":troop", player_skill_level, -1),
-            (troop_get_slot, ":chance_AI", ":troop", player_skill_level), # # Source troop skill level
-            (assign, reg15, ":chance_AI"),
-            (str_store_troop_name, s35, ":troop"),
-            (display_message, "@{s35} has AI level of {reg15}."),
-        (try_end),
+        # (try_begin),
+            # (neg|troop_slot_eq, ":troop", player_skill_level, -1),
+            # (troop_get_slot, ":chance_AI", ":troop", player_skill_level), # # Source troop skill level
+            # (assign, reg15, ":chance_AI"),
+            # (str_store_troop_name, s35, ":troop"),
+            # (display_message, "@{s35} has AI level of {reg15}."),
+        # (try_end),
         
     ])
     
