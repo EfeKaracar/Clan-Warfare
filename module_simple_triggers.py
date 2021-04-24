@@ -112,14 +112,14 @@ simple_triggers = [
     ]),
 
 
-(24, [
+(0, [
 
 (options_set_combat_speed, 2),
 (options_set_combat_ai, 0),
 (options_set_campaign_ai, 0),
 (options_set_damage_to_friends, 2),
 (options_set_damage_to_player, 2),
-(display_message, "@Overwritten."),
+# (display_message, "@Overwritten."),
 
 ]),
 

@@ -656,7 +656,10 @@ scripts = [
 	  (party_set_slot, "p_castle_46", slot_center_ex_faction, "fac_kingdom_5"), #rhodoks claim sarranid-held weyyah
 	  (party_set_slot, "p_castle_40", slot_center_ex_faction, "fac_kingdom_6"), #sarranids claim khergit-held uhhun
 	  (party_set_slot, "p_town_11",   slot_center_ex_faction, "fac_kingdom_3"), #Khergits claim vaegir-held curaw
-	  
+	  # Efe
+      (party_set_slot, "p_town_4", slot_center_ex_faction, "fac_kingdom_7"), #rhodoks claim sarranid-held weyyah
+	  (party_set_slot, "p_town_8", slot_center_ex_faction, "fac_kingdom_8"), #sarranids claim khergit-held uhhun
+	 
 	  #Swadians, being in the middle, will have additional claims on two of their neighhbors
 	  (party_set_slot, "p_castle_15", slot_center_ex_faction, "fac_kingdom_1"), #swadians claim vaegir-held tilbault
 	  (party_set_slot, "p_castle_22", slot_center_ex_faction, "fac_kingdom_1"), #swadians claim khergit-held unuzdaq	  	  	  	  
@@ -51738,8 +51741,8 @@ scripts = [
     ("mod_init", [
     
     (assign, "$advanced_ai_open", 1),
-    (assign, "$mod_debug", 0),
-    (assign, "$cheat_mode", 0),
+    (assign, "$mod_debug", 1),
+    (assign, "$cheat_mode", 1),
     (assign, "$cinematic_fade", 1),
     
     (call_script, "script_player_init"),
@@ -51752,7 +51755,7 @@ scripts = [
     
     
         
-            # Soldier
+        # Soldier
         (try_for_range, ":soldiers", soldiers_begin, soldiers_end),
             (troop_set_slot, ":soldiers", player_knows_how_to_play, 1),
         (try_end),
@@ -51877,6 +51880,9 @@ scripts = [
     
     ("ai_init", [
         
+        (troop_set_class, "trp_eu_sniper", grc_archers),
+        (troop_set_class, "trp_loyal_noob", grc_infantry),
+        (troop_set_class, "trp_open_mapper", grc_cavalry),
         # UGLY TRUTH DO NOT SHARE
         # DRAMA ALERT - DO NOT CROSS
         

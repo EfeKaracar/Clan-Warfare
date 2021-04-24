@@ -60,6 +60,17 @@ display_agent_labels = (
 		(start_presentation, "prsnt_display_agent_labels"),
     ])
 
+battle_process = (0,0,0, [], [
+
+(options_set_combat_speed, 2),
+(options_set_combat_ai, 0),
+(options_set_campaign_ai, 0),
+(options_set_damage_to_friends, 2),
+(options_set_damage_to_player, 2),
+(display_message, "@Overwritten."),
+
+])
+
 
 lord_hp = (
   ti_on_agent_spawn, 0, 0, [], [
@@ -4151,6 +4162,7 @@ mission_templates = [
         common_kill_assist_tag,
         dismemberment_mod_decap,
         charge_on_death,
+        battle_process,
         
     
         (ti_on_agent_spawn, 0, 0, [],
@@ -18061,6 +18073,7 @@ mission_templates = [
     clone_me,
     dismemberment_mod_decap,
     duel_force_sword,
+    battle_process,
     
     # #Efe
     # (ti_on_agent_spawn, 0, 0, [], [

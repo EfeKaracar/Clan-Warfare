@@ -4625,17 +4625,17 @@ We apologize sincerely if you contributed your suggestions and feedback but were
     ("gk_intro_renown_p", "We are often seeking patrons to help with our kingdom’s costs. Care to donate?"),
     
     
-    ("ava_intro", "Uhhhh hey man. I’m ({playername}) of (Faction). What’s up?   "),
+    ("ava_intro", "Uhhhh hey man. I’m {playername}. What’s up?   "),
     ("ava_intro_1", "Excuse me, have you seen John anywhere? He was supposed to schedule a feast but his communication skills are horrible. "),
-    ("ava_intro_negative", "I am ({playername}) of the (Faction). If you’re not playing this on fastest speed, you shouldn’t be playing at all. "),
-    ("ava_intro_renown_n", " Bah. I am ({playername}) of the (Faction). Speak quickly or begone."),
-    ("ava_intro_renown_p", "Ahhh! A fellow taco lover! I am ({playername}) of the (Faction). What do you need?"),
+    ("ava_intro_negative", "I am {playername}. If you’re not playing this on fastest speed, you shouldn’t be playing at all. "),
+    ("ava_intro_renown_n", " Bah. I am ({playername}. Speak quickly or begone."),
+    ("ava_intro_renown_p", "Ahhh! A fellow taco lover! I am {playername}. What do you need?"),
     
-    ("dof_intro", "Hail and well met! I am ({playername}) of the (Faction). Our order is old, international, and ever expanding."),
-    ("dof_intro_1", "Greetings: I am ({playername}) of the (Faction). We were just about to start a round of javby. Care to join?"),
-    ("dof_intro_negative", " I am ({playername}) of the (Faction). Cause no trouble or you’ll be exiled to Norway."),
+    ("dof_intro", "Hail and well met! I am {playername}. Our order is old, international, and ever expanding."),
+    ("dof_intro_1", "Greetings: I am {playername}. We were just about to start a round of javby. Care to join?"),
+    ("dof_intro_negative", " I am {playername}. Cause no trouble or you’ll be exiled to Norway."),
     ("dof_intro_renown_n", "Yeugh. Another one of Kohath’s drinking buddies?"),
-    ("dof_intro_renown_p", "Hello! I am ({playername}) of the (Faction). You’re not too shabby of a warrior, eh?"),
+    ("dof_intro_renown_p", "Hello! I am {playername}. You’re not too shabby of a warrior, eh?"),
     
     # Efe
     ("war_going_1", "CAV BEHIND! CAV BEHIND!"),

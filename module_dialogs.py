@@ -18775,13 +18775,13 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
   
     [anyone,"kingdom_party_encounter", [(le,"$g_encountered_party_relation",-10)],
     "Surrender now, and save yourself the indignity of defeat!", "kingdom_party_encounter_war",[]],
-    [anyone|plyr,"kingdom_party_encounter_war", [],  "[Go to Battle]", "close_window",[(encounter_attack)]],
+    [anyone|plyr,"kingdom_party_encounter_war", [],  "To arms!", "close_window",[(encounter_attack)]],
 
     [anyone,"kingdom_party_encounter", [(ge,"$g_encountered_party_relation",10)],
     "Greetings, fellow warrior.", "close_window",[(eq,"$talk_context",tc_party_encounter),(assign, "$g_leave_encounter", 1)]],
 
     [anyone,"kingdom_party_encounter", [],
-   "You can go.", "close_window",[]],
+   "You can go.", "close_window",[(assign, "$g_leave_encounter", 1)]],
 
 
 
