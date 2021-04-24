@@ -52363,7 +52363,7 @@ scripts = [
         (troop_set_slot, "trp_rempicaClone", player_skill_level, 1),
         
         # Raise skills, attr, prof and level by skill level
-        (try_for_range, ":troops", heroes_begin, heroes_end),
+        (try_for_range, ":troops", kings_begin, lords_end),
             (troop_get_slot, ":skill_level", ":troops", player_skill_level),
             
             (assign, ":atr_bonus", 20),

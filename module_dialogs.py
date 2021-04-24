@@ -11357,13 +11357,17 @@ dialogs = [
    "Is there anything else?", "lord_talk_ask_something_2",[]],   
    
    #Efe
+   
+    [anyone|plyr,"lord_talk", [], "What can you tell me about your skills?", 
+    "view_member_char_requested",[]],
+ 
     [anyone|plyr,"lord_talk",[
     
                     (this_or_next|is_between, "$g_talk_troop", kings_begin, kings_end),
 					(is_between, "$g_talk_troop", lords_begin, lords_end),
                     
 					], "My lord, I would like to challenge you to a friendly duel.", "lord_question_duel",[]],					
- [anyone|plyr,"lord_talk",[
+    [anyone|plyr,"lord_talk",[
     
                     (troop_slot_ge, "$g_talk_troop", player_thought_on_bl, 0),
                     
@@ -20111,7 +20115,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
   [anyone|plyr,"tavernkeeper_coin2", [
       (store_troop_gold, ":gold", "trp_player"),
       (ge,":gold",2000),
-      ], "20000 Denars.", "tavernkeeper_coin3",[
+      ], "2000 Denars.", "tavernkeeper_coin3",[
           (assign, reg6, 2000),]],
   [anyone|plyr,"tavernkeeper_coin2", [
       ], "I can't afford it.", "tavernkeeper_coinn",[]],
@@ -26455,12 +26459,12 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 
 # dialog for lords. Renown requirements can be set in the module_constants file.
 
-  [anyone|plyr,"lord_talk_ask_something_2",[
-					(is_between, "$g_talk_troop", lords_begin, lords_end),
-					(neq, reg(25), 1), #make sure lord is not a king
-					(troop_get_slot, ":player_renown", "trp_player", slot_troop_renown),
-					(ge, ":player_renown", lord_renown_for_duel),
-					], "I would like to challenge you to a friendly duel.", "lord_question_duel",[]],
+  # [anyone|plyr,"lord_talk_ask_something_2",[
+					# (is_between, "$g_talk_troop", lords_begin, lords_end),
+					# (neq, reg(25), 1), #make sure lord is not a king
+					# (troop_get_slot, ":player_renown", "trp_player", slot_troop_renown),
+					# (ge, ":player_renown", lord_renown_for_duel),
+					# ], "I would like to challenge you to a friendly duel.", "lord_question_duel",[]],
 				
 	
 # next are the replies to the duel request by the lord, based on how many duels player won/lost against him.

@@ -66,6 +66,7 @@ lord_hp = (
   
 		(store_trigger_param_1, ":agent"),
         
+        (agent_is_human, ":agent"),
         (agent_get_troop_id, ":troop", ":agent"),
         (try_begin),
             (troop_slot_ge, ":troop", player_hp, 1),
@@ -73,6 +74,7 @@ lord_hp = (
         (else_try),
             (store_troop_health, ":hp", ":troop", 1),
         (try_end),
+        
         
         (agent_set_max_hit_points, ":agent", ":hp", 1),
         (agent_set_hit_points, ":agent", ":hp", 1),
