@@ -14,6 +14,7 @@ from header_map_icons import *
 from header_presentations import *
 from ID_animations import *
 
+from cedric_scripts import *
 
 ####################################################################################################################
 # scripts is a list of script records.
@@ -51748,6 +51749,7 @@ scripts = [
     (call_script, "script_player_init"),
     (call_script, "script_wear_lords"),
     (call_script, "script_ai_init"),
+    (call_script, "script_set_classes"),
     (call_script, "script_faction_init"),
     # (display_message, "@mod_init"),
     
@@ -51880,9 +51882,7 @@ scripts = [
     
     ("ai_init", [
         
-        (troop_set_class, "trp_eu_sniper", grc_archers),
-        (troop_set_class, "trp_loyal_noob", grc_infantry),
-        (troop_set_class, "trp_open_mapper", grc_cavalry),
+
         # UGLY TRUTH DO NOT SHARE
         # DRAMA ALERT - DO NOT CROSS
         
@@ -54035,3 +54035,6 @@ scripts = [
    ]), 
 #+freelancer end
 ]
+
+
+scripts = scripts + cedric_scripts

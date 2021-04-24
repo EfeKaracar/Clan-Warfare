@@ -637,5 +637,6 @@ script_freelancer_keep_field_loot = 635
 script_cf_freelancer_player_can_upgrade = 636
 script_freelancer_equip_troop = 637
 script_freelancer_unequip_troop = 638
+script_set_classes = 639
 
 
