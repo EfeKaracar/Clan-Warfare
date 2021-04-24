@@ -761,7 +761,7 @@ troops = [
    [itm_lance, itm_tab_shield_heater_cav_b, itm_military_cleaver_b,
     itm_kettle_hat,itm_sarranid_mail_coif,itm_mail_shirt,itm_studded_leather_coat,itm_leather_boots,itm_splinted_leather_greaves, itm_hunter],
    str_14 | agi_5 | int_4 | cha_4|level(23),wp_one_handed (160) | wp_two_handed (110) | wp_polearm (200) | wp_archery (100) | wp_crossbow (140) | wp_throwing (100),knows_common|knows_ironflesh_3|knows_shield_4|knows_riding_4|knows_power_strike_4|knows_athletics_4,rhodok_face_middle_1, rhodok_face_older_2],
-  ["bunga_elite","Bunga Elite","Bunga Elites",tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_mounted|tf_guarantee_horse|tf_guarantee_ranged|tf_guarantee_shield,0,0,fac_kingdom_5,
+  ["bunga_elite","Battle Bunga","Battle Bungas",tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_mounted|tf_guarantee_horse|tf_guarantee_ranged|tf_guarantee_shield,0,0,fac_kingdom_5,
    [itm_military_cleaver_c, itm_heavy_lance, itm_awlpike_long, itm_tab_shield_kite_cav_b,
     itm_kettle_hat,itm_bascinet_2,itm_surcoat_over_mail,itm_mail_hauberk,itm_leather_boots,itm_splinted_leather_greaves,itm_scale_gauntlets, itm_warhorse, itm_hunter],
    str_18 | agi_12 | int_4 | cha_4|level(27),wp_one_handed (200) | wp_two_handed (110) | wp_polearm (240) | wp_archery (100) | wp_crossbow (140) | wp_throwing (100),knows_common|knows_ironflesh_4|knows_shield_4|knows_riding_5|knows_power_strike_5|knows_athletics_6,rhodok_face_middle_1, rhodok_face_older_2],
