@@ -63,6 +63,18 @@ game_menus = [
             
             (troop_equip_items, "trp_player"),
             
+            (try_for_range, ":factions", kingdoms_begin, kingdoms_end),
+                (faction_get_slot, ":culture", ":factions", slot_faction_culture),
+                (faction_get_slot, ":1", ":factions", slot_faction_tier_1_troop),
+                (faction_get_slot, ":2", ":factions", slot_faction_tier_2_troop),
+                (faction_get_slot, ":3", ":factions", slot_faction_tier_3_troop),
+                (faction_get_slot, ":4", ":factions", slot_faction_tier_4_troop),
+                (party_add_members, "p_main_party", ":1", 5),
+                (party_add_members, "p_main_party", ":2", 5),
+                (party_add_members, "p_main_party", ":3", 5),
+                (party_add_members, "p_main_party", ":4", 5),
+            (try_end),
+            
             (try_for_range, ":artifacts", "itm_roxhard_horse", "itm_artifacts_end"),
                 (troop_add_item, "trp_player", ":artifacts"),
             (try_end),
@@ -80,6 +92,8 @@ game_menus = [
                 (val_mul, ":bonus", 1000),
                 (add_xp_as_reward, ":bonus"),
             (try_end),
+            
+
 
             
             (call_script, "script_duel_quest_process"),

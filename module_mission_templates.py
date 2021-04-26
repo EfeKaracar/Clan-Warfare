@@ -67,7 +67,7 @@ battle_process = (0,0,0, [], [
 (options_set_campaign_ai, 0),
 (options_set_damage_to_friends, 2),
 (options_set_damage_to_player, 2),
-(display_message, "@Overwritten."),
+# (display_message, "@Overwritten."),
 
 ])
 
@@ -1169,11 +1169,50 @@ common_rotate_deathcam = (
 
 ##BEAN END - Deathcam
 
+ai_order = (
+ti_on_order_issued, 0, 0, [],
+[
+    (store_trigger_param_1, ":order"),
+    
+    # Run AI only when order is charge
+    (try_begin),
+        (eq, ":order", mordr_charge),
+        (assign, "$advanced_ai_open", 1),
+        (display_message, "@On"),
+    (else_try),
+        (assign, "$advanced_ai_open", 0),
+        (display_message, "@Off"),
+    (try_end),
+    
+    # Restart the AI or default AI
+    (try_for_agents, ":agents"),    
+        (agent_is_human, ":agents"),
+        (agent_is_alive, ":agents"),
+        (agent_clear_scripted_mode, ":agents"),
+        (agent_force_rethink, ":agents"),
+    (try_end),
+
+])
+
+# Give player team charge order when player dies
+player_death = (
+ti_on_agent_killed_or_wounded, 0, 0, [], [
+
+(store_trigger_param_1, ":dead"),
+
+(get_player_agent_no, ":player"),
+(eq, ":player", ":dead"),
+(agent_get_team, ":team", ":player"),
+(team_give_order, ":team", grc_everyone, mordr_charge),
+(assign, "$advanced_ai_open", 1),
+
+])
+
 advanced_ai = (
 0, 0, 0, [
 
 (eq, "$advanced_ai_open", 1),
-(neg|main_hero_fallen),
+# (neg|main_hero_fallen),
 (neg|all_enemies_defeated),
 
 ], [
@@ -4151,28 +4190,39 @@ mission_templates = [
         common_start_deathcam,
         common_move_deathcam,
         common_rotate_deathcam,
-        advanced_ai,   
+        
+        advanced_ai, 
+        ai_order,
+        player_death,
+        
         troop_ratio,
         first_blood,
         lord_hp,
         wk_appear,
         death_music,
         battle_initialization,
+        
         new_player_follow_player,
         new_players_ask_dumb_questions,
         new_players,
+        
         rempica,
         corpsekicking,
         corpsekicking_enable,
         looting_artifacts,
+        
         common_anti_cheat_heal,
         common_anti_cheat_kill,
+        
         random_weather,
+        
         common_kill_assist_tag_done,
         common_kill_assist_tag,
+        
         dismemberment_mod_decap,
         charge_on_death,
         battle_process,
+
         
     
         (ti_on_agent_spawn, 0, 0, [],
