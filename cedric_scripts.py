@@ -105,7 +105,7 @@ cedric_scripts = [
         (troop_set_class, "trp_avalonian_crossbowman", grc_archers),
         (troop_set_class, "trp_tacoss_bowman", grc_archers),
         (troop_set_class, "trp_avalonian_swordsman", grc_infantry),
-        (troop_set_class, "trp_taco_knights", grc_cavalry),
+        (troop_set_class, "trp_taco_knight", grc_cavalry),
         (troop_set_class, "trp_roxhardian", grc_cavalry),
         (troop_set_class, "trp_awlpiker", grc_cavalry),
         

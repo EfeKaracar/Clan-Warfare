@@ -15112,7 +15112,7 @@ I'd like nothing better than to go out there and teach them a lesson,\
      (call_script, "script_get_name_from_dna_to_s50", ":quest_target_dna"),
      (str_store_string, s4, s50),
      (setup_quest_text, "$random_quest_no"),
-     (str_store_string, s2, "@{s9} asked you to hunt down a fugitive named {s4}. He is currently believed to be at {s3}."),
+     (str_store_string, s2, "@{s9} asked you to hunt down a fugitive named Duckie Dreadsword. He is currently believed to be at {s3}."),
    ]],
 
   [anyone|plyr,"lord_mission_hunt_down_fugitive_told", [],
@@ -19603,25 +19603,26 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 
 # Village traitor
 
-  [trp_fugitive,"start", [], "What do you want?", "fugitive_1",[]],
+  [trp_fugitive,"start", [], "'Hail and Well Met Traveller, what can I do for you?'", "fugitive_1",[]],
   [trp_fugitive|plyr,"fugitive_1", [
      (quest_get_slot, ":quest_target_dna", "qst_hunt_down_fugitive", slot_quest_target_dna),
      (call_script, "script_get_name_from_dna_to_s50", ":quest_target_dna"),
      (str_store_string, s4, s50),
-      ], "I am looking for a murderer by the name of {s4}. You fit his description.", "fugitive_2",[]],
+      ], "I'm not here to roleplay, Duckie. Come with me or enjoy the walk from commoner spawn.", "fugitive_2",[]],
   [trp_fugitive|plyr,"fugitive_1", [], "Nothing. Sorry to trouble you.", "close_window",[]],
-  [trp_fugitive,"fugitive_2", [], "I don't understand, {sir/madam}.\
- I never killed anyone. I think you've got the wrong man.", "fugitive_3",[]],
-  [trp_fugitive|plyr,"fugitive_3", [], "Then drop your sword. If you are innocent, you have nothing to fear.\
- We'll go now and talk to your neighbours, and if they verify your story, I'll go on my way.", "fugitive_4",[]],
-  [anyone,"fugitive_4", [], "I'm not going anywhere, friend. You're going to have to fight for your silver, today.", "fugitive_5",
+  [trp_fugitive,"fugitive_2", [], "//You realize this is against the rules right? If you kill me I'll report you.", "fugitive_3",[]],
+  [trp_fugitive|plyr,"fugitive_3", [], "I don't care.", "fugitive_4",[]],
+  [anyone,"fugitive_4", [], "'I'll make sure you pay for this.'", "fugitive_5",
    []],
 
-  [trp_fugitive|plyr,"fugitive_5", [], "No problem. I really just need your head, anyway.", "fugitive_fight_start",[]],
-  [trp_fugitive|plyr,"fugitive_5", [], "I come not for money, but to execute the law!", "fugitive_fight_start",[]],
-  [trp_fugitive|plyr,"fugitive_5", [], "Alas, that you cannot be made to see reason.", "fugitive_fight_start",[]],
+  [trp_fugitive|plyr,"fugitive_5", [], "Prepare to die.", "fugitive_fight_start",[]],
+  #[trp_fugitive|plyr,"fugitive_5", [], "", "fugitive_fight_start",[]],
+  [trp_fugitive|plyr,"fugitive_5", [], "Wait, before I kill you. What do you think about Bannerlord?", "fugitive_6",[]],
+    
+  [anyone, "fugitive_6", [], "I think the other lords of the realm scoff at the sequel, I myself find many pleasures in it and believe it has great potential. A new era is coming and those who refuse to adapt will die off, like the rest.", "fugitive_7",[]],
+  [trp_fugitive|plyr,"fugitive_7", [], "Alright, now I'm definitely killing you.", "fugitive_fight_start",[]],
 	
-  [anyone,"fugitive_fight_start", [], "Die, dog!", "close_window",
+  [anyone,"fugitive_fight_start", [], "Very well, see you on the forums.", "close_window",
    [
 	(set_party_battle_mode),
     (quest_set_slot, "qst_hunt_down_fugitive", slot_quest_current_state, 1),
