@@ -1544,6 +1544,9 @@ items = [
     ["cut_off_head_female", "Bloody Female Head", [("cut_off_head_female",0)], itp_type_head_armor|itp_covers_head   ,0, 
     0 , weight(4)|abundance(0)|head_armor(0)|body_armor(0)|leg_armor(0)|difficulty(0) ,imodbits_plate ],
 
-    ["turtle","Turtle", [("turtle",0),("turtle",imodbits_horse_good)], itp_merchandise|itp_type_horse, 0, 810,abundance(60)|hit_points(160)|body_armor(18)|difficulty(3)|horse_speed(43)|horse_maneuver(44)|horse_charge(24)|horse_scale(108),imodbits_horse_basic|imodbit_champion],
+    ["turtle","Turtle", [("turtle",0),("turtle",imodbits_horse_good)],
+    itp_merchandise|itp_type_horse, 0, 4500,abundance(60)|hit_points(360)|
+    body_armor(28)|difficulty(3)|horse_speed(18)|horse_maneuver(44)|
+    horse_charge(34)|horse_scale(158),imodbits_horse_basic|imodbit_champion],
 
 ]

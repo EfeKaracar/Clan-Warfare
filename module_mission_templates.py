@@ -325,15 +325,25 @@ first_blood = (
    [
 		(store_trigger_param_1, ":dead_agent"),
 		(store_trigger_param_2, ":killer_agent"),
-      
+        
 		(get_player_agent_no, ":player"),
-		(eq, ":killer_agent", ":player"),
-		(agent_is_human, ":dead_agent"),
-		(agent_slot_eq, ":killer_agent", first_blood_done, 0),
-		(display_message, "@FIRST BLOOD!", 0xFF0000),
+        (agent_is_human, ":dead_agent"),
+        
+        (assign, ":continue", 0),
+        (try_begin),
+            (eq, ":killer_agent", ":player"),
+            (assign, ":continue", 1),
+        (else_try),
+            (neq, ":killer_agent", ":player"),
+            (agent_set_slot, ":killer_agent", first_blood_done, 1),
+            (assign, ":continue", 0),
+        (try_end),
+        (agent_slot_eq, ":killer_agent", first_blood_done, 0),
+        (eq, ":continue", 1),
+
 		(add_xp_as_reward, 100),
 		(agent_set_slot, ":killer_agent", first_blood_done, 1),
-		(val_add, "$first_blood_count", 1),
+        (display_message, "@FIRST BLOOD!", 0xFF0000),
    ])	
 
 
@@ -395,7 +405,7 @@ ti_on_agent_killed_or_wounded, 0, 0, [],
         (add_xp_as_reward, ":level_buff"),
         (str_store_agent_name, s1, ":killer"),
         (assign, reg2, ":level_buff"),
-        (display_message, "@You earned {reg2} amount of experience points with the help of {s1}.", game_event_hex),
+        (display_message, "@ASSIST!^You earned {reg2} amount of experience points with the help of {s1}.", game_event_hex),
 
     ])
 

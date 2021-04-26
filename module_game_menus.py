@@ -599,58 +599,62 @@ game_menus = [
     (party_get_morale, reg8, "p_main_party"),
    ],
     [
-      ("cheat_faction_orders",[(ge,"$cheat_mode",1)],"{!}Cheat: Faction orders.",
-       [(jump_to_menu, "mnu_faction_orders"),
+        ("cheat_faction_orders",[(ge,"$cheat_mode",1)],"{!}Cheat: Faction orders.",
+        [(jump_to_menu, "mnu_faction_orders"),
         ]
-       ),
+        ),
 	   
-      ("view_character_report",[],"View character report.",
-       [(jump_to_menu, "mnu_character_report"),
+        ("view_character_report",[],"View character report.",
+        [(jump_to_menu, "mnu_character_report"),
         ]
-       ),
-       #Efe
-         ("view_beaten_lords",[],"View duel report.",
+        ),
+        
+        #Efe
+        ("view_beaten_lords",[],"View duel report.",
         [(jump_to_menu, "mnu_duel_report"),
         ]
         ),
         
-      ("view_party_size_report",[],"View party size report.",
-       [(jump_to_menu, "mnu_party_size_report"),
+        ("faction_troop_tree",[],"View Factions' Troop Tree.",
+        [(start_presentation, "prsnt_faction_troop_tree"), ]),
+        
+        ("view_party_size_report",[],"View party size report.",
+        [(jump_to_menu, "mnu_party_size_report"),
         ]
-       ),
+        ),
 	   
-      ("view_npc_mission_report",[],"View companion mission report.",
-       [(jump_to_menu, "mnu_companion_report"),
+        ("view_npc_mission_report",[],"View companion mission report.",
+        [(jump_to_menu, "mnu_companion_report"),
         ]
-       ),
+        ),
 
-      ("view_weekly_budget_report",[],"View weekly budget report.",
-       [
+        ("view_weekly_budget_report",[],"View weekly budget report.",
+        [
          (assign, "$g_apply_budget_report_to_gold", 0),
          (start_presentation, "prsnt_budget_report"),
         ]
-       ),
+        ),
 
-      ("view_morale_report",[],"View party morale report.",
-       [(jump_to_menu, "mnu_morale_report"),
+        ("view_morale_report",[],"View party morale report.",
+        [(jump_to_menu, "mnu_morale_report"),
         ]
-       ),
+        ),
 
 #NPC companion changes begin
-      ("lord_relations",[],"View list of known lords by relation.",
-       [
+        ("lord_relations",[],"View list of known lords by relation.",
+        [
 		(jump_to_menu, "mnu_lord_relations"),
         ]
-       ),
+        ),
 	   
-      ("courtship_relations",[],"View courtship relations.",
-       [
+        ("courtship_relations",[],"View courtship relations.",
+        [
 		(jump_to_menu, "mnu_courtship_relations"),
         ]
-       ),
+        ),
 
-      ("status_check",[(eq,"$cheat_mode",1)],"{!}NPC status check.",
-       [
+        ("status_check",[(eq,"$cheat_mode",1)],"{!}NPC status check.",
+        [
         (try_for_range, ":npc", companions_begin, companions_end),
             (main_party_has_troop, ":npc"),
             (str_store_troop_name, 4, ":npc"),
@@ -662,7 +666,7 @@ game_menus = [
             (display_message, "@{!}{s4}: M{reg3}, 2M{reg4}, PC{reg5}, 2PC{reg6}, PM{reg7}"),
         (try_end),
         ]
-       ),
+        ),
 
 #NPC companion changes end
 
@@ -3069,11 +3073,6 @@ game_menus = [
         ]
         ),
         
-        ("action_change_party_name",
-       [(troop_slot_ge, "trp_player", slot_troop_renown, 300)], #My opinion is that it should be renown-dependent...
-       "Change your party's name.",
-       [(start_presentation, "prsnt_set_party_name")]
-       ),
         
         ("camp_action",[],"Take an action.",
         [(jump_to_menu, "mnu_camp_action"),
@@ -3081,8 +3080,7 @@ game_menus = [
         ),
        
         ## CC
-        ("faction_troop_tree",[],"View Factions' Troop Tree.",
-       [(start_presentation, "prsnt_faction_troop_tree"), ]),
+
         
         ("action_view_world_map",[],"View the world map.",
         [
@@ -3091,7 +3089,7 @@ game_menus = [
         ),
         
         ("action_change_party_name",
-        [(troop_slot_ge, "trp_player", slot_troop_renown, 300)], #My opinion is that it should be renown-dependent...
+        [], #My opinion is that it should be renown-dependent...
         "Change your party's name.",
         [(start_presentation, "prsnt_set_party_name")]
         ),

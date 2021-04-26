@@ -15255,11 +15255,11 @@ presentations = [
 		(val_sub, ":cur_y", ":cur_y_adder"),
 		
 		#next_pay
-		(str_store_date, s25, "$g_next_pay_time"),
-		(create_text_overlay, reg0, "@Next Pay/Promotion day: {s25}", tf_left_align),
-		(position_set_y, pos1, ":cur_y"),
-		(overlay_set_position, reg0, pos1),
-		(val_sub, ":cur_y", ":cur_y_adder"),
+		# (str_store_date, s25, "$g_next_pay_time"),
+		# (create_text_overlay, reg0, "@Next Pay/Promotion day: {s25}", tf_left_align),
+		# (position_set_y, pos1, ":cur_y"),
+		# (overlay_set_position, reg0, pos1),
+		# (val_sub, ":cur_y", ":cur_y_adder"),
 
 		#Commanders_troops size(right side)
 		(store_party_size_wo_prisoners,":army_size","$enlisted_party"), 
@@ -15385,7 +15385,7 @@ presentations = [
   ("killcount",prsntf_read_only,0,[
       (ti_on_presentation_load,
        [
-		(assign, "$presentation_killcount"),
+		# (assign, "$presentation_killcount"),
 		(set_fixed_point_multiplier, 1000),
 		
 		(create_mesh_overlay, "$g_presentation_obj_1", "mesh_white_plane"),
