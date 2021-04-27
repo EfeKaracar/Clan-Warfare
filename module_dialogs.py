@@ -15099,10 +15099,10 @@ I'd like nothing better than to go out there and teach them a lesson,\
 
 #Hunt down fugitive
   [anyone,"lord_tell_mission", [(eq,"$random_quest_no","qst_hunt_down_fugitive")],
-   "I have something you could help with, an issue with the lawless villain known as {s4}. \
- He murdered one of my men and has been on the run from his judgment ever since.\
- I can't let him get away with avoiding justice, so I've put a bounty of 300 denars on his head.\
- Friends of the murdered man reckon that this assassin may have taken refuge with his kinsmen at {s3}.\
+   "I have something you could help with, an issue with the lawless villain known as Duckie Dreadsword. \
+ He won't heal my men and keeps trying to eRP with the ladies of the court.\
+ I can't let this continue, so I've offered 300 denars to any man who can end this nightmare.\
+ Last I heard, Duckie was healing in exchange for people's souls at {s3}.\
  You might be able to hunt him down and give him what he deserves, and claim the bounty for yourself.", "lord_mission_hunt_down_fugitive_told",
    [
      (quest_get_slot, ":quest_target_center", "$random_quest_no", slot_quest_target_center),
@@ -15116,13 +15116,13 @@ I'd like nothing better than to go out there and teach them a lesson,\
    ]],
 
   [anyone|plyr,"lord_mission_hunt_down_fugitive_told", [],
-   "Then I will hunt him down and execute the law.", "lord_mission_hunt_down_fugitive_accepted",[]],
-  [anyone|plyr,"lord_mission_hunt_down_fugitive_told", [], "I am too busy to go after him at the moment.", "lord_mission_hunt_down_fugitive_rejected",[]],
+   "I'll do it.", "lord_mission_hunt_down_fugitive_accepted",[]],
+  [anyone|plyr,"lord_mission_hunt_down_fugitive_told", [], "I'm not wasting my skills on a doctor, go find some levies to do it.", "lord_mission_hunt_down_fugitive_rejected",[]],
 
   [anyone,"lord_mission_hunt_down_fugitive_accepted", [], "That's excellent, {playername}.\
- I will be grateful to you and so will the family of the man he murdered.\
- And of course the bounty on his head will be yours if you can get him.\
- Well, good hunting to you.", "close_window",
+ I can't wait to hear about it on the forums.\
+ And of course the bounty on his head will be yours.\
+ Well, don't get embarrassed. Good luck to you.", "close_window",
    [(call_script, "script_start_quest", "$random_quest_no", "$g_talk_troop"),
     (call_script, "script_change_player_relation_with_troop","$g_talk_troop",1),
     (assign, "$g_leave_encounter",1),
