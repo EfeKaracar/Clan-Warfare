@@ -51742,8 +51742,8 @@ scripts = [
     ("mod_init", [
     
     (assign, "$advanced_ai_open", 1),
-    (assign, "$mod_debug", 1),
-    (assign, "$cheat_mode", 1),
+    (assign, "$mod_debug", 0),
+    (assign, "$cheat_mode", 0),
     (assign, "$cinematic_fade", 1),
     
     (call_script, "script_player_init"),

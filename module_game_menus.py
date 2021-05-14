@@ -189,7 +189,7 @@ game_menus = [
         (party_set_ai_object, ":daemon", "p_main_party"),
         (party_set_ai_behavior, ":daemon", ai_bhvr_attack_party),
         (change_screen_map),
-        (display_message, "@ass"),
+        #(display_message, "@ass"),
         
         ]),
 
